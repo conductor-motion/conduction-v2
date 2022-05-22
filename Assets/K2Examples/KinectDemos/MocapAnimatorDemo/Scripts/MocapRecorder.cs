@@ -13,7 +13,7 @@ public class MocapRecorder : MonoBehaviour
     public AvatarController avatarModel;
 
     [Tooltip("Full path to the file, where the animation clip will be saved at the end of animation recording.")]
-    public string animSaveToFile = "Assets/AzureKinectExamples/KinectDemos/MocapAnimatorDemo/Animations/Recorded.anim";
+    public string animSaveToFile = "Assets/K2Examples/KinectDemos/MocapAnimatorDemo/Animations/Recorded.anim";
 
     [Tooltip("Whether to capture the root motion as well.")]
     public bool captureRootMotion = true;
