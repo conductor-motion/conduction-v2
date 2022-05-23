@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 //using com.rfilkov.kinect;
-
+using System.IO;
+using UnityEditor;
 
 /// <summary>
 /// MocapRecorder records the avatar motion into the given animation clip.
@@ -50,7 +51,11 @@ public class MocapRecorder : MonoBehaviour
     // initial model's root position
     private Vector3 initialRootPos = Vector3.zero;
 
+    //Non-Vanilla (Added By Us)
 
+    private bool recordButtonPressed = false;
+
+    //End Non-Vanilla
 
     void Start()
     {
@@ -78,7 +83,7 @@ public class MocapRecorder : MonoBehaviour
     void Update()
     {
         // check for Space-key
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump") || recordButtonPressed)
         {
             if(!isRecording)
             {
@@ -119,8 +124,17 @@ public class MocapRecorder : MonoBehaviour
     //{
     //}
 
+    //Non-Vanilla (Added By Us)
+
+    public void RecordButton()
+    {
+        recordButtonPressed = !recordButtonPressed;
+    }
+
+    //End Non-Vanilla
 
     // displays the given message on screen and logs it to console
+
     private void ShowMessage(string sMessage)
     {
         if (infoText)
@@ -297,6 +311,8 @@ public class MocapRecorder : MonoBehaviour
         }
 
         // save the clip
+        animSaveToFile = EditorUtility.OpenFilePanel("", "", "anim");
+
         int iP = animSaveToFile.LastIndexOf('/');
         string animName = (iP >= 0 ? animSaveToFile.Substring(iP + 1) : animSaveToFile).Trim();
 
