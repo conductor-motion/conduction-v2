@@ -113,13 +113,14 @@ public class MocapRecorder : MonoBehaviour
 
             if (infoText & ((int)(animTime * 10f) % 10) == 0)
             {
-                infoText.text = string.Format("Recording... {0:F0}s", animTime);
+                infoText.text = string.Format("{0:F0}s", animTime);
             }
         }
 
         // stop recording, if the user is lost
         if (avatarModel && avatarModel.playerId == 0)
         {
+            GameObject.Find("Curve Reference Line").SetActive(true);
             StopRecording();
         }
     }
@@ -153,6 +154,7 @@ public class MocapRecorder : MonoBehaviour
     // counts down (from 3 for instance), then starts the animation recording
     private IEnumerator CountdownAndStartRecording()
     {
+        GameObject.Find("Curve Reference Line").SetActive(false);
         if (countdown != null && countdown.Length > 0)
         {
             for (int i = 0; i < countdown.Length; i++)
@@ -225,6 +227,8 @@ public class MocapRecorder : MonoBehaviour
             {
                 recIcon.gameObject.SetActive(false);
             }
+
+            GameObject.Find("Curve Reference Line").SetActive(true);
 
             bool isAnythingRecorded = (muscleCurves.Count > 0 && muscleCurves[0].length > 0) || 
                 (rootPoseCurves.Count > 0 && rootPoseCurves["RootT.x"].length > 0);
