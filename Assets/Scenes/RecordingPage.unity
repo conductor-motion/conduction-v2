@@ -11019,7 +11019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avatarModel: {fileID: 1203305700}
-  animSaveToFile: Assets/K2Examples/KinectDemos/MocapAnimatorDemo/Animations/MocapRecording.anim
+  animSaveToFile: 
   captureRootMotion: 1
   mocapPlayer: {fileID: 0}
   countdown:

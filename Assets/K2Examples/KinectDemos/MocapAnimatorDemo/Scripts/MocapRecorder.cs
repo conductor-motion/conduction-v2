@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 //using com.rfilkov.kinect;
-
+using System;
 
 /// <summary>
 /// MocapRecorder records the avatar motion into the given animation clip.
@@ -13,7 +13,10 @@ public class MocapRecorder : MonoBehaviour
     public AvatarController avatarModel;
 
     [Tooltip("Full path to the file, where the animation clip will be saved at the end of animation recording.")]
-    public string animSaveToFile = "Assets/AzureKinectExamples/KinectDemos/MocapAnimatorDemo/Animations/Recorded.anim";
+    //public string animSaveToFile = "Assets/AzureKinectExamples/KinectDemos/MocapAnimatorDemo/Animations/Recorded.anim";
+    //public string animSaveToFile = "Assets/K2Examples/KinectDemos/MocapAnimatorDemo/Animations/Recorded.anim";
+    private static string tempRecordSave = DateTime.Now.ToString("mmddyyhhmmss");
+    private string animSaveToFile = "Assets/Recordings/" + tempRecordSave + ".anim";
 
     [Tooltip("Whether to capture the root motion as well.")]
     public bool captureRootMotion = true;
@@ -59,7 +62,8 @@ public class MocapRecorder : MonoBehaviour
 
     void Start()
     {
-        if(avatarModel)
+        Debug.Log(animSaveToFile);
+        if (avatarModel)
         {
             modelAnimator = avatarModel.gameObject.GetComponent<Animator>();
 
@@ -85,6 +89,7 @@ public class MocapRecorder : MonoBehaviour
         // check for Space-key
         if(Input.GetButtonDown("Jump") || recordButtonPressed)
         {
+            recordButtonPressed = false;
             if(!isRecording)
             {
                 if(!isCountingDown && avatarModel && avatarModel.playerId != 0)
