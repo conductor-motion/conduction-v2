@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 //using com.rfilkov.kinect;
-using System.IO;
-using UnityEditor;
+
 
 /// <summary>
 /// MocapRecorder records the avatar motion into the given animation clip.
@@ -14,7 +13,7 @@ public class MocapRecorder : MonoBehaviour
     public AvatarController avatarModel;
 
     [Tooltip("Full path to the file, where the animation clip will be saved at the end of animation recording.")]
-    public string animSaveToFile = "Assets/K2Examples/KinectDemos/MocapAnimatorDemo/Animations/Recorded.anim";
+    public string animSaveToFile = "Assets/AzureKinectExamples/KinectDemos/MocapAnimatorDemo/Animations/Recorded.anim";
 
     [Tooltip("Whether to capture the root motion as well.")]
     public bool captureRootMotion = true;
@@ -56,6 +55,7 @@ public class MocapRecorder : MonoBehaviour
     private bool recordButtonPressed = false;
 
     //End Non-Vanilla
+
 
     void Start()
     {
@@ -134,7 +134,6 @@ public class MocapRecorder : MonoBehaviour
     //End Non-Vanilla
 
     // displays the given message on screen and logs it to console
-
     private void ShowMessage(string sMessage)
     {
         if (infoText)
@@ -311,8 +310,6 @@ public class MocapRecorder : MonoBehaviour
         }
 
         // save the clip
-        animSaveToFile = EditorUtility.OpenFilePanel("", "", "anim");
-
         int iP = animSaveToFile.LastIndexOf('/');
         string animName = (iP >= 0 ? animSaveToFile.Substring(iP + 1) : animSaveToFile).Trim();
 
