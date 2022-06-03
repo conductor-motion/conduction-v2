@@ -31,7 +31,7 @@ public class MocapRecorder : MonoBehaviour
     public Transform recIcon;
 
     [Tooltip("Sprite transform for the recording button")]
-    public Transform recButton;
+    public UnityEngine.UI.Image recButton;
 
     [Tooltip("Tooltip information for the record button")]
     public Transform recInfo;
@@ -39,6 +39,11 @@ public class MocapRecorder : MonoBehaviour
     [Tooltip("UI Text to display information messages.")]
     public UnityEngine.UI.Text infoText;
 
+    [Tooltip("Sprite to display while recording is in progress.")]
+    public Texture2D recordingTexture;
+
+    [Tooltip("Sprite to display while recording is not in progress.")]
+    public Texture2D notRecordingTexture;
 
     // reference to the avatar's animator component
     private Animator modelAnimator = null;
@@ -147,12 +152,6 @@ public class MocapRecorder : MonoBehaviour
     public void RecordButton()
     {
         recordButtonPressed = !recordButtonPressed;
-
-        // No Kinect test
-
-        // Test animation swap to rounded square
-        // StartCoroutine(SwapIcon());
-        //StartCoroutine(CountdownAndStartRecording());
     }
 
     //End Non-Vanilla
@@ -172,7 +171,43 @@ public class MocapRecorder : MonoBehaviour
     // Coroutine for animating the icon of the record button
     private IEnumerator SwapIcon()
     {
-        yield return new WaitForSeconds(1f);
+        // Instantiate a new sprite from the textures given
+        // Likely leads to some memory leak but is unlikely to be truly impactful
+        Sprite newSprite;
+        
+        if (isRecording)
+        {
+            newSprite = Sprite.Create(recordingTexture, new Rect(0.0f, 0.0f, recordingTexture.width, recordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+        }
+        else
+        {
+            newSprite = Sprite.Create(notRecordingTexture, new Rect(0.0f, 0.0f, notRecordingTexture.width, notRecordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+        }
+        
+        // Change the sprite
+        recButton.overrideSprite = newSprite;
+
+        // Rudimentary "tweening" effect between sprites, similar to what's seen on an iPhone
+        if (isRecording)
+        {
+            // Loop to take 0.5 seconds to achieve a smooth effect
+            // TODO: curves for more smooth animation
+            for (int i = 0; i < 10; i++)
+            {
+                recButton.transform.GetComponent<RectTransform>().sizeDelta -= new Vector2(1f, 1f);
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+        else
+        {
+             for (int i = 0; i < 10; i++)
+            {
+                recButton.transform.GetComponent<RectTransform>().sizeDelta += new Vector2(1f, 1f);
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+
+        yield return 1;
     }
 
     // counts down (from 3 for instance), then starts the animation recording
@@ -196,6 +231,7 @@ public class MocapRecorder : MonoBehaviour
         isCountingDown = false;
         isRecording = true;
         ShowMessage("Recording started.");
+        StartCoroutine(SwapIcon());
 
         /* if (recIcon)
         {
@@ -270,6 +306,7 @@ public class MocapRecorder : MonoBehaviour
                 ShowMessage("Recording stopped - nothing to save.");
             }
             recInfo.gameObject.SetActive(true);
+            StartCoroutine(SwapIcon());
         }
     }
 
