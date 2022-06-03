@@ -30,6 +30,12 @@ public class MocapRecorder : MonoBehaviour
     [Tooltip("Sprite transform that will be used to display recording in progress.")]
     public Transform recIcon;
 
+    [Tooltip("Sprite transform for the recording button")]
+    public Transform recButton;
+
+    [Tooltip("Tooltip information for the record button")]
+    public Transform recInfo;
+
     [Tooltip("UI Text to display information messages.")]
     public UnityEngine.UI.Text infoText;
 
@@ -56,12 +62,19 @@ public class MocapRecorder : MonoBehaviour
     //Non-Vanilla (Added By Us)
 
     private bool recordButtonPressed = false;
+    private bool editorOverride = false;
 
     //End Non-Vanilla
 
 
     void Start()
     {
+        // Allow for bypassing the need for a sensor if in the Unity Editor
+        if (Application.isEditor)
+        {
+            editorOverride = true;
+        }
+
         Debug.Log(animSaveToFile);
         if (avatarModel)
         {
@@ -92,7 +105,7 @@ public class MocapRecorder : MonoBehaviour
             recordButtonPressed = false;
             if(!isRecording)
             {
-                if(!isCountingDown && avatarModel && avatarModel.playerId != 0)
+                if(!isCountingDown && avatarModel && (editorOverride || avatarModel.playerId != 0))
                 {
                     InitAnimationCurves();
                     isCountingDown = true;
@@ -105,7 +118,7 @@ public class MocapRecorder : MonoBehaviour
             }
         }
 
-        if (isRecording && avatarModel && avatarModel.playerId != 0)
+        if (isRecording && avatarModel && (editorOverride || avatarModel.playerId != 0))
         {
             // record the current pose
             animTime += Time.deltaTime;
@@ -118,9 +131,8 @@ public class MocapRecorder : MonoBehaviour
         }
 
         // stop recording, if the user is lost
-        if (avatarModel && avatarModel.playerId == 0)
+        if (avatarModel && (avatarModel.playerId == 0 && !editorOverride))
         {
-            GameObject.Find("Curve Reference Line").SetActive(true);
             StopRecording();
         }
     }
@@ -135,6 +147,12 @@ public class MocapRecorder : MonoBehaviour
     public void RecordButton()
     {
         recordButtonPressed = !recordButtonPressed;
+
+        // No Kinect test
+
+        // Test animation swap to rounded square
+        // StartCoroutine(SwapIcon());
+        //StartCoroutine(CountdownAndStartRecording());
     }
 
     //End Non-Vanilla
@@ -151,10 +169,16 @@ public class MocapRecorder : MonoBehaviour
     }
 
 
+    // Coroutine for animating the icon of the record button
+    private IEnumerator SwapIcon()
+    {
+        yield return new WaitForSeconds(1f);
+    }
+
     // counts down (from 3 for instance), then starts the animation recording
     private IEnumerator CountdownAndStartRecording()
     {
-        GameObject.Find("Curve Reference Line").SetActive(false);
+        recInfo.gameObject.SetActive(false);
         if (countdown != null && countdown.Length > 0)
         {
             for (int i = 0; i < countdown.Length; i++)
@@ -173,10 +197,10 @@ public class MocapRecorder : MonoBehaviour
         isRecording = true;
         ShowMessage("Recording started.");
 
-        if (recIcon)
+        /* if (recIcon)
         {
             recIcon.gameObject.SetActive(true);
-        }
+        } */
     }
 
 
@@ -223,12 +247,10 @@ public class MocapRecorder : MonoBehaviour
             isRecording = false;
             ShowMessage(string.Format("Recording stopped - saved {0:F3}s animation.", animTime));
 
-            if (recIcon)
+            /* if (recIcon)
             {
                 recIcon.gameObject.SetActive(false);
-            }
-
-            GameObject.Find("Curve Reference Line").SetActive(true);
+            } */
 
             bool isAnythingRecorded = (muscleCurves.Count > 0 && muscleCurves[0].length > 0) || 
                 (rootPoseCurves.Count > 0 && rootPoseCurves["RootT.x"].length > 0);
@@ -247,6 +269,7 @@ public class MocapRecorder : MonoBehaviour
             {
                 ShowMessage("Recording stopped - nothing to save.");
             }
+            recInfo.gameObject.SetActive(true);
         }
     }
 
