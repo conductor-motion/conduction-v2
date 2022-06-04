@@ -1,6 +1,5 @@
 // comment out the following #define, if you want to use the depth sensor and the KinectManager on per-scene basis
-#define USE_SINGLE_KM_IN_MULTIPLE_SCENES
-
+// #define USE_SINGLE_KM_IN_MULTIPLE_SCENES
 
 using UnityEngine;
 using UnityEngine.Networking;
