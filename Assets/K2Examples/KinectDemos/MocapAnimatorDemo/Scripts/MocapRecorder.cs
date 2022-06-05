@@ -68,6 +68,8 @@ public class MocapRecorder : MonoBehaviour
 
     private bool recordButtonPressed = false;
     private bool editorOverride = false;
+    private Sprite notRec;
+    private Sprite isRec;
 
     //End Non-Vanilla
 
@@ -79,6 +81,10 @@ public class MocapRecorder : MonoBehaviour
         {
             editorOverride = true;
         }
+
+        // Instantiate sprites for icon swapping
+        isRec = Sprite.Create(recordingTexture, new Rect(0.0f, 0.0f, recordingTexture.width, recordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+        notRec = Sprite.Create(notRecordingTexture, new Rect(0.0f, 0.0f, notRecordingTexture.width, notRecordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
 
         Debug.Log(animSaveToFile);
         if (avatarModel)
@@ -177,11 +183,11 @@ public class MocapRecorder : MonoBehaviour
         
         if (isRecording)
         {
-            newSprite = Sprite.Create(recordingTexture, new Rect(0.0f, 0.0f, recordingTexture.width, recordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+            newSprite = isRec;
         }
         else
         {
-            newSprite = Sprite.Create(notRecordingTexture, new Rect(0.0f, 0.0f, notRecordingTexture.width, notRecordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+            newSprite = notRec;
         }
         
         // Change the sprite
