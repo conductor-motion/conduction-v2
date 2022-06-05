@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 //using com.rfilkov.kinect;
 using System;
+using System.IO;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// MocapRecorder records the avatar motion into the given animation clip.
@@ -15,8 +17,9 @@ public class MocapRecorder : MonoBehaviour
     [Tooltip("Full path to the file, where the animation clip will be saved at the end of animation recording.")]
     //public string animSaveToFile = "Assets/AzureKinectExamples/KinectDemos/MocapAnimatorDemo/Animations/Recorded.anim";
     //public string animSaveToFile = "Assets/K2Examples/KinectDemos/MocapAnimatorDemo/Animations/Recorded.anim";
-    private static string tempRecordSave = DateTime.Now.ToString("mmddyyhhmmss");
-    private string animSaveToFile = "Assets/Recordings/" + tempRecordSave + ".anim";
+    private static string tempRecordSave;
+    private string animSaveToFile;
+    private string animSaveToFileBuilt;
 
     [Tooltip("Whether to capture the root motion as well.")]
     public bool captureRootMotion = true;
@@ -86,7 +89,6 @@ public class MocapRecorder : MonoBehaviour
         isRec = Sprite.Create(recordingTexture, new Rect(0.0f, 0.0f, recordingTexture.width, recordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
         notRec = Sprite.Create(notRecordingTexture, new Rect(0.0f, 0.0f, notRecordingTexture.width, notRecordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
 
-        Debug.Log(animSaveToFile);
         if (avatarModel)
         {
             modelAnimator = avatarModel.gameObject.GetComponent<Animator>();
@@ -301,6 +303,7 @@ public class MocapRecorder : MonoBehaviour
             {
                 AnimationClip animClip = CreateAnimationClip();
                 SaveAnimationClip(animClip);
+                SceneManager.LoadScene("ViewingPage");
 
                 if (mocapPlayer)
                 {
@@ -378,6 +381,11 @@ public class MocapRecorder : MonoBehaviour
     // saves the animation clip to the specified save-file
     private void SaveAnimationClip(AnimationClip animClip)
     {
+
+        tempRecordSave = DateTime.Now.ToString("mmddyyhhmmss");
+        animSaveToFile = "Assets/Recordings/" + tempRecordSave + ".anim";
+        animSaveToFileBuilt = tempRecordSave + ".anim";
+
         if(string.IsNullOrEmpty(animSaveToFile))
         {
             ShowMessage("Animation save path not set!");
@@ -398,12 +406,15 @@ public class MocapRecorder : MonoBehaviour
         UnityEditor.AssetDatabase.CreateAsset(animClip, animSaveToFile);
         Debug.Log("Animation clip saved: " + animSaveToFile);
 
+
         //// set loop time to true
         //UnityEditor.AnimationClipSettings settings = UnityEditor.AnimationUtility.GetAnimationClipSettings(animClip);
         //settings.loopTime = true;
         //UnityEditor.AnimationUtility.SetAnimationClipSettings(animClip, settings);
+        //ShowMessage("The animation clip can be saved only in Unity editor.");
 #else
-        ShowMessage("The animation clip can be saved only in Unity editor.");
+        BinaryWriter bw = new BinaryWriter(File.Create(animSaveToFileBuilt));
+        bw.Write(animClip);
 #endif
 
         // clear the animation curves
