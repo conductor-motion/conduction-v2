@@ -157,5 +157,22 @@ public class BeatChecker : MonoBehaviour
         previousBeatTime = Time.time; //the time that the last beat played was played
         nextBeatTime = Time.time; //when the next beat should be played
     }
+
+    public void stopMetronome()
+    {
+        play = false;
+    }
+
+    public void toggleMetronome()
+    {
+        if(play)
+        {
+            stopMetronome();
+        }
+        else
+        {
+            startMetronome();
+        }
+    }
 }
 

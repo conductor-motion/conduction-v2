@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Metronome : MonoBehaviour
 {
-    private MetronomeStorage metronome;
+    public MetronomeStorage metronome;
     private BeatChecker beatChecker;
     private AudioSource audioSource;
     // Start is called before the first frame update
