@@ -21,6 +21,20 @@ public class MarkupManager : MonoBehaviour
         doMarkup = !doMarkup;
     }
 
+    // Allows for controlling line thickness
+    // Since drawings consist of lines, this will only consider cardinal directions, not diagonals
+    void DrawPixel(Vector3 pos, Color color, int size)
+    {
+        texture.SetPixel((int)pos.x, (int)pos.y, color);
+        for (int i = 0; i < size; ++i)
+        {
+            texture.SetPixel((int)pos.x+i, (int)pos.y, color);
+            texture.SetPixel((int)pos.x-i, (int)pos.y, color);
+            texture.SetPixel((int)pos.x, (int)pos.y+i, color);
+            texture.SetPixel((int)pos.x, (int)pos.y-i, color);
+        }
+    }
+
     void Start()
     {
         texture = new Texture2D(Screen.width, Screen.height);
@@ -72,7 +86,8 @@ public class MarkupManager : MonoBehaviour
                 for (int i = 0; i < granularity; i++)
                 {
                     interPos = Vector3.Lerp(mousePos, Input.mousePosition, ((float)i)/granularity);
-                    texture.SetPixel((int)interPos.x, (int)interPos.y, Color.red);
+                    DrawPixel(interPos, Color.red, 2);
+                    // texture.SetPixel((int)interPos.x, (int)interPos.y, Color.red);
                 }
                 mousePos = Input.mousePosition;
                 texture.Apply(); // Maybe inefficient to call this every update?
