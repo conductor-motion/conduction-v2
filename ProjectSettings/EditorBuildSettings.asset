@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RecordingPage.unity
     guid: a632e74d82e72ca49a381b8cc9b318b0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/ViewingPage.unity
     guid: ebb0cbe092dd4c344a37e944e3fe7901
   m_configObjects: {}

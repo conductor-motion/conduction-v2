@@ -15,6 +15,12 @@ public class MocapPlayer : MonoBehaviour
     private Vector3 initialPos = Vector3.zero;
     private Quaternion initialRot = Quaternion.identity;
 
+    //Non-Vanilla (Added by us)
+
+
+
+    //End Non-Vanilla
+
 
     void Start()
     {
@@ -24,6 +30,12 @@ public class MocapPlayer : MonoBehaviour
         // get initial position & rotation
         initialPos = transform.position;
         initialRot = transform.rotation;
+
+        //Non-Vanilla (Added by us)
+
+        PlayAnimationClip(MocapRecorder.animClip);
+
+        //End Non-Vanilla
     }
 
 

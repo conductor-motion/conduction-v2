@@ -73,6 +73,7 @@ public class MocapRecorder : MonoBehaviour
     private bool editorOverride = false;
     private Sprite notRec;
     private Sprite isRec;
+    public static AnimationClip animClip;
 
     //End Non-Vanilla
 
@@ -301,7 +302,7 @@ public class MocapRecorder : MonoBehaviour
 
             if (isAnythingRecorded)
             {
-                AnimationClip animClip = CreateAnimationClip();
+                animClip = CreateAnimationClip();
                 SaveAnimationClip(animClip);
                 SceneManager.LoadScene("ViewingPage");
 
