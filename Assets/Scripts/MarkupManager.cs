@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MarkupManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class MarkupManager : MonoBehaviour
     private bool currentlyDrawing = false;
     private Texture2D texture;
     private Sprite blankSprite;
-    private Color color = Color.black;
+    private Color color = Color.white;
     private int size = 1;
 
     // Mouse positon
@@ -62,7 +63,7 @@ public class MarkupManager : MonoBehaviour
     void Update()
     {
         // If markup state is toggled and the mouse is down, draw at the mouse
-        if (doMarkup && Input.GetKeyDown(KeyCode.Mouse0))
+        if (doMarkup && Input.GetKeyDown(KeyCode.Mouse0) && !IsPointeroverUIElement())
         {
             mousePos = Input.mousePosition;
             currentlyDrawing = true;
@@ -88,16 +89,6 @@ public class MarkupManager : MonoBehaviour
                 for (int i = 0; i < granularity; i++)
                 {
                     interPos = Vector3.Lerp(mousePos, Input.mousePosition, ((float)i)/granularity);
-                    DrawPixel(interPos, Color.red, 2);
-                    // texture.SetPixel((int)interPos.x, (int)interPos.y, Color.red);
-                    texture.SetPixel((int)interPos.x, (int)interPos.y, Color.red);
-                    for(int j = -size/2; j < size/2; j++)
-                    {
-                        for(int k = -size/2; k < size/2; k++)
-                        {
-                            texture.SetPixel((int)interPos.x+j, (int)interPos.y+k, color);
-                        }
-                    }
                     DrawPixel(interPos, color, size);
                     // texture.SetPixel((int)interPos.x, (int)interPos.y, Color.red);
                 }
@@ -107,13 +98,53 @@ public class MarkupManager : MonoBehaviour
         }
     }
 
-    public void selectColor(Color newColor)
+    public void SelectColor(Color newColor)
     {
         color = newColor;
     }
 
-    public void selectSize(int newSize)
+    public void SelectSize(int newSize)
     {
         size = newSize;
+    }
+
+    // Fills the screen with black which, for some reason, is considered clear
+    public void ClearScreen()
+    {
+        for (int i = 0; i < texture.width; i++)
+        {
+            for (int k = 0; k < texture.height; k++)
+            {
+                texture.SetPixel(i, k, Color.black);
+            }
+        }
+        texture.Apply();
+    }
+
+
+    //These functions perform a raycast to check whether the mouse is over the UI so that the user can't draw while selecting UI elements
+    private bool IsPointeroverUIElement()
+    {
+        return IsPointerOverUIElement(GetEventSystemRaycastResults());
+    }
+
+    private bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaycastResults)
+    {
+        for(int index = 0; index < eventSystemRaycastResults.Count; index++)
+        {
+            RaycastResult curRaycastResult = eventSystemRaycastResults[index];
+            if (curRaycastResult.gameObject.layer == LayerMask.NameToLayer("UI"))
+                return true;
+        }
+        return false;
+    }
+
+    private static List<RaycastResult> GetEventSystemRaycastResults()
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raycastResults);
+        return raycastResults;
     }
 }

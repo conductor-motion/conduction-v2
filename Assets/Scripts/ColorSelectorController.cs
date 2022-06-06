@@ -21,13 +21,13 @@ public class ColorSelectorController : MonoBehaviour
         switch(dropdown.options[dropdown.value].text)
         {
             case "Red":
-                markupManager.selectColor(Color.red);
+                markupManager.SelectColor(Color.red);
                 break;
             case "Eraser":
-                markupManager.selectColor(Color.black);
+                markupManager.SelectColor(Color.black);
                 break;
             case "White":
-                markupManager.selectColor(Color.white);
+                markupManager.SelectColor(Color.white);
                 break;
         }
     }

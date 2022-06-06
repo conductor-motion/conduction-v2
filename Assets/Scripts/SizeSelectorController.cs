@@ -6,29 +6,18 @@ using TMPro;
 
 public class SizeSelectorController : MonoBehaviour
 {
-    private TMP_Dropdown dropdown;
+    private Slider slider;
     private MarkupManager markupManager;
     // Start is called before the first frame update
     void Start()
     {
-        dropdown = this.gameObject.GetComponent<TMP_Dropdown>();
+        slider = this.gameObject.GetComponent<Slider>();
         markupManager = GameObject.FindGameObjectWithTag("MarkupManager").GetComponent<MarkupManager>();
-        dropdown.onValueChanged.AddListener(delegate { ValueChangeCheck(dropdown); });
+        slider.onValueChanged.AddListener(delegate { ValueChangeCheck(slider); });
     }
 
-    private void ValueChangeCheck(TMP_Dropdown dropdown)
+    private void ValueChangeCheck(Slider slider)
     {
-        switch (dropdown.options[dropdown.value].text)
-        {
-            case "Small":
-                markupManager.selectSize(2);
-                break;
-            case "Medium":
-                markupManager.selectSize(5);
-                break;
-            case "Large":
-                markupManager.selectSize(25);
-                break;
-        }
+        markupManager.SelectSize((int)slider.value);
     }
 }
