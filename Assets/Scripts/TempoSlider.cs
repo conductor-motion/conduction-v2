@@ -22,6 +22,6 @@ public class TempoSlider : MonoBehaviour
     public void ValueChangeCheck()
     {
         tempoLabel.text = tempoSlider.value.ToString();
-        metronome.metronome.setTempo(tempoSlider.value);
+        metronome.metronome.SetTempo(tempoSlider.value);
     }
 }

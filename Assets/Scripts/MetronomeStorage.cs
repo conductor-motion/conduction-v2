@@ -16,104 +16,104 @@ struct metronomeInfo
     private AudioClip metUpBeat;
 
     #region Sets
-    public void setName(string newName)
+    public void SetName(string newName)
     {
         name = newName;
     }
 
-    public void setTempo(float newTempo)
+    public void SetTempo(float newTempo)
     {
         tempo = newTempo;
     }
 
-    public void setTimeSigLow(int newTimeSigLow)
+    public void SetTimeSigLow(int newTimeSigLow)
     {
         timeSigLow = newTimeSigLow;
     }
 
-    public void setTimeSigUp(int newTimeSigUp)
+    public void SetTimeSigUp(int newTimeSigUp)
     {
         timeSigUp = newTimeSigUp;
     }
 
-    public void setMeasures(int newMeasures)
+    public void SetMeasures(int newMeasures)
     {
         measures = newMeasures;
     }
 
-    public void setPickups(bool newPickups)
+    public void SetPickups(bool newPickups)
     {
         pickups = newPickups;
     }
 
-    public void setPickupUp(int newPickupUp)
+    public void SetPickupUp(int newPickupUp)
     {
         pickupUp = newPickupUp;
     }
 
-    public void setPickupLow(int newPickupLow)
+    public void SetPickupLow(int newPickupLow)
     {
         pickupLow = newPickupLow;
     }
 
-    public void setMetLowBeat(AudioClip newMetLowBeat)
+    public void SetMetLowBeat(AudioClip newMetLowBeat)
     {
         metLowBeat = newMetLowBeat;
     }
 
-    public void setMetUpBeat(AudioClip newMetUpBeat)
+    public void SetMetUpBeat(AudioClip newMetUpBeat)
     {
         metUpBeat = newMetUpBeat;
     }
     #endregion
 
     #region Gets
-    public string getName()
+    public string GetName()
     {
         return name;
     }
 
-    public float getTempo()
+    public float GetTempo()
     {
         return tempo;
     }
 
-    public int getTimeSigLow()
+    public int GetTimeSigLow()
     {
         return timeSigLow;
     }
 
-    public int getTimeSigUp()
+    public int GetTimeSigUp()
     {
         return timeSigUp;
     }
 
-    public int getMeasures()
+    public int GetMeasures()
     {
         return measures;
     }
 
-    public bool getPickups()
+    public bool GetPickups()
     {
         return pickups;
     }
 
-    public int getPickupUp()
+    public int GetPickupUp()
     {
         return pickupUp;
     }
 
-    public int getPickupLow()
+    public int GetPickupLow()
     {
         return pickupLow;
     }
 
-    public AudioClip getMetLowBeat()
+    public AudioClip GetMetLowBeat()
     {
         return metLowBeat;
     }
 
-    public AudioClip getMetUpBeat()
+    public AudioClip GetMetUpBeat()
     {
         return metUpBeat;
     }
@@ -138,18 +138,18 @@ public class MetronomeStorage : MonoBehaviour
     #endregion
 
     #region sets
-    public void initialize()
+    public void Initialize()
     {
-        met.setName(title);
-        met.setTempo(tempo);
-        met.setTimeSigLow(timeSigLow);
-        met.setTimeSigUp(timeSigUp);
-        met.setMeasures(measures);
-        met.setPickups(pickups);
-        met.setPickupUp(pickupUp);
-        met.setPickupLow(pickupLow);
-        met.setMetLowBeat(metLowBeat);
-        met.setMetUpBeat(metUpBeat);
+        met.SetName(title);
+        met.SetTempo(tempo);
+        met.SetTimeSigLow(timeSigLow);
+        met.SetTimeSigUp(timeSigUp);
+        met.SetMeasures(measures);
+        met.SetPickups(pickups);
+        met.SetPickupUp(pickupUp);
+        met.SetPickupLow(pickupLow);
+        met.SetMetLowBeat(metLowBeat);
+        met.SetMetUpBeat(metUpBeat);
     }
     
 #endregion
@@ -158,85 +158,85 @@ public class MetronomeStorage : MonoBehaviour
     public double getBeatTime()
     {
         //60/tempo because tempo is beats per minute, 60 seconds a minute
-        return 60 / met.getTempo();
+        return 60 / met.GetTempo();
     }
 
     public double getSongLengthInSeconds()
     {
         //gets duration of song by multiplying how long it is by how long a beat is
-        return getBeatTime() * met.getMeasures() * met.getTimeSigUp();
+        return getBeatTime() * met.GetMeasures() * met.GetTimeSigUp();
     }
 
-    public string getName()
+    public string GetName()
     {
-        return met.getName();
+        return met.GetName();
     }
 
-    public float getTempo()
+    public float GetTempo()
     {
-        return met.getTempo();
+        return met.GetTempo();
     }
 
-    public int getTimeSigUp()
+    public int GetTimeSigUp()
     {
-        return met.getTimeSigUp();
+        return met.GetTimeSigUp();
     }
 
-    public int getTimeSigLow()
+    public int GetTimeSigLow()
     {
-        return met.getTimeSigLow();
+        return met.GetTimeSigLow();
     }
 
-    public bool getIfPickups()
+    public bool GetIfPickups()
     {
-        return met.getPickups();
+        return met.GetPickups();
     }
 
-    public int getPickupUp()
+    public int GetPickupUp()
     {
-        return met.getPickupUp();
+        return met.GetPickupUp();
     }
 
-    public int getPickupLow()
+    public int GetPickupLow()
     {
-        return met.getPickupLow();
+        return met.GetPickupLow();
     }
     #endregion
 
     #region Sets
-    public void setName(string name)
+    public void SetName(string name)
     {
-        met.setName(name);
+        met.SetName(name);
     }
 
-    public void setTempo(float tempo)
+    public void SetTempo(float tempo)
     {
-        met.setTempo(tempo);
+        met.SetTempo(tempo);
     }
 
-    public void setTimeSigUp(int timeSigUp)
+    public void SetTimeSigUp(int timeSigUp)
     {
-        met.setTimeSigUp(timeSigUp);
+        met.SetTimeSigUp(timeSigUp);
     }
 
-    public void setTimeSigLow(int timeSigLow)
+    public void SetTimeSigLow(int timeSigLow)
     {
-        met.setTimeSigLow(timeSigLow);
+        met.SetTimeSigLow(timeSigLow);
     }
 
-    public void setIfPickups(bool pickups)
+    public void SetIfPickups(bool pickups)
     {
-        met.setPickups(pickups);
+        met.SetPickups(pickups);
     }
 
-    public void setPickupUp(int pickupUp)
+    public void SetPickupUp(int pickupUp)
     {
-        met.setPickupUp(pickupUp);
+        met.SetPickupUp(pickupUp);
     }
 
-    public void setPickupLow(int pickupLow)
+    public void SetPickupLow(int pickupLow)
     {
-        met.setPickupLow(pickupLow);
+        met.SetPickupLow(pickupLow);
     }
     #endregion
 }
