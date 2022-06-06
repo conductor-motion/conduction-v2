@@ -12,6 +12,8 @@ public class MarkupManager : MonoBehaviour
     private bool currentlyDrawing = false;
     private Texture2D texture;
     private Sprite blankSprite;
+    private Color color = Color.black;
+    private int size = 1;
 
     // Mouse positon
     private Vector3 mousePos = new Vector3(0f,0f,0f);
@@ -88,10 +90,30 @@ public class MarkupManager : MonoBehaviour
                     interPos = Vector3.Lerp(mousePos, Input.mousePosition, ((float)i)/granularity);
                     DrawPixel(interPos, Color.red, 2);
                     // texture.SetPixel((int)interPos.x, (int)interPos.y, Color.red);
+                    texture.SetPixel((int)interPos.x, (int)interPos.y, Color.red);
+                    for(int j = -size/2; j < size/2; j++)
+                    {
+                        for(int k = -size/2; k < size/2; k++)
+                        {
+                            texture.SetPixel((int)interPos.x+j, (int)interPos.y+k, color);
+                        }
+                    }
+                    DrawPixel(interPos, color, size);
+                    // texture.SetPixel((int)interPos.x, (int)interPos.y, Color.red);
                 }
                 mousePos = Input.mousePosition;
                 texture.Apply(); // Maybe inefficient to call this every update?
             }
         }
+    }
+
+    public void selectColor(Color newColor)
+    {
+        color = newColor;
+    }
+
+    public void selectSize(int newSize)
+    {
+        size = newSize;
     }
 }

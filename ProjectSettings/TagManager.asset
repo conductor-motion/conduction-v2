@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Button
   - Metronome
+  - MarkupManager
   layers:
   - Default
   - TransparentFX
