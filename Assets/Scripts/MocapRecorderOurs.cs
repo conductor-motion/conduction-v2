@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// MocapRecorder records the avatar motion into the given animation clip.
 /// </summary>
-public class MocapRecorder : MonoBehaviour
+public class MocapRecorderOurs : MonoBehaviour
 {
     [Tooltip("The avatar, whose motion will be captured in the animation clip.")]
     public AvatarController avatarModel;
@@ -25,7 +25,7 @@ public class MocapRecorder : MonoBehaviour
     public bool captureRootMotion = true;
 
     [Tooltip("The model used to play the recorded animation clip.")]
-    public MocapPlayer mocapPlayer;
+    public MocapPlayerOurs mocapPlayer;
 
     [Tooltip("Sprite transforms that will be used to display the countdown, when recording starts.")]
     public Transform[] countdown;
@@ -81,7 +81,7 @@ public class MocapRecorder : MonoBehaviour
     void Start()
     {
         // Allow for bypassing the need for a sensor if in the Unity Editor
-        if (Application.isEditor)
+        if (UnityEngine.Application.isEditor)
         {
             editorOverride = true;
         }
@@ -303,7 +303,6 @@ public class MocapRecorder : MonoBehaviour
             if (isAnythingRecorded)
             {
                 animClip = CreateAnimationClip();
-                SaveAnimationClip(animClip);
                 SceneManager.LoadScene("ViewingPage");
 
                 if (mocapPlayer)
@@ -382,12 +381,11 @@ public class MocapRecorder : MonoBehaviour
     // saves the animation clip to the specified save-file
     private void SaveAnimationClip(AnimationClip animClip)
     {
-
         tempRecordSave = DateTime.Now.ToString("mmddyyhhmmss");
         animSaveToFile = "Assets/Recordings/" + tempRecordSave + ".anim";
         animSaveToFileBuilt = tempRecordSave + ".anim";
 
-        if(string.IsNullOrEmpty(animSaveToFile))
+        if (string.IsNullOrEmpty(animSaveToFileBuilt))
         {
             ShowMessage("Animation save path not set!");
             return;
@@ -402,6 +400,9 @@ public class MocapRecorder : MonoBehaviour
 
         animClip.name = animName;
         //animClip.wrapMode = WrapMode.Loop;
+
+        BinaryWriter bw = new BinaryWriter(File.Create(animSaveToFileBuilt));
+        bw.Write(animClip);
 
 #if UNITY_EDITOR
         UnityEditor.AssetDatabase.CreateAsset(animClip, animSaveToFile);
