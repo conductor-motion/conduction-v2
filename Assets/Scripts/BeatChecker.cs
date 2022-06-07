@@ -24,21 +24,22 @@ public class BeatChecker : MonoBehaviour
         metronome = GameObject.FindGameObjectWithTag("Metronome").GetComponent<MetronomeStorage>();
 
         //ensures that the song starts, gets the current time to establish how long until the next beat
-        metronome.initialize();
+        metronome.Initialize();
         beatLength = metronome.getBeatTime();
         nextBeat = 0; //which beat comes next
-        finishedPickup = !metronome.getIfPickups();
+        finishedPickup = !metronome.GetIfPickups();
     }
+
     private void Update()
     {
         if (beatCheck())
         {
             if (!finishedPickup) //checks if there is a pickup and plays it accordingly, using the same stuff as normal, jsut replacing which time sig data it's snagging
             {
-                nextBeat += (metronome.getPickupLow() / 4);
+                nextBeat += (metronome.GetPickupLow() / 4);
                 beatLength = metronome.getBeatTime();
                 //When the next beat should loop back to the begining
-                if (nextBeat > metronome.getPickupUp() && playExtraBeatLength)
+                if (nextBeat > metronome.GetPickupUp() && playExtraBeatLength)
                 {
                     //set to true to exit the pickup state and enter normal music state
                     finishedPickup = true;
@@ -47,14 +48,14 @@ public class BeatChecker : MonoBehaviour
                     nextBeat = 1;
 
                     //this funky equation is used for any odd time signatures that end in less than full beats
-                    if (metronome.getPickupLow() != 4)
+                    if (metronome.GetPickupLow() != 4)
                     {
                         //equation is the length of a beat * (4*timeUp)/(timeLow) - 3
                         //found by simplifying (low/4 - (low-up))/(low/4)
-                        beatLength = metronome.getBeatTime() * (((4 * (float)metronome.getPickupUp()) / (float)metronome.getPickupLow()) - 3);
+                        beatLength = metronome.getBeatTime() * (((4 * (float)metronome.GetPickupUp()) / (float)metronome.GetPickupLow()) - 3);
                     }
                 }
-                else if (nextBeat > metronome.getTimeSigUp())
+                else if (nextBeat > metronome.GetTimeSigUp())
                 {
                     //set to true to exit the pickup state and enter normal music state
                     finishedPickup = true;
@@ -62,10 +63,10 @@ public class BeatChecker : MonoBehaviour
                     //reset next beat to be beat 1   
                     nextBeat = 1;
 
-                    if (metronome.getTimeSigLow() != 4)
+                    if (metronome.GetTimeSigLow() != 4)
                     {
                         //same equation as above, but this time working to add in the previous beat to the ordeal
-                        beatLength = metronome.getBeatTime() + metronome.getBeatTime() * (((4 * (float)metronome.getPickupUp()) / (float)metronome.getPickupLow()) - 3);
+                        beatLength = metronome.getBeatTime() + metronome.getBeatTime() * (((4 * (float)metronome.GetPickupUp()) / (float)metronome.GetPickupLow()) - 3);
                     }
                 }
 
@@ -77,28 +78,28 @@ public class BeatChecker : MonoBehaviour
 
             else
             {
-                nextBeat += (metronome.getTimeSigLow() / 4);
+                nextBeat += (metronome.GetTimeSigLow() / 4);
                 beatLength = metronome.getBeatTime();
 
                 //When the next beat should loop back to the begining
-                if (nextBeat > metronome.getTimeSigUp() && playExtraBeatLength)
+                if (nextBeat > metronome.GetTimeSigUp() && playExtraBeatLength)
                 {
                     //reset next beat to be beat 1   
                     nextBeat = 1;
 
                     //same equations as above
-                    if (metronome.getTimeSigLow() != 4)
-                        beatLength = metronome.getBeatTime() * (((4 * (float)metronome.getTimeSigUp()) / (float)metronome.getTimeSigLow()) - 3);
+                    if (metronome.GetTimeSigLow() != 4)
+                        beatLength = metronome.getBeatTime() * (((4 * (float)metronome.GetTimeSigUp()) / (float)metronome.GetTimeSigLow()) - 3);
                 }
 
-                else if (nextBeat > metronome.getTimeSigUp())
+                else if (nextBeat > metronome.GetTimeSigUp())
                 {
                     //reset next beat to be beat 1   
                     nextBeat = 1;
 
                     //you know the deal
-                    if (metronome.getTimeSigLow() != 4)
-                        beatLength = metronome.getBeatTime() + metronome.getBeatTime() * (((4 * (float)metronome.getTimeSigUp()) / (float)metronome.getTimeSigLow()) - 3);
+                    if (metronome.GetTimeSigLow() != 4)
+                        beatLength = metronome.getBeatTime() + metronome.getBeatTime() * (((4 * (float)metronome.GetTimeSigUp()) / (float)metronome.GetTimeSigLow()) - 3);
                 }
 
                 previousBeatTime = nextBeatTime;
@@ -128,7 +129,7 @@ public class BeatChecker : MonoBehaviour
 
     private int calculateNextBeat(int beat)
     {
-        return beat + (metronome.getTimeSigLow() / 4);
+        return beat + (metronome.GetTimeSigLow() / 4);
     }
 
     public bool getPlayBeat()   // Returns true if a beat is happening now

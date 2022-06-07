@@ -38,6 +38,50 @@ public class MarkupManager : MonoBehaviour
         }
     }
 
+    // Without a bezier curve implementation, the beginning and end edges look rough/jagged
+    // This draws a circular cap at each end to make it appear more rounded
+    void DrawCap(Vector3 pos, Color color, int size)
+    {
+        // Size represents the radius of the circle we draw
+        // Points = {(x,y) | (x - pos.x)^2 + (y-pos.y)^2 <= size^2}
+        // We can generate a circle around x = y = 0, and translate these points by pos
+        // The pixels are selected by choosing the pixels in a square of size*2 that would fit in Points
+
+        List<int> indices = new List<int>();
+        int sizeSquare = size * size;
+        for (int x = 0; x < size; x++)
+        {
+            for (int y = 0; y < size; y++)
+            {
+                // More efficient to do multiplication over exponentiation (without CPU-optimizations)
+                double distSquared = x * x + y * y;
+
+                if (distSquared < sizeSquare)
+                {
+                    // ok this is a very bad way of doing this for large sizes
+                    indices.Add(x);
+                    indices.Add(y);
+
+                    indices.Add(-x);
+                    indices.Add(-y);
+
+                    indices.Add(-x);
+                    indices.Add(y);
+
+                    indices.Add(x);
+                    indices.Add(-y);
+                }
+            }
+        }
+
+        // Iterate the list, drawing the circle
+        for (int i = 0; i < indices.Count; i += 2)
+        {
+            texture.SetPixel(indices[i] + (int)pos.x, indices[i+1] + (int)pos.y, color);
+        }
+        texture.Apply();
+    }
+
     void Start()
     {
         texture = new Texture2D(Screen.width, Screen.height);
@@ -67,9 +111,11 @@ public class MarkupManager : MonoBehaviour
         {
             mousePos = Input.mousePosition;
             currentlyDrawing = true;
+            DrawCap(Input.mousePosition, color, size);
         }
-        else if (doMarkup && Input.GetKeyUp(KeyCode.Mouse0))
+        else if (doMarkup && Input.GetKeyUp(KeyCode.Mouse0) && !IsPointeroverUIElement())
         {
+            DrawCap(Input.mousePosition, color, size);
             currentlyDrawing = false;
         }
 
@@ -90,10 +136,9 @@ public class MarkupManager : MonoBehaviour
                 {
                     interPos = Vector3.Lerp(mousePos, Input.mousePosition, ((float)i)/granularity);
                     DrawPixel(interPos, color, size);
-                    // texture.SetPixel((int)interPos.x, (int)interPos.y, Color.red);
                 }
                 mousePos = Input.mousePosition;
-                texture.Apply(); // Maybe inefficient to call this every update?
+                texture.Apply();
             }
         }
     }
