@@ -11,7 +11,7 @@ public class BeatChecker : MonoBehaviour
 
     private MetronomeStorage metronome;
     private double beatLength;
-    private int nextBeat;
+    private float nextBeat;
     private float previousBeatTime;
     private float nextBeatTime;
     private bool playBeat; //variable anything that involves rhythm will look at to know if it should move
@@ -76,7 +76,7 @@ public class BeatChecker : MonoBehaviour
 
             else
             {
-                nextBeat += (metronome.GetTimeSigLow() / 4);
+                nextBeat += (float)(metronome.GetTimeSigLow() / 4);
                 beatLength = metronome.getBeatTime();
                 Debug.Log(metronome.GetTimeSigLow());
 
@@ -87,14 +87,14 @@ public class BeatChecker : MonoBehaviour
                     nextBeat = 1;
                     if (playExtraBeatLength)
                     {
-                        if ((metronome.GetTimeSigUp() % (metronome.GetTimeSigLow() / 4)) != 0)
+                        if ((metronome.GetTimeSigUp() % ((float)metronome.GetTimeSigLow() / 4)) != 0)
                         {
                             beatLength = metronome.getBeatTime() * calculateExtraBeatSize();
                         }
                     }
                     else
                     {
-                        if ((metronome.GetTimeSigUp() % (metronome.GetTimeSigLow() / 4)) != 0)
+                        if ((metronome.GetTimeSigUp() % ((float)metronome.GetTimeSigLow() / 4)) != 0)
                         {
                             beatLength = metronome.getBeatTime() + metronome.getBeatTime() * calculateExtraBeatSize();
                         }
@@ -126,9 +126,12 @@ public class BeatChecker : MonoBehaviour
             return false;
     }
 
-    private int calculateNextBeat(int beat)
+    private float calculateNextBeat(float beat)
     {
-        return beat + (metronome.GetTimeSigLow() / 4);
+        float returnVal = beat + (float)(metronome.GetTimeSigLow() / 4);
+        if (returnVal > metronome.GetTimeSigUp())
+            return 1;
+        return returnVal;
     }
 
     public bool getPlayBeat()   // Returns true if a beat is happening now
