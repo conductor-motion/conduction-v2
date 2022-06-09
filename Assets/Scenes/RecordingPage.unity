@@ -1754,19 +1754,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448490662}
-        m_TargetAssemblyTypeName: MetronomeStorage, Assembly-CSharp
-        m_MethodName: setTimeSigLow
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &641335348
 MonoBehaviour:
@@ -4202,7 +4190,6 @@ GameObject:
   - component: {fileID: 1431768078}
   - component: {fileID: 1431768077}
   - component: {fileID: 1431768076}
-  - component: {fileID: 1431768075}
   m_Layer: 5
   m_Name: TimeSigUp
   m_TagString: Untagged
@@ -4230,20 +4217,6 @@ RectTransform:
   m_AnchoredPosition: {x: -352.6, y: 50}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1431768075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431768073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4559c8fa8e9cdef4387fcc13d163d002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thisTimeSig: 0
-  textBox: {fileID: 745276939}
 --- !u!114 &1431768076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4292,14 +4265,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 0
@@ -4549,15 +4522,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: 
-  tempo: 60
-  timeSigUp: 9
-  timeSigLow: 8
+  tempo: 120
+  timeSigUp: 4
+  timeSigLow: 4
   measures: 1
   pickups: 0
   pickupUp: 0
   pickupLow: 0
   metLowBeat: {fileID: 8300000, guid: b178682e73944ef4cb1f558d55ef0744, type: 3}
-  metUpBeat: {fileID: 8300000, guid: b178682e73944ef4cb1f558d55ef0744, type: 3}
+  metUpBeat: {fileID: 8300000, guid: e929dd16cd2b42f41a7d18a58571469d, type: 3}
 --- !u!114 &1448490663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4571,6 +4544,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   metronome: {fileID: 1448490662}
+  metronomeToggle: {fileID: 632648055}
+  timeSigUpTextBox: {fileID: 1431768076}
+  timeSigDownDropdown: {fileID: 641335347}
 --- !u!1 &1448849966
 GameObject:
   m_ObjectHideFlags: 0

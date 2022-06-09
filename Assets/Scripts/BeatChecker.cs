@@ -26,10 +26,11 @@ public class BeatChecker : MonoBehaviour
         //ensures that the song starts, gets the current time to establish how long until the next beat
         metronome.Initialize();
         beatLength = metronome.getBeatTime();
-        nextBeat = 0; //which beat comes next
+        nextBeat = 1; //Returns what the next whole quarter note is in the measure e.g.: 1 2 3 4 in 4/4 1 2 3 4 in 9/8 because the 4 is a dotted 4 it doesn't count the extra quarter note. This can be toggled w/ play extrabeatlength
         finishedPickup = !metronome.GetIfPickups();
+        if((metronome.GetTimeSigUp() % (metronome.GetTimeSigLow() / 4))!=0)
+            Debug.Log(calculateExtraBeatSize());
     }
-
     private void Update()
     {
         if (beatCheck())
@@ -48,14 +49,12 @@ public class BeatChecker : MonoBehaviour
                     nextBeat = 1;
 
                     //this funky equation is used for any odd time signatures that end in less than full beats
-                    if (metronome.GetPickupLow() != 4)
+                    if ((metronome.GetPickupUp() % (metronome.GetPickupLow() / 4)) != 0)
                     {
-                        //equation is the length of a beat * (4*timeUp)/(timeLow) - 3
-                        //found by simplifying (low/4 - (low-up))/(low/4)
-                        beatLength = metronome.getBeatTime() * (((4 * (float)metronome.GetPickupUp()) / (float)metronome.GetPickupLow()) - 3);
+                        beatLength = metronome.getBeatTime() * calculateExtraPickupBeatSize();
                     }
                 }
-                else if (nextBeat > metronome.GetTimeSigUp())
+                else if (nextBeat > metronome.GetPickupUp())
                 {
                     //set to true to exit the pickup state and enter normal music state
                     finishedPickup = true;
@@ -63,10 +62,9 @@ public class BeatChecker : MonoBehaviour
                     //reset next beat to be beat 1   
                     nextBeat = 1;
 
-                    if (metronome.GetTimeSigLow() != 4)
+                    if ((metronome.GetPickupUp() % (metronome.GetPickupLow()/4)) != 0)
                     {
-                        //same equation as above, but this time working to add in the previous beat to the ordeal
-                        beatLength = metronome.getBeatTime() + metronome.getBeatTime() * (((4 * (float)metronome.GetPickupUp()) / (float)metronome.GetPickupLow()) - 3);
+                        beatLength = metronome.getBeatTime() + metronome.getBeatTime() * calculateExtraPickupBeatSize();
                     }
                 }
 
@@ -80,26 +78,27 @@ public class BeatChecker : MonoBehaviour
             {
                 nextBeat += (metronome.GetTimeSigLow() / 4);
                 beatLength = metronome.getBeatTime();
+                Debug.Log(metronome.GetTimeSigLow());
 
                 //When the next beat should loop back to the begining
-                if (nextBeat > metronome.GetTimeSigUp() && playExtraBeatLength)
+                if (nextBeat > metronome.GetTimeSigUp())
                 {
                     //reset next beat to be beat 1   
                     nextBeat = 1;
-
-                    //same equations as above
-                    if (metronome.GetTimeSigLow() != 4)
-                        beatLength = metronome.getBeatTime() * (((4 * (float)metronome.GetTimeSigUp()) / (float)metronome.GetTimeSigLow()) - 3);
-                }
-
-                else if (nextBeat > metronome.GetTimeSigUp())
-                {
-                    //reset next beat to be beat 1   
-                    nextBeat = 1;
-
-                    //you know the deal
-                    if (metronome.GetTimeSigLow() != 4)
-                        beatLength = metronome.getBeatTime() + metronome.getBeatTime() * (((4 * (float)metronome.GetTimeSigUp()) / (float)metronome.GetTimeSigLow()) - 3);
+                    if (playExtraBeatLength)
+                    {
+                        if ((metronome.GetTimeSigUp() % (metronome.GetTimeSigLow() / 4)) != 0)
+                        {
+                            beatLength = metronome.getBeatTime() * calculateExtraBeatSize();
+                        }
+                    }
+                    else
+                    {
+                        if ((metronome.GetTimeSigUp() % (metronome.GetTimeSigLow() / 4)) != 0)
+                        {
+                            beatLength = metronome.getBeatTime() + metronome.getBeatTime() * calculateExtraBeatSize();
+                        }
+                    }
                 }
 
                 previousBeatTime = nextBeatTime;
@@ -149,7 +148,7 @@ public class BeatChecker : MonoBehaviour
 
     public bool isFirstBeat()
     {
-        return nextBeat == calculateNextBeat(1);
+        return nextBeat == calculateNextBeat(1) || nextBeat == 0;
     }
 
     public void startMetronome()
@@ -157,6 +156,7 @@ public class BeatChecker : MonoBehaviour
         play = true;
         previousBeatTime = Time.time; //the time that the last beat played was played
         nextBeatTime = Time.time; //when the next beat should be played
+        nextBeat = 1;
     }
 
     public void stopMetronome()
@@ -174,6 +174,18 @@ public class BeatChecker : MonoBehaviour
         {
             startMetronome();
         }
+    }
+
+    //This equation finds how long the final beat should be relative to the size of a quarter note
+    //(upper%(l/4))/(l/4)
+    private float calculateExtraPickupBeatSize()
+    {
+        return (float)(metronome.GetTimeSigUp() % (metronome.GetTimeSigLow() / 4)) / (metronome.GetTimeSigLow() / 4);
+    }
+
+    private float calculateExtraBeatSize()
+    {
+        return (float)(metronome.GetTimeSigUp() % (metronome.GetTimeSigLow() / 4)) / (metronome.GetTimeSigLow() / 4);
     }
 }
 
