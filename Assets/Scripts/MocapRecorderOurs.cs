@@ -303,6 +303,7 @@ public class MocapRecorderOurs : MonoBehaviour
             if (isAnythingRecorded)
             {
                 animClip = CreateAnimationClip();
+                //SaveAnimationClip(animClip);
                 SceneManager.LoadScene("ViewingPage");
 
                 if (mocapPlayer)

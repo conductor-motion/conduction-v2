@@ -348,11 +348,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 3, y: 4}
   m_UseGraphicAlpha: 0
---- !u!4 &71709179 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400020, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
-  m_PrefabInstance: {fileID: 801432925}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &81199885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,6 +2367,11 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &801432936 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400060, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
+  m_PrefabInstance: {fileID: 801432925}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &835173254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2826,7 +2826,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.25
+  m_Time: 4
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1.0596457
@@ -2834,26 +2834,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 5.2192016
-        outSlope: 5.2192016
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.3654532
-      - serializedVersion: 3
-        time: 0.059819873
-        value: 0.089886695
-        inSlope: 0.00550378
-        outSlope: 0.00550378
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.9583333
-        value: 0
+        time: 0.9562581
+        value: 0.017433783
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -4055,12 +4037,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425572873}
-  m_LocalRotation: {x: 0.0006596381, y: 0.9995524, z: 0.029910421, w: 2.3283059e-10}
-  m_LocalPosition: {x: -0.001, y: -0.292, z: 0.001}
+  m_LocalRotation: {x: 0.0006596176, y: 0.9995524, z: 0.02991042, w: 0.000000024378597}
+  m_LocalPosition: {x: -0.0009999444, y: -0.058860242, z: 0.001000042}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 71709179}
-  m_RootOrder: 1
+  m_Father: {fileID: 801432936}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &1425572875
 TrailRenderer:
@@ -4103,7 +4085,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.25
+  m_Time: 4
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1.0596457
@@ -4111,26 +4093,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 5.2192016
-        outSlope: 5.2192016
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.3654532
-      - serializedVersion: 3
-        time: 0.059819873
-        value: 0.089886695
-        inSlope: 0.00550378
-        outSlope: 0.00550378
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.9583333
-        value: 0
+        time: 0.9562581
+        value: 0.017433783
         inSlope: 0
         outSlope: 0
         tangentMode: 0

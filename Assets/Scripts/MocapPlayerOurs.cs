@@ -16,8 +16,8 @@ public class MocapPlayerOurs : MonoBehaviour
     private Quaternion initialRot = Quaternion.identity;
 
     //Non-Vanilla (Added by us)
-
-
+    //For Testing with a saved file outside of client use
+    public AnimationClip testing;
 
     //End Non-Vanilla
 
@@ -33,7 +33,8 @@ public class MocapPlayerOurs : MonoBehaviour
 
         //Non-Vanilla (Added by us)
 
-        PlayAnimationClip(MocapRecorderOurs.animClip);
+        //PlayAnimationClip(MocapRecorderOurs.animClip);
+        PlayAnimationClip(testing);
 
         //End Non-Vanilla
     }
