@@ -29,7 +29,6 @@ public class BezierManager
     }
 
     // Add points to the Bezier curve path based on mouse coordinates passed
-    // Scale refers to a "wideness" of the curve
     public void BezierInterpolate(List<Vector3> mousePoints, float scale)
     {
         ClearPoints();
@@ -40,7 +39,7 @@ public class BezierManager
         Vector3 q0, q1;     // "output"
 
         // Rare case in which only one mouse coordinate is passed, which cannot be mapped to a curve
-        if (mousePoints.Count == 1)
+        if (mousePoints.Count < 2)
         {
             return;
         }

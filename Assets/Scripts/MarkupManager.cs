@@ -25,7 +25,7 @@ public class MarkupManager : MonoBehaviour
     // Curve settings
     private List<Vector3> bezierPoints;
     private List<Vector3> drawingPoints;
-    private int threshold = 30;
+    private int threshold = 10;
     private BezierManager bezier;
 
     // Circle drawing
@@ -69,7 +69,7 @@ public class MarkupManager : MonoBehaviour
         // Points = {(x,y) | (x - pos.x)^2 + (y-pos.y)^2 <= size^2}
         // We can generate a circle around x = y = 0, and translate these points by pos
         // The pixels are selected by choosing the pixels in a square of size*2 that would fit in Points
-
+        indices.Clear();
         int sizeSquare = size * size;
         for (int x = 0; x < size; x++)
         {
@@ -132,12 +132,13 @@ public class MarkupManager : MonoBehaviour
                 // The mouse is likely to be moved at a greater rate than the update function executes, so
                 // interpolation between previous and current points should be used when drawing
                 // If the distance between the last mousePos and the current is too far, then add some extra point by interpolation
+                // The following interpolation section is only useful when mouse movement is incredibly rapid
                 Vector3 intermediate = mousePos;
-                float granularity = 0.05f;
+                float granularity = 0.1f;
                 while (Vector3.Distance(intermediate, Input.mousePosition) > 1)
                 {
                     intermediate = Vector3.Lerp(mousePos, Input.mousePosition, granularity);
-                    granularity += 0.05f;
+                    granularity += 0.1f;
                     bezierPoints.Add(intermediate);
                 }
 
@@ -146,14 +147,14 @@ public class MarkupManager : MonoBehaviour
 
                 if (bezierPoints.Count > threshold)
                 {
-                    bezier.BezierInterpolate(bezierPoints, size);
+                    bezier.BezierInterpolate(bezierPoints, 1);
                     bezierPoints.Clear();
                     drawingPoints = bezier.GetDrawingPoints();
 
                     for (int i = 0; i < drawingPoints.Count; i++)
                     {
                         DrawCap(drawingPoints[i], color, size);
-                        if (i != drawingPoints.Count - 1 && Vector3.Distance(drawingPoints[i], drawingPoints[i + 1]) > size)
+                        if (i != drawingPoints.Count - 1 && Vector3.Distance(drawingPoints[i], drawingPoints[i + 1]) > 1)
                         {
                             // Add a midpoint as a heuristic
                             DrawCap(Vector3.Lerp(drawingPoints[i], drawingPoints[i + 1], 0.5f), color, size);
