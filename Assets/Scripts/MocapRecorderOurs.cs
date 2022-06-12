@@ -303,7 +303,7 @@ public class MocapRecorderOurs : MonoBehaviour
             if (isAnythingRecorded)
             {
                 animClip = CreateAnimationClip();
-                //SaveAnimationClip(animClip);
+                SaveAnimationClip(animClip);
                 SceneManager.LoadScene("ViewingPage");
 
                 if (mocapPlayer)
@@ -402,12 +402,13 @@ public class MocapRecorderOurs : MonoBehaviour
         animClip.name = animName;
         //animClip.wrapMode = WrapMode.Loop;
 
-        BinaryWriter bw = new BinaryWriter(File.Create(animSaveToFileBuilt));
-        bw.Write(animClip);
+        StreamWriter sw = new StreamWriter(File.Create(animSaveToFileBuilt));
+        sw.Write(".anim", animClip);
+        sw.Close();
 
 #if UNITY_EDITOR
-        UnityEditor.AssetDatabase.CreateAsset(animClip, animSaveToFile);
-        Debug.Log("Animation clip saved: " + animSaveToFile);
+        //UnityEditor.AssetDatabase.CreateAsset(animClip, animSaveToFile);
+        //Debug.Log("Animation clip saved: " + animSaveToFile);
 
 
         //// set loop time to true
