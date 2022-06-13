@@ -14,7 +14,7 @@ public class MarkupManager : MonoBehaviour
     private Texture2D texture;
     private Sprite blankSprite;
     private Color color = Color.white;
-    private int size = 1;
+    private int size = 2;
 
     // Constant variables
     private Color invisible = new Color(0f,0f,0f,1f);
