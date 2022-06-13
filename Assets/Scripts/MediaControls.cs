@@ -8,15 +8,21 @@ public class MediaControls : MonoBehaviour
     private Animator playerAnimator = null;
     private UnityEngine.UI.Slider speedController = null;
     private string clipName;
+    private GameObject[] trails;
 
     private bool isPlaying = true;
     private float animSpeed = 1f;
     private bool doLoop = true;
 
+    private float pauseTime;
+    private bool resumeTrailCoroutineRunning = false;
+
     // Start is called before the first frame update
     void Start()
     {
         playerAnimator = GameObject.Find("/RobotAnimated").GetComponent<Animator>();
+
+        trails = GameObject.FindGameObjectsWithTag("Trail");
 
         if (!playerAnimator)
         {
@@ -60,14 +66,12 @@ public class MediaControls : MonoBehaviour
             if (!isPlaying)
             {
                 // Pause playback
-                // "StartPlayback" is in referrence to playback mode, in which the animator is manually controlled
-                // This results in a pausing effect, and if we wanted allows for timing control of the animation
-                playerAnimator.StartPlayback();
+                Time.timeScale = 0;
             }
             else
             {
                 // Resume playback
-                playerAnimator.StopPlayback();
+                Time.timeScale = 1;
 
                 // In the event that the speed was changed while paused, update it
                 SliderChangeEvent();
@@ -85,6 +89,18 @@ public class MediaControls : MonoBehaviour
         return animSpeed;
     }
 
+    // Controls the speed of the trails to be relative to the inverse speed of the animation since time is how long the trail is alive
+    private void UpdateTrailsLife(float newSpeed)
+    {
+        for (int i = 0; i < trails.Length; i++)
+        {
+            if (newSpeed != 0)
+                trails[i].GetComponent<TrailRenderer>().time = 4 / newSpeed;
+            else
+                trails[i].GetComponent<TrailRenderer>().time = Mathf.Infinity;
+        }
+    }
+
     // Speed should likely impact hand trails as well, or offer some level of control over them
     // Changing speed while in a paused state results in strange behavior, so this is prohibited
     public void SetSpeed(float newSpeed)
@@ -94,6 +110,10 @@ public class MediaControls : MonoBehaviour
             if (newSpeed >= 0)
             {
                 playerAnimator.speed = animSpeed = newSpeed;
+
+                if(!resumeTrailCoroutineRunning)
+                    UpdateTrailsLife(newSpeed);
+                
             }
             else
             {
