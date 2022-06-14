@@ -8,6 +8,7 @@ TagManager:
   - Metronome
   - MarkupManager
   - Trail
+  - PlayButton
   layers:
   - Default
   - TransparentFX

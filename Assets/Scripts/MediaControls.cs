@@ -7,6 +7,7 @@ public class MediaControls : MonoBehaviour
     // The Animator is the primary way to control animations in Unity
     private Animator playerAnimator = null;
     private UnityEngine.UI.Slider speedController = null;
+    private GameObject playButton;
     private string clipName;
     private GameObject[] trails;
 
@@ -22,7 +23,12 @@ public class MediaControls : MonoBehaviour
     {
         playerAnimator = GameObject.Find("/RobotAnimated").GetComponent<Animator>();
 
+        // Sets the speed multiplier to 1 so that it moves
+        playerAnimator.SetFloat("Speed", 1);       
+
         trails = GameObject.FindGameObjectsWithTag("Trail");
+
+        playButton = GameObject.FindGameObjectWithTag("PlayButton");
 
         if (!playerAnimator)
         {
@@ -48,12 +54,20 @@ public class MediaControls : MonoBehaviour
     // Update playhead position/timeline
     void Update()
     {
-        // Force a loop of the current state in the animation in a crude method
-        // This is necessary if we cannot programmatically set the animationclip to loop, I think
-        if (playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        if (doLoop)
         {
-            // There's an interesting side effect in which the avatar does not reset between loops
-            playerAnimator.Play(clipName, 0, 0f);
+            // Force a loop of the current state in the animation in a crude method
+            // This is necessary if we cannot programmatically set the animationclip to loop, I think
+            if (playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && playerAnimator.GetFloat("Speed") == 1)
+            {
+                // There's an interesting side effect in which the avatar does not reset between loops
+                playerAnimator.Play(clipName, 0, 0f);
+            }
+            // Used for the reversed playback
+            else if (playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0 && playerAnimator.GetFloat("Speed") == -1)
+            {
+                playerAnimator.Play(clipName, 0, 1f);
+            }
         }
     }
 
@@ -67,11 +81,17 @@ public class MediaControls : MonoBehaviour
             {
                 // Pause playback
                 Time.timeScale = 0;
+
+                // Updates the play button to use the pause sprite
+                playButton.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>("Pause");
             }
             else
             {
                 // Resume playback
                 Time.timeScale = 1;
+
+                // Updates the play button to use the play sprite
+                playButton.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>("Play");
 
                 // In the event that the speed was changed while paused, update it
                 SliderChangeEvent();
@@ -99,6 +119,15 @@ public class MediaControls : MonoBehaviour
             else
                 trails[i].GetComponent<TrailRenderer>().time = Mathf.Infinity;
         }
+    }
+
+    public void Reverse()
+    {
+        playerAnimator.SetFloat("Speed", -1);
+    }
+    public void Forward()
+    {
+        playerAnimator.SetFloat("Speed", 1);
     }
 
     // Speed should likely impact hand trails as well, or offer some level of control over them
