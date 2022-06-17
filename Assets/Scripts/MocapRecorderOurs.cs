@@ -5,6 +5,8 @@ using UnityEngine;
 using System;
 using System.IO;
 using UnityEngine.SceneManagement;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 /// <summary>
 /// MocapRecorder records the avatar motion into the given animation clip.
@@ -74,12 +76,14 @@ public class MocapRecorderOurs : MonoBehaviour
     private Sprite notRec;
     private Sprite isRec;
     public static AnimationClip animClip;
+    public AnimationClip testing;
 
     //End Non-Vanilla
 
 
     void Start()
     {
+        SaveAnimationClip(testing);
         // Allow for bypassing the need for a sensor if in the Unity Editor
         if (UnityEngine.Application.isEditor)
         {
@@ -402,7 +406,13 @@ public class MocapRecorderOurs : MonoBehaviour
         animClip.name = animName;
         //animClip.wrapMode = WrapMode.Loop;
 
-        StreamWriter sw = new StreamWriter(File.Create(animSaveToFileBuilt));
+        //BinaryFormatter bf = new BinaryFormatter();
+        //FileStream file = File.Create(Application.streamingAssetsPath + "/" + animSaveToFileBuilt);
+        //bf.Serialize(file, animClip);
+        //file.Close();
+
+
+        StreamWriter sw = new StreamWriter(File.Create(Application.streamingAssetsPath + "/" + animSaveToFileBuilt));
         sw.Write(".anim", animClip);
         sw.Close();
 
@@ -416,7 +426,7 @@ public class MocapRecorderOurs : MonoBehaviour
         //settings.loopTime = true;
         //UnityEditor.AnimationUtility.SetAnimationClipSettings(animClip, settings);
         //ShowMessage("The animation clip can be saved only in Unity editor.");
-        
+
         //Code to write ANIM file
         //BinaryWriter bw = new BinaryWriter(File.Create(animSaveToFileBuilt));
         //bw.Write(animClip);
