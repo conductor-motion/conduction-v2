@@ -77,6 +77,8 @@ public class MocapRecorderOurs : MonoBehaviour
     private Sprite isRec;
     public static AnimationClip animClip;
     public AnimationClip testing;
+    //public GameObject animPrefab;
+    public static List<AnimationClip> savedList = new List<AnimationClip>();
 
     //End Non-Vanilla
 
@@ -386,7 +388,7 @@ public class MocapRecorderOurs : MonoBehaviour
     // saves the animation clip to the specified save-file
     private void SaveAnimationClip(AnimationClip animClip)
     {
-        tempRecordSave = DateTime.Now.ToString("mmddyyhhmmss");
+        /*tempRecordSave = DateTime.Now.ToString("mmddyyhhmmss");
         animSaveToFile = "Assets/Recordings/" + tempRecordSave + ".anim";
         animSaveToFileBuilt = tempRecordSave + ".anim";
 
@@ -403,18 +405,23 @@ public class MocapRecorderOurs : MonoBehaviour
         if (animName.EndsWith(".anim"))
             animName = animName.Substring(0, animName.Length - 5);
 
-        animClip.name = animName;
+        animClip.name = animName;*/
         //animClip.wrapMode = WrapMode.Loop;
 
-        //BinaryFormatter bf = new BinaryFormatter();
-        //FileStream file = File.Create(Application.streamingAssetsPath + "/" + animSaveToFileBuilt);
-        //bf.Serialize(file, animClip);
-        //file.Close();
+        //ATTEMPS AT FILE SAVING
 
+        /*BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.streamingAssetsPath + "/" + animSaveToFileBuilt);
+        bf.Serialize(file, animClip);
+        file.Close();*/
 
-        StreamWriter sw = new StreamWriter(File.Create(Application.streamingAssetsPath + "/" + animSaveToFileBuilt));
-        sw.Write(".anim", animClip);
-        sw.Close();
+        /*StreamWriter sw = new StreamWriter(File.Create(Application.streamingAssetsPath + "/" + animSaveToFileBuilt));
+        sw.Write(animClip, animClip);
+        sw.Close();*/
+
+        //LIST SAVING ATTEMPT
+        savedList.Add(animClip);
+
 
 #if UNITY_EDITOR
         //UnityEditor.AssetDatabase.CreateAsset(animClip, animSaveToFile);
