@@ -17,7 +17,7 @@ public class MarkupManager : MonoBehaviour
     private int size = 2;
 
     // Constant variables
-    private Color invisible = new Color(0f,0f,0f,1f);
+    private Color invisible = new Color(0f,0f,0f,0f);
 
     // Mouse positon
     private Vector3 mousePos = new Vector3(0f,0f,0f);
@@ -117,7 +117,7 @@ public class MarkupManager : MonoBehaviour
             mousePos = Input.mousePosition;
             currentlyDrawing = true;
         }
-        else if (doMarkup && Input.GetKeyUp(KeyCode.Mouse0) && !IsPointeroverUIElement())
+        else if (doMarkup && Input.GetKeyUp(KeyCode.Mouse0))
         {
             currentlyDrawing = false;
             bezierPoints.Clear();
