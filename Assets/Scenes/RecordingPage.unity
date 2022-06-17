@@ -157,7 +157,7 @@ RectTransform:
   - {fileID: 1790686262}
   - {fileID: 1370618179}
   m_Father: {fileID: 606286480}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1527,8 +1527,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 632648054}
-  - {fileID: 33125409}
   - {fileID: 1448490659}
+  - {fileID: 33125409}
   - {fileID: 1555758105}
   - {fileID: 1171031627}
   - {fileID: 1827936182}
@@ -4361,7 +4361,7 @@ Transform:
   m_LocalScale: {x: 0.24056257, y: 0.24056257, z: 0.24056257}
   m_Children: []
   m_Father: {fileID: 606286480}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1448490660
 AudioSource:
@@ -5572,7 +5572,6 @@ MonoBehaviour:
   recordingTexture: {fileID: 10904, guid: 0000000000000000f000000000000000, type: 0}
   notRecordingTexture: {fileID: 2800000, guid: 3a3133e05e55c0e4a8ffcbd5c0cfe742, type: 3}
   testing: {fileID: 7400000, guid: 205efc71ed4e13a40b684a028eb15a04, type: 2}
-  animPrefab: {fileID: 7056998506261420820, guid: eb583cd4eaee5f646aaeb48be21aa1e9, type: 3}
 --- !u!1 &1950549873
 GameObject:
   m_ObjectHideFlags: 0
