@@ -18,6 +18,11 @@ public class MediaControls : MonoBehaviour
     private float pauseTime;
     private bool resumeTrailCoroutineRunning = false;
 
+    // Initial root position to reset to after every loop
+    private Vector3 initialPos = Vector3.zero;
+    private Quaternion initialRot = Quaternion.identity;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +30,10 @@ public class MediaControls : MonoBehaviour
 
         // Sets the speed multiplier to 1 so that it moves
         playerAnimator.SetFloat("Speed", 1);       
+
+        // Get the initial avatar body position to reset to
+        initialPos = playerAnimator.gameObject.transform.position;
+        initialRot = playerAnimator.gameObject.transform.rotation;
 
         trails = GameObject.FindGameObjectsWithTag("Trail");
 
@@ -61,6 +70,8 @@ public class MediaControls : MonoBehaviour
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && playerAnimator.GetFloat("Speed") == 1)
             {
                 // There's an interesting side effect in which the avatar does not reset between loops
+                playerAnimator.gameObject.transform.position = initialPos;
+                playerAnimator.gameObject.transform.rotation = initialRot;
                 playerAnimator.Play(clipName, 0, 0f);
             }
             // Used for the reversed playback
