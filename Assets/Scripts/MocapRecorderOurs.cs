@@ -7,6 +7,8 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+//using System.Text.Json;
+//using System.Text.Json.Serialization;
 
 /// <summary>
 /// MocapRecorder records the avatar motion into the given animation clip.
@@ -388,7 +390,7 @@ public class MocapRecorderOurs : MonoBehaviour
     // saves the animation clip to the specified save-file
     private void SaveAnimationClip(AnimationClip animClip)
     {
-        /*tempRecordSave = DateTime.Now.ToString("mmddyyhhmmss");
+        tempRecordSave = DateTime.Now.ToString("mmddyyhhmmss");
         animSaveToFile = "Assets/Recordings/" + tempRecordSave + ".anim";
         animSaveToFileBuilt = tempRecordSave + ".anim";
 
@@ -405,7 +407,8 @@ public class MocapRecorderOurs : MonoBehaviour
         if (animName.EndsWith(".anim"))
             animName = animName.Substring(0, animName.Length - 5);
 
-        animClip.name = animName;*/
+        animClip.name = animName;
+
         //animClip.wrapMode = WrapMode.Loop;
 
         //ATTEMPS AT FILE SAVING
@@ -416,11 +419,17 @@ public class MocapRecorderOurs : MonoBehaviour
         file.Close();*/
 
         /*StreamWriter sw = new StreamWriter(File.Create(Application.streamingAssetsPath + "/" + animSaveToFileBuilt));
-        sw.Write(animClip, animClip);
+        sw.WriteLine(animClip);
+        sw.WriteLine(animClip);
+        sw.WriteLine(animClip);
         sw.Close();*/
 
+        string json = JsonUtility.ToJson(animClip);
+        Debug.Log(json);
+        //File.WriteAllText(Application.streamingAssetsPath + "/" + animSaveToFileBuilt, json);
+
         //LIST SAVING ATTEMPT
-        savedList.Add(animClip);
+        //savedList.Add(animClip);
 
 
 #if UNITY_EDITOR
