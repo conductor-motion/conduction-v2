@@ -34,7 +34,7 @@ public class MocapPlayerOurs : MonoBehaviour
         //Non-Vanilla (Added by us)
 
         //PlayAnimationClip(MocapRecorderOurs.animClip);
-        PlayAnimationClip(MocapRecorderOurs.savedList[0]);
+        PlayAnimationClip(MocapRecorderOurs.savedList[1]);
 
         //End Non-Vanilla
     }
