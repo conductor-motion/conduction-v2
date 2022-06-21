@@ -19,6 +19,9 @@ public class ColorSelectorController : MonoBehaviour
     private Sprite blankSprite;
     private int radius = 100; // Best if half of size of containing element
 
+    // Used for the current color selection indicator
+    private GameObject colorSelectorIndicator;
+
     // Keep track of the mouse
     private bool isMouseDown = false;
     private Vector3 mousePos = new Vector3(0f,0f,0f);
@@ -29,6 +32,8 @@ public class ColorSelectorController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        colorSelectorIndicator = GameObject.Find("ColorSelectorIndicator");
+
         radius = (int)(transform.GetComponent<RectTransform>().sizeDelta.x / 2);
 
         texture = new Texture2D(radius * 2, radius * 2);
@@ -48,6 +53,7 @@ public class ColorSelectorController : MonoBehaviour
 
         this.GetComponent<Image>().SetNativeSize();
         rootPos = transform.position;
+        colorSelectorIndicator.transform.position = transform.position;
 
         // Draw the color selection wheel
         drawCircle();
@@ -80,6 +86,9 @@ public class ColorSelectorController : MonoBehaviour
 
                     currentColor = texture.GetPixel((int)localPos.x, (int)localPos.y);
                     markupManager.SelectColor(currentColor);
+
+                    // Place the indicator at this location
+                    colorSelectorIndicator.transform.position = Input.mousePosition;
                 }
 
                 mousePos = Input.mousePosition;
