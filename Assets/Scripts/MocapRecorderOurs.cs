@@ -77,8 +77,11 @@ public class MocapRecorderOurs : MonoBehaviour
     private bool editorOverride = false;
     private Sprite notRec;
     private Sprite isRec;
-    public static AnimationClip animClip;
+    public static AnimationClip recordedClip;
     public AnimationClip testing;
+    public AnimationClip testingList1;
+    public AnimationClip testingList2;
+    public AnimationClip testingList3;
     //public GameObject animPrefab;
     public static List<AnimationClip> savedList = new List<AnimationClip>();
 
@@ -87,6 +90,10 @@ public class MocapRecorderOurs : MonoBehaviour
 
     void Start()
     {
+        savedList.Add(testingList1);
+        savedList.Add(testingList2);
+        savedList.Add(testingList3);
+
         // Allow for bypassing the need for a sensor if in the Unity Editor
         if (UnityEngine.Application.isEditor)
         {
@@ -309,13 +316,14 @@ public class MocapRecorderOurs : MonoBehaviour
 
             if (isAnythingRecorded)
             {
-                animClip = CreateAnimationClip();
-                SaveAnimationClip(animClip);
-                SceneManager.LoadScene("ViewingPage");
+                recordedClip = CreateAnimationClip();
+                Debug.Log("New Clip Created");
+                //SaveAnimationClip(recordedClip);
+                //SceneManager.LoadScene("ViewingPage");
 
                 if (mocapPlayer)
                 {
-                    mocapPlayer.PlayAnimationClip(animClip);
+                    mocapPlayer.PlayAnimationClip(recordedClip);
                 }
             }
             else
@@ -389,12 +397,17 @@ public class MocapRecorderOurs : MonoBehaviour
     {
         SceneManager.LoadScene("ViewingPage");
     }
+
+    public void buttonAdd()
+    {
+        SaveAnimationClip(recordedClip);
+    }
     // saves the animation clip to the specified save-file
     public void SaveAnimationClip(AnimationClip animClip)
     {
-        /*tempRecordSave = DateTime.Now.ToString("mmddyyhhmmss");
+        tempRecordSave = DateTime.Now.ToString("mmddyyhhmmss");
         animSaveToFile = "Assets/Recordings/" + tempRecordSave + ".anim";
-        animSaveToFileBuilt = tempRecordSave + ".anim";
+        /*animSaveToFileBuilt = tempRecordSave + ".anim";
 
         if (string.IsNullOrEmpty(animSaveToFileBuilt))
         {
@@ -439,7 +452,7 @@ public class MocapRecorderOurs : MonoBehaviour
 
 
 #if UNITY_EDITOR
-        //UnityEditor.AssetDatabase.CreateAsset(animClip, animSaveToFile);
+        UnityEditor.AssetDatabase.CreateAsset(animClip, animSaveToFile);
         //Debug.Log("Animation clip saved: " + animSaveToFile);
 
 

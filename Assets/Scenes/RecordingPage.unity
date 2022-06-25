@@ -1433,9 +1433,9 @@ RectTransform:
   m_Father: {fileID: 606286480}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 278.08, y: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -197.92001, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &574426571
@@ -1484,11 +1484,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1930565746}
         m_TargetAssemblyTypeName: MocapRecorderOurs, Assembly-CSharp
-        m_MethodName: SaveAnimationClip
-        m_Mode: 2
+        m_MethodName: buttonAdd
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 7400000, guid: 205efc71ed4e13a40b684a028eb15a04, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AnimationClip, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5258,9 +5258,9 @@ RectTransform:
   m_Father: {fileID: 606286480}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 278.08, y: 45.68}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -197.92001, y: 45.68}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1561098851
@@ -5997,7 +5997,10 @@ MonoBehaviour:
   infoText: {fileID: 140217962}
   recordingTexture: {fileID: 10904, guid: 0000000000000000f000000000000000, type: 0}
   notRecordingTexture: {fileID: 2800000, guid: 3a3133e05e55c0e4a8ffcbd5c0cfe742, type: 3}
-  testing: {fileID: 7400000, guid: 205efc71ed4e13a40b684a028eb15a04, type: 2}
+  testing: {fileID: 0}
+  testingList1: {fileID: 7400000, guid: f0c237223d200944bbddc835c80abcd1, type: 2}
+  testingList2: {fileID: 7400000, guid: 205efc71ed4e13a40b684a028eb15a04, type: 2}
+  testingList3: {fileID: 7400000, guid: 0b7235ebfa23a4f4189b81e95679b26f, type: 2}
 --- !u!1 &1950549873
 GameObject:
   m_ObjectHideFlags: 0
