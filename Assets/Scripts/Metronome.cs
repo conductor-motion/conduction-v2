@@ -27,9 +27,10 @@ public class Metronome : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Checks every frame if it is an on-beat frame
         if (beatChecker.getPlayBeat())
         {
-            Debug.Log("click");
+            // If it is it checks if it's the first beat of the measure to determine which metronome track to play
             if (beatChecker.isFirstBeat())
             {
                 audioSource.clip = metronome.metUpBeat;
@@ -44,9 +45,12 @@ public class Metronome : MonoBehaviour
 
     void updateTimeSig()
     {
+        // updates the metronome to be the new time signature if it's updated by the user
         metronome.SetTimeSigLow((int)Mathf.Pow(2,timeSigDownDropdown.value));
         metronome.SetTimeSigUp(int.Parse(timeSigUpTextBox.text));
         beatChecker.stopMetronome();
+
+        // restarts the metronome if it was playing while the value was updated
         if (metronomeToggle.isOn)
         {
             beatChecker.startMetronome();
