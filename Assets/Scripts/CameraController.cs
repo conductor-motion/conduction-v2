@@ -24,9 +24,13 @@ public class CameraController : MonoBehaviour
         // Prevents angle from getting excessively large
         if (angle == Mathf.PI * 2)
             angle = 0;
+
         // moves the camera in a circular motion
         camera.transform.position = new Vector3(Mathf.Cos(angle)*radius, 1, Mathf.Sin(angle)*radius+3);
         camera.transform.rotation = Quaternion.Euler(0, -90, 0) * camera.transform.rotation;
 
+        // perfoms the same movement on the axis lines so they stay in the same location
+        grid.transform.position = new Vector3(Mathf.Cos(angle + Mathf.PI) * radius, 1, Mathf.Sin(angle + Mathf.PI) * radius + 3);
+        grid.transform.rotation = Quaternion.Euler(0, -90, 0) * grid.transform.rotation;
     }
 }
