@@ -1879,6 +1879,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RobotAnimated
       objectReference: {fileID: 0}
+    - target: {fileID: 100098, guid: 7c2275071e631c74294c10c9bc18232a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100100, guid: 7c2275071e631c74294c10c9bc18232a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400096, guid: 7c2275071e631c74294c10c9bc18232a, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4340,11 +4348,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1475188787}
   - component: {fileID: 1475188786}
-  - component: {fileID: 1475188790}
-  - component: {fileID: 1475188789}
   - component: {fileID: 1475188788}
   - component: {fileID: 1475188791}
-  - component: {fileID: 1475188792}
+  - component: {fileID: 1475188789}
   m_Layer: 6
   m_Name: Axis Lines
   m_TagString: Axis
@@ -4441,19 +4447,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1475188785}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d25e33feffec95941a4c2d1b2e0e2288, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1475188790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475188785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11fb3b3b8c19a614f97641451cc542bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e114a6a5711d524185ddd01c1544177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &1475188791
@@ -4482,18 +4476,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10, y: 10}
   m_EdgeRadius: 0
---- !u!114 &1475188792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475188785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12f80c1a04d813b46ad906eaef835072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1517197603
 GameObject:
   m_ObjectHideFlags: 0
