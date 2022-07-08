@@ -9,6 +9,7 @@ TagManager:
   - MarkupManager
   - Trail
   - PlayButton
+  - Axis
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Drawing Layer
   - Water
   - UI
-  - 
+  - DragAxis
   - 
   - 
   - 
