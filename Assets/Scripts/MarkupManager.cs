@@ -28,6 +28,9 @@ public class MarkupManager : MonoBehaviour
     private int threshold = 10;
     private BezierManager bezier;
 
+    // Scaling control
+    private Vector2 resolution;
+
     // Circle drawing
     // Is inefficient in not using Vector3, but does not currently seem to matter
     List<int> indices = new List<int>();
@@ -42,6 +45,10 @@ public class MarkupManager : MonoBehaviour
     {
         bezier = new BezierManager();
         bezierPoints = new List<Vector3>();
+
+        // Keep track of the resolution when the texture was initialized so resizing does not mess up drawing
+        // Will potential look bad if upscaling, but should not really matter
+        resolution = new Vector2(Screen.width, Screen.height);
 
         texture = new Texture2D(Screen.width, Screen.height);
         blankSprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
@@ -108,13 +115,28 @@ public class MarkupManager : MonoBehaviour
         }
     }
 
+    // If the resolution differs from the one the sprite was initialized in, this scales it accordingly
+    Vector3 RescaleMouse(Vector3 pos)
+    {
+        if (Screen.width != resolution.x || Screen.height != resolution.y)
+        {
+            float scaleFactorX = (Screen.width / resolution.x);
+            float scaleFactorY = (Screen.height / resolution.y);
+
+            pos.x *= scaleFactorX;
+            pos.y *= scaleFactorY;
+        }
+
+        return pos;
+    }
+
     // Update is called once per frame
     void Update()
     {
         // If markup state is toggled and the mouse is down, enable drawing at the mouse
         if (doMarkup && Input.GetKeyDown(KeyCode.Mouse0) && !IsPointeroverUIElement())
         {
-            mousePos = Input.mousePosition;
+            mousePos = RescaleMouse(Input.mousePosition);
             currentlyDrawing = true;
         }
         else if (doMarkup && Input.GetKeyUp(KeyCode.Mouse0))
@@ -122,6 +144,7 @@ public class MarkupManager : MonoBehaviour
             currentlyDrawing = false;
             bezierPoints.Clear();
         }
+
 
         // Draw at cursor if enabled
         if (doMarkup && currentlyDrawing)

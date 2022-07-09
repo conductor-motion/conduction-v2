@@ -146,7 +146,7 @@ public class MediaControls : MonoBehaviour
                 Time.timeScale = 0;
 
                 // Updates the play button to use the pause sprite
-                playButton.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>("Pause");
+                playButton.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>("Play");
             }
             else
             {
@@ -154,7 +154,7 @@ public class MediaControls : MonoBehaviour
                 Time.timeScale = 1;
 
                 // Updates the play button to use the play sprite
-                playButton.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>("Play");
+                playButton.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>("Pause");
 
                 // In the event that the speed was changed while paused, update it
                 SliderChangeEvent();
