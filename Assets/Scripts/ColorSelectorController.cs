@@ -53,6 +53,11 @@ public class ColorSelectorController : MonoBehaviour
 
         this.GetComponent<Image>().SetNativeSize();
         rootPos = transform.position;
+        // Unsure why transform.position reports the incorrect results when using alignment elements
+        // This corrects it using half of the current size, which is 160 and is hard-coded cause this is bad code
+        rootPos.x += 80;
+        rootPos.y += 80;
+
         colorSelectorIndicator.transform.position = transform.position;
 
         // Draw the color selection wheel
