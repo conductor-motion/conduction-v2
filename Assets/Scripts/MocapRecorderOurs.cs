@@ -315,6 +315,7 @@ public class MocapRecorderOurs : MonoBehaviour
             {
                 recordedClip = CreateAnimationClip();
                 Debug.Log("New Clip Created");
+                MocapPlayerOurs.recordedClip = recordedClip;
                 //SaveAnimationClip(recordedClip);
                 SceneManager.LoadScene("ViewingPage");
 

@@ -20,10 +20,12 @@ public class MocapPlayerOurs : MonoBehaviour
 
     //Non-Vanilla (Added by us)
     //For Testing with a saved file outside of client use
-    public AnimationClip testing;
+    public static AnimationClip testing;
+    public static AnimationClip recordedClip;
 
-    public Button btnClick;
-    public InputField userInput;
+    public static Button btnClick;
+    public static InputField userInput;
+    public GameObject recordingPrefab;
 
     //End Non-Vanilla
 
@@ -39,7 +41,8 @@ public class MocapPlayerOurs : MonoBehaviour
 
         //Non-Vanilla (Added by us)
 
-        PlayAnimationClip(MocapRecorderOurs.recordedClip);
+        //PlayAnimationClip(recordedClip);
+        PlayAnimationClip(testing);
         //PlayAnimationClip(MocapRecorderOurs.savedList[1]);
         btnClick.onClick.AddListener(saveAnimationToList);
         //End Non-Vanilla
@@ -108,15 +111,20 @@ public class MocapPlayerOurs : MonoBehaviour
 
     public void saveAnimationToList()
     {
-        Recording savedClip = new Recording();
-        if(userInput.text == "")
+        GameObject savedClip = Instantiate(recordingPrefab) as GameObject;
+
+
+        //Recording savedClip = new Recording();
+        if (MocapPlayerOurs.userInput.text == "")
         {
-            savedClip.recordingName = DateTime.Now.ToString("mmddyyhhmmss");
+            savedClip.GetComponent<Recording>().recordingName = DateTime.Now.ToString("mmddyyhhmmss");
         }
         else
         {
-            savedClip.recordingName = userInput.text;
+            savedClip.GetComponent<Recording>().recordingName = MocapPlayerOurs.userInput.text;
         }
+
+        savedClip.GetComponent<Recording>().clip = testing;
 
         ListController.savedList.Add(savedClip);
     }
