@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 /// <summary>
@@ -19,6 +22,9 @@ public class MocapPlayerOurs : MonoBehaviour
     //For Testing with a saved file outside of client use
     public AnimationClip testing;
 
+    public Button btnClick;
+    public InputField userInput;
+
     //End Non-Vanilla
 
 
@@ -33,9 +39,9 @@ public class MocapPlayerOurs : MonoBehaviour
 
         //Non-Vanilla (Added by us)
 
-        //PlayAnimationClip(MocapRecorderOurs.animClip);
-        PlayAnimationClip(MocapRecorderOurs.savedList[1]);
-
+        PlayAnimationClip(MocapRecorderOurs.recordedClip);
+        //PlayAnimationClip(MocapRecorderOurs.savedList[1]);
+        btnClick.onClick.AddListener(saveAnimationToList);
         //End Non-Vanilla
     }
 
@@ -93,6 +99,26 @@ public class MocapPlayerOurs : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void returnHome()
+    {
+        SceneManager.LoadScene("LandingPage");
+    }
+
+    public void saveAnimationToList()
+    {
+        Recording savedClip = new Recording();
+        if(userInput.text == "")
+        {
+            savedClip.recordingName = DateTime.Now.ToString("mmddyyhhmmss");
+        }
+        else
+        {
+            savedClip.recordingName = userInput.text;
+        }
+
+        ListController.savedList.Add(savedClip);
     }
 
 }

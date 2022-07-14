@@ -83,16 +83,13 @@ public class MocapRecorderOurs : MonoBehaviour
     public AnimationClip testingList2;
     public AnimationClip testingList3;
     //public GameObject animPrefab;
-    public static List<AnimationClip> savedList = new List<AnimationClip>();
+    //public static List<AnimationClip> savedList = new List<AnimationClip>();
 
     //End Non-Vanilla
 
 
     void Start()
     {
-        savedList.Add(testingList1);
-        savedList.Add(testingList2);
-        savedList.Add(testingList3);
 
         // Allow for bypassing the need for a sensor if in the Unity Editor
         if (UnityEngine.Application.isEditor)
@@ -319,7 +316,7 @@ public class MocapRecorderOurs : MonoBehaviour
                 recordedClip = CreateAnimationClip();
                 Debug.Log("New Clip Created");
                 //SaveAnimationClip(recordedClip);
-                //SceneManager.LoadScene("ViewingPage");
+                SceneManager.LoadScene("ViewingPage");
 
                 if (mocapPlayer)
                 {
@@ -393,15 +390,6 @@ public class MocapRecorderOurs : MonoBehaviour
         return animClip;
     }
 
-    public void move()
-    {
-        SceneManager.LoadScene("ViewingPage");
-    }
-
-    public void buttonAdd()
-    {
-        SaveAnimationClip(recordedClip);
-    }
     // saves the animation clip to the specified save-file
     public void SaveAnimationClip(AnimationClip animClip)
     {
@@ -445,7 +433,7 @@ public class MocapRecorderOurs : MonoBehaviour
 
         //LIST SAVING ATTEMPT
         Debug.Log("SAVED");
-        savedList.Add(animClip);
+        //savedList.Add(animClip);
         
 
     
