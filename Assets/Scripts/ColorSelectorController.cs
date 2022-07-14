@@ -55,8 +55,8 @@ public class ColorSelectorController : MonoBehaviour
         rootPos = transform.position;
         // Unsure why transform.position reports the incorrect results when using alignment elements
         // This corrects it using half of the current size, which is 160 and is hard-coded cause this is bad code
-        rootPos.x += 80;
-        rootPos.y += 80;
+        rootPos.x += GetComponent<RectTransform>().sizeDelta.x/2 * GetComponent<RectTransform>().lossyScale.x;
+        rootPos.y += GetComponent<RectTransform>().sizeDelta.y/2 * GetComponent<RectTransform>().lossyScale.y;
 
         colorSelectorIndicator.transform.position = transform.position;
 
