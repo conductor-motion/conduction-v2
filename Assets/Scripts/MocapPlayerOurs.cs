@@ -42,7 +42,7 @@ public class MocapPlayerOurs : MonoBehaviour
         //Non-Vanilla (Added by us)
 
         //PlayAnimationClip(recordedClip);
-        PlayAnimationClip(testing);
+        PlayAnimationClip(recordedClip);
         //PlayAnimationClip(MocapRecorderOurs.savedList[1]);
         btnClick.onClick.AddListener(saveAnimationToList);
         //End Non-Vanilla

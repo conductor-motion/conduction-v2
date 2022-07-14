@@ -27,6 +27,7 @@ public class ListController : MonoBehaviour
         for(int i = 0; i < len; i++)
         {
             Instantiate(savedList[i], recordingParent);
+            Debug.Log("Created List Item");
         }
     }
 }
