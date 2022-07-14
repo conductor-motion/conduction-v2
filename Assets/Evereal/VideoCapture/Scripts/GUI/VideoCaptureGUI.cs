@@ -46,6 +46,11 @@ namespace Evereal.VideoCapture
 
     private void OnGUI()
     {
+      GUI.color = Color.white;
+      GUI.backgroundColor = Color.white;
+      GUI.contentColor = Color.black;
+      
+
       if (
         videoCapture.status == CaptureStatus.READY)
       {
