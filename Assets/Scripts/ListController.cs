@@ -26,7 +26,7 @@ public class ListController : MonoBehaviour
         int len = savedList.Count;
         for(int i = 0; i < len; i++)
         {
-            Instantiate(recordingPrefab, recordingParent);
+            Instantiate(savedList[i], recordingParent);
         }
     }
 }

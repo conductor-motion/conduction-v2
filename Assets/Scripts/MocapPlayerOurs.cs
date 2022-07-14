@@ -20,11 +20,11 @@ public class MocapPlayerOurs : MonoBehaviour
 
     //Non-Vanilla (Added by us)
     //For Testing with a saved file outside of client use
-    public static AnimationClip testing;
+    public AnimationClip testing;
     public static AnimationClip recordedClip;
 
-    public static Button btnClick;
-    public static InputField userInput;
+    public Button btnClick;
+    public InputField userInput;
     public GameObject recordingPrefab;
 
     //End Non-Vanilla
@@ -115,13 +115,13 @@ public class MocapPlayerOurs : MonoBehaviour
 
 
         //Recording savedClip = new Recording();
-        if (MocapPlayerOurs.userInput.text == "")
+        if (userInput.text == "")
         {
             savedClip.GetComponent<Recording>().recordingName = DateTime.Now.ToString("mmddyyhhmmss");
         }
         else
         {
-            savedClip.GetComponent<Recording>().recordingName = MocapPlayerOurs.userInput.text;
+            savedClip.GetComponent<Recording>().recordingName = userInput.text;
         }
 
         savedClip.GetComponent<Recording>().clip = testing;
