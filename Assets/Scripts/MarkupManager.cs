@@ -8,11 +8,16 @@ public class MarkupManager : MonoBehaviour
     [Tooltip("The container which has markup, used for easing export")]
     public GameObject markupContainer;
 
+    [Tooltip("The preview for the current markup settings")]
+    public GameObject preview;
+
     // Markup control
     private bool doMarkup = false;
     private bool currentlyDrawing = false;
     private Texture2D texture;
+    private Texture2D previewTexture;
     private Sprite blankSprite;
+    private Sprite previewSprite;
     private Color color = Color.white;
     private int size = 4;
 
@@ -54,6 +59,11 @@ public class MarkupManager : MonoBehaviour
         blankSprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
         markupContainer.GetComponent<UnityEngine.UI.Image>().sprite = blankSprite;
 
+        // Setup preview
+        previewTexture = new Texture2D(100,100);
+        previewSprite = Sprite.Create(previewTexture, new Rect(0.0f, 0.0f, previewTexture.width, previewTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+        preview.GetComponent<UnityEngine.UI.Image>().sprite = previewSprite;
+
         CalculateCircleCoords(size);
 
         // Initialize the texture as being blank
@@ -65,8 +75,17 @@ public class MarkupManager : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < 100; i++)
+        {
+            for (int k = 0; k < 100; k++)
+            {
+                previewTexture.SetPixel(i, k, invisible);
+            }
+        }
+
         // "Apply" our new texture to the object
         texture.Apply();
+        drawPreview();
     }
 
     // Predefine a circle every time the size changes - reducing runtime calculations
@@ -106,7 +125,7 @@ public class MarkupManager : MonoBehaviour
 
     // Without a bezier curve implementation, the beginning and end edges look rough/jagged
     // This draws a circular cap at each end to make it appear more rounded
-    void DrawCap(Vector3 pos, Color color, int size)
+    public void DrawCap(Vector3 pos, Color color, int size)
     {
         // Iterate the list, drawing the circle
         for (int i = 0; i < indices.Count; i += 2)
@@ -144,7 +163,6 @@ public class MarkupManager : MonoBehaviour
             currentlyDrawing = false;
             bezierPoints.Clear();
         }
-
 
         // Draw at cursor if enabled
         if (doMarkup && currentlyDrawing)
@@ -192,15 +210,43 @@ public class MarkupManager : MonoBehaviour
         }
     }
 
+    public void drawPreview()
+    {
+        // Iterate the list, drawing the circle
+        for (int i = 0; i < indices.Count; i += 2)
+        {
+            previewTexture.SetPixel(indices[i] + 50, indices[i+1] + 50, color);
+        }
+        previewTexture.Apply();
+    }
+
     public void SelectColor(Color newColor)
     {
         color = newColor;
+
+        // Update preview with new color
+        drawPreview();
     }
 
     public void SelectSize(int newSize)
     {
+        // If size is smaller, then preview has to be cleared
+        if (newSize < size)
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                for (int k = 0; k < 100; k++)
+                {
+                    previewTexture.SetPixel(i, k, invisible);
+                }
+            }
+        }
+
         size = newSize;
         CalculateCircleCoords(size);
+
+        // Update preview with new size
+        drawPreview();
     }
 
     // Fills the screen with pixels of alpha = 1, which will be clear for any UI texture used
