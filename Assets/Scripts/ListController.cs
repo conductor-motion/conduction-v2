@@ -25,7 +25,7 @@ public class ListController : MonoBehaviour
     private void LoadRecordings()
     {
         int len = savedList.Count;
-        for(int i = 0; i < len; i++)
+        for(int i = len - 1; i >= 0; i--)
         {
             GameObject recordingObj = Instantiate(savedList[i], recordingParent) as GameObject;
             //recordingObj.GetComponent<Recording>().text.text = savedList[i].GetComponent<Recording>().text.text;

@@ -111,8 +111,8 @@ public class MocapPlayerOurs : MonoBehaviour
 
     public void saveAnimationToList()
     {
-        GameObject savedClip = recordingPrefab;
-
+        GameObject savedClip = Instantiate(recordingPrefab);
+        DontDestroyOnLoad(savedClip);
 
         //Recording savedClip = new Recording();
         if (userInput.text == "")

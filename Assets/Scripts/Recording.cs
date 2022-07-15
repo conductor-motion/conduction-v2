@@ -33,7 +33,7 @@ public class Recording : MonoBehaviour
     
     public void delete()
     {
-        //ListController.savedList.Remove(this);
+        ListController.savedList.Remove(ListController.savedList.Find(item => item.GetComponent<Recording>().clip.name == clip.name));
         Destroy(this.gameObject);
     }
 }
