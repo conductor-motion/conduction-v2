@@ -2076,7 +2076,7 @@ MonoBehaviour:
   testing: {fileID: 0}
   btnClick: {fileID: 1818488069}
   userInput: {fileID: 1231220884}
-  recordingPrefab: {fileID: 0}
+  recordingPrefab: {fileID: 4436089052978443391, guid: 37ca4994cccde2e46969ffed7731a2bd, type: 3}
 --- !u!4 &687201833 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400094, guid: 7c2275071e631c74294c10c9bc18232a, type: 3}
