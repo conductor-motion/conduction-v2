@@ -3816,7 +3816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e071f4fa853a214d8bb64734785beab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capture: {fileID: 0}
+  capture: {fileID: 1437374031}
   function: stop
 --- !u!114 &1288721391
 MonoBehaviour:
@@ -4676,6 +4676,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fa59c0c9387c3d428a0a4989b7d1cb3, type: 3}
+--- !u!114 &1437374031 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114708477723034198, guid: 8fa59c0c9387c3d428a0a4989b7d1cb3, type: 3}
+  m_PrefabInstance: {fileID: 1437374030}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912e29a19d4e14223afcfb72012f0993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1449656188
 GameObject:
   m_ObjectHideFlags: 0
@@ -4728,7 +4739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e071f4fa853a214d8bb64734785beab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capture: {fileID: 0}
+  capture: {fileID: 1437374031}
   function: start
 --- !u!114 &1449656191
 MonoBehaviour:
