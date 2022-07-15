@@ -28,7 +28,9 @@ public class MediaControls : MonoBehaviour
     // Initial root position to reset to after every loop
     private Vector3 initialPos = Vector3.zero;
     private Quaternion initialRot = Quaternion.identity;
-    
+
+    // This helps determine the clip name and is set whenever we select an animation to play
+    static public int clipOffset = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +54,8 @@ public class MediaControls : MonoBehaviour
             isPlaying = false;
         }
 
-        clipName = playerAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        Debug.Log("xd: " + MocapPlayerOurs.recordedClip.name);
+        clipName = MocapPlayerOurs.recordedClip.name;
 
         // Attach a listener to the speed control slider
         speedController = GetComponentInChildren<UnityEngine.UI.Slider>();

@@ -126,6 +126,7 @@ public class MocapPlayerOurs : MonoBehaviour
             savedClip.GetComponent<Recording>().text.text = userInput.text;
         }
 
+        recordedClip.name = DateTime.Now.ToString("mmddyyhhmmss");
         savedClip.GetComponent<Recording>().clip = recordedClip;
 
         ListController.savedList.Add(savedClip);
