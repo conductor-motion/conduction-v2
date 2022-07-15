@@ -2073,7 +2073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb58e20876e116942aebbb3a896871a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testing: {fileID: 7400000, guid: 0b7235ebfa23a4f4189b81e95679b26f, type: 2}
+  testing: {fileID: 0}
   btnClick: {fileID: 1818488069}
   userInput: {fileID: 1231220884}
   recordingPrefab: {fileID: 4436089052978443391, guid: 37ca4994cccde2e46969ffed7731a2bd, type: 3}

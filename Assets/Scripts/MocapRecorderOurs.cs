@@ -78,10 +78,10 @@ public class MocapRecorderOurs : MonoBehaviour
     private Sprite notRec;
     private Sprite isRec;
     public static AnimationClip recordedClip;
-    public AnimationClip testing;
+    /*public AnimationClip testing;
     public AnimationClip testingList1;
     public AnimationClip testingList2;
-    public AnimationClip testingList3;
+    public AnimationClip testingList3;*/
     //public GameObject animPrefab;
     //public static List<AnimationClip> savedList = new List<AnimationClip>();
 

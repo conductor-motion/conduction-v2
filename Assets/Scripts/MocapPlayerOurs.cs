@@ -41,8 +41,8 @@ public class MocapPlayerOurs : MonoBehaviour
 
         //Non-Vanilla (Added by us)
 
-        //PlayAnimationClip(recordedClip);
         PlayAnimationClip(recordedClip);
+        //PlayAnimationClip(testing);
         //PlayAnimationClip(MocapRecorderOurs.savedList[1]);
         btnClick.onClick.AddListener(saveAnimationToList);
         //End Non-Vanilla
@@ -111,22 +111,25 @@ public class MocapPlayerOurs : MonoBehaviour
 
     public void saveAnimationToList()
     {
-        GameObject savedClip = Instantiate(recordingPrefab) as GameObject;
+        GameObject savedClip = recordingPrefab;
 
 
         //Recording savedClip = new Recording();
         if (userInput.text == "")
         {
-            savedClip.GetComponent<Recording>().recordingName = DateTime.Now.ToString("mmddyyhhmmss");
+            //savedClip.GetComponent<Recording>().recordingName = DateTime.Now.ToString("mmddyyhhmmss");
+            savedClip.GetComponent<Recording>().text.text = DateTime.Now.ToString("mmddyyhhmmss");
         }
         else
         {
-            savedClip.GetComponent<Recording>().recordingName = userInput.text;
+            //savedClip.GetComponent<Recording>().recordingName = userInput.text;
+            savedClip.GetComponent<Recording>().text.text = userInput.text;
         }
 
-        savedClip.GetComponent<Recording>().clip = testing;
+        savedClip.GetComponent<Recording>().clip = recordedClip;
 
         ListController.savedList.Add(savedClip);
+        Debug.Log("Added CLIP");
     }
 
 }

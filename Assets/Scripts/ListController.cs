@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class ListController : MonoBehaviour
 {
+    
+    //public GameObject recordingPrefab;
     public static List<GameObject> savedList = new List<GameObject>();
-    public GameObject recordingPrefab;
     public Transform recordingParent;
 
     // Start is called before the first frame update
@@ -26,7 +27,8 @@ public class ListController : MonoBehaviour
         int len = savedList.Count;
         for(int i = 0; i < len; i++)
         {
-            Instantiate(savedList[i], recordingParent);
+            GameObject recordingObj = Instantiate(savedList[i], recordingParent) as GameObject;
+            recordingObj.GetComponent<Recording>().listController = this;
             Debug.Log("Created List Item");
         }
     }

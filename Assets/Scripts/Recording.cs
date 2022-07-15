@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class Recording : MonoBehaviour
 {
-    public string recordingName;
+    //public string recordingName;
     public AnimationClip clip;
     public Text text;
+    public ListController listController;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        text.text = recordingName;
+        //text.text = this.recordingName;
     }
 
     // Update is called once per frame
