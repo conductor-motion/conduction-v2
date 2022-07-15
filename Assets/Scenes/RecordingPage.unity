@@ -6112,17 +6112,16 @@ MonoBehaviour:
   avatarModel: {fileID: 1203305700}
   captureRootMotion: 1
   mocapPlayer: {fileID: 0}
-  countdown: []
+  countdown:
+  - {fileID: 1449118427}
+  - {fileID: 716815481}
+  - {fileID: 1157996869}
   recIcon: {fileID: 734900246}
   recButton: {fileID: 1466123924}
   recInfo: {fileID: 835173255}
   infoText: {fileID: 140217962}
   recordingTexture: {fileID: 10904, guid: 0000000000000000f000000000000000, type: 0}
   notRecordingTexture: {fileID: 2800000, guid: 3a3133e05e55c0e4a8ffcbd5c0cfe742, type: 3}
-  testing: {fileID: 0}
-  testingList1: {fileID: 7400000, guid: f0c237223d200944bbddc835c80abcd1, type: 2}
-  testingList2: {fileID: 7400000, guid: 205efc71ed4e13a40b684a028eb15a04, type: 2}
-  testingList3: {fileID: 7400000, guid: 0b7235ebfa23a4f4189b81e95679b26f, type: 2}
 --- !u!1 &1950549873
 GameObject:
   m_ObjectHideFlags: 0
