@@ -28,6 +28,8 @@ public class ListController : MonoBehaviour
         for(int i = 0; i < len; i++)
         {
             GameObject recordingObj = Instantiate(savedList[i], recordingParent) as GameObject;
+            //recordingObj.GetComponent<Recording>().text.text = savedList[i].GetComponent<Recording>().text.text;
+            //recordingObj.GetComponent<Recording>().clip = savedList[i].GetComponent<Recording>().clip;
             recordingObj.GetComponent<Recording>().listController = this;
             Debug.Log("Created List Item");
         }
