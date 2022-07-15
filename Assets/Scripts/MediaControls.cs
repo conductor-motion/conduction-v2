@@ -54,7 +54,6 @@ public class MediaControls : MonoBehaviour
             isPlaying = false;
         }
 
-        Debug.Log("xd: " + MocapPlayerOurs.recordedClip.name);
         clipName = MocapPlayerOurs.recordedClip.name;
 
         // Attach a listener to the speed control slider

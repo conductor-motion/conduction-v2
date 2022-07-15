@@ -2,27 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CaptureController : MonoBehaviour
 {
     public Evereal.VideoCapture.VideoCapture capture;
-    public string function;
+    public GameObject cancelButton;
+
+    private TMP_Text buttonText;
 
     private void Start()
     {
+        buttonText = GetComponentInChildren<TMP_Text>();
         Button button = GetComponent<Button>();
         button.onClick.AddListener(onPress);
+        cancelButton.GetComponent<Button>().onClick.AddListener(cancelCapture);
     }
 
     private void onPress()
     {
-        if (function == "start")
+        if (capture.status == Evereal.VideoCapture.CaptureStatus.READY)
         {
+            cancelButton.SetActive(true);
             capture.StartCapture();
         }
-        else if (function == "stop")
+        else if (capture.status == Evereal.VideoCapture.CaptureStatus.STARTED)
         {
             capture.StopCapture();
         }
+    }
+
+    private void Update()
+    {
+        if (capture.status == Evereal.VideoCapture.CaptureStatus.PENDING || capture.status == Evereal.VideoCapture.CaptureStatus.STOPPED)
+        {
+            cancelButton.SetActive(false);
+            buttonText.text = "Processing";
+        }
+        else if (capture.status == Evereal.VideoCapture.CaptureStatus.READY)
+        {
+            buttonText.text = "Start recording";
+        }
+        else if (capture.status == Evereal.VideoCapture.CaptureStatus.STARTED)
+        {
+            buttonText.text = "Stop recording";
+        }
+    }
+
+    private void cancelCapture()
+    {
+        cancelButton.SetActive(false);
+        buttonText.text = "Start recording";
+        capture.CancelCapture();
     }
 }
