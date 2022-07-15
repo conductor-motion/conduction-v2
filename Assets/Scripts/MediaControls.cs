@@ -52,7 +52,7 @@ public class MediaControls : MonoBehaviour
             isPlaying = false;
         }
 
-        clipName = playerAnimator.runtimeAnimatorController.animationClips[0].name;
+        clipName = playerAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
         // Attach a listener to the speed control slider
         speedController = GetComponentInChildren<UnityEngine.UI.Slider>();
