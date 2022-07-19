@@ -12,7 +12,7 @@ public class MarkupManager : MonoBehaviour
     public GameObject preview;
 
     // Markup control
-    private bool doMarkup = false;
+    private bool doMarkup = true;
     private bool currentlyDrawing = false;
     private Texture2D texture;
     private Texture2D previewTexture;
