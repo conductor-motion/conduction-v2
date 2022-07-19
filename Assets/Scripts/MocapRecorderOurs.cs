@@ -78,6 +78,10 @@ public class MocapRecorderOurs : MonoBehaviour
     private Sprite notRec;
     private Sprite isRec;
     public static AnimationClip recordedClip;
+
+    private GameObject MetronomeUI;
+    private GameObject AxisInstructionsUI;
+
     /*public AnimationClip testing;
     public AnimationClip testingList1;
     public AnimationClip testingList2;
@@ -101,6 +105,9 @@ public class MocapRecorderOurs : MonoBehaviour
         // Instantiate sprites for icon swapping
         isRec = Sprite.Create(recordingTexture, new Rect(0.0f, 0.0f, recordingTexture.width, recordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
         notRec = Sprite.Create(notRecordingTexture, new Rect(0.0f, 0.0f, notRecordingTexture.width, notRecordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+
+        MetronomeUI = GameObject.Find("Metronome UI");
+        AxisInstructionsUI = GameObject.Find("Axes instructions");
 
         if (avatarModel)
         {
@@ -234,7 +241,11 @@ public class MocapRecorderOurs : MonoBehaviour
     // counts down (from 3 for instance), then starts the animation recording
     private IEnumerator CountdownAndStartRecording()
     {
+        // Hide non-essential UI elements while recording
         recInfo.gameObject.SetActive(false);
+        AxisInstructionsUI.SetActive(false);
+        MetronomeUI.SetActive(false);
+
         if (countdown != null && countdown.Length > 0)
         {
             for (int i = 0; i < countdown.Length; i++)
