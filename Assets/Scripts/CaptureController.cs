@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class CaptureController : MonoBehaviour
 {
     public Evereal.VideoCapture.VideoCapture capture;
     public GameObject cancelButton;
 
-    private TMP_Text buttonText;
+    private Text buttonText;
 
     private void Start()
     {
-        buttonText = GetComponentInChildren<TMP_Text>();
+        buttonText = GetComponentInChildren<Text>();
         Button button = GetComponent<Button>();
         button.onClick.AddListener(onPress);
         cancelButton.GetComponent<Button>().onClick.AddListener(cancelCapture);
@@ -41,18 +40,18 @@ public class CaptureController : MonoBehaviour
         }
         else if (capture.status == Evereal.VideoCapture.CaptureStatus.READY)
         {
-            buttonText.text = "Start recording";
+            buttonText.text = "Start Recording";
         }
         else if (capture.status == Evereal.VideoCapture.CaptureStatus.STARTED)
         {
-            buttonText.text = "Stop recording";
+            buttonText.text = "Stop Recording";
         }
     }
 
     private void cancelCapture()
     {
         cancelButton.SetActive(false);
-        buttonText.text = "Start recording";
+        buttonText.text = "Start Recording";
         capture.CancelCapture();
     }
 }
