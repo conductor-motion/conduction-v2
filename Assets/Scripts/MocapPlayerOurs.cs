@@ -35,15 +35,18 @@ public class MocapPlayerOurs : MonoBehaviour
         // get reference to the animator component
         playerAnimator = GetComponent<Animator>();
 
+        Animation anim = GetComponent<Animation>();
+        anim.AddClip(recordedClip, recordedClip.name);
+        anim.Play(recordedClip.name);
+
         // get initial position & rotation
         initialPos = transform.position;
         initialRot = transform.rotation;
 
         //Non-Vanilla (Added by us)
 
-        PlayAnimationClip(recordedClip);
-        //PlayAnimationClip(testing);
-        //PlayAnimationClip(MocapRecorderOurs.savedList[1]);
+        //PlayAnimationClip(recordedClip);
+
         btnClick.onClick.AddListener(saveAnimationToList);
         //End Non-Vanilla
     }

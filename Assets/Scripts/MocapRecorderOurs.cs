@@ -82,15 +82,12 @@ public class MocapRecorderOurs : MonoBehaviour
     private GameObject MetronomeUI;
     private GameObject AxisInstructionsUI;
 
-    /*public AnimationClip testing;
-    public AnimationClip testingList1;
-    public AnimationClip testingList2;
-    public AnimationClip testingList3;*/
-    //public GameObject animPrefab;
-    //public static List<AnimationClip> savedList = new List<AnimationClip>();
-
     //End Non-Vanilla
 
+    // : )
+    private Dictionary<GameObject, string> avatarComponents = new Dictionary<GameObject, string>();
+    private Dictionary<string, AnimationCurve> legacyCurves = new Dictionary<string, AnimationCurve>();
+    public static AnimationClip legacyAnimClip;
 
     void Start()
     {
@@ -113,6 +110,9 @@ public class MocapRecorderOurs : MonoBehaviour
         {
             modelAnimator = avatarModel.gameObject.GetComponent<Animator>();
 
+            // Recursively obtain every GameObject in the model and their relative paths
+            MapAvatar(avatarModel.gameObject, "");
+
             if (modelAnimator)
             {
                 initialRootPos = avatarModel.transform.position;
@@ -129,6 +129,18 @@ public class MocapRecorderOurs : MonoBehaviour
         }
     }
 
+    // Traverse the assigned avatarModel and recursively populate the avatarComponents dictionary for legacy anims
+    void MapAvatar(GameObject obj, string rel)
+    {
+        // First insert the current part and then call this on every child
+        // Contains an exception for trails and the avatar root
+        if (obj != avatarModel.gameObject && !obj.GetComponent<TrailRenderer>()) avatarComponents.Add(obj, rel);
+
+        foreach (Transform child in obj.transform)
+        {
+            MapAvatar(child.gameObject, rel + (rel.Length == 0 ? "" : "/") + child.gameObject.name);
+        }
+    }
 
     void Update()
     {
@@ -296,6 +308,17 @@ public class MocapRecorderOurs : MonoBehaviour
             }
         }
 
+        foreach (GameObject obj in avatarComponents.Keys)
+        {
+            legacyCurves.Add(obj.name + ".x", new AnimationCurve());
+            legacyCurves.Add(obj.name + ".y", new AnimationCurve());
+            legacyCurves.Add(obj.name + ".z", new AnimationCurve());
+            legacyCurves.Add(obj.name + ".Qx", new AnimationCurve());
+            legacyCurves.Add(obj.name + ".Qy", new AnimationCurve());
+            legacyCurves.Add(obj.name + ".Qz", new AnimationCurve());
+            legacyCurves.Add(obj.name + ".Qw", new AnimationCurve());
+        }
+
         rootPoseCurves.Add("RootT.x", new AnimationCurve());
         rootPoseCurves.Add("RootT.y", new AnimationCurve());
         rootPoseCurves.Add("RootT.z", new AnimationCurve());
@@ -326,9 +349,10 @@ public class MocapRecorderOurs : MonoBehaviour
             if (isAnythingRecorded)
             {
                 recordedClip = CreateAnimationClip();
+                legacyAnimClip = CreateLegacyAnimClip();
                 Debug.Log("New Clip Created");
-                MocapPlayerOurs.recordedClip = recordedClip;
-                //SaveAnimationClip(recordedClip);
+                // MocapPlayerOurs.recordedClip = recordedClip;
+                MocapPlayerOurs.recordedClip = legacyAnimClip;
                 SceneManager.LoadScene("ViewingPage");
 
                 if (mocapPlayer)
@@ -355,6 +379,37 @@ public class MocapRecorderOurs : MonoBehaviour
         {
             Keyframe key = new Keyframe(animTime, humanPose.muscles[data.Key]);
             data.Value.AddKey(key);
+        }
+
+        foreach (GameObject obj in avatarComponents.Keys)
+        {
+            // x
+            Keyframe key = new Keyframe(animTime, obj.transform.localPosition.x);
+            legacyCurves[obj.name + ".x"].AddKey(key);
+
+            // y
+            key = new Keyframe(animTime, obj.transform.localPosition.y);
+            legacyCurves[obj.name + ".y"].AddKey(key);
+
+            // z
+            key = new Keyframe(animTime, obj.transform.localPosition.z);
+            legacyCurves[obj.name + ".z"].AddKey(key);
+
+            // Qx
+            key = new Keyframe(animTime, obj.transform.localRotation.x);
+            legacyCurves[obj.name + ".Qx"].AddKey(key);
+
+            // Qy
+            key = new Keyframe(animTime, obj.transform.localRotation.y);
+            legacyCurves[obj.name + ".Qy"].AddKey(key);
+
+            // Qz
+            key = new Keyframe(animTime, obj.transform.localRotation.z);
+            legacyCurves[obj.name + ".Qz"].AddKey(key);
+
+            // Qw
+            key = new Keyframe(animTime, obj.transform.localRotation.w);
+            legacyCurves[obj.name + ".Qw"].AddKey(key);
         }
 
         if(captureRootMotion)
@@ -403,73 +458,63 @@ public class MocapRecorderOurs : MonoBehaviour
         return animClip;
     }
 
+    private AnimationClip CreateLegacyAnimClip()
+    {
+        AnimationClip animClip = new AnimationClip();
+        animClip.legacy = true;
+
+        // Mapping x, y, z, Qx, Qy, Qz, and Qw to parameters
+        foreach (KeyValuePair<string, AnimationCurve> data in legacyCurves)
+        {
+            GameObject originalObj = null;
+            if (GameObject.Find(data.Key.Substring(0, data.Key.Length - 3)))
+            {
+                originalObj = GameObject.Find(data.Key.Substring(0, data.Key.Length - 3));
+            }
+            else if (GameObject.Find(data.Key.Substring(0, data.Key.Length - 2)))
+            {
+                originalObj = GameObject.Find(data.Key.Substring(0, data.Key.Length - 2));
+            }
+
+            string property = "";
+            if (data.Key.Substring(data.Key.Length - 2) == "Qw")
+            {
+                property = "localRotation.w";
+            }
+            else if (data.Key.Substring(data.Key.Length - 2) == "Qz")
+            {
+                property = "localRotation.z";
+            }
+            else if (data.Key.Substring(data.Key.Length - 2) == "Qy")
+            {
+                property = "localRotation.y";
+            }
+            else if (data.Key.Substring(data.Key.Length - 2) == "Qx")
+            {
+                property = "localRotation.x";
+            }
+            else if (data.Key.Substring(data.Key.Length - 1) == "z")
+            {
+                property = "localPosition.z";
+            }
+            else if (data.Key.Substring(data.Key.Length - 1) == "y")
+            {
+                property = "localPosition.y";
+            }
+            else if (data.Key.Substring(data.Key.Length - 1) == "x")
+            {
+                property = "localPosition.x";
+            }
+            
+            animClip.SetCurve(avatarComponents[originalObj], typeof(Transform), property, data.Value);
+        }
+
+        return animClip;
+    }
+
     // saves the animation clip to the specified save-file
     public void SaveAnimationClip(AnimationClip animClip)
     {
-        tempRecordSave = DateTime.Now.ToString("mmddyyhhmmss");
-        animSaveToFile = "Assets/Recordings/" + tempRecordSave + ".anim";
-        /*animSaveToFileBuilt = tempRecordSave + ".anim";
-
-        if (string.IsNullOrEmpty(animSaveToFileBuilt))
-        {
-            ShowMessage("Animation save path not set!");
-            return;
-        }
-
-        // save the clip
-        int iP = animSaveToFile.LastIndexOf('/');
-        string animName = (iP >= 0 ? animSaveToFile.Substring(iP + 1) : animSaveToFile).Trim();
-
-        if (animName.EndsWith(".anim"))
-            animName = animName.Substring(0, animName.Length - 5);
-
-        animClip.name = animName;*/
-
-        //animClip.wrapMode = WrapMode.Loop;
-
-        //ATTEMPS AT FILE SAVING
-
-        /*BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.streamingAssetsPath + "/" + animSaveToFileBuilt);
-        bf.Serialize(file, animClip);
-        file.Close();*/
-
-        /*StreamWriter sw = new StreamWriter(File.Create(Application.streamingAssetsPath + "/" + animSaveToFileBuilt));
-        sw.WriteLine(animClip);
-        sw.WriteLine(animClip);
-        sw.WriteLine(animClip);
-        sw.Close();*/
-
-        //string json = JsonUtility.ToJson(animClip);
-        //Debug.Log(json);
-        //File.WriteAllText(Application.streamingAssetsPath + "/" + animSaveToFileBuilt, json);
-
-        //LIST SAVING ATTEMPT
-        Debug.Log("SAVED");
-        //savedList.Add(animClip);
-        
-
-    
-
-
-#if UNITY_EDITOR
-        UnityEditor.AssetDatabase.CreateAsset(animClip, animSaveToFile);
-        //Debug.Log("Animation clip saved: " + animSaveToFile);
-
-
-        //// set loop time to true
-        //UnityEditor.AnimationClipSettings settings = UnityEditor.AnimationUtility.GetAnimationClipSettings(animClip);
-        //settings.loopTime = true;
-        //UnityEditor.AnimationUtility.SetAnimationClipSettings(animClip, settings);
-        //ShowMessage("The animation clip can be saved only in Unity editor.");
-
-        //Code to write ANIM file
-        //BinaryWriter bw = new BinaryWriter(File.Create(animSaveToFileBuilt));
-        //bw.Write(animClip);
-#else
-        
-#endif
-
         // clear the animation curves
         muscleCurves.Clear();
         rootPoseCurves.Clear();
