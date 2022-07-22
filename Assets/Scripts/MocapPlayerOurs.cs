@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -134,6 +135,9 @@ public class MocapPlayerOurs : MonoBehaviour
 
         ListController.savedList.Add(savedClip);
         Debug.Log("Added CLIP");
+
+        //string json = JsonUtility.ToJson(ListController.savedList);
+        //File.WriteAllText(Application.dataPath + "/data.json", json);
     }
 
 }

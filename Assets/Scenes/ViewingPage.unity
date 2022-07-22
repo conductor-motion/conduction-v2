@@ -1132,9 +1132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testing: {fileID: 0}
-  btnClick: {fileID: 0}
-  userInput: {fileID: 0}
-  recordingPrefab: {fileID: 0}
+  btnClick: {fileID: 1818488069}
+  userInput: {fileID: 1231220884}
+  recordingPrefab: {fileID: 4436089052978443391, guid: 37ca4994cccde2e46969ffed7731a2bd, type: 3}
 --- !u!1 &403244941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,6 +1451,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: U_Character_REF
       objectReference: {fileID: 0}
+    - target: {fileID: 100176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -1470,6 +1474,10 @@ PrefabInstance:
     - target: {fileID: 400004, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400054, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2774,7 +2782,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687201831}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb58e20876e116942aebbb3a896871a7, type: 3}
   m_Name: 
