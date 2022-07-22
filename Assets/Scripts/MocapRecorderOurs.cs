@@ -274,7 +274,6 @@ public class MocapRecorderOurs : MonoBehaviour
 
         isCountingDown = false;
         isRecording = true;
-        ShowMessage("Recording started.");
         StartCoroutine(SwapIcon());
 
         /* if (recIcon)
@@ -291,22 +290,6 @@ public class MocapRecorderOurs : MonoBehaviour
             return;
 
         animTime = 0f;
-        muscleCurves.Clear();
-        rootPoseCurves.Clear();
-
-        List<HumanBodyBones> mecanimBones = avatarModel.GetMecanimBones();
-        foreach (HumanBodyBones boneType in mecanimBones)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                int muscle = HumanTrait.MuscleFromBone((int)boneType, i);
-
-                if (muscle != -1)
-                {
-                    muscleCurves.Add(muscle, new AnimationCurve());
-                }
-            }
-        }
 
         foreach (GameObject obj in avatarComponents.Keys)
         {
@@ -348,7 +331,6 @@ public class MocapRecorderOurs : MonoBehaviour
 
             if (isAnythingRecorded)
             {
-                recordedClip = CreateAnimationClip();
                 legacyAnimClip = CreateLegacyAnimClip();
                 Debug.Log("New Clip Created");
                 // MocapPlayerOurs.recordedClip = recordedClip;
@@ -374,12 +356,6 @@ public class MocapRecorderOurs : MonoBehaviour
     private void RecordAvatarPose()
     {
         humanPoseHandler.GetHumanPose(ref humanPose);
-
-        foreach (KeyValuePair<int, AnimationCurve> data in muscleCurves)
-        {
-            Keyframe key = new Keyframe(animTime, humanPose.muscles[data.Key]);
-            data.Value.AddKey(key);
-        }
 
         foreach (GameObject obj in avatarComponents.Keys)
         {
@@ -437,27 +413,6 @@ public class MocapRecorderOurs : MonoBehaviour
 
 
     // creates animation clip out of the recorded animation curves
-    private AnimationClip CreateAnimationClip()
-    {
-        AnimationClip animClip = new AnimationClip();
-
-        foreach (KeyValuePair<int, AnimationCurve> data in muscleCurves)
-        {
-            animClip.SetCurve(string.Empty, typeof(Animator), HumanTrait.MuscleName[data.Key], data.Value);
-        }
-
-        if(captureRootMotion)
-        {
-            foreach (KeyValuePair<string, AnimationCurve> data in rootPoseCurves)
-            {
-                animClip.SetCurve(string.Empty, typeof(Animator), data.Key, data.Value);
-            }
-
-        }
-
-        return animClip;
-    }
-
     private AnimationClip CreateLegacyAnimClip()
     {
         AnimationClip animClip = new AnimationClip();
