@@ -156,7 +156,7 @@ public class MediaControls : MonoBehaviour
                 playerAnimatorLegacy[clipName].speed = 0;
 
                 // We only care about the x position of the mouse
-                float normalizedX = (float)Input.mousePosition.x / timelineBarWidth;
+                float normalizedX = (float)Input.mousePosition.x / timelineBarWidth / timelineBar.GetComponent<RectTransform>().lossyScale.x;
 
                 //playerAnimator.Play(clipName, 0, normalizedX);
                 playerAnimatorLegacy[clipName].normalizedTime = normalizedX;
