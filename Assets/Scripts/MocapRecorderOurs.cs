@@ -5,9 +5,9 @@ using UnityEngine;
 using System;
 using System.IO;
 using UnityEngine.SceneManagement;
-//using System.Runtime.Serialization.Formatters.Binary;
-//using System.Runtime.Serialization;
-//using System.Text.Json;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using System.Text;
 //using System.Text.Json.Serialization;
 
 /// <summary>
@@ -65,7 +65,6 @@ public class MocapRecorderOurs : MonoBehaviour
     private HumanPoseHandler humanPoseHandler = null;
 
     // animation curves to hold the recorded animation 
-    private Dictionary<int, AnimationCurve> muscleCurves = new Dictionary<int, AnimationCurve>();
     private Dictionary<string, AnimationCurve> rootPoseCurves = new Dictionary<string, AnimationCurve>();
 
     // initial model's root position
@@ -319,19 +318,21 @@ public class MocapRecorderOurs : MonoBehaviour
         if(isRecording)
         {
             isRecording = false;
-            ShowMessage(string.Format("Recording stopped - saved {0:F3}s animation.", animTime));
 
             /* if (recIcon)
             {
                 recIcon.gameObject.SetActive(false);
             } */
 
-            bool isAnythingRecorded = (muscleCurves.Count > 0 && muscleCurves[0].length > 0) || 
-                (rootPoseCurves.Count > 0 && rootPoseCurves["RootT.x"].length > 0);
+            // Realistically is impossible for nothing to be recorded when a countdown is included
+            bool isAnythingRecorded = true;
 
             if (isAnythingRecorded)
             {
                 legacyAnimClip = CreateLegacyAnimClip();
+
+                SaveAnimationClip();
+
                 Debug.Log("New Clip Created");
                 // MocapPlayerOurs.recordedClip = recordedClip;
                 MocapPlayerOurs.recordedClip = legacyAnimClip;
@@ -469,11 +470,122 @@ public class MocapRecorderOurs : MonoBehaviour
         return animClip;
     }
 
-    // saves the animation clip to the specified save-file
-    public void SaveAnimationClip(AnimationClip animClip)
+    // saves the animation clip in a serialized format (JSON)
+    public void SaveAnimationClip()
     {
-        // clear the animation curves
-        muscleCurves.Clear();
-        rootPoseCurves.Clear();
+        // Our animation is a very large collection of objects and their curves
+        // To serialize this, we need a list capable of associating those gameobjects to their relative paths, and then to their actual curves
+
+        // (GameObject relative path, list of times and values)
+        Dictionary<string, List<(float, float)>> serializableCurves = new Dictionary<string, List<(float, float)>>();
+
+        foreach (KeyValuePair<string, AnimationCurve> data in legacyCurves)
+        {
+            // Create the container list
+            List<(float, float)> temporaryKeys = new List<(float, float)>();
+
+            foreach (Keyframe key in data.Value.keys)
+            {
+                temporaryKeys.Add((key.time, key.value));
+            }
+
+            serializableCurves.Add(data.Key, temporaryKeys);
+        }
+
+        // Currently ignoring root motion
+
+        // Serialize our data and write it to a file that can be later retrieved
+        // TODO: in-between layer that compresses the serialized data so it isn't absolutely ridiculous in file size
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream animFile = new FileStream(Application.streamingAssetsPath + "/" + DateTime.Now.ToString("mmddyyhhmmss") + ".anim", FileMode.Create);
+        bf.Serialize(animFile, serializableCurves);
+        animFile.Close();
+    }
+
+    // Given the the path to a file, use the contents to create a new AnimationClip
+    public AnimationClip LoadExistingClip(string relPath)
+    {
+        AnimationClip reconstructedClip = new AnimationClip();
+        reconstructedClip.legacy = true;
+
+        Dictionary<string, AnimationCurve> reconstructedCurves = new Dictionary<string, AnimationCurve>();
+
+        // Initialize the reconstructed curves with the provided avatar
+        foreach (GameObject obj in avatarComponents.Keys)
+        {
+            reconstructedCurves.Add(obj.name + ".x", new AnimationCurve());
+            reconstructedCurves.Add(obj.name + ".y", new AnimationCurve());
+            reconstructedCurves.Add(obj.name + ".z", new AnimationCurve());
+            reconstructedCurves.Add(obj.name + ".Qx", new AnimationCurve());
+            reconstructedCurves.Add(obj.name + ".Qy", new AnimationCurve());
+            reconstructedCurves.Add(obj.name + ".Qz", new AnimationCurve());
+            reconstructedCurves.Add(obj.name + ".Qw", new AnimationCurve());
+        }
+
+        // TODO: decompress whatever is given first
+        FileStream animFile = new FileStream(Application.streamingAssetsPath + relPath, FileMode.Open);
+        BinaryFormatter bf = new BinaryFormatter();
+
+        Dictionary<string, List<(float, float)>> serializableCurves = (Dictionary<string, List<(float, float)>>)bf.Deserialize(animFile);
+
+        // Using similar methods in CreateLegacyAnimClip, recreate the clip
+        foreach (KeyValuePair<string, List<(float, float)>> data in serializableCurves)
+        {
+            for (int k = 0; k < data.Value.Count; k++)
+            {
+                Keyframe key = new Keyframe(data.Value[k].Item1, data.Value[k].Item2);
+                reconstructedCurves[data.Key].AddKey(key);
+            }
+        }
+
+        // Now, essentially a copy-paste of the wall of text in our original CreateLegacyAnimClip
+        foreach (KeyValuePair<string, AnimationCurve> data in reconstructedCurves)
+        {
+            GameObject originalObj = null;
+            if (GameObject.Find(data.Key.Substring(0, data.Key.Length - 3)))
+            {
+                originalObj = GameObject.Find(data.Key.Substring(0, data.Key.Length - 3));
+            }
+            else if (GameObject.Find(data.Key.Substring(0, data.Key.Length - 2)))
+            {
+                originalObj = GameObject.Find(data.Key.Substring(0, data.Key.Length - 2));
+            }
+
+            string property = "";
+            if (data.Key.Substring(data.Key.Length - 2) == "Qw")
+            {
+                property = "localRotation.w";
+            }
+            else if (data.Key.Substring(data.Key.Length - 2) == "Qz")
+            {
+                property = "localRotation.z";
+            }
+            else if (data.Key.Substring(data.Key.Length - 2) == "Qy")
+            {
+                property = "localRotation.y";
+            }
+            else if (data.Key.Substring(data.Key.Length - 2) == "Qx")
+            {
+                property = "localRotation.x";
+            }
+            else if (data.Key.Substring(data.Key.Length - 1) == "z")
+            {
+                property = "localPosition.z";
+            }
+            else if (data.Key.Substring(data.Key.Length - 1) == "y")
+            {
+                property = "localPosition.y";
+            }
+            else if (data.Key.Substring(data.Key.Length - 1) == "x")
+            {
+                property = "localPosition.x";
+            }
+            
+            reconstructedClip.SetCurve(avatarComponents[originalObj], typeof(Transform), property, data.Value);
+        }
+
+        reconstructedClip.wrapMode = WrapMode.Loop;
+
+        return reconstructedClip;
     }
 }
