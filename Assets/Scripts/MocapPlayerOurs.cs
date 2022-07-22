@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using System.Runtime.Serialization.Formatters.Binary;
 
 /// <summary>
 /// MocapPlayer plays the recorded animation on the model it is attached to.
@@ -118,15 +118,12 @@ public class MocapPlayerOurs : MonoBehaviour
         GameObject savedClip = Instantiate(recordingPrefab);
         DontDestroyOnLoad(savedClip);
 
-        //Recording savedClip = new Recording();
         if (userInput.text == "")
         {
-            //savedClip.GetComponent<Recording>().recordingName = DateTime.Now.ToString("mmddyyhhmmss");
             savedClip.GetComponent<Recording>().text.text = DateTime.Now.ToString("mmddyyhhmmss");
         }
         else
         {
-            //savedClip.GetComponent<Recording>().recordingName = userInput.text;
             savedClip.GetComponent<Recording>().text.text = userInput.text;
         }
 
@@ -134,11 +131,39 @@ public class MocapPlayerOurs : MonoBehaviour
         savedClip.GetComponent<Recording>().clip = recordedClip;
 
         ListController.savedList.Add(savedClip);
-        Debug.Log("Added CLIP");
-
-        //string json = JsonUtility.ToJson(ListController.savedList);
-        //File.WriteAllText(Application.dataPath + "/data.json", json);
+        SaveAnimationClip(savedClip.GetComponent<Recording>().text.text);
     }
 
+    // saves the animation clip in a serialized format
+    public void SaveAnimationClip(string fileName)
+    {
+        // Our animation is a very large collection of objects and their curves
+        // To serialize this, we need a list capable of associating those gameobjects to their relative paths, and then to their actual curves
+
+        // (GameObject relative path, list of times and values)
+        Dictionary<string, List<(float, float)>> serializableCurves = new Dictionary<string, List<(float, float)>>();
+
+        foreach (KeyValuePair<string, AnimationCurve> data in MocapRecorderOurs.legacyCurves)
+        {
+            // Create the container list
+            List<(float, float)> temporaryKeys = new List<(float, float)>();
+
+            foreach (Keyframe key in data.Value.keys)
+            {
+                temporaryKeys.Add((key.time, key.value));
+            }
+
+            serializableCurves.Add(data.Key, temporaryKeys);
+        }
+
+        // Currently ignoring root motion
+
+        // Serialize our data and write it to a file that can be later retrieved
+        // TODO: in-between layer that compresses the serialized data so it isn't absolutely ridiculous in file size
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream animFile = new FileStream(Application.streamingAssetsPath + "/" + fileName + ".anim", FileMode.Create);
+        bf.Serialize(animFile, serializableCurves);
+        animFile.Close();
+    }
 }
 

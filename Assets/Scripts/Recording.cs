@@ -23,7 +23,7 @@ public class Recording : MonoBehaviour
         // Attempt to delete the associated .anim file for this recording
         try
         {
-            File.Delete(Application.streamingAssetsPath + "\\" + text.text + ".anim");
+            File.Delete(Path.Combine(Application.streamingAssetsPath, text.text + ".anim"));
         }
         catch
         {

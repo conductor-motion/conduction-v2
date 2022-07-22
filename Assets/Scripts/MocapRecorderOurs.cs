@@ -85,18 +85,19 @@ public class MocapRecorderOurs : MonoBehaviour
 
     // : )
     private Dictionary<GameObject, string> avatarComponents = new Dictionary<GameObject, string>();
-    private Dictionary<string, AnimationCurve> legacyCurves = new Dictionary<string, AnimationCurve>();
+    public static Dictionary<string, AnimationCurve> legacyCurves = new Dictionary<string, AnimationCurve>();
     public static AnimationClip legacyAnimClip;
 
     void Start()
     {
-
         // Allow for bypassing the need for a sensor if in the Unity Editor
         if (UnityEngine.Application.isEditor)
         {
             editorOverride = true;
         }
         editorOverride = true;
+
+        legacyCurves.Clear();
 
         // Instantiate sprites for icon swapping
         isRec = Sprite.Create(recordingTexture, new Rect(0.0f, 0.0f, recordingTexture.width, recordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
@@ -331,8 +332,6 @@ public class MocapRecorderOurs : MonoBehaviour
             {
                 legacyAnimClip = CreateLegacyAnimClip();
 
-                SaveAnimationClip();
-
                 Debug.Log("New Clip Created");
                 // MocapPlayerOurs.recordedClip = recordedClip;
                 MocapPlayerOurs.recordedClip = legacyAnimClip;
@@ -468,37 +467,5 @@ public class MocapRecorderOurs : MonoBehaviour
         animClip.wrapMode = WrapMode.Loop;
 
         return animClip;
-    }
-
-    // saves the animation clip in a serialized format (JSON)
-    public void SaveAnimationClip()
-    {
-        // Our animation is a very large collection of objects and their curves
-        // To serialize this, we need a list capable of associating those gameobjects to their relative paths, and then to their actual curves
-
-        // (GameObject relative path, list of times and values)
-        Dictionary<string, List<(float, float)>> serializableCurves = new Dictionary<string, List<(float, float)>>();
-
-        foreach (KeyValuePair<string, AnimationCurve> data in legacyCurves)
-        {
-            // Create the container list
-            List<(float, float)> temporaryKeys = new List<(float, float)>();
-
-            foreach (Keyframe key in data.Value.keys)
-            {
-                temporaryKeys.Add((key.time, key.value));
-            }
-
-            serializableCurves.Add(data.Key, temporaryKeys);
-        }
-
-        // Currently ignoring root motion
-
-        // Serialize our data and write it to a file that can be later retrieved
-        // TODO: in-between layer that compresses the serialized data so it isn't absolutely ridiculous in file size
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream animFile = new FileStream(Application.streamingAssetsPath + "/" + DateTime.Now.ToString("mmddyyhhmmss") + ".anim", FileMode.Create);
-        bf.Serialize(animFile, serializableCurves);
-        animFile.Close();
     }
 }
