@@ -93,11 +93,15 @@ public class MocapPlayerOurs : MonoBehaviour
             savedClip.GetComponent<Recording>().text.text = userInput.text;
         }
 
-        recordedClip.name = DateTime.Now.ToString("mmddyyhhmmss");
+        recordedClip.name = userInput.text;
         savedClip.GetComponent<Recording>().clip = recordedClip;
 
         ListController.savedList.Add(savedClip);
         SaveAnimationClip(savedClip.GetComponent<Recording>().text.text);
+
+        // We have just made a recording, so now any future button presses must rename the recording
+        existingRecording = true;
+        btnClick.gameObject.GetComponentInChildren<Text>().text = "Rename Recording";
     }
 
     // saves the animation clip in a serialized format
