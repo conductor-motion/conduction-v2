@@ -21,14 +21,7 @@ public class Recording : MonoBehaviour
     public void delete()
     {
         // Attempt to delete the associated .anim file for this recording
-        try
-        {
-            File.Delete(Path.Combine(Application.streamingAssetsPath, text.text + ".anim"));
-        }
-        catch
-        {
-            Debug.Log("Failed to delete animation file");
-        }
+        File.Delete(Path.Combine(Application.streamingAssetsPath, text.text + ".anim"));
 
         ListController.savedList.Remove(ListController.savedList.Find(item => item.GetComponent<Recording>().clip.name == clip.name));
         Destroy(this.gameObject);
