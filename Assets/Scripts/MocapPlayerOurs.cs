@@ -28,6 +28,10 @@ public class MocapPlayerOurs : MonoBehaviour
     public InputField userInput;
     public GameObject recordingPrefab;
 
+    // If the recording was opened rather than just made, it was preexisting
+    // If it is preexisting, we do not allow it to be re-saved, but rather renamed
+    public static bool existingRecording = false;
+
     //End Non-Vanilla
 
 
@@ -44,68 +48,12 @@ public class MocapPlayerOurs : MonoBehaviour
         initialPos = transform.position;
         initialRot = transform.rotation;
 
-        //Non-Vanilla (Added by us)
-
-        //PlayAnimationClip(recordedClip);
-
         btnClick.onClick.AddListener(saveAnimationToList);
-        //End Non-Vanilla
-    }
 
+        // If this is not a new recording, the button should instead be to rename rather than resave
+        if (existingRecording)
+            btnClick.gameObject.GetComponentInChildren<Text>().text = "Rename Recording";
 
-    /// <summary>
-    /// Sets the animation clip as default animator state and plays it.
-    /// </summary>
-    /// <param name="animClip">Animation clip to play</param>
-    /// <returns>true on success, false otherwise</returns>
-    public bool PlayAnimationClip(AnimationClip animClip)
-    {
-        string animClipName = animClip != null ? animClip.name : string.Empty;
-
-        if (playerAnimator && animClip)
-        {
-#if UNITY_EDITOR
-            RuntimeAnimatorController animatorCtrlRT = playerAnimator.runtimeAnimatorController;
-
-            UnityEditor.Animations.AnimatorController animatorCtrl = animatorCtrlRT as UnityEditor.Animations.AnimatorController;
-            UnityEditor.Animations.ChildAnimatorState[] animStates = animatorCtrl.layers.Length > 0 ?
-                animatorCtrl.layers[0].stateMachine.states : new UnityEditor.Animations.ChildAnimatorState[0];
-            bool bStateFound = false;
-
-            for (int i = 0; i < animStates.Length; i++)
-            {
-                UnityEditor.Animations.ChildAnimatorState animState = animStates[i];
-
-                if (animState.state.name == animClipName)
-                {
-                    animatorCtrl.layers[0].stateMachine.states[i].state.motion = animClip;
-                    animatorCtrl.layers[0].stateMachine.defaultState = animatorCtrl.layers[0].stateMachine.states[i].state;
-
-                    bStateFound = true;
-                    break;
-                }
-            }
-
-            if (!bStateFound && animatorCtrl.layers.Length > 0)
-            {
-                UnityEditor.Animations.AnimatorState animState = animatorCtrl.layers[0].stateMachine.AddState(animClipName);
-                animState.motion = animClip;
-
-                animatorCtrl.layers[0].stateMachine.defaultState = animState;
-            }
-#endif
-        }
-
-        if (playerAnimator && animClipName != string.Empty)
-        {
-            transform.position = initialPos;
-            transform.rotation = initialRot;
-
-            playerAnimator.Play(animClipName);
-            return true;
-        }
-
-        return false;
     }
 
     public void returnHome()
@@ -115,6 +63,24 @@ public class MocapPlayerOurs : MonoBehaviour
 
     public void saveAnimationToList()
     {
+        // If the recording already exists, we just want to rename this file
+        // TODO: checks for duplicate file names to prevent unintended overwrites
+        if (existingRecording)
+        {
+            string input = userInput.text.Length == 0 ? DateTime.Now.ToString("mmddyyhhmmss") : userInput.text;
+
+            File.Move(Application.streamingAssetsPath + "/" + recordedClip.name + ".anim", Application.streamingAssetsPath + "/" + input + ".anim");
+
+            // Find and modify the associated recording for the clip so changes are immediately reflected
+            ListController.savedList.Find(item => item.GetComponent<Recording>().clip.name == recordedClip.name).GetComponent<Recording>().text.text = input;
+
+            // Modify the clip
+            recordedClip.name = input;
+
+
+            return;
+        }
+
         GameObject savedClip = Instantiate(recordingPrefab);
         DontDestroyOnLoad(savedClip);
 

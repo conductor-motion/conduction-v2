@@ -15,6 +15,7 @@ public class Recording : MonoBehaviour
     public void open()
     {
         MocapPlayerOurs.recordedClip = this.clip;
+        MocapPlayerOurs.existingRecording = true;
         SceneManager.LoadScene("ViewingPage");
     }
     

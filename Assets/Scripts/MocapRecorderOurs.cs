@@ -335,12 +335,8 @@ public class MocapRecorderOurs : MonoBehaviour
                 Debug.Log("New Clip Created");
                 // MocapPlayerOurs.recordedClip = recordedClip;
                 MocapPlayerOurs.recordedClip = legacyAnimClip;
+                MocapPlayerOurs.existingRecording = false;
                 SceneManager.LoadScene("ViewingPage");
-
-                if (mocapPlayer)
-                {
-                    mocapPlayer.PlayAnimationClip(recordedClip);
-                }
             }
             else
             {
