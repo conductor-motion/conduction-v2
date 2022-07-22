@@ -7,6 +7,7 @@ public class MediaControls : MonoBehaviour
 {
     // The Animator is the primary way to control animations in Unity
     private Animator playerAnimator = null;
+    private Animation playerAnimatorLegacy = null;
     private UnityEngine.UI.Slider speedController = null;
     private GameObject playButton;
     private string clipName;
@@ -35,26 +36,33 @@ public class MediaControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerAnimator = GameObject.Find("/RobotAnimated").GetComponent<Animator>();
+        clipName = MocapPlayerOurs.recordedClip.name;
+
+        //playerAnimator = GameObject.Find("/RobotAnimated").GetComponent<Animator>();
+        playerAnimatorLegacy = GameObject.Find("U_Character_REF").GetComponent<Animation>();
 
         // Sets the speed multiplier to 1 so that it moves
-        playerAnimator.SetFloat("Speed", 1);       
+        //playerAnimator.SetFloat("Speed", 1);
+        playerAnimatorLegacy[clipName].speed = 1;
 
         // Get the initial avatar body position to reset to
-        initialPos = playerAnimator.gameObject.transform.position;
-        initialRot = playerAnimator.gameObject.transform.rotation;
+        //initialPos = playerAnimator.gameObject.transform.position;
+        //initialRot = playerAnimator.gameObject.transform.rotation;
+        initialPos = playerAnimatorLegacy.gameObject.transform.position;
+        initialRot = playerAnimatorLegacy.gameObject.transform.rotation;
 
         trails = GameObject.FindGameObjectsWithTag("Trail");
 
         playButton = GameObject.FindGameObjectWithTag("PlayButton");
 
-        if (!playerAnimator)
+        //if (!playerAnimator)
+        if(!playerAnimatorLegacy)
         {
             Debug.Log("Animator not found by media controls.");
             isPlaying = false;
         }
 
-        clipName = MocapPlayerOurs.recordedClip.name;
+        
 
         // Attach a listener to the speed control slider
         speedController = GetComponentInChildren<UnityEngine.UI.Slider>();
@@ -90,27 +98,44 @@ public class MediaControls : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             scrubbing = false;
-            playerAnimator.SetFloat("Speed", lastSpeed);
+            //playerAnimator.SetFloat("Speed", lastSpeed);
+            playerAnimatorLegacy[clipName].speed = lastSpeed;
         }
 
         if (doLoop)
         {
             // Force a loop of the current state in the animation in a crude method
             // This is necessary if we cannot programmatically set the animationclip to loop
-            if (playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && playerAnimator.GetFloat("Speed") == 1)
+            /*if (playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && playerAnimator.GetFloat("Speed") == 1)
             {
                 // There's an interesting side effect in which the avatar does not reset between loops
                 playerAnimator.gameObject.transform.position = initialPos;
                 playerAnimator.gameObject.transform.rotation = initialRot;
                 playerAnimator.Play(clipName, 0, 0f);
+            }*/
+            if(playerAnimatorLegacy[clipName].normalizedTime > 1 && playerAnimatorLegacy[clipName].speed == 1)
+            {
+                playerAnimatorLegacy.gameObject.transform.position = initialPos;
+                playerAnimatorLegacy.gameObject.transform.rotation = initialRot;
+                playerAnimatorLegacy[clipName].normalizedTime = 0f;
+                playerAnimatorLegacy.Play(clipName);//IDK the conversion of the other parameters
             }
+
             // Used for the reversed playback
-            else if (playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0 && playerAnimator.GetFloat("Speed") == -1)
+            /*else if (playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0 && playerAnimator.GetFloat("Speed") == -1)
             {
                 playerAnimator.gameObject.transform.position = initialPos;
                 playerAnimator.gameObject.transform.rotation = initialRot;
                 playerAnimator.Play(clipName, 0, 1f);
+            }*/
+            if (playerAnimatorLegacy[clipName].normalizedTime < 0 && playerAnimatorLegacy[clipName].speed == -1)
+            {
+                playerAnimatorLegacy.gameObject.transform.position = initialPos;
+                playerAnimatorLegacy.gameObject.transform.rotation = initialRot;
+                playerAnimatorLegacy[clipName].normalizedTime = 1f;
+                playerAnimatorLegacy.Play(clipName);//IDK the conversion of the other parameters
             }
+
         }
 
         // If a timeline exists, it should also be updated based on the clip's normalizedTime
@@ -120,25 +145,30 @@ public class MediaControls : MonoBehaviour
         {
             // Move current playhead position to current clip timing
             int timelineBarWidth = (int)timelineBar.GetComponent<RectTransform>().sizeDelta.x;
-            playhead.transform.localPosition = new Vector3(playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime * timelineBarWidth - timelineBarWidth / 2, 0, 0);
+            //playhead.transform.localPosition = new Vector3(playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime * timelineBarWidth - timelineBarWidth / 2, 0, 0);
+            playhead.transform.localPosition = new Vector3(playerAnimatorLegacy[clipName].normalizedTime * timelineBarWidth - timelineBarWidth / 2, 0, 0);
 
             // If Mouse1 is down over the timeline, skip to that position
             if (scrubbing && IsPointerOverTimeline())
             {
                 // Prevent repeated application of root motion if particular frames are chosen
-                playerAnimator.SetFloat("Speed", 0);
+                //playerAnimator.SetFloat("Speed", 0);
+                playerAnimatorLegacy[clipName].speed = 0;
 
                 // We only care about the x position of the mouse
-                float normalizedX = (float)Input.mousePosition.x / timelineBarWidth;
+                float normalizedX = (float)Input.mousePosition.x / timelineBarWidth / timelineBar.GetComponent<RectTransform>().lossyScale.x;
 
-                playerAnimator.Play(clipName, 0, normalizedX);
+                //playerAnimator.Play(clipName, 0, normalizedX);
+                playerAnimatorLegacy[clipName].normalizedTime = normalizedX;
+                playerAnimatorLegacy.Play(clipName);
             }
         }
     }
 
     public void TogglePlayback()
     {
-        if (playerAnimator)
+        //if (playerAnimator)
+        if(playerAnimatorLegacy)
         {
             isPlaying = !isPlaying;
 
@@ -188,24 +218,30 @@ public class MediaControls : MonoBehaviour
 
     public void Reverse()
     {
-        playerAnimator.SetFloat("Speed", -1);
-        lastSpeed = playerAnimator.GetFloat("Speed");
+        //playerAnimator.SetFloat("Speed", -1);
+        //lastSpeed = playerAnimator.GetFloat("Speed");
+        playerAnimatorLegacy[clipName].speed = -1;
+        lastSpeed = playerAnimatorLegacy[clipName].speed;
     }
     public void Forward()
     {
-        playerAnimator.SetFloat("Speed", 1);
-        lastSpeed = playerAnimator.GetFloat("Speed");
+        //playerAnimator.SetFloat("Speed", 1);
+        //lastSpeed = playerAnimator.GetFloat("Speed");
+        playerAnimatorLegacy[clipName].speed = 1;
+        lastSpeed = playerAnimatorLegacy[clipName].speed;
     }
 
     // Speed should likely impact hand trails as well, or offer some level of control over them
     // Changing speed while in a paused state results in strange behavior, so this is prohibited
     public void SetSpeed(float newSpeed)
     {
-        if (playerAnimator && isPlaying)
+        //if (playerAnimator && isPlaying)
+        if (playerAnimatorLegacy && isPlaying)
         {
             if (newSpeed >= 0)
             {
-                playerAnimator.speed = animSpeed = newSpeed;
+                //playerAnimator.speed = animSpeed = newSpeed;
+                playerAnimatorLegacy[clipName].speed = animSpeed = newSpeed;
 
                 if(!resumeTrailCoroutineRunning)
                     UpdateTrailsLife(newSpeed);
