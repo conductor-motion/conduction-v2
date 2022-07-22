@@ -509,6 +509,8 @@ public class MocapRecorderOurs : MonoBehaviour
             animClip.SetCurve(avatarComponents[originalObj], typeof(Transform), property, data.Value);
         }
 
+        animClip.wrapMode = WrapMode.Loop;
+
         return animClip;
     }
 
