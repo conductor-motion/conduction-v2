@@ -36,7 +36,7 @@ public class AnimationLoader
         }
 
         // TODO: decompress whatever is given first
-        FileStream animFile = new FileStream(Application.streamingAssetsPath + "\\" + relPath + ".anim", FileMode.Open);
+        FileStream animFile = new FileStream(Path.Combine(Application.streamingAssetsPath, relPath + ".anim"), FileMode.Open);
         BinaryFormatter bf = new BinaryFormatter();
 
         Dictionary<string, List<(float, float)>> serializableCurves = (Dictionary<string, List<(float, float)>>)bf.Deserialize(animFile);
