@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
 
 public class Recording : MonoBehaviour
 {
@@ -10,20 +11,6 @@ public class Recording : MonoBehaviour
     public AnimationClip clip;
     public Text text;
     public ListController listController;
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //text.text = this.recordingName;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void open()
     {
@@ -33,6 +20,16 @@ public class Recording : MonoBehaviour
     
     public void delete()
     {
+        // Attempt to delete the associated .anim file for this recording
+        try
+        {
+            File.Delete(Application.streamingAssetsPath + "\\" + text.text + ".anim");
+        }
+        catch
+        {
+            Debug.Log("Failed to delete animation file");
+        }
+
         ListController.savedList.Remove(ListController.savedList.Find(item => item.GetComponent<Recording>().clip.name == clip.name));
         Destroy(this.gameObject);
     }

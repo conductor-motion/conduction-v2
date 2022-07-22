@@ -14,6 +14,9 @@ public class ListController : MonoBehaviour
     public Transform recordingParent;
     public string saveFile;
 
+    // Control whether or not we search the file system for loaded animations
+    private static bool hasLoaded = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,9 @@ public class ListController : MonoBehaviour
     // Loads a list of the animation files in the StreamableAssets folder and populates the recording list
     private void LoadFromFileSystem()
     {
+        if (hasLoaded)
+            return;
+
         string[] files = Directory.GetFiles(Application.streamingAssetsPath);
         List<string> animationFiles = new List<string>();
 
@@ -59,6 +65,8 @@ public class ListController : MonoBehaviour
 
             savedList.Add(rec);
         }
+
+        hasLoaded = true;
     }
 
     private void LoadRecordings()
