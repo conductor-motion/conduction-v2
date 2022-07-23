@@ -14,7 +14,9 @@ public class MediaControls : MonoBehaviour
     private GameObject[] trails;
 
     private bool isPlaying = true;
+    // Speed multiplier
     private float animSpeed = 1f;
+    private bool isRewind = false;
     private bool doLoop = true;
 
     private float pauseTime;
@@ -43,7 +45,7 @@ public class MediaControls : MonoBehaviour
 
         // Sets the speed multiplier to 1 so that it moves
         //playerAnimator.SetFloat("Speed", 1);
-        playerAnimatorLegacy[clipName].speed = 1;
+        animSpeed = 1f;
 
         // Get the initial avatar body position to reset to
         //initialPos = playerAnimator.gameObject.transform.position;
@@ -99,7 +101,7 @@ public class MediaControls : MonoBehaviour
         {
             scrubbing = false;
             //playerAnimator.SetFloat("Speed", lastSpeed);
-            playerAnimatorLegacy[clipName].speed = lastSpeed;
+            SetSpeed(lastSpeed);
         }
 
         if (doLoop)
@@ -113,7 +115,7 @@ public class MediaControls : MonoBehaviour
                 playerAnimator.gameObject.transform.rotation = initialRot;
                 playerAnimator.Play(clipName, 0, 0f);
             }*/
-            if(playerAnimatorLegacy[clipName].normalizedTime > 1 && playerAnimatorLegacy[clipName].speed == 1)
+            if(playerAnimatorLegacy[clipName].normalizedTime > 1 && !isRewind)
             {
                 playerAnimatorLegacy.gameObject.transform.position = initialPos;
                 playerAnimatorLegacy.gameObject.transform.rotation = initialRot;
@@ -128,7 +130,7 @@ public class MediaControls : MonoBehaviour
                 playerAnimator.gameObject.transform.rotation = initialRot;
                 playerAnimator.Play(clipName, 0, 1f);
             }*/
-            if (playerAnimatorLegacy[clipName].normalizedTime < 0 && playerAnimatorLegacy[clipName].speed == -1)
+            if (playerAnimatorLegacy[clipName].normalizedTime < 0 && isRewind)
             {
                 playerAnimatorLegacy.gameObject.transform.position = initialPos;
                 playerAnimatorLegacy.gameObject.transform.rotation = initialRot;
@@ -220,15 +222,17 @@ public class MediaControls : MonoBehaviour
     {
         //playerAnimator.SetFloat("Speed", -1);
         //lastSpeed = playerAnimator.GetFloat("Speed");
-        playerAnimatorLegacy[clipName].speed = -1;
-        lastSpeed = playerAnimatorLegacy[clipName].speed;
+        isRewind = true;
+        playerAnimatorLegacy[clipName].speed = animSpeed * -1;
+        lastSpeed = animSpeed;
     }
     public void Forward()
     {
         //playerAnimator.SetFloat("Speed", 1);
         //lastSpeed = playerAnimator.GetFloat("Speed");
-        playerAnimatorLegacy[clipName].speed = 1;
-        lastSpeed = playerAnimatorLegacy[clipName].speed;
+        isRewind = false;
+        playerAnimatorLegacy[clipName].speed = animSpeed;
+        lastSpeed = animSpeed;
     }
 
     // Speed should likely impact hand trails as well, or offer some level of control over them
@@ -241,7 +245,13 @@ public class MediaControls : MonoBehaviour
             if (newSpeed >= 0)
             {
                 //playerAnimator.speed = animSpeed = newSpeed;
-                playerAnimatorLegacy[clipName].speed = animSpeed = newSpeed;
+                lastSpeed = animSpeed;
+                animSpeed = newSpeed;
+
+                if (isRewind)
+                    playerAnimatorLegacy[clipName].speed = animSpeed * -1;
+                else
+                    playerAnimatorLegacy[clipName].speed = animSpeed;
 
                 if(!resumeTrailCoroutineRunning)
                     UpdateTrailsLife(newSpeed);
