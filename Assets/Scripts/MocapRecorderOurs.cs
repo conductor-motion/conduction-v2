@@ -88,6 +88,13 @@ public class MocapRecorderOurs : MonoBehaviour
     public static Dictionary<string, AnimationCurve> legacyCurves = new Dictionary<string, AnimationCurve>();
     public static AnimationClip legacyAnimClip;
 
+    // Audio recording
+    private AudioSource audioSource;
+    // "Audio vectors" storage so this can be serialized to a file and loaded with the animation when needed
+    List<float> audioRecording = new List<float>();
+    public static float[] finalRecording;
+    public static AudioClip recordedAudio;
+
     void Start()
     {
         // Allow for bypassing the need for a sensor if in the Unity Editor
@@ -98,6 +105,8 @@ public class MocapRecorderOurs : MonoBehaviour
         editorOverride = true;
 
         legacyCurves.Clear();
+
+        audioSource = GetComponent<AudioSource>();
 
         // Instantiate sprites for icon swapping
         isRec = Sprite.Create(recordingTexture, new Rect(0.0f, 0.0f, recordingTexture.width, recordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
@@ -272,6 +281,12 @@ public class MocapRecorderOurs : MonoBehaviour
             }
         }
 
+        // Begin recording audio
+        audioSource.clip = Microphone.Start(null, true, 1, 44100);
+        audioSource.Play();
+        Invoke("ResizeRecording", 1);
+
+        // Begin recording motion
         isCountingDown = false;
         isRecording = true;
         StartCoroutine(SwapIcon());
@@ -280,6 +295,19 @@ public class MocapRecorderOurs : MonoBehaviour
         {
             recIcon.gameObject.SetActive(true);
         } */
+    }
+
+    // Add the next second of recording audio to the audio vector list
+    void ResizeRecording()
+    {
+        if (isRecording)
+        {
+            int length = 44100;
+            float[] clipData = new float[length];
+            audioSource.clip.GetData(clipData, 0);
+            audioRecording.AddRange(clipData);
+            Invoke("ResizeRecording", 1);
+        }
     }
 
 
@@ -320,10 +348,31 @@ public class MocapRecorderOurs : MonoBehaviour
         {
             isRecording = false;
 
-            /* if (recIcon)
+            // Halt recording audio and record its last sub-second audio to the vector list
+            int length = Microphone.GetPosition(null);
+            Microphone.End(null);
+            float[] clipData = new float[length];
+            audioSource.clip.GetData(clipData, 0);
+
+            // Create a final concatenated audio clip
+            float[] fullClip = new float[clipData.Length + audioRecording.Count];
+            for (int i = 0; i < fullClip.Length; i++)
             {
-                recIcon.gameObject.SetActive(false);
-            } */
+                if (i < audioRecording.Count)
+                {
+                    fullClip[i] = audioRecording[i];
+                }
+                else
+                {
+                    fullClip[i] = clipData[i - audioRecording.Count];
+                }
+            }
+
+            finalRecording = fullClip;
+
+            // Create a Unity audio clip from the recorded data to play in playback
+            recordedAudio = AudioClip.Create("recordingAudio", finalRecording.Length, 1, 44100, false);
+            recordedAudio.SetData(finalRecording, 0);
 
             // Realistically is impossible for nothing to be recorded when a countdown is included
             bool isAnythingRecorded = true;
@@ -342,7 +391,7 @@ public class MocapRecorderOurs : MonoBehaviour
             {
                 ShowMessage("Recording stopped - nothing to save.");
             }
-            recInfo.gameObject.SetActive(true);
+            // recInfo.gameObject.SetActive(true);
             StartCoroutine(SwapIcon());
         }
     }

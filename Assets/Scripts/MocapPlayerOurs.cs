@@ -32,6 +32,9 @@ public class MocapPlayerOurs : MonoBehaviour
     // If it is preexisting, we do not allow it to be re-saved, but rather renamed
     public static bool existingRecording = false;
 
+    private AudioSource audioSource;
+    private float[] audioRecordingData;
+
     //End Non-Vanilla
 
 
@@ -44,6 +47,10 @@ public class MocapPlayerOurs : MonoBehaviour
         anim.AddClip(recordedClip, recordedClip.name);
         anim.Play(recordedClip.name);
 
+        // get reference to the audiosource
+        audioSource = GetComponent<AudioSource>();
+        
+
         // get initial position & rotation
         initialPos = transform.position;
         initialRot = transform.rotation;
@@ -54,6 +61,26 @@ public class MocapPlayerOurs : MonoBehaviour
         if (existingRecording)
             btnClick.gameObject.GetComponentInChildren<Text>().text = "Rename Recording";
 
+        // If this is not an existing recording, we have to load the audio from the file system and build an audio clip
+        if (existingRecording)
+        {
+            try 
+            {
+                audioSource.clip = LoadRecordingFile(recordedClip.name);
+            }
+            catch
+            {
+                Debug.Log("This is a legacy animation with no included audio to play.");
+            }
+        }
+        else
+        {
+            audioRecordingData = MocapRecorderOurs.finalRecording;
+            audioSource.clip = MocapRecorderOurs.recordedAudio;
+        }
+
+        audioSource.loop = true;
+        audioSource.Play();
     }
 
     public void returnHome()
@@ -70,6 +97,15 @@ public class MocapPlayerOurs : MonoBehaviour
             string input = userInput.text.Length == 0 ? DateTime.Now.ToString("mmddyyhhmmss") : userInput.text;
 
             File.Move(Application.streamingAssetsPath + "/" + recordedClip.name + ".anim", Application.streamingAssetsPath + "/" + input + ".anim");
+            
+            try
+            {
+                File.Move(Application.streamingAssetsPath + "/" + recordedClip.name + ".audio", Application.streamingAssetsPath + "/" + input + ".audio");
+            }
+            catch
+            {
+                // Audio file does not exist for this clip
+            }
 
             // Find and modify the associated recording for the clip so changes are immediately reflected
             ListController.savedList.Find(item => item.GetComponent<Recording>().clip.name == recordedClip.name).GetComponent<Recording>().text.text = input;
@@ -104,6 +140,8 @@ public class MocapPlayerOurs : MonoBehaviour
         btnClick.gameObject.GetComponentInChildren<Text>().text = "Rename Recording";
     }
 
+    // given no provided audio clip, construct a new one by loading from the file system
+
     // saves the animation clip in a serialized format
     public void SaveAnimationClip(string fileName)
     {
@@ -134,6 +172,34 @@ public class MocapPlayerOurs : MonoBehaviour
         FileStream animFile = new FileStream(Application.streamingAssetsPath + "/" + fileName + ".anim", FileMode.Create);
         bf.Serialize(animFile, serializableCurves);
         animFile.Close();
+
+        // Save the associated audio clip if one exists
+
+        SaveAudioClip(fileName);
+    }
+
+    // Loads a specified audio clip from the file system
+    public AudioClip LoadRecordingFile(string fileName)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream audioFile = new FileStream(Path.Combine(Application.streamingAssetsPath, fileName + ".audio"), FileMode.Open);
+
+        audioRecordingData = (float[])bf.Deserialize(audioFile);
+
+        AudioClip clip = AudioClip.Create("recordingAudio", audioRecordingData.Length, 1, 44100, false);
+        clip.SetData(audioRecordingData, 0);
+
+        return clip;
+    }
+
+    // saves the audio clip in a serialized format
+    public void SaveAudioClip(string fileName)
+    {
+        // The audio is already serializable in MocapRecorder, so we just have to write it to a file
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream audioFile = new FileStream(Application.streamingAssetsPath + "/" + fileName + ".audio", FileMode.Create);
+        bf.Serialize(audioFile, audioRecordingData);
+        audioFile.Close();
     }
 }
 

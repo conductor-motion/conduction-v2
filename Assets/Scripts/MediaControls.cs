@@ -35,21 +35,23 @@ public class MediaControls : MonoBehaviour
     // This helps determine the clip name and is set whenever we select an animation to play
     static public int clipOffset = 1;
 
+    // Audio controls involved when controlling the animation
+    private bool isMuted = false;
+    private float volume = 1f;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         clipName = MocapPlayerOurs.recordedClip.name;
 
-        //playerAnimator = GameObject.Find("/RobotAnimated").GetComponent<Animator>();
         playerAnimatorLegacy = GameObject.Find("U_Character_REF").GetComponent<Animation>();
+        audioSource = GameObject.Find("U_Character_REF").GetComponent<AudioSource>();
 
         // Sets the speed multiplier to 1 so that it moves
-        //playerAnimator.SetFloat("Speed", 1);
         animSpeed = 1f;
 
         // Get the initial avatar body position to reset to
-        //initialPos = playerAnimator.gameObject.transform.position;
-        //initialRot = playerAnimator.gameObject.transform.rotation;
         initialPos = playerAnimatorLegacy.gameObject.transform.position;
         initialRot = playerAnimatorLegacy.gameObject.transform.rotation;
 
@@ -57,14 +59,11 @@ public class MediaControls : MonoBehaviour
 
         playButton = GameObject.FindGameObjectWithTag("PlayButton");
 
-        //if (!playerAnimator)
         if(!playerAnimatorLegacy)
         {
             Debug.Log("Animator not found by media controls.");
             isPlaying = false;
         }
-
-        
 
         // Attach a listener to the speed control slider
         speedController = GetComponentInChildren<UnityEngine.UI.Slider>();
@@ -96,11 +95,12 @@ public class MediaControls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && IsPointerOverTimeline())
         {
             scrubbing = true;
+            audioSource.Pause();
         }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Mouse0) && scrubbing == true)
         {
             scrubbing = false;
-            //playerAnimator.SetFloat("Speed", lastSpeed);
+            audioSource.Play();
             SetSpeed(lastSpeed);
         }
 
@@ -108,59 +108,41 @@ public class MediaControls : MonoBehaviour
         {
             // Force a loop of the current state in the animation in a crude method
             // This is necessary if we cannot programmatically set the animationclip to loop
-            /*if (playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && playerAnimator.GetFloat("Speed") == 1)
-            {
-                // There's an interesting side effect in which the avatar does not reset between loops
-                playerAnimator.gameObject.transform.position = initialPos;
-                playerAnimator.gameObject.transform.rotation = initialRot;
-                playerAnimator.Play(clipName, 0, 0f);
-            }*/
             if(playerAnimatorLegacy[clipName].normalizedTime > 1 && !isRewind)
             {
                 playerAnimatorLegacy.gameObject.transform.position = initialPos;
                 playerAnimatorLegacy.gameObject.transform.rotation = initialRot;
                 playerAnimatorLegacy[clipName].normalizedTime = 0f;
-                playerAnimatorLegacy.Play(clipName);//IDK the conversion of the other parameters
+                playerAnimatorLegacy.Play(clipName);
             }
 
             // Used for the reversed playback
-            /*else if (playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0 && playerAnimator.GetFloat("Speed") == -1)
-            {
-                playerAnimator.gameObject.transform.position = initialPos;
-                playerAnimator.gameObject.transform.rotation = initialRot;
-                playerAnimator.Play(clipName, 0, 1f);
-            }*/
             if (playerAnimatorLegacy[clipName].normalizedTime < 0 && isRewind)
             {
                 playerAnimatorLegacy.gameObject.transform.position = initialPos;
                 playerAnimatorLegacy.gameObject.transform.rotation = initialRot;
                 playerAnimatorLegacy[clipName].normalizedTime = 1f;
-                playerAnimatorLegacy.Play(clipName);//IDK the conversion of the other parameters
+                playerAnimatorLegacy.Play(clipName);
             }
 
         }
 
         // If a timeline exists, it should also be updated based on the clip's normalizedTime
-        // Note: if the timeline is used to skip to a position in a clip, then the root motion will differ slightly
-        // looking into a solution for this, but it is a minor issue
         if (timeline)
         {
             // Move current playhead position to current clip timing
             int timelineBarWidth = (int)timelineBar.GetComponent<RectTransform>().sizeDelta.x;
-            //playhead.transform.localPosition = new Vector3(playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime * timelineBarWidth - timelineBarWidth / 2, 0, 0);
             playhead.transform.localPosition = new Vector3(playerAnimatorLegacy[clipName].normalizedTime * timelineBarWidth - timelineBarWidth / 2, 0, 0);
 
             // If Mouse1 is down over the timeline, skip to that position
             if (scrubbing && IsPointerOverTimeline())
             {
                 // Prevent repeated application of root motion if particular frames are chosen
-                //playerAnimator.SetFloat("Speed", 0);
                 playerAnimatorLegacy[clipName].speed = 0;
 
                 // We only care about the x position of the mouse
                 float normalizedX = (float)Input.mousePosition.x / timelineBarWidth / timelineBar.GetComponent<RectTransform>().lossyScale.x;
 
-                //playerAnimator.Play(clipName, 0, normalizedX);
                 playerAnimatorLegacy[clipName].normalizedTime = normalizedX;
                 playerAnimatorLegacy.Play(clipName);
             }
@@ -179,6 +161,9 @@ public class MediaControls : MonoBehaviour
                 // Pause playback
                 Time.timeScale = 0;
 
+                // Pause the audio
+                audioSource.Pause();
+
                 // Updates the play button to use the pause sprite
                 playButton.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>("Play");
             }
@@ -186,6 +171,9 @@ public class MediaControls : MonoBehaviour
             {
                 // Resume playback
                 Time.timeScale = 1;
+
+                // Resume the audio
+                audioSource.Play();
 
                 // Updates the play button to use the play sprite
                 playButton.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>("Pause");
@@ -220,38 +208,40 @@ public class MediaControls : MonoBehaviour
 
     public void Reverse()
     {
-        //playerAnimator.SetFloat("Speed", -1);
-        //lastSpeed = playerAnimator.GetFloat("Speed");
         isRewind = true;
         playerAnimatorLegacy[clipName].speed = animSpeed * -1;
         lastSpeed = animSpeed;
+        audioSource.pitch = -animSpeed; // ok this is the funniest thing i've ever supported
     }
     public void Forward()
     {
-        //playerAnimator.SetFloat("Speed", 1);
-        //lastSpeed = playerAnimator.GetFloat("Speed");
         isRewind = false;
         playerAnimatorLegacy[clipName].speed = animSpeed;
         lastSpeed = animSpeed;
+        audioSource.pitch = animSpeed;
     }
 
     // Speed should likely impact hand trails as well, or offer some level of control over them
     // Changing speed while in a paused state results in strange behavior, so this is prohibited
     public void SetSpeed(float newSpeed)
     {
-        //if (playerAnimator && isPlaying)
         if (playerAnimatorLegacy && isPlaying)
         {
             if (newSpeed >= 0)
             {
-                //playerAnimator.speed = animSpeed = newSpeed;
                 lastSpeed = animSpeed;
                 animSpeed = newSpeed;
 
                 if (isRewind)
+                {
                     playerAnimatorLegacy[clipName].speed = animSpeed * -1;
+                    audioSource.pitch = animSpeed * -1;
+                }
                 else
+                {
                     playerAnimatorLegacy[clipName].speed = animSpeed;
+                    audioSource.pitch = animSpeed;
+                }
 
                 if(!resumeTrailCoroutineRunning)
                     UpdateTrailsLife(newSpeed);
