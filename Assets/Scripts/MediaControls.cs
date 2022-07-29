@@ -37,7 +37,8 @@ public class MediaControls : MonoBehaviour
 
     // Audio controls involved when controlling the animation
     private bool isMuted = false;
-    private float volume = 1f;
+    private UnityEngine.UI.Slider volumeController = null;
+    private UnityEngine.UI.Text volumeLabel = null;
     private AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -66,14 +67,26 @@ public class MediaControls : MonoBehaviour
         }
 
         // Attach a listener to the speed control slider
-        speedController = GetComponentInChildren<UnityEngine.UI.Slider>();
+        speedController = GameObject.Find("Speed Controller").GetComponent<UnityEngine.UI.Slider>();
         if (!speedController)
         {
-            Debug.Log("Speed control slider not found as a child element.");
+            Debug.Log("Speed control slider not found.");
         }
         else
         {
             speedController.onValueChanged.AddListener(delegate { SliderChangeEvent(); });
+        }
+
+        // Attach a listerer to the volume control slider
+        volumeController = GameObject.Find("Volume Control").GetComponent<UnityEngine.UI.Slider>();
+        if (!volumeController)
+        {
+            Debug.Log("Volume control slider not found.");
+        }
+        else
+        {
+            volumeLabel = GameObject.Find("Volume Label").GetComponent<UnityEngine.UI.Text>();
+            volumeController.onValueChanged.AddListener(delegate { VolumeSliderChangeEvent(); });
         }
 
         timeline = GameObject.Find("Timeline");
@@ -187,6 +200,14 @@ public class MediaControls : MonoBehaviour
     private void SliderChangeEvent()
     {
         SetSpeed((float)speedController.value);
+    }
+
+    private void VolumeSliderChangeEvent()
+    {
+        audioSource.volume = (float)volumeController.value;
+
+        // Adjust the label by converting from the (0,1) float to percentage
+        volumeLabel.text = (volumeController.value * 100).ToString("0") + "%";
     }
 
     public float GetSpeed()
