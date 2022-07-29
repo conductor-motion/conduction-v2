@@ -38,6 +38,9 @@ public class MocapPlayerOurs : MonoBehaviour
     private char[] invalidFileChars;
     private int maxFileNameLength;
 
+    // Controlling the return home prompt if we have unsaved data
+    public SceneLoader sceneLoader;
+
     void Start()
     {
         // get the characters that cannot be included in the recording name due to file system limitations
@@ -61,7 +64,14 @@ public class MocapPlayerOurs : MonoBehaviour
 
         // If this is not a new recording, the button should instead be to rename rather than resave
         if (existingRecording)
+        {
             btnClick.gameObject.GetComponentInChildren<Text>().text = "Rename Recording";
+        }
+        else
+        {
+            // We should prompt the user if they try to leave as they have unsaved progress
+            sceneLoader.promptBeforeGo = true;
+        }
 
         // If this is not an existing recording, we have to load the audio from the file system and build an audio clip
         if (existingRecording)
@@ -85,11 +95,6 @@ public class MocapPlayerOurs : MonoBehaviour
         audioSource.Play();
     }
 
-    public void returnHome()
-    {
-        SceneManager.LoadScene("LandingPage");
-    }
-
     public void saveAnimationToList()
     {
         string input = userInput.text.Length == 0 ? DateTime.Now.ToString("mmddyyhhmmss") : userInput.text;
@@ -111,8 +116,11 @@ public class MocapPlayerOurs : MonoBehaviour
         // No error, so ensure error text is hidden
         errorField.text = "";
 
+        // Check for duplicates and prevent overwrites
+        // Potential TODO: give option to overwrite
+
+
         // If the recording already exists, we just want to rename this file
-        // TODO: checks for duplicate file names to prevent unintended overwrites
         if (existingRecording)
         {
             File.Move(Path.Combine(Application.streamingAssetsPath, recordedClip.name + ".anim"), Path.Combine(Application.streamingAssetsPath, input + ".anim"));
@@ -133,10 +141,10 @@ public class MocapPlayerOurs : MonoBehaviour
             // Modify the clip
             recordedClip.name = input;
 
-
             return;
         }
 
+        // Create a persistent object to store Recording data
         GameObject savedClip = Instantiate(recordingPrefab);
         DontDestroyOnLoad(savedClip);
 
@@ -161,8 +169,6 @@ public class MocapPlayerOurs : MonoBehaviour
         btnClick.gameObject.GetComponentInChildren<Text>().text = "Rename Recording";
     }
 
-    // given no provided audio clip, construct a new one by loading from the file system
-
     // saves the animation clip in a serialized format
     public void SaveAnimationClip(string fileName)
     {
@@ -185,7 +191,7 @@ public class MocapPlayerOurs : MonoBehaviour
             serializableCurves.Add(data.Key, temporaryKeys);
         }
 
-        // Currently ignoring root motion
+        // Currently ignores all root motion, as it is not necessary for evaluation
 
         // Serialize our data and write it to a file that can be later retrieved
         // TODO: in-between layer that compresses the serialized data so it isn't absolutely ridiculous in file size
@@ -195,8 +201,10 @@ public class MocapPlayerOurs : MonoBehaviour
         animFile.Close();
 
         // Save the associated audio clip if one exists
-
         SaveAudioClip(fileName);
+
+        // Since we have saved, no longer need to prompt before leaving
+        sceneLoader.promptBeforeGo = false;
     }
 
     // Loads a specified audio clip from the file system
