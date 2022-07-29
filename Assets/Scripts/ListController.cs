@@ -17,20 +17,15 @@ public class ListController : MonoBehaviour
     // Control whether or not we search the file system for loaded animations
     private static bool hasLoaded = false;
 
+    // Sharable avatar for loading recordings
+    public static GameObject shareAvatar;
+
     // Start is called before the first frame update
     void Start()
     {
-        /*
-        saveFile = Application.dataPath + "/data.json";
-        if (File.Exists(saveFile))
-        {
-            string FileContents = File.ReadAllText(saveFile);
-            savedList = JsonUtility.FromJson<List<GameObject>>(FileContents);
-        }*/
+        shareAvatar = avatarPrefab;
         LoadFromFileSystem();
         LoadRecordings();
-        //string json = JsonUtility.ToJson(savedList);
-        //File.WriteAllText(saveFile, json);
     }
 
     // Loads a list of the animation files in the StreamableAssets folder and populates the recording list
@@ -54,14 +49,10 @@ public class ListController : MonoBehaviour
             string relName = file.Substring(Application.streamingAssetsPath.Length + 1);
             relName = relName.Substring(0, relName.Length - 5);
 
-            AnimationClip loadedClip = AnimationLoader.LoadExistingClip(avatarPrefab, relName);
             GameObject rec = Instantiate(recordingPrefab);
             DontDestroyOnLoad(rec);
 
             rec.GetComponent<Recording>().text.text = relName;
-
-            loadedClip.name = relName;
-            rec.GetComponent<Recording>().clip = loadedClip;
 
             savedList.Add(rec);
         }
@@ -75,8 +66,6 @@ public class ListController : MonoBehaviour
         for(int i = len - 1; i >= 0; i--)
         {
             GameObject recordingObj = Instantiate(savedList[i], recordingParent) as GameObject;
-            //recordingObj.GetComponent<Recording>().text.text = savedList[i].GetComponent<Recording>().text.text;
-            //recordingObj.GetComponent<Recording>().clip = savedList[i].GetComponent<Recording>().clip;
             recordingObj.GetComponent<Recording>().listController = this;
             Debug.Log("Created List Item");
         }

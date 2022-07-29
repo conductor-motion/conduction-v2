@@ -180,7 +180,7 @@ public class MocapRecorderOurs : MonoBehaviour
 
             if (infoText & ((int)(animTime * 10f) % 10) == 0)
             {
-                infoText.text = string.Format("{0:F0}s", animTime);
+                infoText.text = string.Format("{0}:{1}", Math.Floor(animTime / 60), (animTime % 60).ToString("00"));
             }
         }
 
@@ -282,31 +282,26 @@ public class MocapRecorderOurs : MonoBehaviour
         }
 
         // Begin recording audio
-        audioSource.clip = Microphone.Start(null, true, 1, 44100);
+        audioSource.clip = Microphone.Start(null, true, 60, 44100);
         audioSource.Play();
-        Invoke("ResizeRecording", 1);
+        Invoke("ResizeRecording", 60);
 
         // Begin recording motion
         isCountingDown = false;
         isRecording = true;
         StartCoroutine(SwapIcon());
-
-        /* if (recIcon)
-        {
-            recIcon.gameObject.SetActive(true);
-        } */
     }
 
-    // Add the next second of recording audio to the audio vector list
+    // Add the next minute of recording audio to the audio vector list
     void ResizeRecording()
     {
         if (isRecording)
         {
-            int length = 44100;
+            int length = 44100 * 60;
             float[] clipData = new float[length];
             audioSource.clip.GetData(clipData, 0);
             audioRecording.AddRange(clipData);
-            Invoke("ResizeRecording", 1);
+            Invoke("ResizeRecording", 60);
         }
     }
 
