@@ -113,12 +113,16 @@ public class MocapPlayerOurs : MonoBehaviour
             errorField.text = "The selected name is too long.\nPlease use a shorter name.";
             return;
         }
-        // No error, so ensure error text is hidden
-        errorField.text = "";
 
         // Check for duplicates and prevent overwrites
         // Potential TODO: give option to overwrite
-
+        if (File.Exists(Path.Combine(Application.streamingAssetsPath, input + ".anim")))
+        {
+            errorField.text = "An animation with that name already exists.\nRename that animation or choose a new name.";
+            return;
+        }
+        // No error, so ensure error text is hidden
+        errorField.text = "";
 
         // If the recording already exists, we just want to rename this file
         if (existingRecording)
