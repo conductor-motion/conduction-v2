@@ -7,9 +7,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 
-/// <summary>
-/// MocapPlayer plays the recorded animation on the model it is attached to.
-/// </summary>
+// Our implementation of the Kinect Mocap Player from the Kinect v2 Examples library
+// Differs greatly in that it uses legacy animations and performs audio loading operations
 public class MocapPlayerOurs : MonoBehaviour
 {
     // initial position & rotation of the model
@@ -17,7 +16,6 @@ public class MocapPlayerOurs : MonoBehaviour
     private Quaternion initialRot = Quaternion.identity;
 
     // For Testing with a saved file outside of client use
-    public AnimationClip testing;
     public static AnimationClip recordedClip;
 
     // For saving and renaming animation files

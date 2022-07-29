@@ -1,29 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using com.rfilkov.kinect;
 using System;
 using System.IO;
 using UnityEngine.SceneManagement;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
 using System.Text;
-//using System.Text.Json.Serialization;
 
-/// <summary>
-/// MocapRecorder records the avatar motion into the given animation clip.
-/// </summary>
+// Our implementation of the Kinect Mocap Recorder from the Kinect v2 Examples library
+// Differs greatly in that it uses legacy animations and performs audio recording operations
 public class MocapRecorderOurs : MonoBehaviour
 {
     [Tooltip("The avatar, whose motion will be captured in the animation clip.")]
     public AvatarController avatarModel;
-
-    [Tooltip("Full path to the file, where the animation clip will be saved at the end of animation recording.")]
-    //public string animSaveToFile = "Assets/AzureKinectExamples/KinectDemos/MocapAnimatorDemo/Animations/Recorded.anim";
-    //public string animSaveToFile = "Assets/K2Examples/KinectDemos/MocapAnimatorDemo/Animations/Recorded.anim";
-    private static string tempRecordSave;
-    private string animSaveToFile;
-    private string animSaveToFileBuilt;
 
     [Tooltip("Whether to capture the root motion as well.")]
     public bool captureRootMotion = true;
@@ -70,20 +58,18 @@ public class MocapRecorderOurs : MonoBehaviour
     // initial model's root position
     private Vector3 initialRootPos = Vector3.zero;
 
-    //Non-Vanilla (Added By Us)
-
+    // Control the recording button
     private bool recordButtonPressed = false;
     private bool editorOverride = false;
     private Sprite notRec;
     private Sprite isRec;
     public static AnimationClip recordedClip;
 
+    // Elements to hide when recording
     private GameObject MetronomeUI;
     private GameObject AxisInstructionsUI;
 
-    //End Non-Vanilla
-
-    // : )
+    // Legacy animation construction data structures
     private Dictionary<GameObject, string> avatarComponents = new Dictionary<GameObject, string>();
     public static Dictionary<string, AnimationCurve> legacyCurves = new Dictionary<string, AnimationCurve>();
     public static AnimationClip legacyAnimClip;
@@ -220,8 +206,6 @@ public class MocapRecorderOurs : MonoBehaviour
     // Coroutine for animating the icon of the record button
     private IEnumerator SwapIcon()
     {
-        // Instantiate a new sprite from the textures given
-        // Likely leads to some memory leak but is unlikely to be truly impactful
         Sprite newSprite;
         
         if (isRecording)
@@ -240,7 +224,6 @@ public class MocapRecorderOurs : MonoBehaviour
         if (isRecording)
         {
             // Loop to take 0.5 seconds to achieve a smooth effect
-            // TODO: curves for more smooth animation
             for (int i = 0; i < 10; i++)
             {
                 recButton.transform.GetComponent<RectTransform>().sizeDelta -= new Vector2(1f, 1f);

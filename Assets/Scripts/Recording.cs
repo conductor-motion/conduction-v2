@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.IO;
 
+// Recording storage data structure
+// Does not include audio - that is loaded on-demand to avoid large memory usage
 public class Recording : MonoBehaviour
 {
-    //public string recordingName;
     public AnimationClip clip = null;
     public Text text;
     public ListController listController;
 
+    // When open button clicked, open the selected animation
     public void open()
     {
         // Load on demand, rather than when the list is loaded
@@ -32,6 +34,7 @@ public class Recording : MonoBehaviour
         SceneManager.LoadScene("ViewingPage");
     }
     
+    // When the delete button is pressed, remove all references to the selected animation
     public void delete()
     {
         // Attempt to delete the associated .anim file for this recording

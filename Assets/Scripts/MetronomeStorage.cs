@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Metronome data structure
+
 struct metronomeInfo
 {
     private string name;

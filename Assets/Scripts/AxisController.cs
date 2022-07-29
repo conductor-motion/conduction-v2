@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Controls the behavior of the controllable axis lines
 public class AxisController : MonoBehaviour
 {
     SpriteRenderer rendition;

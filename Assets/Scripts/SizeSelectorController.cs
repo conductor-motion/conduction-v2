@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// Control the size of markup with a slider
 public class SizeSelectorController : MonoBehaviour
 {
     private Slider slider;
     private MarkupManager markupManager;
-    // Start is called before the first frame update
+
+    // Assign the event listener for the markup size slider
     void Start()
     {
         slider = this.gameObject.GetComponent<Slider>();

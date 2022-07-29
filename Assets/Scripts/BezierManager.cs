@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Used in markup for converting small sets of points to very small Bezier curves
+// This makes lines less jagged
 public class BezierManager
 {
     // Points to consider when drawing a Bezier line

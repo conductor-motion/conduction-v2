@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Tool for toggling fullscreen and windowed states of the Application
 public class FullScreenController : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public Toggle fullscreenToggle;
     private bool isWindowed, goWindowed, isFullScreen, goFullScreen;
 
+    // Begin the program in fullscreen
     private void Start()
     {
         Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
@@ -18,6 +18,7 @@ public class FullScreenController : MonoBehaviour
         goWindowed = false;
     }
 
+    // If a state change is requested, fulfill that request and reset the request
     private void Update()
     {
         goWindowed = !fullscreenToggle.isOn;
@@ -32,6 +33,7 @@ public class FullScreenController : MonoBehaviour
         }
     }
 
+    // Fulfill the request to go fullscreen
     public void setFullScreen()
     {
         Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
@@ -40,12 +42,11 @@ public class FullScreenController : MonoBehaviour
 
     }
 
+    // Fulfill the request to go windowed
     public void setWindowed()
     {
         Screen.fullScreenMode = FullScreenMode.Windowed;
         isFullScreen = false;
         isWindowed = true;
     }
-
-
 }

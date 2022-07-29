@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Controls the camera zoom and angles on the Viewing screen so the user can look around the avatar
 public class CameraController : MonoBehaviour
 {
     GameObject camera;

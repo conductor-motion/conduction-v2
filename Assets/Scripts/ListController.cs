@@ -4,10 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Our list or "inventory" system of managing the list of Recordings currently loaded by the application
 public class ListController : MonoBehaviour
 {
-    
-    //public GameObject recordingPrefab;
     public GameObject avatarPrefab;
     public GameObject recordingPrefab;
     public static List<GameObject> savedList = new List<GameObject>();
@@ -20,9 +19,10 @@ public class ListController : MonoBehaviour
     // Sharable avatar for loading recordings
     public static GameObject shareAvatar;
 
-    // Start is called before the first frame update
+    // Populate the list and display it to the user
     void Start()
     {
+        // Allow other scripts to access the avatar used for loading recordings
         shareAvatar = avatarPrefab;
         LoadFromFileSystem();
         LoadRecordings();
@@ -60,14 +60,14 @@ public class ListController : MonoBehaviour
         hasLoaded = true;
     }
 
+    // Using the list of Recordings, generates elements to show them to the user
     private void LoadRecordings()
     {
         int len = savedList.Count;
-        for(int i = len - 1; i >= 0; i--)
+        for(int i = 0; i < len; i++)
         {
             GameObject recordingObj = Instantiate(savedList[i], recordingParent) as GameObject;
             recordingObj.GetComponent<Recording>().listController = this;
-            Debug.Log("Created List Item");
         }
     }
 }

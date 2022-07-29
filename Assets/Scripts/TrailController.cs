@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Control the length of the trails shown on the models with a slider
 public class TrailController : MonoBehaviour
 {
-    // Instantiation of varaibles
+    // Instantiation of variables
     TrailRenderer trail;
     Slider trailSlider;
     Text label;
 
     float startingValue = 1f;
 
-    // Start is called before the first frame update
+    // Assign the listener for changing the slider length (which is based on time)
     void Start()
     {
         // Assign variables from the world

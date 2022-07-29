@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+// Controls the markup application on the viewing page
 public class MarkupManager : MonoBehaviour
 {
     [Tooltip("The container which has markup, used for easing export")]
@@ -37,7 +38,6 @@ public class MarkupManager : MonoBehaviour
     private Vector2 resolution;
 
     // Circle drawing
-    // Is inefficient in not using Vector3, but does not currently seem to matter
     List<int> indices = new List<int>();
 
     // When called, enables or disable markup drawing on the screen

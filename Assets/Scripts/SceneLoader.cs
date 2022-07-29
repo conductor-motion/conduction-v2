@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Scene loading controller for showing a prompt to the user if specified to do so
 public class SceneLoader : MonoBehaviour
 {
     public string scene;
@@ -29,7 +30,7 @@ public class SceneLoader : MonoBehaviour
         prompt.SetActive(false);
     }
 
-    // Actual load the target scene
+    // Actually load the target scene
     public void ForceLoad()
     {
         SceneManager.LoadScene(this.scene);

@@ -1077,7 +1077,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -516.53394, y: 0.004281965}
+  m_AnchoredPosition: {x: -516.5101, y: -0.015360888}
   m_SizeDelta: {x: 971.4, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1279187105
@@ -1483,7 +1483,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2001745919}
   m_HandleRect: {fileID: 2001745918}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1812,7 +1812,6 @@ GameObject:
   - component: {fileID: 1724824053}
   - component: {fileID: 1724824052}
   - component: {fileID: 1724824051}
-  - component: {fileID: 1724824054}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1885,21 +1884,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1724824054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1724824050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad73af4f23c6807408344efb035db689, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wantedAspectRatioX: 16
-  wantedAspectRatioY: 9
-  active: 0
 --- !u!1 &1743741581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2555,7 +2539,6 @@ GameObject:
   - component: {fileID: 1960284778}
   - component: {fileID: 1960284781}
   - component: {fileID: 1960284780}
-  - component: {fileID: 1960284779}
   m_Layer: 5
   m_Name: Recent
   m_TagString: Untagged
@@ -2584,20 +2567,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1214.5, y: -292}
   m_SizeDelta: {x: 1000, y: 585}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1960284779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960284777}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d0f45adc4b29944aa851a7239dc711c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxFiles: 4
-  container: {fileID: 1960284777}
 --- !u!114 &1960284780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2766,6 +2735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene: RecordingPage
   promptBeforeGo: 0
+  prompt: {fileID: 0}
 --- !u!114 &2038440393
 MonoBehaviour:
   m_ObjectHideFlags: 0

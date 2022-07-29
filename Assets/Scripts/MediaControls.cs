@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+// Media controls for the audio and animation played on the viewing page
+// * Timeline
+// * Start, pause, rewind, forward
+// * Volume
+// * Playback speed (animation speed + audio pitch)
 public class MediaControls : MonoBehaviour
 {
     // The Animator is the primary way to control animations in Unity
@@ -41,7 +46,7 @@ public class MediaControls : MonoBehaviour
     private UnityEngine.UI.Text volumeLabel = null;
     private AudioSource audioSource;
 
-    // Start is called before the first frame update
+    // Initialize variables necessary for controlling media playback
     void Start()
     {
         clipName = MocapPlayerOurs.recordedClip.name;
@@ -101,7 +106,8 @@ public class MediaControls : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    // Ensure an animation loops if using non-legacy animation features
+    // If the user is using the timeline, pause the animation and keep changing its playback position
     void Update()
     {
         // Check for mouse button down and up to allow for scrubbing through the timeline
@@ -162,9 +168,9 @@ public class MediaControls : MonoBehaviour
         }
     }
 
+    // Either pause or play the animation and audio depending on the current state
     public void TogglePlayback()
     {
-        //if (playerAnimator)
         if(playerAnimatorLegacy)
         {
             isPlaying = !isPlaying;
@@ -197,19 +203,22 @@ public class MediaControls : MonoBehaviour
         }
     }
 
+    // Speed slider change event
     private void SliderChangeEvent()
     {
         SetSpeed((float)speedController.value);
     }
 
+    // Volume slider change event
     private void VolumeSliderChangeEvent()
     {
         audioSource.volume = (float)volumeController.value;
 
-        // Adjust the label by converting from the (0,1) float to percentage
+        // Adjust the volume label by converting from the (0,1) float to percentage
         volumeLabel.text = (volumeController.value * 100).ToString("0") + "%";
     }
 
+    // Returns the current animation speed multiplier (never negative)
     public float GetSpeed()
     {
         return animSpeed;
@@ -227,13 +236,16 @@ public class MediaControls : MonoBehaviour
         }
     }
 
+    // Sets the animation and audio to play in reverse
     public void Reverse()
     {
         isRewind = true;
         playerAnimatorLegacy[clipName].speed = animSpeed * -1;
         lastSpeed = animSpeed;
-        audioSource.pitch = -animSpeed; // ok this is the funniest thing i've ever supported
+        audioSource.pitch = -animSpeed; // ok this is the funniest thing I've ever supported
     }
+
+    // Sets the animation and audio to play normally
     public void Forward()
     {
         isRewind = false;

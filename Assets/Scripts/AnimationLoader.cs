@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
+// Loads animations from files and returns a built legacy AnimationClip
 public class AnimationLoader
 {
     private static GameObject avatar;

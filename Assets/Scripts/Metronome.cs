@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// Controls the metronome behavior given to the user on the Recording page
 public class Metronome : MonoBehaviour
 {
     public MetronomeStorage metronome;
@@ -12,7 +13,8 @@ public class Metronome : MonoBehaviour
     public TMP_Dropdown timeSigDownDropdown;
     private AudioSource audioSource;
     private BeatChecker beatChecker;
-    // Start is called before the first frame update
+
+    // Initialize the object references used to control the metronome
     void Start()
     {
         metronome = GameObject.FindGameObjectWithTag("Metronome").GetComponent<MetronomeStorage>();

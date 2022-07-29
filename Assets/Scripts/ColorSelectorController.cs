@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using TMPro;
 
+// Used for drawing the color selection wheel without the use of an image that may struggle to scale
 public class ColorSelectorController : MonoBehaviour
 {
-    private TMP_Dropdown dropdown;
     private MarkupManager markupManager;
 
     [System.NonSerialized]
@@ -29,13 +28,14 @@ public class ColorSelectorController : MonoBehaviour
 
     RaycastResult currentRaycast;
 
-    // Start is called before the first frame update
+    // Initialize the color selection wheel and variables used to create it
     void Start()
     {
         colorSelectorIndicator = GameObject.Find("ColorSelectorIndicator");
 
         radius = (int)(transform.GetComponent<RectTransform>().sizeDelta.x / 2);
 
+        // Create the blank texture used to render the wheel
         texture = new Texture2D(radius * 2, radius * 2);
         blankSprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
         this.GetComponent<UnityEngine.UI.Image>().sprite = blankSprite;
@@ -53,8 +53,8 @@ public class ColorSelectorController : MonoBehaviour
 
         this.GetComponent<Image>().SetNativeSize();
         rootPos = transform.position;
-        // Unsure why transform.position reports the incorrect results when using alignment elements
-        // This corrects it using half of the current size, which is 160 and is hard-coded cause this is bad code
+
+        // Gets the original position of the wheel such that it is usable even if the window is scaled
         rootPos.x += GetComponent<RectTransform>().sizeDelta.x/2 * GetComponent<RectTransform>().lossyScale.x;
         rootPos.y += GetComponent<RectTransform>().sizeDelta.y/2 * GetComponent<RectTransform>().lossyScale.y;
 

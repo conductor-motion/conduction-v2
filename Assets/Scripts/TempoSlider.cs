@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// Control the tempo of the metronome with a slider
 public class TempoSlider : MonoBehaviour
 {
     private Slider tempoSlider;
     public TextMeshProUGUI tempoLabel;
     private Metronome metronome;
 
-    // Start is called before the first frame update
+    // Assign the event listener for the tempo slider
     void Start()
     {
         // Assigns gameObjects
