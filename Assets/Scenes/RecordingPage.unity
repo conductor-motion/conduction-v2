@@ -4746,8 +4746,8 @@ MonoBehaviour:
   pickups: 0
   pickupUp: 0
   pickupLow: 0
-  metLowBeat: {fileID: 8300000, guid: b178682e73944ef4cb1f558d55ef0744, type: 3}
-  metUpBeat: {fileID: 8300000, guid: e929dd16cd2b42f41a7d18a58571469d, type: 3}
+  metLowBeat: {fileID: 8300000, guid: 0a6e17b54f6c16a4dad750e0594ade1d, type: 3}
+  metUpBeat: {fileID: 8300000, guid: c5723778f61b94f4fb2684c68fe1428f, type: 3}
 --- !u!114 &1448490663
 MonoBehaviour:
   m_ObjectHideFlags: 0
