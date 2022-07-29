@@ -24,6 +24,7 @@ public class Recording : MonoBehaviour
             ListController.savedList.Find(item => item.GetComponent<Recording>().text.text == text.text).GetComponent<Recording>().clip = newClip;
 
             this.clip = newClip;
+            Debug.Log(this.clip.name);
         }
 
         MocapPlayerOurs.recordedClip = this.clip;
