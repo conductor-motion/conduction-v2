@@ -47,7 +47,7 @@ public class CaptureController : MonoBehaviour
         }
         else if (capture.status == Evereal.VideoCapture.CaptureStatus.READY)
         {
-            buttonText.text = "Start Recording";
+            buttonText.text = "Start Video Recording";
         }
         else if (capture.status == Evereal.VideoCapture.CaptureStatus.STARTED)
         {
@@ -59,7 +59,7 @@ public class CaptureController : MonoBehaviour
     private void cancelCapture()
     {
         cancelButton.SetActive(false);
-        buttonText.text = "Start Recording";
+        buttonText.text = "Start Video Recording";
         capture.CancelCapture();
     }
 }
