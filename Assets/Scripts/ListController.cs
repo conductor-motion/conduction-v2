@@ -34,20 +34,28 @@ public class ListController : MonoBehaviour
         if (hasLoaded)
             return;
 
-        string[] files = Directory.GetFiles(Application.streamingAssetsPath);
+        // Get the files from the directory and sort them by time accessed
+        DirectoryInfo dirInfo = new DirectoryInfo(Application.streamingAssetsPath);
+        FileInfo[] files = dirInfo.GetFiles();
+
+        // Sort the FileInfo array
+        Array.Sort(files, delegate(FileInfo file1, FileInfo file2)
+        {
+            return file2.LastAccessTime.CompareTo(file1.LastAccessTime);
+        });
+
         List<string> animationFiles = new List<string>();
 
         // Determine which files are animations
-        foreach (string file in files)
+        foreach (FileInfo file in files)
         {
-            if (file.Substring(file.Length - 5) == ".anim") animationFiles.Add(file);
+            if (file.Name.Substring(file.Name.Length - 5) == ".anim") animationFiles.Add(file.Name);
         }
 
         // For each animation file, parse it and create a Recording
         foreach (string file in animationFiles)
         {
-            string relName = file.Substring(Application.streamingAssetsPath.Length + 1);
-            relName = relName.Substring(0, relName.Length - 5);
+            string relName = file.Substring(0, file.Length - 5);
 
             GameObject rec = Instantiate(recordingPrefab);
             DontDestroyOnLoad(rec);

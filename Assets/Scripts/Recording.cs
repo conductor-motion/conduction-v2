@@ -29,6 +29,11 @@ public class Recording : MonoBehaviour
             Debug.Log(this.clip.name);
         }
 
+        // Shift this item to the front of the saved list so that it is the most recently accessed
+        GameObject newest = ListController.savedList.Find(item => item.GetComponent<Recording>().text.text == text.text);
+        ListController.savedList.Remove(newest);
+        ListController.savedList.Insert(0, newest);
+
         MocapPlayerOurs.recordedClip = this.clip;
         MocapPlayerOurs.existingRecording = true;
         SceneManager.LoadScene("ViewingPage");

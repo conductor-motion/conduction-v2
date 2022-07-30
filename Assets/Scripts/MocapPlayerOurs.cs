@@ -163,7 +163,8 @@ public class MocapPlayerOurs : MonoBehaviour
         recordedClip.name = userInput.text;
         savedClip.GetComponent<Recording>().clip = recordedClip;
 
-        ListController.savedList.Add(savedClip);
+        // Put the new recording in the front of the savedList
+        ListController.savedList.Insert(0, savedClip);
         SaveAnimationClip(savedClip.GetComponent<Recording>().text.text);
 
         // We have just made a recording, so now any future button presses must rename the recording
