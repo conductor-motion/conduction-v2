@@ -20,6 +20,7 @@ public class ColorSelectorController : MonoBehaviour
 
     // Used for the current color selection indicator
     private GameObject colorSelectorIndicator;
+    private GameObject eraserObj;
 
     // Keep track of the mouse
     private bool isMouseDown = false;
@@ -32,6 +33,7 @@ public class ColorSelectorController : MonoBehaviour
     void Start()
     {
         colorSelectorIndicator = GameObject.Find("ColorSelectorIndicator");
+        eraserObj = GameObject.Find("Eraser");
 
         radius = (int)(transform.GetComponent<RectTransform>().sizeDelta.x / 2);
 
@@ -82,6 +84,12 @@ public class ColorSelectorController : MonoBehaviour
             // Get local coordinates inside element, and get pixel color at that loation
             if (Input.mousePosition != mousePos && IsPointeroverUIElement())
             {
+                if (!colorSelectorIndicator.activeSelf) 
+                {
+                    colorSelectorIndicator.SetActive(true);
+                    eraserObj.GetComponent<Image>().color = new Color(0.26f, 0.26f, 0.26f, 1f);
+                }
+
                 if (Vector3.Distance(Input.mousePosition, rootPos) < radius)
                 {
                     // Calculate local position and select the color from that pixel
@@ -99,6 +107,13 @@ public class ColorSelectorController : MonoBehaviour
                 mousePos = Input.mousePosition;
             }
         }
+    }
+
+    public void ClickEraser()
+    {
+        colorSelectorIndicator.SetActive(false);
+        markupManager.SelectColor(new Color(0f,0f,0f,0f));
+        eraserObj.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
     }
 
     // Easier to conceptualize RGB as HSV, so allow conversion
