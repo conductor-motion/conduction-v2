@@ -1,7 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
+
+// Disambiguate the usage of Debug
+using Debug = UnityEngine.Debug;
 
 // Controls the Evereal video capture utility with customizable buttons rather than the drawn
 // GUI buttons used by the tool
@@ -9,6 +14,7 @@ public class CaptureController : MonoBehaviour
 {
     public Evereal.VideoCapture.VideoCapture capture;
     public GameObject cancelButton;
+    public GameObject browseButton;
 
     private Text buttonText;
 
@@ -19,6 +25,7 @@ public class CaptureController : MonoBehaviour
         Button button = GetComponent<Button>();
         button.onClick.AddListener(onPress);
         cancelButton.GetComponent<Button>().onClick.AddListener(cancelCapture);
+        browseButton.GetComponent<Button>().onClick.AddListener(browseToFolder);
     }
 
     // Depending on the current status, either start or stop the video capture
@@ -61,5 +68,21 @@ public class CaptureController : MonoBehaviour
         cancelButton.SetActive(false);
         buttonText.text = "Start Video Recording";
         capture.CancelCapture();
+    }
+
+    // Opens a file explorer to the folder that holds the video captures
+    private void browseToFolder()
+    {
+      string folder = "Captures/";
+      string fullPath = Path.GetFullPath(folder);
+
+      if (Directory.Exists(fullPath))
+      {
+        Process.Start(Path.GetFullPath(folder));
+      }
+      else
+      {
+        Debug.LogWarning("Folder " + fullPath + " does not exist.");
+      }
     }
 }
