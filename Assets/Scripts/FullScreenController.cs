@@ -10,24 +10,25 @@ public class FullScreenController : MonoBehaviour
     private static bool isInitialized = false;
     private static bool isWindowed, goWindowed, isFullScreen, goFullScreen;
 
-    // Remember windowed resolution
-    private static int height;
-    private static int width;
+    // Used for restoring state between fullscreen and windowed
+    private int width, height;
 
     // Begin the program in fullscreen
     private void Start()
     {
         if (!isInitialized)
         {
-            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, FullScreenMode.ExclusiveFullScreen);
             isFullScreen = true;
             isWindowed = false;
             goWindowed = false;
-
-            height = Screen.height;
-            width = Screen.width;
         }
         isInitialized = true;
+        fullscreenToggle.isOn = isFullScreen;
+
+        width = Screen.width;
+        height = Screen.height;
     }
 
     // If a state change is requested, fulfill that request and reset the request
@@ -48,25 +49,21 @@ public class FullScreenController : MonoBehaviour
     // Fulfill the request to go fullscreen
     public void setFullScreen()
     {
-        // Remember old resolution
-        height = Screen.currentResolution.height;
-        width = Screen.currentResolution.width;
+        // Remember old resolution before we swap
+        height = Screen.height;
+        width = Screen.width;
 
-        Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+        Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+        Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, FullScreenMode.ExclusiveFullScreen); // Fix UI scaling bug that occurs
         isFullScreen = true;
         isWindowed = false;
-
-        // Fix scaling issues
-        Screen.SetResolution(Screen.width, Screen.height, FullScreenMode.ExclusiveFullScreen);
     }
 
     // Fulfill the request to go windowed
     public void setWindowed()
     {
-        // Swap resolution with old
-        Screen.SetResolution(width, height, FullScreenMode.Windowed);
-
         Screen.fullScreenMode = FullScreenMode.Windowed;
+        Screen.SetResolution(width, height, FullScreenMode.Windowed);
         isFullScreen = false;
         isWindowed = true;
     }
