@@ -162,6 +162,7 @@ public class MediaControls : MonoBehaviour
                 // We only care about the x position of the mouse
                 float normalizedX = (float)Input.mousePosition.x / timelineBarWidth / timelineBar.GetComponent<RectTransform>().lossyScale.x;
 
+                audioSource.time = audioSource.clip.length * normalizedX;
                 playerAnimatorLegacy[clipName].normalizedTime = normalizedX;
                 playerAnimatorLegacy.Play(clipName);
             }
