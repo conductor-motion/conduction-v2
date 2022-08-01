@@ -7,15 +7,27 @@ using UnityEngine.UI;
 public class FullScreenController : MonoBehaviour
 {
     public Toggle fullscreenToggle;
-    private bool isWindowed, goWindowed, isFullScreen, goFullScreen;
+    private static bool isInitialized = false;
+    private static bool isWindowed, goWindowed, isFullScreen, goFullScreen;
+
+    // Remember windowed resolution
+    private static int height;
+    private static int width;
 
     // Begin the program in fullscreen
     private void Start()
     {
-        Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
-        isFullScreen = true;
-        isWindowed = false;
-        goWindowed = false;
+        if (!isInitialized)
+        {
+            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+            isFullScreen = true;
+            isWindowed = false;
+            goWindowed = false;
+
+            height = Screen.height;
+            width = Screen.width;
+        }
+        isInitialized = true;
     }
 
     // If a state change is requested, fulfill that request and reset the request
@@ -36,15 +48,24 @@ public class FullScreenController : MonoBehaviour
     // Fulfill the request to go fullscreen
     public void setFullScreen()
     {
+        // Remember old resolution
+        height = Screen.currentResolution.height;
+        width = Screen.currentResolution.width;
+
         Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
         isFullScreen = true;
         isWindowed = false;
 
+        // Fix scaling issues
+        Screen.SetResolution(Screen.width, Screen.height, FullScreenMode.ExclusiveFullScreen);
     }
 
     // Fulfill the request to go windowed
     public void setWindowed()
     {
+        // Swap resolution with old
+        Screen.SetResolution(width, height, FullScreenMode.Windowed);
+
         Screen.fullScreenMode = FullScreenMode.Windowed;
         isFullScreen = false;
         isWindowed = true;
