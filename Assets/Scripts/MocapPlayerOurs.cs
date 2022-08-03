@@ -64,6 +64,7 @@ public class MocapPlayerOurs : MonoBehaviour
         if (existingRecording)
         {
             btnClick.gameObject.GetComponentInChildren<Text>().text = "Rename Recording";
+            userInput.text = recordedClip.name;
         }
         else
         {
