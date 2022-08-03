@@ -41,11 +41,11 @@ public class CameraController : MonoBehaviour
         camera.transform.position = new Vector3(Mathf.Cos(angle) * radius, cameraHeight, Mathf.Sin(angle) * radius + 3);
     }
 
-    // Rotates the camera and grid 90 degrees counter clockwise
-    public void TurnLeft90()
+    // Rotates the camera and grid 45 degrees counter clockwise
+    public void TurnLeft45()
     {
-        // Updates the angle to be 90 degrees larger
-        angle += Mathf.PI / 2;
+        // Updates the angle to be 45 degrees larger
+        angle += Mathf.PI / 4;
         
         // Prevents angle from getting excessively large
         if (angle == Mathf.PI * 2)
@@ -54,17 +54,17 @@ public class CameraController : MonoBehaviour
         // moves the camera in a circular motion
         // Mathf.Cos and Sin use radians, Quaternion.Euler uses degrees
         camera.transform.position = new Vector3(Mathf.Cos(angle) * radius, cameraHeight, Mathf.Sin(angle) * radius + 3);
-        camera.transform.rotation = Quaternion.Euler(0, -90, 0) * camera.transform.rotation;
+        camera.transform.rotation = Quaternion.Euler(0, -45, 0) * camera.transform.rotation;
 
         // perfoms the same movement on the axis lines so they stay in the same location
         grid.transform.position = new Vector3(Mathf.Cos(angle + Mathf.PI) * radius, cameraHeight, Mathf.Sin(angle + Mathf.PI) * radius + 3);
-        grid.transform.rotation = Quaternion.Euler(0, -90, 0) * grid.transform.rotation;
+        grid.transform.rotation = Quaternion.Euler(0, -45, 0) * grid.transform.rotation;
     }
 
-    public void TurnRight90()
+    public void TurnRight45()
     {
-        // Updates the angle to be 90 degrees smaller
-        angle -= Mathf.PI / 2;
+        // Updates the angle to be 45 degrees smaller
+        angle -= Mathf.PI / 4;
 
         // Prevents angle from getting excessively large
         if (angle == 0)
@@ -73,11 +73,11 @@ public class CameraController : MonoBehaviour
         // moves the camera in a circular motion
         // Mathf.Cos and Sin use radians, Quaternion.Euler uses degrees
         camera.transform.position = new Vector3(Mathf.Cos(angle) * radius, cameraHeight, Mathf.Sin(angle) * radius + 3);
-        camera.transform.rotation = Quaternion.Euler(0, 90, 0) * camera.transform.rotation;
+        camera.transform.rotation = Quaternion.Euler(0, 45, 0) * camera.transform.rotation;
 
         // perfoms the same movement on the axis lines so they stay in the same location
         grid.transform.position = new Vector3(Mathf.Cos(angle + Mathf.PI) * radius, cameraHeight, Mathf.Sin(angle + Mathf.PI) * radius + 3);
-        grid.transform.rotation = Quaternion.Euler(0, 90, 0) * grid.transform.rotation;
+        grid.transform.rotation = Quaternion.Euler(0, 45, 0) * grid.transform.rotation;
     }
 
     public void RotateCustom(float degrees)

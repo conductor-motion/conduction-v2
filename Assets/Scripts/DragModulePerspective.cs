@@ -46,10 +46,10 @@ public class DragModulePerspective : MonoBehaviour
     }
 
     // Get the "world space" of the mouse by using the camera
-    // The 3.30 at the end is the z-axis, which cannot be reflected in this use-case with ScreenToWorldPoint
-    // 3.30 is behind the avatar used
+    // The 4.01 at the end is the z-axis, which cannot be reflected in this use-case with ScreenToWorldPoint
+    // 4.01 is behind the avatar used
     Vector3 mousePosition()
     {
-        return Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, (float)3.30));
+        return Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, (float)4.01));
     }
 }
