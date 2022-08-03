@@ -1,1 +1,0 @@
-Video Capture Pro unity plugin is based on FFmpeg project, please read the license file and follow the document to install ffmpeg builds before use.
