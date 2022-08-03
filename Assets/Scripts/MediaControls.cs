@@ -92,6 +92,12 @@ public class MediaControls : MonoBehaviour
         {
             volumeLabel = GameObject.Find("Volume Label").GetComponent<UnityEngine.UI.Text>();
             volumeController.onValueChanged.AddListener(delegate { VolumeSliderChangeEvent(); });
+
+            if (!audioSource.clip) 
+            {
+                GameObject.Find("Divide Volume and Trail").SetActive(false);
+                volumeController.gameObject.SetActive(false);
+            }
         }
 
         timeline = GameObject.Find("Timeline");
