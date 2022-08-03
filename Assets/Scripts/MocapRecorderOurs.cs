@@ -75,6 +75,8 @@ public class MocapRecorderOurs : MonoBehaviour
     public static AnimationClip legacyAnimClip;
 
     // Audio recording
+    private bool canRecordAudio = false;
+    private string chosenMic = "";
     private AudioSource audioSource;
     // "Audio vectors" storage so this can be serialized to a file and loaded with the animation when needed
     List<float> audioRecording = new List<float>();
@@ -121,6 +123,28 @@ public class MocapRecorderOurs : MonoBehaviour
         else
         {
             ShowMessage("The AvatarModel is not set!");
+        }
+
+        // Check if we can record audio in this session
+        string firstAcceptableMic = "";
+        foreach (string device in Microphone.devices)
+        {
+            // Unity does not support Microphone arrays even in the year of our lord 2022
+            if (device.Contains("Microphone Array")) continue;
+
+            // Keep the first Microphone we can theoretically use, just in case
+            if (firstAcceptableMic.Length == 0) firstAcceptableMic = device;
+
+            // Always use the Kinect microphone if possible
+            if (device.Contains("Xbox NUI Sensor")) chosenMic = device;
+        }
+
+        // If we found any microhpone that works, we can record audio
+        if (firstAcceptableMic.Length > 0)
+        {
+            canRecordAudio = true;
+
+            if (chosenMic.Length == 0) chosenMic = firstAcceptableMic;
         }
     }
 
@@ -177,19 +201,11 @@ public class MocapRecorderOurs : MonoBehaviour
         }
     }
 
-
-    //void LateUpdate()
-    //{
-    //}
-
-    //Non-Vanilla (Added By Us)
-
     public void RecordButton()
     {
         recordButtonPressed = !recordButtonPressed;
     }
 
-    //End Non-Vanilla
 
     // displays the given message on screen and logs it to console
     private void ShowMessage(string sMessage)
@@ -265,10 +281,13 @@ public class MocapRecorderOurs : MonoBehaviour
         }
 
         // Begin recording audio
-        audioSource.clip = Microphone.Start(null, true, 60, 44100);
-        audioSource.Play();
-        Invoke("ResizeRecording", 60);
-
+        if (canRecordAudio)
+        {
+            audioSource.clip = Microphone.Start(chosenMic, true, 60, 44100);
+            audioSource.Play();
+            Invoke("ResizeRecording", 60);
+        }
+        
         // Begin recording motion
         isCountingDown = false;
         isRecording = true;
@@ -327,30 +346,33 @@ public class MocapRecorderOurs : MonoBehaviour
             isRecording = false;
 
             // Halt recording audio and record its last sub-second audio to the vector list
-            int length = Microphone.GetPosition(null);
-            Microphone.End(null);
-            float[] clipData = new float[length];
-            audioSource.clip.GetData(clipData, 0);
-
-            // Create a final concatenated audio clip
-            float[] fullClip = new float[clipData.Length + audioRecording.Count];
-            for (int i = 0; i < fullClip.Length; i++)
+            if (canRecordAudio)
             {
-                if (i < audioRecording.Count)
+                int length = Microphone.GetPosition(chosenMic);
+                Microphone.End(null);
+                float[] clipData = new float[length];
+                audioSource.clip.GetData(clipData, 0);
+
+                // Create a final concatenated audio clip
+                float[] fullClip = new float[clipData.Length + audioRecording.Count];
+                for (int i = 0; i < fullClip.Length; i++)
                 {
-                    fullClip[i] = audioRecording[i];
+                    if (i < audioRecording.Count)
+                    {
+                        fullClip[i] = audioRecording[i];
+                    }
+                    else
+                    {
+                        fullClip[i] = clipData[i - audioRecording.Count];
+                    }
                 }
-                else
-                {
-                    fullClip[i] = clipData[i - audioRecording.Count];
-                }
+
+                finalRecording = fullClip;
+
+                // Create a Unity audio clip from the recorded data to play in playback
+                recordedAudio = AudioClip.Create("recordingAudio", finalRecording.Length, 1, 44100, false);
+                recordedAudio.SetData(finalRecording, 0);
             }
-
-            finalRecording = fullClip;
-
-            // Create a Unity audio clip from the recorded data to play in playback
-            recordedAudio = AudioClip.Create("recordingAudio", finalRecording.Length, 1, 44100, false);
-            recordedAudio.SetData(finalRecording, 0);
 
             // Realistically is impossible for nothing to be recorded when a countdown is included
             bool isAnythingRecorded = true;
