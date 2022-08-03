@@ -11,7 +11,7 @@ public class TrailController : MonoBehaviour
     Slider trailSlider;
     Text label;
 
-    float startingValue = 1f;
+    float startingValue = 0.5f;
 
     // Assign the listener for changing the slider length (which is based on time)
     void Start()

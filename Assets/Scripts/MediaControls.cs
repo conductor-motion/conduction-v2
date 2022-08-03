@@ -16,7 +16,10 @@ public class MediaControls : MonoBehaviour
     private UnityEngine.UI.Slider speedController = null;
     private GameObject playButton;
     private string clipName;
+
+    // Control trails when changing clip timing
     private GameObject[] trails;
+    private float lastTrailLength;
 
     private bool isPlaying = true;
     // Speed multiplier
@@ -61,6 +64,7 @@ public class MediaControls : MonoBehaviour
         initialPos = playerAnimatorLegacy.gameObject.transform.position;
         initialRot = playerAnimatorLegacy.gameObject.transform.rotation;
 
+        // Get the trails in the scene
         trails = GameObject.FindGameObjectsWithTag("Trail");
 
         playButton = GameObject.FindGameObjectWithTag("PlayButton");
@@ -100,6 +104,7 @@ public class MediaControls : MonoBehaviour
             }
         }
 
+        // Get the timeline and its elements
         timeline = GameObject.Find("Timeline");
         if (!timeline)
         {
@@ -112,6 +117,36 @@ public class MediaControls : MonoBehaviour
         }
     }
 
+    // Disable existing trails
+    private void HideTrails()
+    {
+        lastTrailLength = trails[0].GetComponent<TrailRenderer>().time;
+        foreach (GameObject trail in trails)
+        {
+            trail.GetComponent<TrailRenderer>().time = 0;
+        }
+    }
+
+    // Resume showing existing trails
+    private void ResumeTrails()
+    {
+        foreach (GameObject trail in trails)
+        {
+            trail.GetComponent<TrailRenderer>().time = lastTrailLength;
+        }
+    }
+
+    // Resume trails after a very small delay so the animator can catch up
+    private IEnumerator ResumeTrailsAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        foreach (GameObject trail in trails)
+        {
+            trail.GetComponent<TrailRenderer>().time = lastTrailLength;
+        }
+    }
+
     // Ensure an animation loops if using non-legacy animation features
     // If the user is using the timeline, pause the animation and keep changing its playback position
     void Update()
@@ -121,33 +156,50 @@ public class MediaControls : MonoBehaviour
         {
             scrubbing = true;
             audioSource.Pause();
+            
+            // Hide trails when using the timeline to move
+            HideTrails();
         }
         if (Input.GetKeyUp(KeyCode.Mouse0) && scrubbing == true)
         {
             scrubbing = false;
             audioSource.Play();
             SetSpeed(lastSpeed);
+
+            // Resume showing trails again
+            ResumeTrails();
         }
 
         if (doLoop)
         {
-            // Force a loop of the current state in the animation in a crude method
-            // This is necessary if we cannot programmatically set the animationclip to loop
-            if(playerAnimatorLegacy[clipName].normalizedTime > 1 && !isRewind)
+            // Force a loop of the current state in the animation
+            if(playerAnimatorLegacy[clipName].normalizedTime > 1 && !isRewind && !scrubbing)
             {
+                // Upon looping, hide the existing trails for a moment
+                HideTrails();
+
                 playerAnimatorLegacy.gameObject.transform.position = initialPos;
                 playerAnimatorLegacy.gameObject.transform.rotation = initialRot;
                 playerAnimatorLegacy[clipName].normalizedTime = 0f;
                 playerAnimatorLegacy.Play(clipName);
+
+                // Resume showing trails
+                StartCoroutine(ResumeTrailsAfterDelay(0.1f));
             }
 
             // Used for the reversed playback
-            if (playerAnimatorLegacy[clipName].normalizedTime < 0 && isRewind)
+            if (playerAnimatorLegacy[clipName].normalizedTime < 0 && isRewind && !scrubbing)
             {
+                // Upon looping, hide the existing trails for a moment
+                HideTrails();
+
                 playerAnimatorLegacy.gameObject.transform.position = initialPos;
                 playerAnimatorLegacy.gameObject.transform.rotation = initialRot;
                 playerAnimatorLegacy[clipName].normalizedTime = 1f;
                 playerAnimatorLegacy.Play(clipName);
+
+                // Resume showing trails
+                StartCoroutine(ResumeTrailsAfterDelay(0.1f));
             }
 
         }
@@ -174,6 +226,8 @@ public class MediaControls : MonoBehaviour
             }
         }
     }
+
+
 
     // Either pause or play the animation and audio depending on the current state
     public void TogglePlayback()
