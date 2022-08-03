@@ -95,6 +95,7 @@ public class MocapRecorderOurs : MonoBehaviour
         legacyCurves.Clear();
 
         audioSource = GetComponent<AudioSource>();
+        recordedAudio = null;
 
         // Instantiate sprites for icon swapping
         isRec = Sprite.Create(recordingTexture, new Rect(0.0f, 0.0f, recordingTexture.width, recordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
