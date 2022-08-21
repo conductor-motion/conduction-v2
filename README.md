@@ -147,3 +147,9 @@ Using any provided avatar controllers, maps motion from the kinect to the avatar
 * Modern Windows laptops that use Microphone Arrays are incompatible with audio recording, as Unity still does not support Microphone Arrays.
     * A fix is to somehow get that device to have a non-"Microphone Array" mic available for the program to select
 * Some builds do not have a metronome present on the Recording page. This appears to be a Unity bug and is fixed by rebuilding the application.
+
+## V1 Members
+Vijay Stroup, Connor Cabrera, Jordan McMillan, Michael Sedlack, Damian Portela
+
+### V2 Ideas
+https://github.com/conductor-motion/conduction/wiki/V2-Ideas
