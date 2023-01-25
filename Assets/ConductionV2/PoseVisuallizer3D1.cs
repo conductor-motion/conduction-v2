@@ -17,8 +17,8 @@ public class PoseVisuallizer3D1 : MonoBehaviour
     Transform objToPickUp;
     public Animator animator;
 
-    Vector3 rightHand;
-    Vector3 leftHand;
+    public Transform rightHandTarget;
+    public Transform leftHandTarget;
 
     public Transform nose;
     public Transform leftEye;
@@ -60,26 +60,6 @@ public class PoseVisuallizer3D1 : MonoBehaviour
         material = new Material(shader);
         detecter = new BlazePoseDetecter();
         //animator = GetComponent<Animator>();
-    }
-
-    void OnAnimatorIK(int layerIndex)
-    {
-        //float reach = animator.GetFloat("RightHandReach");
-        // Vector3 temp = new Vector3();
-        // temp.x = detecter.GetPoseWorldLandmark(16).x;
-        // temp.y = detecter.GetPoseWorldLandmark(16).y;
-        // temp.z = detecter.GetPoseWorldLandmark(16).z;
-        // rightHand = temp;
-        //
-        // temp.x = detecter.GetPoseWorldLandmark(15).x;
-        // temp.y = detecter.GetPoseWorldLandmark(15).y;
-        // temp.z = detecter.GetPoseWorldLandmark(15).z;
-        // leftHand = temp;
-        //
-        // animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-        // animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
-        // animator.SetIKPosition(AvatarIKGoal.RightHand, rightHand);
-        // animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHand);
     }
 
     void Update(){
@@ -190,17 +170,17 @@ public class PoseVisuallizer3D1 : MonoBehaviour
         // leftHand.y = detecter.GetPoseWorldLandmark(16).y;
         // leftHand.z = detecter.GetPoseWorldLandmark(16).z;
         //
-        // temp.x = detecter.GetPoseWorldLandmark(15).x;
-        // temp.y = detecter.GetPoseWorldLandmark(15).y;
-        // temp.z = detecter.GetPoseWorldLandmark(15).z;
-        // leftWrist.position = temp;
+        temp.x = detecter.GetPoseWorldLandmark(15).x;
+        temp.y = detecter.GetPoseWorldLandmark(15).y;
+        temp.z = detecter.GetPoseWorldLandmark(15).z;
+        leftHandTarget.position = temp;
         //
         // //animator.SetIKPosition(AvatarIKGoal.RightHand, temp);
         //
-        // temp.x = detecter.GetPoseWorldLandmark(16).x;
-        // temp.y = detecter.GetPoseWorldLandmark(16).y;
-        // temp.z = detecter.GetPoseWorldLandmark(16).z;
-        // rightWrist.position = temp;
+        temp.x = detecter.GetPoseWorldLandmark(16).x;
+        temp.y = detecter.GetPoseWorldLandmark(16).y;
+        temp.z = detecter.GetPoseWorldLandmark(16).z;
+        rightHandTarget.position = temp;
         //
         // //animator.SetIKPosition(AvatarIKGoal.LeftHand, temp);
         

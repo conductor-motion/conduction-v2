@@ -257,6 +257,7 @@
      <Compile Include="Assets/K2Examples/KinectScripts/Samples/FollowUserRotation.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/ColliderDemo/Scripts/DepthSpriteViewer.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Scripts/BarrelTrigger.cs" />
+     <Compile Include="Assets/K2Examples/KinectDemos/AvatarsDemo/U_Character/IKController.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets/StreamingAssets/FFmpeg/x86" />
      <Folder Include="Assets/Conduction/Data/2023-01-23T16:11:14" />
