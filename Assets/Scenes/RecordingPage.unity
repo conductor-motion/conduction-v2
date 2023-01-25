@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -2450,7 +2450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -2687,7 +2686,7 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: f2adce7a97c5e4c9d95639dab0907b20, type: 2}
     - target: {fileID: 9500000, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
@@ -3923,6 +3922,11 @@ MonoBehaviour:
   horizontalOffset: 0
   verticalOffset: 0
   forwardOffset: 0
+--- !u!95 &1203305702 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
+  m_PrefabInstance: {fileID: 801432925}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1218185585
 GameObject:
   m_ObjectHideFlags: 0
@@ -5160,6 +5164,7 @@ MonoBehaviour:
   inputImageUI: {fileID: 714883641}
   shader: {fileID: 4800000, guid: b643afb13b83a4048a9772002eaeb573, type: 3}
   humanExistThreshold: 0.5
+  animator: {fileID: 1203305702}
   nose: {fileID: 53100600}
   leftEye: {fileID: 624151652}
   rightEye: {fileID: 788102063}
