@@ -26,5 +26,10 @@ public class IKController : MonoBehaviour
         animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0.75f);
         animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandTarget.position);
 
+        animator.SetIKHintPositionWeight(AvatarIKHint.RightElbow, 0.5f);
+        animator.SetIKHintPosition(AvatarIKHint.RightElbow, rightElbowTarget.position);
+
+        animator.SetIKHintPositionWeight(AvatarIKHint.LeftElbow, 0.5f);
+        animator.SetIKHintPosition(AvatarIKHint.LeftElbow, leftElbowTarget.position);
     }
 }

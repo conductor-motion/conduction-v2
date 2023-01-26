@@ -19,6 +19,8 @@ public class PoseVisuallizer3D1 : MonoBehaviour
 
     public Transform rightHandTarget;
     public Transform leftHandTarget;
+    public Transform rightElbowTarget;
+    public Transform leftElbowTarget;
 
     public Transform nose;
     public Transform leftEye;
@@ -183,7 +185,19 @@ public class PoseVisuallizer3D1 : MonoBehaviour
         rightHandTarget.position = temp;
         //
         // //animator.SetIKPosition(AvatarIKGoal.LeftHand, temp);
-        
+
+
+        temp.x = detecter.GetPoseWorldLandmark(14).x;
+        temp.y = detecter.GetPoseWorldLandmark(14).y;
+        temp.z = detecter.GetPoseWorldLandmark(14).z;
+        rightElbowTarget.position = temp;
+
+
+        temp.x = detecter.GetPoseWorldLandmark(13).x;
+        temp.y = detecter.GetPoseWorldLandmark(13).y;
+        temp.z = detecter.GetPoseWorldLandmark(13).z;
+        leftElbowTarget.position = temp;
+
         Debug.Log("---");
     } 
 
