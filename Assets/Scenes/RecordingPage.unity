@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -3972,8 +3972,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightHandTarget: {fileID: 1787269934}
   leftHandTarget: {fileID: 901001543}
-  rightElbowTarget: {fileID: 0}
-  leftElbowTarget: {fileID: 0}
+  rightElbowTarget: {fileID: 1479989933}
+  leftElbowTarget: {fileID: 321805712}
 --- !u!1 &1218185585
 GameObject:
   m_ObjectHideFlags: 0
@@ -5214,6 +5214,8 @@ MonoBehaviour:
   animator: {fileID: 1203305702}
   rightHandTarget: {fileID: 1787269934}
   leftHandTarget: {fileID: 901001543}
+  rightElbowTarget: {fileID: 1479989933}
+  leftElbowTarget: {fileID: 321805712}
   nose: {fileID: 53100600}
   leftEye: {fileID: 624151652}
   rightEye: {fileID: 788102063}
@@ -6717,7 +6719,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 2.5011597}
+  m_AnchoredPosition: {x: 0, y: 2.5012207}
   m_SizeDelta: {x: 0, y: 4.9976807}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1827936183
