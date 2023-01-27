@@ -11,7 +11,7 @@ using System.Text;
 public class MocapRecorderOurs : MonoBehaviour
 {
     [Tooltip("The avatar, whose motion will be captured in the animation clip.")]
-    public AvatarController avatarModel;
+    public IKController avatarModel;
 
     [Tooltip("Whether to capture the root motion as well.")]
     public bool captureRootMotion = true;
@@ -170,7 +170,7 @@ public class MocapRecorderOurs : MonoBehaviour
             recordButtonPressed = false;
             if(!isRecording)
             {
-                if(!isCountingDown && avatarModel && (editorOverride || avatarModel.playerId != 0))
+                if(!isCountingDown && avatarModel)
                 {
                     InitAnimationCurves();
                     isCountingDown = true;
@@ -183,8 +183,9 @@ public class MocapRecorderOurs : MonoBehaviour
             }
         }
 
-        if (isRecording && avatarModel && (editorOverride || avatarModel.playerId != 0))
+        if (isRecording && avatarModel)
         {
+            print("recording");
             // record the current pose
             animTime += Time.deltaTime;
             RecordAvatarPose();
@@ -196,10 +197,10 @@ public class MocapRecorderOurs : MonoBehaviour
         }
 
         // stop recording, if the user is lost
-        if (avatarModel && (avatarModel.playerId == 0 && !editorOverride))
+        /*if (avatarModel && (avatarModel.playerId == 0 && !editorOverride))
         {
             StopRecording();
-        }
+        }*/
     }
 
     public void RecordButton()
@@ -282,12 +283,12 @@ public class MocapRecorderOurs : MonoBehaviour
         }
 
         // Begin recording audio
-        if (canRecordAudio)
+        /*if (canRecordAudio)
         {
             audioSource.clip = Microphone.Start(chosenMic, true, 60, 44100);
             audioSource.Play();
             Invoke("ResizeRecording", 60);
-        }
+        }*/
         
         // Begin recording motion
         isCountingDown = false;
@@ -347,7 +348,7 @@ public class MocapRecorderOurs : MonoBehaviour
             isRecording = false;
 
             // Halt recording audio and record its last sub-second audio to the vector list
-            if (canRecordAudio)
+            /*if (canRecordAudio)
             {
                 int length = Microphone.GetPosition(chosenMic);
                 Microphone.End(null);
@@ -373,7 +374,7 @@ public class MocapRecorderOurs : MonoBehaviour
                 // Create a Unity audio clip from the recorded data to play in playback
                 recordedAudio = AudioClip.Create("recordingAudio", finalRecording.Length, 1, 44100, false);
                 recordedAudio.SetData(finalRecording, 0);
-            }
+            }*/
 
             // Realistically is impossible for nothing to be recorded when a countdown is included
             bool isAnythingRecorded = true;

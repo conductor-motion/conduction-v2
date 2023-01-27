@@ -1,15 +1,16 @@
-﻿<Properties StartupConfiguration="{BF93711C-8A2C-052B-BC59-D77E690EB081}|">
+﻿<Properties StartupConfiguration="{1C7193BF-2C8A-2B05-BC59-D77E690EB081}|">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/K2Examples/KinectDemos/AvatarsDemo/U_Character/IKController.cs">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MocapRecorderOurs.cs">
     <Files>
-      <File FileName="Assets/ConductionV2/PoseVisuallizer3D1.cs" Line="208" Column="10" />
+      <File FileName="Assets/ConductionV2/PoseVisuallizer3D1.cs" />
       <File FileName="Assets/K2Examples/KinectDemos/AvatarsDemo/U_Character/IKController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MocapRecorderOurs.cs" Line="386" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="5c279fac-59f9-49ca-8e63-40d862eb9088" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="bb26908e-0dd2-4417-be39-32d7a4a37400" />
 </Properties>
