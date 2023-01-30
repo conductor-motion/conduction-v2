@@ -1,35 +1,19 @@
 ﻿<Properties StartupConfiguration="{1C7193BF-2C8A-2B05-BC59-D77E690EB081}|">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="1c1d5c09-017d-4333-8150-6314902aef7e" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ConductionV2/PoseVisuallizer3D1.cs">
     <Files>
-      <File FileName="Assets/ConductionV2/PoseVisuallizer3D1.cs" Line="23" Column="38" />
-      <File FileName="Assets/K2Examples/KinectDemos/AvatarsDemo/U_Character/IKController.cs" Line="55" Column="1" />
-      <File FileName="Assets/Scripts/MocapRecorderOurs.cs" Line="386" Column="1" />
+      <File FileName="Assets/ConductionV2/PoseVisuallizer3D1.cs" Line="14" Column="23" />
+      <File FileName="Assets/Scripts/MocapRecorderOurs.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/MocapPlayerOurs.cs" Line="234" Column="1" />
+      <File FileName="Assets/K2Examples/KinectDemos/AvatarsDemo/U_Character/IKController.cs" Line="38" Column="69" />
+      <File FileName="Assets/Scripts/AxisController.cs" Line="28" Column="1" />
+      <File FileName="Assets/Scripts/DragModulePerspective.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="conduction-v2" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="ConductionV2" expanded="True" />
-              <Node name="K2Examples" expanded="True">
-                <Node name="KinectDemos" expanded="True">
-                  <Node name="AvatarsDemo" expanded="True">
-                    <Node name="U_Character" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="58083b1e-fbd8-46dc-b9d9-39067f05e931" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
