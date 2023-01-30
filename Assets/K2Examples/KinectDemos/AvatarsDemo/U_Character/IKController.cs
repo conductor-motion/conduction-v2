@@ -39,7 +39,7 @@ public class IKController : MonoBehaviour
         animator.SetIKHintPosition(AvatarIKHint.LeftElbow, leftElbowTarget.position);
 
 
-        animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 0.75f);
+        /*animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 0.75f);
         animator.SetIKPosition(AvatarIKGoal.RightFoot, rightFootTarget.position);
 
         animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 0.75f);
@@ -49,6 +49,6 @@ public class IKController : MonoBehaviour
         animator.SetIKHintPosition(AvatarIKHint.RightKnee, rightKneeTarget.position);
 
         animator.SetIKHintPositionWeight(AvatarIKHint.LeftKnee, 0.5f);
-        animator.SetIKHintPosition(AvatarIKHint.LeftKnee, leftKneeTarget.position);
+        animator.SetIKHintPosition(AvatarIKHint.LeftKnee, leftKneeTarget.position);*/
     }
 }
