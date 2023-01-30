@@ -21,8 +21,13 @@ public class PoseVisuallizer3D1 : MonoBehaviour
     public Transform leftHandTarget;
     public Transform rightElbowTarget;
     public Transform leftElbowTarget;
+    public Transform rightFootTarget;
+    public Transform leftFootTarget;
+    public Transform rightKneeTarget;
+    public Transform leftKneeTarget;
 
-    public Transform nose;
+
+    /*public Transform nose;
     public Transform leftEye;
     public Transform rightEye;
     public Transform torso;
@@ -41,7 +46,7 @@ public class PoseVisuallizer3D1 : MonoBehaviour
     public Transform lowerLeftLeg;
     public Transform lowerRightLeg;
     public Transform rightAnkle;
-    public Transform leftAnkle;
+    public Transform leftAnkle;*/
 
     // Lines count of body's topology.
     const int BODY_LINE_NUM = 35;
@@ -61,7 +66,6 @@ public class PoseVisuallizer3D1 : MonoBehaviour
     void Start(){
         material = new Material(shader);
         detecter = new BlazePoseDetecter();
-        //animator = GetComponent<Animator>();
     }
 
     void Update(){
@@ -176,15 +180,12 @@ public class PoseVisuallizer3D1 : MonoBehaviour
         temp.y = detecter.GetPoseWorldLandmark(15).y;
         temp.z = detecter.GetPoseWorldLandmark(15).z;
         leftHandTarget.position = temp;
-        //
-        // //animator.SetIKPosition(AvatarIKGoal.RightHand, temp);
-        //
+
+
         temp.x = detecter.GetPoseWorldLandmark(16).x;
         temp.y = detecter.GetPoseWorldLandmark(16).y;
         temp.z = detecter.GetPoseWorldLandmark(16).z;
         rightHandTarget.position = temp;
-        //
-        // //animator.SetIKPosition(AvatarIKGoal.LeftHand, temp);
 
 
         temp.x = detecter.GetPoseWorldLandmark(14).x;
@@ -197,6 +198,30 @@ public class PoseVisuallizer3D1 : MonoBehaviour
         temp.y = detecter.GetPoseWorldLandmark(13).y;
         temp.z = detecter.GetPoseWorldLandmark(13).z;
         leftElbowTarget.position = temp;
+
+
+        temp.x = detecter.GetPoseWorldLandmark(29).x;
+        temp.y = detecter.GetPoseWorldLandmark(29).y;
+        temp.z = detecter.GetPoseWorldLandmark(29).z;
+        leftFootTarget.position = temp;
+
+
+        temp.x = detecter.GetPoseWorldLandmark(30).x;
+        temp.y = detecter.GetPoseWorldLandmark(30).y;
+        temp.z = detecter.GetPoseWorldLandmark(30).z;
+        rightFootTarget.position = temp;
+
+
+        temp.x = detecter.GetPoseWorldLandmark(26).x;
+        temp.y = detecter.GetPoseWorldLandmark(26).y;
+        temp.z = detecter.GetPoseWorldLandmark(26).z;
+        rightKneeTarget.position = temp;
+
+
+        temp.x = detecter.GetPoseWorldLandmark(25).x;
+        temp.y = detecter.GetPoseWorldLandmark(25).y;
+        temp.z = detecter.GetPoseWorldLandmark(25).z;
+        leftKneeTarget.position = temp;
 
         Debug.Log("---");
     } 
