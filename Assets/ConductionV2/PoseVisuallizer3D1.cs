@@ -95,6 +95,7 @@ public class PoseVisuallizer3D1 : MonoBehaviour
         }
         
         Vector3 temp = new Vector3();
+
         // temp.x = detecter.GetPoseWorldLandmark(0).x;
         // temp.y = detecter.GetPoseWorldLandmark(0).y;
         // temp.z = detecter.GetPoseWorldLandmark(0).z;
@@ -200,28 +201,28 @@ public class PoseVisuallizer3D1 : MonoBehaviour
         leftElbowTarget.position = temp;
 
 
-        temp.x = detecter.GetPoseWorldLandmark(29).x;
-        temp.y = detecter.GetPoseWorldLandmark(29).y;
-        temp.z = detecter.GetPoseWorldLandmark(29).z;
-        leftFootTarget.position = temp;
-
-
-        temp.x = detecter.GetPoseWorldLandmark(30).x;
-        temp.y = detecter.GetPoseWorldLandmark(30).y;
-        temp.z = detecter.GetPoseWorldLandmark(30).z;
-        rightFootTarget.position = temp;
-
-
-        temp.x = detecter.GetPoseWorldLandmark(26).x;
-        temp.y = detecter.GetPoseWorldLandmark(26).y;
-        temp.z = detecter.GetPoseWorldLandmark(26).z;
-        rightKneeTarget.position = temp;
-
-
-        temp.x = detecter.GetPoseWorldLandmark(25).x;
-        temp.y = detecter.GetPoseWorldLandmark(25).y;
-        temp.z = detecter.GetPoseWorldLandmark(25).z;
-        leftKneeTarget.position = temp;
+        // temp.x = detecter.GetPoseWorldLandmark(29).x;
+        // temp.y = detecter.GetPoseWorldLandmark(29).y;
+        // temp.z = detecter.GetPoseWorldLandmark(29).z;
+        // leftFootTarget.position = temp;
+        //
+        //
+        // temp.x = detecter.GetPoseWorldLandmark(30).x;
+        // temp.y = detecter.GetPoseWorldLandmark(30).y;
+        // temp.z = detecter.GetPoseWorldLandmark(30).z;
+        // rightFootTarget.position = temp;
+        //
+        //
+        // temp.x = detecter.GetPoseWorldLandmark(26).x;
+        // temp.y = detecter.GetPoseWorldLandmark(26).y;
+        // temp.z = detecter.GetPoseWorldLandmark(26).z;
+        // rightKneeTarget.position = temp;
+        //
+        //
+        // temp.x = detecter.GetPoseWorldLandmark(25).x;
+        // temp.y = detecter.GetPoseWorldLandmark(25).y;
+        // temp.z = detecter.GetPoseWorldLandmark(25).z;
+        // leftKneeTarget.position = temp;
 
         Debug.Log("---");
     } 
