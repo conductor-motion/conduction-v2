@@ -7,7 +7,6 @@ public class MainManager : MonoBehaviour
     public static MainManager Instance;
 
     public string dirPath;
-    public float playbackFPS;
 
     private void Awake()
     {
@@ -22,17 +21,12 @@ public class MainManager : MonoBehaviour
         {
             string dateString = System.DateTime.Now.ToString("s").Replace(":", "-");
 
-            SetDirPath(Application.dataPath + "/Conduction/Data/" + dateString.Remove(dateString.Length - 3));
+            SetDirPath(dateString.Remove(dateString.Length - 3));
         }
     }
 
     public void SetDirPath(string dirPath)
     {
         MainManager.Instance.dirPath = dirPath;
-    }
-
-    public void SetPlaybackFPS(float playbackFPS)
-    {
-        MainManager.Instance.playbackFPS = playbackFPS;
     }
 }

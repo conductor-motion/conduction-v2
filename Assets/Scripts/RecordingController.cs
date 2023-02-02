@@ -42,6 +42,10 @@ public class RecordingController : MonoBehaviour
     public static bool isRecording = false;
     private bool isCountingDown = false;
 
+    // Game objects to save data and video
+    public WebCamInput webCamInput;
+    public PoseVisuallizer3D visuallizer;
+
 
     void Start()
     {
@@ -176,7 +180,8 @@ public class RecordingController : MonoBehaviour
         {
             isRecording = false;
             MocapPlayerOurs.existingRecording = false;
-            MainManager.Instance.SetPlaybackFPS(FPS.GetCurrentFPS());
+            //webCamInput.SaveVideo();
+            //visuallizer.SaveDataFile();
             SceneManager.LoadScene("ViewingPage");
         }
     }
