@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Mediapipe.BlazePose;
+using System.IO;
+using UnityEditor.Media;
+using Google.Protobuf;
 
 public class PoseVisuallizer3D1 : MonoBehaviour
 {
@@ -13,7 +16,12 @@ public class PoseVisuallizer3D1 : MonoBehaviour
 
     Material material;
     BlazePoseDetecter detecter;
-    
+
+    private FileStream dataFile;
+    private StreamWriter writer;
+    string filePath;
+    string dirPath;
+
     Transform objToPickUp;
     public Animator animator;
 
@@ -27,59 +35,40 @@ public class PoseVisuallizer3D1 : MonoBehaviour
     public Transform leftKneeTarget;
 
 
-    /*public Transform nose;
-    public Transform leftEye;
-    public Transform rightEye;
-    public Transform torso;
-    public Transform rightShoulder;
-    public Transform leftShoulder;
-    public Transform upperLeftArm;
-    public Transform upperRightArm;
-    public Transform lowerRightArm;
-    public Transform lowerLeftArm;
-
-    public Transform rightWrist;
-    
-    public Transform leftWrist;
-    public Transform upperLeftLeg;
-    public Transform upperRightLeg;
-    public Transform lowerLeftLeg;
-    public Transform lowerRightLeg;
-    public Transform rightAnkle;
-    public Transform leftAnkle;*/
 
     // Lines count of body's topology.
     const int BODY_LINE_NUM = 35;
     // Pairs of vertex indices of the lines that make up body's topology.
     // Defined by the figure in https://google.github.io/mediapipe/solutions/pose.
     readonly List<Vector4> linePair = new List<Vector4>{
-        new Vector4(0, 1), new Vector4(1, 2), new Vector4(2, 3), new Vector4(3, 7), new Vector4(0, 4), 
-        new Vector4(4, 5), new Vector4(5, 6), new Vector4(6, 8), new Vector4(9, 10), new Vector4(11, 12), 
-        new Vector4(11, 13), new Vector4(13, 15), new Vector4(15, 17), new Vector4(17, 19), new Vector4(19, 15), 
-        new Vector4(15, 21), new Vector4(12, 14), new Vector4(14, 16), new Vector4(16, 18), new Vector4(18, 20), 
-        new Vector4(20, 16), new Vector4(16, 22), new Vector4(11, 23), new Vector4(12, 24), new Vector4(23, 24), 
-        new Vector4(23, 25), new Vector4(25, 27), new Vector4(27, 29), new Vector4(29, 31), new Vector4(31, 27), 
+        new Vector4(0, 1), new Vector4(1, 2), new Vector4(2, 3), new Vector4(3, 7), new Vector4(0, 4),
+        new Vector4(4, 5), new Vector4(5, 6), new Vector4(6, 8), new Vector4(9, 10), new Vector4(11, 12),
+        new Vector4(11, 13), new Vector4(13, 15), new Vector4(15, 17), new Vector4(17, 19), new Vector4(19, 15),
+        new Vector4(15, 21), new Vector4(12, 14), new Vector4(14, 16), new Vector4(16, 18), new Vector4(18, 20),
+        new Vector4(20, 16), new Vector4(16, 22), new Vector4(11, 23), new Vector4(12, 24), new Vector4(23, 24),
+        new Vector4(23, 25), new Vector4(25, 27), new Vector4(27, 29), new Vector4(29, 31), new Vector4(31, 27),
         new Vector4(24, 26), new Vector4(26, 28), new Vector4(28, 30), new Vector4(30, 32), new Vector4(32, 28)
     };
 
 
-    void Start(){
+    void Start()
+    {
         material = new Material(shader);
         detecter = new BlazePoseDetecter();
+
+        CreateDataFile();
     }
 
-    void Update(){
-        //mainCamera.transform.RotateAround(Vector3.zero, Vector3.up, 0.1f);
-    }
-
-    void LateUpdate(){
+    void LateUpdate()
+    {
         inputImageUI.texture = webCamInput.inputImageTexture;
 
         // Predict pose by neural network model.
         detecter.ProcessImage(webCamInput.inputImageTexture);
 
         // Output landmark values(33 values) and the score whether human pose is visible (1 values).
-        for(int i = 0; i < detecter.vertexCount + 1; i++){
+        for (int i = 0; i < detecter.vertexCount + 1; i++)
+        {
             /*
             0~32 index datas are pose world landmark.
             Check below Mediapipe document about relation between index and landmark position.
@@ -92,91 +81,18 @@ public class PoseVisuallizer3D1 : MonoBehaviour
             This data is (score, 0, 0, 0).
             */
             //Debug.LogFormat("{0}: {1}", i, detecter.GetPoseWorldLandmark(i));
+            if (MocapRecorderOurs.isRecording)
+            {
+                string json = "\n\t{\n\t\tlandmarkIndex: " + i + "\n\t\tlandmarkData: " + detecter.GetPoseWorldLandmark(i) + "\n\t}\n";
+                writer.Write(json);
+            }
         }
-        
+        if (MocapRecorderOurs.isRecording)
+            writer.Write("}");
+
         Vector3 temp = new Vector3();
 
-        // temp.x = detecter.GetPoseWorldLandmark(0).x;
-        // temp.y = detecter.GetPoseWorldLandmark(0).y;
-        // temp.z = detecter.GetPoseWorldLandmark(0).z;
-        // nose.position = temp;
-        //
-        // temp.x = detecter.GetPoseWorldLandmark(2).x;
-        // temp.y = detecter.GetPoseWorldLandmark(2).y;
-        // temp.z = detecter.GetPoseWorldLandmark(2).z;
-        // leftEye.position = temp;
-        //
-        // temp.x = detecter.GetPoseWorldLandmark(5).x;
-        // temp.y = detecter.GetPoseWorldLandmark(5).y;
-        // temp.z = detecter.GetPoseWorldLandmark(5).z;
-        // rightEye.position = temp;
 
-        // float x = 0;
-        // x += detecter.GetPoseWorldLandmark(12).x;
-        // x += detecter.GetPoseWorldLandmark(11).x;
-        // x += detecter.GetPoseWorldLandmark(24).x;
-        // x += detecter.GetPoseWorldLandmark(23).x;
-        // x /= 4;
-        //
-        // float y = 0;
-        // y += detecter.GetPoseWorldLandmark(12).y;
-        // y += detecter.GetPoseWorldLandmark(11).y;
-        // y += detecter.GetPoseWorldLandmark(24).y;
-        // y += detecter.GetPoseWorldLandmark(23).y;
-        // y /= 4;
-        //
-        // float z = 0;
-        // z += detecter.GetPoseWorldLandmark(12).z;
-        // z += detecter.GetPoseWorldLandmark(11).z;
-        // z += detecter.GetPoseWorldLandmark(24).z;
-        // z += detecter.GetPoseWorldLandmark(23).z;
-        // z /= 4;
-        //
-        // Vector3 center = new Vector3();
-        // center.x = x;
-        // center.y = y;
-        // center.z = z;
-        // torso.position = center;
-        //
-        // temp.x = detecter.GetPoseWorldLandmark(12).x;
-        // temp.y = detecter.GetPoseWorldLandmark(12).y;
-        // temp.z = detecter.GetPoseWorldLandmark(12).z;
-        // rightShoulder.position = temp;
-        //         
-        // temp.x = detecter.GetPoseWorldLandmark(11).x;
-        // temp.y = detecter.GetPoseWorldLandmark(11).y;
-        // temp.z = detecter.GetPoseWorldLandmark(11).z;
-        // leftShoulder.position = temp;
-        //         
-        // temp.x = detecter.GetPoseWorldLandmark(24).x;
-        // temp.y = detecter.GetPoseWorldLandmark(24).y;
-        // temp.z = detecter.GetPoseWorldLandmark(24).z;
-        // upperLeftLeg.position = temp;
-        //         
-        // temp.x = detecter.GetPoseWorldLandmark(23).x;
-        // temp.y = detecter.GetPoseWorldLandmark(23).y;
-        // temp.z = detecter.GetPoseWorldLandmark(23).z;
-        // upperRightLeg.position = temp;
-        //
-        // temp.x = detecter.GetPoseWorldLandmark(13).x;
-        // temp.y = detecter.GetPoseWorldLandmark(13).y;
-        // temp.z = detecter.GetPoseWorldLandmark(13).z;
-        // lowerLeftArm.position = temp;
-        //
-        // temp.x = detecter.GetPoseWorldLandmark(14).x;
-        // temp.y = detecter.GetPoseWorldLandmark(14).y;
-        // temp.z = detecter.GetPoseWorldLandmark(14).z;
-        // lowerRightArm.position = temp;
-        //
-        //
-        // rightHand.x = detecter.GetPoseWorldLandmark(15).x;
-        // rightHand.y = detecter.GetPoseWorldLandmark(15).y;
-        // rightHand.z = detecter.GetPoseWorldLandmark(15).z;
-        //
-        // leftHand.x = detecter.GetPoseWorldLandmark(16).x;
-        // leftHand.y = detecter.GetPoseWorldLandmark(16).y;
-        // leftHand.z = detecter.GetPoseWorldLandmark(16).z;
-        //
         temp.x = detecter.GetPoseWorldLandmark(15).x;
         temp.y = detecter.GetPoseWorldLandmark(15).y;
         temp.z = detecter.GetPoseWorldLandmark(15).z;
@@ -200,34 +116,10 @@ public class PoseVisuallizer3D1 : MonoBehaviour
         temp.z = detecter.GetPoseWorldLandmark(13).z;
         leftElbowTarget.position = temp;
 
-
-        // temp.x = detecter.GetPoseWorldLandmark(29).x;
-        // temp.y = detecter.GetPoseWorldLandmark(29).y;
-        // temp.z = detecter.GetPoseWorldLandmark(29).z;
-        // leftFootTarget.position = temp;
-        //
-        //
-        // temp.x = detecter.GetPoseWorldLandmark(30).x;
-        // temp.y = detecter.GetPoseWorldLandmark(30).y;
-        // temp.z = detecter.GetPoseWorldLandmark(30).z;
-        // rightFootTarget.position = temp;
-        //
-        //
-        // temp.x = detecter.GetPoseWorldLandmark(26).x;
-        // temp.y = detecter.GetPoseWorldLandmark(26).y;
-        // temp.z = detecter.GetPoseWorldLandmark(26).z;
-        // rightKneeTarget.position = temp;
-        //
-        //
-        // temp.x = detecter.GetPoseWorldLandmark(25).x;
-        // temp.y = detecter.GetPoseWorldLandmark(25).y;
-        // temp.z = detecter.GetPoseWorldLandmark(25).z;
-        // leftKneeTarget.position = temp;
-
         Debug.Log("---");
-    } 
+    }
 
-    void OnRenderObject(){
+    /*void OnRenderObject(){
         // Use predicted pose world landmark results on the ComputeBuffer (GPU) memory.
         material.SetBuffer("_worldVertices", detecter.worldLandmarkBuffer);
         // Set pose landmark counts.
@@ -243,10 +135,35 @@ public class PoseVisuallizer3D1 : MonoBehaviour
         // Draw 33 world landmark points.
         material.SetPass(3);
         Graphics.DrawProceduralNow(MeshTopology.Triangles, 6, detecter.vertexCount);
-    }
+    }*/
 
-    void OnApplicationQuit(){
+    void OnApplicationQuit()
+    {
         // Must call Dispose method when no longer in use.
-        detecter.Dispose();
+        writer.Close();
+        if (new FileInfo(filePath).Length == 1)
+        {
+            File.Delete(filePath);
+            try
+            {
+                Directory.Delete(dirPath);
+            }
+            catch { }
+            detecter.Dispose();
+        }
+
+    }
+    void CreateDataFile()
+    {
+        string dateString = System.DateTime.Now.ToString("s").Replace(":", "-");
+        dirPath = Application.dataPath + "/Conduction/Data/" + dateString.Remove(dateString.Length - 3);
+
+        if (!Directory.Exists(dirPath))
+        {
+            Directory.CreateDirectory(dirPath);
+        }
+        filePath = dirPath + "/data.json";
+        writer = new StreamWriter(filePath, true);
+        writer.Write("{");
     }
 }

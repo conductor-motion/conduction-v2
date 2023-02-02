@@ -44,7 +44,9 @@ public class MocapRecorderOurs : MonoBehaviour
     private Animator modelAnimator = null;
 
     // recording parameters
-    private bool isRecording = false;
+    [HideInInspector]
+    public static bool isRecording = false;
+
     private bool isCountingDown = false;
     private float animTime = 0;
 
