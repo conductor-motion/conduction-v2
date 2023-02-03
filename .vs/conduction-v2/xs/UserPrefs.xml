@@ -2,18 +2,18 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/alexandrabrown/conduction-v2/Assets/MediaControlsV2.cs" relfile="Assets/MediaControlsV2.cs" line="84" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="834c4179-f20f-45a2-bb5c-7ff332e27de1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WebCamInput.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MediaControls.cs">
     <Files>
-      <File FileName="Assets/Scripts/RecordingController.cs" Line="182" Column="6" IsPinned="True" />
-      <File FileName="Assets/Scripts/MainManager.cs" Line="32" Column="6" IsPinned="True" />
-      <File FileName="Assets/Scripts/ReplayController.cs" Line="1" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/MocapRecorderOurs.cs" Line="386" Column="57" />
-      <File FileName="Assets/ConductionV2/PoseVisuallizer3D1.cs" Line="9" Column="31" />
-      <File FileName="Assets/Scripts/MocapPlayerOurs.cs" Line="13" Column="2" />
-      <File FileName="Assets/Scripts/WebCamInput.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/RecordingController.cs" Line="183" Column="21" IsPinned="True" />
+      <File FileName="Assets/Scripts/MainManager.cs" Line="31" Column="6" IsPinned="True" />
+      <File FileName="Assets/Scripts/ReplayController.cs" Line="46" Column="40" IsPinned="True" />
+      <File FileName="Assets/MediaControlsV2.cs" Line="46" Column="39" />
+      <File FileName="Assets/Scripts/MediaControls.cs" Line="57" Column="93" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

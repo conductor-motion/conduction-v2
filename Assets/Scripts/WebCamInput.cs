@@ -41,7 +41,7 @@ public class WebCamInput : MonoBehaviour
 
         inputRT = new RenderTexture((int)webCamResolution.x, (int)webCamResolution.y, 0);
 
-        if(SceneManager.GetActiveScene().name == "RecordingPageV2")
+        if(SceneManager.GetActiveScene().name == "RecordingPage")
         {
             videoAttr = new VideoTrackAttributes
             {
@@ -58,6 +58,7 @@ public class WebCamInput : MonoBehaviour
                 language = "fr"
             };
             fullPath = Application.dataPath + "/Conduction/Data/" + MainManager.Instance.dirPath;
+            //fullPath = Application.dataPath + "/Conduction/Data/test";
             if (!Directory.Exists(fullPath))
             {
                 Directory.CreateDirectory(fullPath);
@@ -82,7 +83,7 @@ public class WebCamInput : MonoBehaviour
 
         Graphics.Blit(webCamTexture, inputRT, scale, offset);
 
-        if (RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPageV2")
+        if (RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage")
         {
             Texture2D tex = new Texture2D(webCamTexture.width, webCamTexture.height);
             tex.SetPixels(webCamTexture.GetPixels());
@@ -99,7 +100,7 @@ public class WebCamInput : MonoBehaviour
         if (webCamTexture != null) Destroy(webCamTexture);
         if (inputRT != null) Destroy(inputRT);
 
-        if (SceneManager.GetActiveScene().name == "RecordingPageV2")
+        if (SceneManager.GetActiveScene().name == "RecordingPage")
         {
             encoder.Dispose();
             if (!didRecord)

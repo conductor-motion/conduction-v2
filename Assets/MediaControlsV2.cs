@@ -42,6 +42,7 @@ public class MediaControlsV2 : MonoBehaviour
     {
 
         audioSource = GameObject.Find("U_CharacterUser").GetComponent<AudioSource>();
+        vidSpeed = 1f;
 
         // Get the trails in the scene
         trails = GameObject.FindGameObjectsWithTag("Trail");
@@ -163,7 +164,6 @@ public class MediaControlsV2 : MonoBehaviour
                 videoPlayer.Play();
             }
         }
-
     }
 
     // Either pause or play the animation and audio depending on the current state
@@ -218,7 +218,7 @@ public class MediaControlsV2 : MonoBehaviour
     // Returns the current animation speed multiplier (never negative)
     public float GetSpeed()
     {
-        return videoPlayer.playbackSpeed;
+        return vidSpeed;
     }
     // Controls the speed of the trails to be relative to the inverse speed of the animation since time is how long the trail is alive
     private void UpdateTrailsLife(float newSpeed)
@@ -294,6 +294,7 @@ public class MediaControlsV2 : MonoBehaviour
     {
         for (int index = 0; index < eventSystemRaycastResults.Count; index++)
         {
+            print("testing for hover");
             RaycastResult curRaycastResult = eventSystemRaycastResults[index];
             if (curRaycastResult.gameObject.name == "Bar")
                 return true;

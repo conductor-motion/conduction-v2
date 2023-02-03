@@ -78,6 +78,7 @@
     <Compile Include="Assets/K2Examples/KinectDemos/OverlayDemo/Scripts/SkeletonOverlayer.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/InteractionDemo/Scripts/GrabDropScript.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/Interfaces/Kinect2UwpInterface.cs" />
+    <Compile Include="Assets/Scripts/ReplayController.cs" />
     <Compile Include="Assets/Scripts/ListController.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/BackgroundColorImage.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/Interfaces/DummyK2Interface.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets/K2Examples/KinectDemos/FaceTrackingDemo/Scripts/SetFaceTexture.cs" />
     <Compile Include="Assets/Scripts/MarkupManager.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/CloudFaceScripts/FaceObjs/HeadPose.cs" />
+    <Compile Include="Assets/Scripts/RecordingController.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Scripts/BotControlScript.cs" />
     <Compile Include="Assets/Scripts/ErrorAnalytics.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/CloudFaceScripts/FaceObjs/FaceAttributes.cs" />
@@ -165,6 +167,7 @@
     <Compile Include="Assets/K2Examples/KinectDemos/GesturesDemo/Scripts/CubeGestureListener.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/InteractionDemo/Scripts/GuiWindowScript.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/PortraitBackground.cs" />
+    <Compile Include="Assets/MediaControlsV2.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/KinectDataClient.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/Samples/SimpleGestureListener.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/UserBodyBlender.cs" />
@@ -172,6 +175,7 @@
     <Compile Include="Assets/K2Examples/KinectScripts/Interfaces/OrbbecAstraInterface.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/OverlayDemo/Scripts/JointOverlayer.cs" />
     <Compile Include="Assets/Scripts/TempoSlider.cs" />
+    <Compile Include="Assets/Scripts/FPS.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/Samples/GetFaceSmileStatus.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/Samples/RaiseHandListener.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/FaceTrackingDemo/Scripts/SetBackgroundImage.cs" />
@@ -210,6 +214,7 @@
     <Compile Include="Assets/K2Examples/KinectDemos/ColliderDemo/Scripts/JumpTrigger.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/SpeechErrorHandler.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/FaceTrackingDemo/Scripts/FacePointOverlayer.cs" />
+    <Compile Include="Assets/Scripts/MainManager.cs" />
     <Compile Include="Assets/Scripts/BeatChecker.cs" />
     <Compile Include="Assets/Scripts/MediaControls.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Scripts/RoomAliveToolkit/ProjectorCameraEnsemble.cs" />
@@ -227,11 +232,6 @@
     <Compile Include="Assets/K2Examples/KinectScripts/Samples/FollowUserRotation.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/ColliderDemo/Scripts/DepthSpriteViewer.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Scripts/BarrelTrigger.cs" />
-    <Compile Include="Assets/Scripts/MainManager.cs" />
-    <Compile Include="Assets/Scripts/ReplayController.cs" />
-    <Compile Include="Assets/Scripts/RecordingController.cs" />
-    <Compile Include="Assets/Scripts/FPS.cs" />
-    <Compile Include="Assets/MediaControlsV2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

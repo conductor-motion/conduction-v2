@@ -57,7 +57,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         material = new Material(shader);
         detecter = new BlazePoseDetecter();
 
-        if(SceneManager.GetActiveScene().name == "RecordingPageV2")
+        if(SceneManager.GetActiveScene().name == "RecordingPage")
             CreateDataFile();
     }
 
@@ -83,13 +83,13 @@ public class PoseVisuallizer3D : MonoBehaviour
             This data is (score, 0, 0, 0).
             */
             //Debug.LogFormat("{0}: {1}", i, detecter.GetPoseWorldLandmark(i));
-            if (RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPageV2")
+            if (RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage")
             {
                 string json = "\n\t{\n\t\tlandmarkIndex: " + i + "\n\t\tlandmarkData: " + detecter.GetPoseWorldLandmark(i) + "\n\t}\n";
                 writer.Write(json);
             }
         }
-        if (RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPageV2")
+        if (RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage")
             writer.Write("}");
 
         Vector3 temp = new Vector3();
@@ -142,7 +142,7 @@ public class PoseVisuallizer3D : MonoBehaviour
     void OnDestroy()
     {
         detecter.Dispose();
-        if (SceneManager.GetActiveScene().name == "RecordingPageV2")
+        if (SceneManager.GetActiveScene().name == "RecordingPage")
         {
             writer.Close();
             if (new FileInfo(filePath).Length == 1)

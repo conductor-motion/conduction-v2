@@ -389,7 +389,7 @@ public class MocapRecorderOurs : MonoBehaviour
                 // MocapPlayerOurs.recordedClip = recordedClip;
                 MocapPlayerOurs.recordedClip = legacyAnimClip;
                 MocapPlayerOurs.existingRecording = false;
-                SceneManager.LoadScene("ViewingPage");
+                SceneManager.LoadScene("ViewingPage-orig");
             }
             else
             {

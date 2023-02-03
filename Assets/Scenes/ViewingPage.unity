@@ -1226,7 +1226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &256957056
 Transform:
   m_ObjectHideFlags: 0
@@ -2355,7 +2355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &343972682
 Transform:
   m_ObjectHideFlags: 0
@@ -3372,8 +3372,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MediaControls, Assembly-CSharp
+      - m_Target: {fileID: 1534882840}
+        m_TargetAssemblyTypeName: MediaControlsV2, Assembly-CSharp
         m_MethodName: Forward
         m_Mode: 1
         m_Arguments:
@@ -4001,7 +4001,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 5
   m_WholeNumbers: 0
-  m_Value: 2
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4670,8 +4670,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MediaControls, Assembly-CSharp
+      - m_Target: {fileID: 1534882840}
+        m_TargetAssemblyTypeName: MediaControlsV2, Assembly-CSharp
         m_MethodName: Reverse
         m_Mode: 1
         m_Arguments:
@@ -6191,8 +6191,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MediaControls, Assembly-CSharp
+      - m_Target: {fileID: 1534882840}
+        m_TargetAssemblyTypeName: MediaControlsV2, Assembly-CSharp
         m_MethodName: TogglePlayback
         m_Mode: 1
         m_Arguments:
