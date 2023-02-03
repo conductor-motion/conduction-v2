@@ -1,21 +1,23 @@
 ﻿<Properties StartupConfiguration="{1C7193BF-2C8A-2B05-BC59-D77E690EB081}|">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="3c39ee3c-5ebb-47ee-a707-944cdf1ce799" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MediaControlsV2.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/Evereal/VideoCapture/Scripts/VideoCapture.cs">
     <Files>
       <File FileName="Assets/Scripts/RecordingController.cs" Line="136" Column="13" IsPinned="True" />
       <File FileName="Assets/Scripts/MainManager.cs" Line="31" Column="6" IsPinned="True" />
       <File FileName="Assets/Scripts/ReplayController.cs" Line="46" Column="40" IsPinned="True" />
-      <File FileName="Assets/MediaControlsV2.cs" Line="97" Column="24" />
-      <File FileName="Assets/Scripts/MediaControls.cs" Line="277" Column="1" />
-      <File FileName="Assets/Scripts/WebCamInput.cs" Line="100" Column="59" />
-      <File FileName="Assets/Scripts/MocapRecorderOurs.cs" Line="392" Column="57" />
-      <File FileName="Assets/Scripts/PoseVisuallizer3D.cs" Line="139" Column="85" />
+      <File FileName="Assets/MediaControlsV2.cs" Line="96" Column="50" />
+      <File FileName="Assets/Scripts/MediaControls.cs" Line="221" Column="23" />
+      <File FileName="Assets/Scripts/WebCamInput.cs" />
+      <File FileName="Assets/Scripts/MocapRecorderOurs.cs" />
+      <File FileName="Assets/Scripts/PoseVisuallizer3D.cs" />
+      <File FileName="Assets/Scripts/TrailController.cs" Line="14" Column="1" />
+      <File FileName="Assets/Plugins/Evereal/VideoCapture/Scripts/VideoCapture.cs" Line="276" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="2828b3d0-2090-4ef9-9053-9bf692093d1b" />
 </Properties>
