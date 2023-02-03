@@ -19,35 +19,35 @@ public class TrailController : MonoBehaviour
     // Retrieve objects
     void Awake()
     {
-        // trail = gameObject.GetComponent<TrailRenderer>(); // Grabs the trail renderer for this trail
-        // trailSlider = GameObject.Find("Trail Length").GetComponent<Slider>(); // Grabs the trail slider by name
-        // label = GameObject.Find("Length Label").GetComponent<Text>();
-        // if (GameObject.Find("Toggle Trails"))
-        // {
-        //     showTrails = GameObject.Find("Toggle Trails").GetComponent<Toggle>();
-        // }
+         trail = gameObject.GetComponent<TrailRenderer>(); // Grabs the trail renderer for this trail
+         trailSlider = GameObject.Find("Trail Length").GetComponent<Slider>(); // Grabs the trail slider by name
+         label = GameObject.Find("Length Label").GetComponent<Text>();
+         if (GameObject.Find("Toggle Trails"))
+         {
+             showTrails = GameObject.Find("Toggle Trails").GetComponent<Toggle>();
+         }
     }
 
     // Assign listeners and starting change values
     void Start()
     {
-        // // Assign variables from the world
-        // trail.time = startingValue;
-        // trailSlider.value = startingValue;
-        //
-        // label.text = startingValue.ToString("0.0") + "s";
-        //
-        // // Adds listener that updates the trail length whenever the slider is updated
-        // trailSlider.onValueChanged.AddListener(delegate { ChangeTrailLength(trailSlider.value); });
-        //
-        // // Gets the trail toggle, which exists only on the recording page
-        // // Initailizes everything as hidden
-        // if (showTrails)
-        // {
-        //     trailSlider.gameObject.SetActive(false);
-        //     this.gameObject.SetActive(false);
-        //     showTrails.onValueChanged.AddListener(delegate { ToggleSliderState(); });
-        // }
+         // Assign variables from the world
+         trail.time = startingValue;
+         trailSlider.value = startingValue;
+        
+         label.text = startingValue.ToString("0.0") + "s";
+        
+         // Adds listener that updates the trail length whenever the slider is updated
+         trailSlider.onValueChanged.AddListener(delegate { ChangeTrailLength(trailSlider.value); });
+        
+         // Gets the trail toggle, which exists only on the recording page
+         // Initailizes everything as hidden
+         if (showTrails)
+         {
+             trailSlider.gameObject.SetActive(false);
+             this.gameObject.SetActive(false);
+             showTrails.onValueChanged.AddListener(delegate { ToggleSliderState(); });
+         }
     }
 
     public void ToggleSliderState()

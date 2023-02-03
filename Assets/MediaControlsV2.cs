@@ -21,7 +21,7 @@ public class MediaControlsV2 : MonoBehaviour
     private float pauseTime;
     private bool resumeTrailCoroutineRunning = false;
 
-
+    private float normalizedTime; 
     private float vidSpeed = 1f;
     private bool isRewind = false;
     private bool doLoop = true;
@@ -148,7 +148,17 @@ public class MediaControlsV2 : MonoBehaviour
         {
             // Move current playhead position to current clip timing
             int timelineBarWidth = (int)timelineBar.GetComponent<RectTransform>().sizeDelta.x;
-            playhead.transform.localPosition = new Vector3((float)videoPlayer.time * timelineBarWidth - timelineBarWidth / 2, 0, 0);
+            float totalTime = getTotalTime();
+            if (totalTime > 0)
+            {
+                normalizedTime = (float)videoPlayer.time / totalTime;
+                playhead.transform.localPosition = new Vector3(normalizedTime * timelineBarWidth - timelineBarWidth / 2, 0, 0);
+            } 
+            else
+            {
+                normalizedTime = 0;
+                playhead.transform.localPosition = new Vector3(0, 0, 0);
+            }
 
             // If Mouse1 is down over the timeline, skip to that position
             if (scrubbing && IsPointerOverTimeline())
@@ -160,7 +170,8 @@ public class MediaControlsV2 : MonoBehaviour
                 float normalizedX = (float)Input.mousePosition.x / timelineBarWidth / timelineBar.GetComponent<RectTransform>().lossyScale.x;
 
                 if (audioSource.clip) audioSource.time = audioSource.clip.length * normalizedX;
-                videoPlayer.time = normalizedX;
+                normalizedTime = normalizedX;
+                videoPlayer.time = normalizedTime * totalTime;
                 videoPlayer.Play();
             }
         }
@@ -203,6 +214,7 @@ public class MediaControlsV2 : MonoBehaviour
     // Speed slider change event
     private void SliderChangeEvent()
     {
+        print("changing speed");
         SetSpeed((float)speedController.value);
     }
 
@@ -309,5 +321,10 @@ public class MediaControlsV2 : MonoBehaviour
         List<RaycastResult> raycastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, raycastResults);
         return raycastResults;
+    }
+
+    private float getTotalTime()
+    {
+        return videoPlayer.frameCount / videoPlayer.frameRate;
     }
 }

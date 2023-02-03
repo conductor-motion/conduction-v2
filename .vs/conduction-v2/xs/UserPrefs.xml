@@ -1,20 +1,21 @@
 ﻿<Properties StartupConfiguration="{1C7193BF-2C8A-2B05-BC59-D77E690EB081}|">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/alexandrabrown/conduction-v2/Assets/MediaControlsV2.cs" relfile="Assets/MediaControlsV2.cs" line="84" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="834c4179-f20f-45a2-bb5c-7ff332e27de1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MediaControls.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MediaControlsV2.cs">
     <Files>
-      <File FileName="Assets/Scripts/RecordingController.cs" Line="183" Column="21" IsPinned="True" />
+      <File FileName="Assets/Scripts/RecordingController.cs" Line="136" Column="13" IsPinned="True" />
       <File FileName="Assets/Scripts/MainManager.cs" Line="31" Column="6" IsPinned="True" />
       <File FileName="Assets/Scripts/ReplayController.cs" Line="46" Column="40" IsPinned="True" />
-      <File FileName="Assets/MediaControlsV2.cs" Line="46" Column="39" />
-      <File FileName="Assets/Scripts/MediaControls.cs" Line="57" Column="93" />
+      <File FileName="Assets/MediaControlsV2.cs" Line="97" Column="24" />
+      <File FileName="Assets/Scripts/MediaControls.cs" Line="277" Column="1" />
+      <File FileName="Assets/Scripts/WebCamInput.cs" Line="100" Column="59" />
+      <File FileName="Assets/Scripts/MocapRecorderOurs.cs" Line="392" Column="57" />
+      <File FileName="Assets/Scripts/PoseVisuallizer3D.cs" Line="139" Column="85" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="2828b3d0-2090-4ef9-9053-9bf692093d1b" />
 </Properties>

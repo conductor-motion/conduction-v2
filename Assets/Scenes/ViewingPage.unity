@@ -1222,7 +1222,7 @@ GameObject:
   - component: {fileID: 256957057}
   m_Layer: 0
   m_Name: Trail
-  m_TagString: Untagged
+  m_TagString: Trail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2351,7 +2351,7 @@ GameObject:
   - component: {fileID: 343972683}
   m_Layer: 0
   m_Name: Trail
-  m_TagString: Untagged
+  m_TagString: Trail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7245,10 +7245,10 @@ RectTransform:
   m_Father: {fileID: 1187873495}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.93885833, y: 0.75}
-  m_AnchorMax: {x: 0.98379856, y: 0.8266003}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -43, y: 0}
+  m_SizeDelta: {x: 86, y: 83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1173301068
 MonoBehaviour:
@@ -8447,10 +8447,10 @@ RectTransform:
   m_Father: {fileID: 1187873495}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.01, y: 0.75}
-  m_AnchorMax: {x: 0.052977122, y: 0.8266003}
-  m_AnchoredPosition: {x: 0.5, y: 0}
-  m_SizeDelta: {x: 1, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 42, y: 0}
+  m_SizeDelta: {x: 84, y: 83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1328899688
 MonoBehaviour:
@@ -10627,10 +10627,10 @@ RectTransform:
   m_Father: {fileID: 1187873495}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 640, y: 360}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -480, y: 0}
+  m_SizeDelta: {x: 480, y: 270}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1718451833
 GameObject:
@@ -11858,7 +11858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.5010986, y: -5}
+  m_AnchoredPosition: {x: 2.5009766, y: -5}
   m_SizeDelta: {x: -4.9978046, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2011594640
@@ -11924,7 +11924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b27b91aed324f4bb8d2c83f73b21d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dirPath: 2023-02-02T16-41
+  dirPath: 
 --- !u!4 &2023924706
 Transform:
   m_ObjectHideFlags: 0
