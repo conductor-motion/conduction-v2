@@ -338,6 +338,7 @@
      <None Include="Assets/K2Examples/Resources/Color2BodyShader.shader" />
      <Folder Include="Assets/K2Examples/KinectDemos/BlobDetectionDemo/Scripts" />
      <Folder Include="Assets/Conduction/Data/2023-02-04T13-39" />
+     <None Include="Assets/Conduction/Data/2023-02-04T14-02/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Sprites/Batman" />
      <Folder Include="Assets/Evereal/VideoCapture/Plugins/FFmpegEncoder.bundle/Contents" />
      <Folder Include="Assets/Evereal/VideoCapture/Plugins/x86_64" />
@@ -450,6 +451,7 @@
      <None Include="Assets/Evereal/VideoCapture/Resources/Shaders/CubemapDisplay.shader" />
      <None Include="Assets/Conduction/Data/2023-02-02T17-51/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Animations" />
+     <Folder Include="Assets/Conduction/Data/2023-02-04T14-02" />
      <Folder Include="Assets/K2Examples/KinectDemos/MultiSceneDemo" />
      <Folder Include="Assets/K2Examples/KinectDemos/BlobDetectionDemo" />
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Scripts" />
