@@ -299,6 +299,7 @@
      <Folder Include="Assets/Evereal/VideoCapture/Plugins/FFmpegEncoder.bundle/Contents/MacOS" />
      <Folder Include="Assets/K2Examples/KinectDemos/BackgroundRemovalDemo/Scripts" />
      <Folder Include="Assets/Conduction/Data" />
+     <Folder Include="Assets/Conduction/Data/2023-02-04T15-12" />
      <Folder Include="Assets/K2Examples/KinectDemos/ColliderDemo/Materials" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Materials" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources" />
@@ -308,6 +309,7 @@
      <Folder Include="Assets/K2Examples/KinectDemos/BackgroundRemovalDemo/Textures" />
      <Folder Include="Assets/StreamingAssets/FFmpeg" />
      <None Include="Assets/K2Examples/_Readme/致盗版使用者-ToPiracyUsers.txt" />
+     <None Include="Assets/Conduction/Data/2023-02-04T15-11/data.json" />
      <None Include="Assets/K2Examples/Resources/Body2DepthShaderNN.shader" />
      <Folder Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Animations/Materials" />
      <Folder Include="Assets/Evereal/VideoCapture/Demos/Scenes" />
@@ -497,6 +499,7 @@
      <Folder Include="Assets/Textures" />
      <Folder Include="Assets/K2Examples/KinectDemos/ColliderDemo/Models" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/CloudFaceScripts" />
+     <Folder Include="Assets/Conduction/Data/2023-02-04T15-11" />
      <Folder Include="Assets/Scripts" />
      <Folder Include="Assets/Scenes" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts" />
@@ -514,6 +517,7 @@
      <Folder Include="Assets/K2Examples/KinectDemos/RecorderDemo/Materials" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" />
      <None Include="Assets/K2Examples/Resources/Body2ColorShaderInv.shader" />
+     <None Include="Assets/Conduction/Data/2023-02-04T15-12/data.json" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" />
      <Folder Include="Assets/K2Examples/KinectDemos/VisualizerDemo/Materials" />
      <Folder Include="Assets/Evereal/VideoCapture/Demos/Scenes/Legacy" />
