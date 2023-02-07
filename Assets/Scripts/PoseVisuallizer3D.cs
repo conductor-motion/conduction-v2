@@ -83,7 +83,7 @@ public class PoseVisuallizer3D : MonoBehaviour
             This data is (score, 0, 0, 0).
             */
             //Debug.LogFormat("{0}: {1}", i, detecter.GetPoseWorldLandmark(i));
-            if (RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage")
+            if (RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage" && (i == 15 || i == 16))
             {
                 string json = "\n\t{\n\t\tlandmarkIndex: " + i + "\n\t\tlandmarkData: " + detecter.GetPoseWorldLandmark(i) + "\n\t}\n";
                 writer.Write(json);

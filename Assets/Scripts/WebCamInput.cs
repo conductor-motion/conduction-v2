@@ -16,7 +16,6 @@ public class WebCamInput : MonoBehaviour
     AudioTrackAttributes audioAttr;
 
     string fullPath;
-    bool didRecord = false;
 
     // Provide input image Texture.
     public Texture inputImageTexture
@@ -41,30 +40,7 @@ public class WebCamInput : MonoBehaviour
 
         inputRT = new RenderTexture((int)webCamResolution.x, (int)webCamResolution.y, 0);
 
-        if(SceneManager.GetActiveScene().name == "RecordingPage")
-        {
-            videoAttr = new VideoTrackAttributes
-            {
-                frameRate = new MediaRational(10),
-                width = (uint)inputRT.width,
-                height = (uint)inputRT.height,
-                includeAlpha = false
-            };
-
-            audioAttr = new AudioTrackAttributes
-            {
-                sampleRate = new MediaRational(48000),
-                channelCount = 2,
-                language = "fr"
-            };
-            fullPath = Application.dataPath + "/Conduction/Data/" + MainManager.Instance.dirPath;
-            //fullPath = Application.dataPath + "/Conduction/Data/test";
-            if (!Directory.Exists(fullPath))
-            {
-                Directory.CreateDirectory(fullPath);
-            }
-            encoder = new MediaEncoder(fullPath + "/video.mp4", videoAttr, audioAttr);
-        }
+       
     }
 
     void Update()
@@ -83,15 +59,6 @@ public class WebCamInput : MonoBehaviour
 
         Graphics.Blit(webCamTexture, inputRT, scale, offset);
 
-        if (RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage")
-        {
-            Texture2D tex = new Texture2D(webCamTexture.width, webCamTexture.height);
-            tex.SetPixels(webCamTexture.GetPixels());
-
-            encoder.AddFrame(tex);
-            print("adding frame");
-            didRecord = true;
-        }
 
     }
 
@@ -99,19 +66,5 @@ public class WebCamInput : MonoBehaviour
     {
         if (webCamTexture != null) Destroy(webCamTexture);
         if (inputRT != null) Destroy(inputRT);
-
-        if (SceneManager.GetActiveScene().name == "RecordingPage")
-        {
-            encoder.Dispose();
-            if (!didRecord)
-            {
-                File.Delete(fullPath + "/video.mp4");
-                try
-                {
-                    Directory.Delete(fullPath);
-                }
-                catch { }
-            }
-        }
     }
 }

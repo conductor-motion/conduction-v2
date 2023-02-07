@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine.Video;
-using Windows.Kinect;
 using UnityEngine.UI;
 
 public class ReplayController : MonoBehaviour
@@ -39,14 +38,14 @@ public class ReplayController : MonoBehaviour
     {
         if (MainManager.Instance != null)
         {
-            string dir = Application.dataPath + "/Conduction/Data/" + MainManager.Instance.dirPath;
-            videoPlayer.url = dir + "/video.mp4";
+            string dir = MainManager.Instance.dirPath;
 
-
-            if (!Directory.Exists(dir))
+            if (!File.Exists(dir))
             {
-                Debug.LogError("No recording found.");
+                Debug.LogError("No recording found." + dir);
             }
+
+            videoPlayer.url = dir;
         }
 
         // get the characters that cannot be included in the recording name due to file system limitations

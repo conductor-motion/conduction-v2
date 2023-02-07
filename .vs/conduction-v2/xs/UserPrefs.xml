@@ -1,23 +1,25 @@
 ﻿<Properties StartupConfiguration="{1C7193BF-2C8A-2B05-BC59-D77E690EB081}|">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="3c39ee3c-5ebb-47ee-a707-944cdf1ce799" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/Evereal/VideoCapture/Scripts/VideoCapture.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RecordingController.cs">
     <Files>
-      <File FileName="Assets/Scripts/RecordingController.cs" Line="136" Column="13" IsPinned="True" />
-      <File FileName="Assets/Scripts/MainManager.cs" Line="31" Column="6" IsPinned="True" />
-      <File FileName="Assets/Scripts/ReplayController.cs" Line="46" Column="40" IsPinned="True" />
-      <File FileName="Assets/MediaControlsV2.cs" Line="96" Column="50" />
-      <File FileName="Assets/Scripts/MediaControls.cs" Line="221" Column="23" />
-      <File FileName="Assets/Scripts/WebCamInput.cs" />
-      <File FileName="Assets/Scripts/MocapRecorderOurs.cs" />
-      <File FileName="Assets/Scripts/PoseVisuallizer3D.cs" />
-      <File FileName="Assets/Scripts/TrailController.cs" Line="14" Column="1" />
-      <File FileName="Assets/Plugins/Evereal/VideoCapture/Scripts/VideoCapture.cs" Line="276" Column="1" />
+      <File FileName="Assets/Scripts/RecordingController.cs" Line="71" Column="9" IsPinned="True" />
+      <File FileName="Assets/Scripts/MainManager.cs" Line="24" Column="13" IsPinned="True" />
+      <File FileName="Assets/Scripts/ReplayController.cs" Line="45" Column="1" IsPinned="True" />
+      <File FileName="Assets/Scripts/PoseVisuallizer3D.cs" Line="94" Column="1" />
+      <File FileName="Assets/MediaControlsV2.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MediaControls.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/WebCamInput.cs" Line="59" Column="98" />
+      <File FileName="Assets/Scripts/MocapRecorderOurs.cs" Line="50" Column="41" />
+      <File FileName="Assets/Scripts/TrailController.cs" />
+      <File FileName="Assets/Evereal/VideoCapture/Readme.txt" Line="3" Column="5" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/GUI/VideoCaptureGUI.cs" Line="39" Column="8" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/VideoCapture.cs" Line="391" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="023d1d1f-8f8f-4757-9e2b-292691c668d3" />
 </Properties>

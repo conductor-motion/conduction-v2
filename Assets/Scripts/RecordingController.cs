@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using Evereal.VideoCapture;
+using System;
+using UnityEditor.MemoryProfiler;
 
 public class RecordingController : MonoBehaviour
 {
@@ -32,6 +35,7 @@ public class RecordingController : MonoBehaviour
     private bool editorOverride = false;
     private Sprite notRec;
     private Sprite isRec;
+    private float recordTime = 0;
 
     // Elements to hide when recording
     private GameObject MetronomeUI;
@@ -45,22 +49,17 @@ public class RecordingController : MonoBehaviour
     // Game objects to save data and video
     public WebCamInput webCamInput;
     public PoseVisuallizer3D visuallizer;
+    public VideoCapture videoCapture;
 
 
     void Start()
     {
-        if(MainManager.Instance != null)
+        if (MainManager.Instance != null)
         {
             string dir = MainManager.Instance.dirPath;
-            //device.pathToRecord = dir;
-
-           // string fullPath = Application.dataPath + device.path + dir;
-           /*
-            if (!Directory.Exists(Path))
-            {
-                Directory.CreateDirectory(fullPath);
-            }*/
         }
+        videoCapture.inputTexture = (RenderTexture)webCamInput.inputImageTexture;
+        videoCapture.saveFolder = "Assets/Conduction/Data/" + MainManager.Instance.dirPath;
 
         // Instantiate sprites for icon swapping
         isRec = Sprite.Create(recordingTexture, new Rect(0.0f, 0.0f, recordingTexture.width, recordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
@@ -86,6 +85,18 @@ public class RecordingController : MonoBehaviour
             else
             {
                 StopRecording();
+            }
+        }
+
+
+        if (isRecording)
+        {
+            // record the current pose
+            recordTime += Time.deltaTime;
+
+            if (infoText & ((int)(recordTime * 10f) % 10) == 0)
+            {
+                infoText.text = string.Format("{0}:{1}", Math.Floor(recordTime / 60), (recordTime % 60).ToString("00"));
             }
         }
     }
@@ -171,6 +182,7 @@ public class RecordingController : MonoBehaviour
         // Begin recording motion
         isCountingDown = false;
         isRecording = true;
+        videoCapture.StartCapture();
         StartCoroutine(SwapIcon());
     }
 
@@ -179,10 +191,14 @@ public class RecordingController : MonoBehaviour
         if (isRecording)
         {
             isRecording = false;
-            MocapPlayerOurs.existingRecording = false;
-            //webCamInput.SaveVideo();
-            //visuallizer.SaveDataFile();
-            SceneManager.LoadScene("ViewingPage");
+            videoCapture.StopCapture();
+            StartCoroutine(SwapIcon());
+            videoCapture.OnComplete += HandleSceneChange;
         }
+    }
+
+    private void HandleSceneChange(object sender, CaptureCompleteEventArgs args)
+    {
+        SceneManager.LoadScene("ViewingPage");
     }
 }
