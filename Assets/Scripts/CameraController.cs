@@ -27,7 +27,8 @@ public class CameraController : MonoBehaviour
         cameraHeight = 1.5f;
 
         // Updates the camera's position
-        camera.transform.position = new Vector3(Mathf.Cos(angle) * radius, cameraHeight, Mathf.Sin(angle) * radius + 3);
+        // camera.transform.position = new Vector3(Mathf.Cos(angle) * radius, cameraHeight, Mathf.Sin(angle) * radius + 3);
+        camera.transform.position += new Vector3(0, 0, 1);
 
     }
 
@@ -38,7 +39,8 @@ public class CameraController : MonoBehaviour
         cameraHeight = 1f;
 
         // Updates the camera's position
-        camera.transform.position = new Vector3(Mathf.Cos(angle) * radius, cameraHeight, Mathf.Sin(angle) * radius + 3);
+        //camera.transform.position = new Vector3(Mathf.Cos(angle) * radius, cameraHeight, Mathf.Sin(angle) * radius + 3);
+        camera.transform.position -= new Vector3(0, 0, 1);
     }
 
     // Rotates the camera and grid 45 degrees counter clockwise

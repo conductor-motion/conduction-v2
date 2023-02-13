@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Conduction/Data/2023-02-04T15-13/video.mp4.meta
+guid: cc140bb1cdbce4f588557308dc69fa86
+=======
+guid: 41ffb9930f1a54f5f8dd57b02ac17092
+>>>>>>> Stashed changes:Assets/Conduction/Data/2023-02-08T15-40/capture_1280x720_2023-02-08_15-40-24_Z7RIM.mp4.meta
+VideoClipImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  frameRange: 0
+  startFrame: -1
+  endFrame: -1
+  colorSpace: 0
+  deinterlace: 0
+  encodeAlpha: 0
+  flipVertical: 0
+  flipHorizontal: 0
+  importAudio: 1
+  targetSettings: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

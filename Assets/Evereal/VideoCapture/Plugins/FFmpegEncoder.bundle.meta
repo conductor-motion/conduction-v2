@@ -1,18 +1,19 @@
 fileFormatVersion: 2
 guid: f3fe4913cf57c42c6946c2afd6b90988
 folderAsset: yes
-timeCreated: 1582262646
-licenseType: Free
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
   iconMap: {}
   executionOrder: {}
+  defineConstraints: []
   isPreloaded: 0
   isOverridable: 0
+  isExplicitlyReferenced: 0
+  validateReferences: 1
   platformData:
   - first:
-      '': Any
+      : Any
     second:
       enabled: 0
       settings:
@@ -26,12 +27,12 @@ PluginImporter:
         Exclude Win64: 1
         Exclude iOS: 1
   - first:
-      '': OSXIntel
+      : OSXIntel
     second:
       enabled: 1
       settings: {}
   - first:
-      '': OSXIntel64
+      : OSXIntel64
     second:
       enabled: 1
       settings: {}
@@ -77,7 +78,7 @@ PluginImporter:
     second:
       enabled: 0
       settings:
-        CPU: x86_64
+        CPU: AnyCPU
   - first:
       Standalone: OSXUniversal
     second:
