@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using Evereal.VideoCapture;
 using System;
-using UnityEditor.MemoryProfiler;
 
 public class RecordingController : MonoBehaviour
 {

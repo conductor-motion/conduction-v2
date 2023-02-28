@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using Mediapipe.BlazePose;
 using System.IO;
-using UnityEditor.Media;
 using Google.Protobuf;
 using System.Collections;
 using UnityEngine.SceneManagement;
