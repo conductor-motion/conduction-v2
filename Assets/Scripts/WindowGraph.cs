@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using CodeMonkey.Utils;
 using System.IO;
 using System.Linq;
+using SimpleJSON;
 
 public class WindowGraph : MonoBehaviour
 {
@@ -26,6 +27,10 @@ public class WindowGraph : MonoBehaviour
 
     public GameObject metronome;
     MetronomeStorage metronomeStorage;
+    
+    //maybe remove static
+    private static List<float> yVals = new List<float>();
+   
 
     //awake gets called first, start gets called after
     private void Awake() {
@@ -38,30 +43,63 @@ public class WindowGraph : MonoBehaviour
         tooltipScript = GameObject.Find("Tooltip").GetComponent<TooltipScript>();
         tooltipScript = tooltip.GetComponent<TooltipScript>();
 
-       
+      
         metronome = GameObject.FindWithTag("Metronome");
         if(metronome) {
             metronomeStorage = metronome.GetComponent<MetronomeStorage>();
             //Debug.Log("tempo:" + metronomeStorage.tempo);
         } 
-        
-        
-
+       
         
         //fix metronome so that it takes the value set by the user
 
         
        
         //y-values (will be changed later)
-        List<int> tempVal = new List<int>() {0, 1, 2, 3, 4, 100, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 100, 18, 19, 20, 21, 22, 23, 24, 100, 26, 27, 28, 29, 30, 31, 32};
-        
-        FileInfo newestFile = GetNewestFile(new DirectoryInfo(@"Assets/Conduction/Data"));
-        if(newestFile.Exists) {Debug.Log(newestFile.Name);}
-        
-        displayGraph(tempVal, (int _i) => "0:" + (_i+30));
+       //List<int> tempVal = new List<int>() {0, 1, 2, 3, 4, 100, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 100, 18, 19, 20, 21, 22, 23, 24, 100, 26, 27, 28, 29, 30, 31, 32};   
+    
+       displayGraph(/*tempVal,*/ (int _i) => "0:" + (_i+5) );
 
     }
 
+    
+ 
+    public static string GetTimeValues(int totalCount) {
+        int counter = 0;
+        for(int i=1; i<yVals.Count; i++) {
+            counter++;
+        }
+        int durationSeconds = counter/24;
+        //Debug.Log(durationSeconds);
+        
+        string timeString = "";
+        for (int seconds = 5; seconds <= durationSeconds; seconds += 5) {
+            int minutes = seconds / 60;
+            int remainingSeconds = seconds % 60;
+            string time = minutes + ":" + remainingSeconds.ToString("D2");
+            if (timeString.Length > 0) {
+               // timeString += ", ";
+               timeString += " ";
+            } 
+            timeString += time;
+        }
+
+        /*for(int i=0; i<totalCount; i++) {
+            Debug.Log(timeString[i]);
+            if(timeString.length < totalCount) {
+
+            }
+        }*/
+        
+       Debug.Log(timeString);
+       return timeString; 
+    }
+
+
+
+
+
+   
     private static FileInfo GetNewestFile(DirectoryInfo directory)
         {
             return directory.GetFiles()
@@ -70,13 +108,47 @@ public class WindowGraph : MonoBehaviour
                 .FirstOrDefault();
         }
 
+    private void ParseData(string s) {
+        JSONNode n = JSON.Parse(s);
+        n = n["frames"];
+
+        for(int i=0; i<n.Count; i++) {
+            for(int j=0; j<n[j].Count; j++) {
+                yVals.Add(n[i]["data"][j]["yVal"]);
+            }
+        }
+    }
+
+    private List<int> tempoTracker() {
+        int downbeat = 0;
+        int counter = 1;
+        int tempoCalc = 0;
+        List<int> tempo = new List<int>();
+
+        for(int i=1; i<yVals.Count; i++) {
+            if(yVals[i] < yVals[i-1]) {
+                if(i != yVals.Count-1)
+                    if(yVals[i] < yVals[i+1]) {
+                        downbeat++;
+                    }
+            }
+            if(counter%150 == 0) {
+                tempoCalc = (downbeat*12);
+                tempo.Add(tempoCalc);
+                downbeat = 0;
+            }
+            counter++;
+        }
+        
+        return tempo;
+    }
+
     //to display graph 
     //would probably have to change parameters later
-    private void displayGraph(List<int> tempVal, Func<int, string> findXAxisLabel = null, Func<float, string> findYAxisLabel = null) {
+    private void displayGraph(/*List<int> tempVal, */Func<int, string> findXAxisLabel = null, Func<float, string> findYAxisLabel = null) {
         float x_size = 50f;
-        float yMax = tempVal[0]; //250f;
-        float yMin = tempVal[0];
-
+       
+        List<int> tempo = new List<int>();
 
 
         float graphHeight = graphContainer.sizeDelta.y;
@@ -85,6 +157,26 @@ public class WindowGraph : MonoBehaviour
         GameObject prevDotGameObj = null;
 
         GameObject prevEx = null;
+
+        FileInfo newestFile = GetNewestFile(new DirectoryInfo(@"Assets/Conduction/Data"));
+        //Debug.Log(newestFile.Name);
+        string json = File.ReadAllText(newestFile.FullName);
+        //Debug.Log(json);
+
+        ParseData(json);
+
+        /*for(int i=0; i<yVals.Count; i++) {
+            Debug.Log(yVals[i]);
+        }*/
+
+        tempo = tempoTracker();
+
+        for(int i=0; i<tempo.Count; i++) {
+            Debug.Log(tempo[i]);
+        }
+
+        float yMax = tempo[0];
+        float yMin = tempo[0];
 
         if(findXAxisLabel == null) {
             findXAxisLabel = delegate (int _i) { return _i.ToString(); };
@@ -99,7 +191,7 @@ public class WindowGraph : MonoBehaviour
         //same thing but decrease
         yMin = yMin - ((yMax - yMin) * 0.2f);
 
-        foreach(int val in tempVal) {
+        foreach(int val in tempo) {
             if(val > yMax) {
                 yMax = val;
             }
@@ -117,18 +209,19 @@ public class WindowGraph : MonoBehaviour
             yMin = metronomeStorage.tempo;
         }
         
-
+        string s = GetTimeValues(tempo.Count);
+        string[] arr = s.Split(' ');
 
         //Metronome graph
         //loop till however many y values
 
-        for(int i= 0; i<tempVal.Count; i++) {
+        for(int i= 0; i<tempo.Count; i++) {
             float x_pos = i*x_size + x_size;
             float y_pos = (metronomeStorage.tempo/yMax)*graphHeight;
             //change dot color for metronome
             GameObject dotGameObj = createPoint(new Vector2(x_pos, y_pos));
 
-            string tooltip_x = findXAxisLabel(i);
+            string tooltip_x = arr[i];
             string tooltip_y = findYAxisLabel(metronomeStorage.tempo);
             string tooltip_text = "(" + tooltip_x + "," + tooltip_y + ")";
 
@@ -150,9 +243,10 @@ public class WindowGraph : MonoBehaviour
         } 
 
 
+            
+            
 
-
-        for(int i=0; i<tempVal.Count; i++) {
+        for(int i=0; i<tempo.Count; i++) {
             //find pos for both x and y values 
 
             //X-axis - Minutes
@@ -161,13 +255,13 @@ public class WindowGraph : MonoBehaviour
 
             //Y-axis - BPM
             //temp val is only being used to calculate the y pos
-            float y_pos = (/*(*/tempVal[i] /*- yMin)*/ / /*(*/yMax /*- yMin)*/)*graphHeight;
+            float y_pos = (/*(*/tempo[i] /*- yMin)*/ / /*(*/yMax /*- yMin)*/)*graphHeight;
             //position in the graph it'll be in
             GameObject dotGameObj = createPoint(new Vector2(x_pos, y_pos));
             //Debug.Log("x position: " + x_pos + "\ny position: " + y_pos);
 
-            string tooltip_x = findXAxisLabel(i);
-            string tooltip_y = findYAxisLabel(tempVal[i]);
+            string tooltip_x = arr[i];
+            string tooltip_y = findYAxisLabel(tempo[i]);
             string tooltip_text = "(" + tooltip_x + "," + tooltip_y + ")";
 
             Button_UI dotButtonUI = dotGameObj.AddComponent<Button_UI>();
@@ -195,8 +289,9 @@ public class WindowGraph : MonoBehaviour
             X_label.SetParent(graphContainer, false);
             X_label.gameObject.SetActive(true);
             X_label.anchoredPosition = new Vector2(x_pos, -20f);
-            //change label here
-            X_label.GetComponent<Text>().text = findXAxisLabel(i);
+            X_label.GetComponent<Text>().text = arr[i];
+           
+            //X_label.GetComponent<Text>().text = //GetTimeValues(tempo.Count); //findXAxisLabel(i);
 
             RectTransform X_dash = Instantiate(DashXTemp);
             X_dash.SetParent(graphContainer, false);
