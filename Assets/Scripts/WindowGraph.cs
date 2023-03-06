@@ -27,6 +27,7 @@ public class WindowGraph : MonoBehaviour
 
     public GameObject metronome;
     MetronomeStorage metronomeStorage;
+
     
     //maybe remove static
     private static List<float> yVals = new List<float>();
@@ -43,22 +44,15 @@ public class WindowGraph : MonoBehaviour
         tooltipScript = GameObject.Find("Tooltip").GetComponent<TooltipScript>();
         tooltipScript = tooltip.GetComponent<TooltipScript>();
 
-      
         metronome = GameObject.FindWithTag("Metronome");
         if(metronome) {
             metronomeStorage = metronome.GetComponent<MetronomeStorage>();
             //Debug.Log("tempo:" + metronomeStorage.tempo);
         } 
        
-        
-        //fix metronome so that it takes the value set by the user
-
-        
-       
-        //y-values (will be changed later)
-       //List<int> tempVal = new List<int>() {0, 1, 2, 3, 4, 100, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 100, 18, 19, 20, 21, 22, 23, 24, 100, 26, 27, 28, 29, 30, 31, 32};   
     
-       displayGraph(/*tempVal,*/ (int _i) => "0:" + (_i+5) );
+    
+       displayGraph((int _i) => "0:" + (_i+5));
 
     }
 
@@ -69,7 +63,8 @@ public class WindowGraph : MonoBehaviour
         for(int i=1; i<yVals.Count; i++) {
             counter++;
         }
-        int durationSeconds = counter/24;
+        //number between 29 and 29.9
+        int durationSeconds = (int)(Math.Ceiling(counter/29.75));//24;
         //Debug.Log(durationSeconds);
         
         string timeString = "";
@@ -83,13 +78,6 @@ public class WindowGraph : MonoBehaviour
             } 
             timeString += time;
         }
-
-        /*for(int i=0; i<totalCount; i++) {
-            Debug.Log(timeString[i]);
-            if(timeString.length < totalCount) {
-
-            }
-        }*/
         
        Debug.Log(timeString);
        return timeString; 
@@ -145,7 +133,7 @@ public class WindowGraph : MonoBehaviour
 
     //to display graph 
     //would probably have to change parameters later
-    private void displayGraph(/*List<int> tempVal, */Func<int, string> findXAxisLabel = null, Func<float, string> findYAxisLabel = null) {
+    private void displayGraph(Func<int, string> findXAxisLabel = null, Func<float, string> findYAxisLabel = null) {
         float x_size = 50f;
        
         List<int> tempo = new List<int>();
@@ -201,28 +189,43 @@ public class WindowGraph : MonoBehaviour
             
         }
 
-        if(yMax < metronomeStorage.tempo) {
-            yMax = metronomeStorage.tempo;
+        if(yMax < metronomeStorage.GetTempo()) {
+            yMax = metronomeStorage.GetTempo();
         }
 
-        if(yMin < metronomeStorage.tempo) {
-            yMin = metronomeStorage.tempo;
+        if(yMin < metronomeStorage.GetTempo()) {
+            yMin = metronomeStorage.GetTempo();
         }
         
         string s = GetTimeValues(tempo.Count);
         string[] arr = s.Split(' ');
+
+        if( !(arr[arr.Length-1].Equals("3:00")) && !(arr[arr.Length-1].Equals("2:55")) ) {
+            //if video is at 3 mins, the graph will go off screen
+            //shrink graph?
+            //a performance can be up to 20 minutes?
+            if(arr[arr.Length-1].Equals("3:55")  || arr[arr.Length-1].Equals("4:00") || arr[arr.Length-1].Equals("3:55") || arr[arr.Length-1].Equals("4:05") || arr[arr.Length-1].Equals("4:10") || arr[arr.Length-1].Equals("4:15")) {
+                x_size -= 13f;
+            }
+
+            if(arr[arr.Length-1].Equals("5:00")) {
+                x_size -= -12f;
+            }
+            //x_size -= 20f;
+            //if vid is at 6 mins? or every three mins? keep shrinking
+        }
 
         //Metronome graph
         //loop till however many y values
 
         for(int i= 0; i<tempo.Count; i++) {
             float x_pos = i*x_size + x_size;
-            float y_pos = (metronomeStorage.tempo/yMax)*graphHeight;
+            float y_pos = (metronomeStorage.GetTempo()/yMax)*graphHeight;
             //change dot color for metronome
             GameObject dotGameObj = createPoint(new Vector2(x_pos, y_pos));
 
             string tooltip_x = arr[i];
-            string tooltip_y = findYAxisLabel(metronomeStorage.tempo);
+            string tooltip_y = findYAxisLabel(metronomeStorage.GetTempo());
             string tooltip_text = "(" + tooltip_x + "," + tooltip_y + ")";
 
             Button_UI dotButtonUI = dotGameObj.AddComponent<Button_UI>();
