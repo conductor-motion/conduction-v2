@@ -35,6 +35,9 @@ public class RecordingController : MonoBehaviour
     [Tooltip("HUD Elements that'll be hidden during the recording")]
     public HidableHud hideableHUD;
 
+    [Tooltip("Metronome used during the recording")]
+    public BeatChecker _metronome;
+
     // Control the recording button
     private bool recordButtonPressed = false;
     private bool editorOverride = false;
@@ -203,6 +206,7 @@ public class RecordingController : MonoBehaviour
         if (isRecording)
         {
             isRecording = false;
+            _metronome.stopMetronome();
             videoCapture.StopCapture();
             StartCoroutine(SwapIcon());
             videoCapture.OnComplete += HandleSceneChange;

@@ -512,6 +512,7 @@ MonoBehaviour:
   recordingTexture: {fileID: 0}
   notRecordingTexture: {fileID: 0}
   hideableHUD: {fileID: 0}
+  _metronome: {fileID: 0}
   webCamInput: {fileID: 0}
   visuallizer: {fileID: 0}
   videoCapture: {fileID: 0}
@@ -1847,6 +1848,7 @@ MonoBehaviour:
   recordingTexture: {fileID: 10904, guid: 0000000000000000f000000000000000, type: 0}
   notRecordingTexture: {fileID: 2800000, guid: 3a3133e05e55c0e4a8ffcbd5c0cfe742, type: 3}
   hideableHUD: {fileID: 5491292833631456978}
+  _metronome: {fileID: 5491292832650881101}
   webCamInput: {fileID: 1187057161}
   visuallizer: {fileID: 1442692900}
   videoCapture: {fileID: 1580344348}
@@ -6557,6 +6559,7 @@ GameObject:
   - component: {fileID: 5491292832650881100}
   - component: {fileID: 5491292832650881101}
   - component: {fileID: 5491292832650881102}
+  - component: {fileID: 5491292832650881137}
   m_Layer: 5
   m_Name: Metronome
   m_TagString: Metronome
@@ -6564,6 +6567,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5491292832650881137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491292832650881136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af31b6c25d203e4ca75c87153fbdab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Metronome: {fileID: 5491292832650881136}
 --- !u!114 &5491292832687693332
 MonoBehaviour:
   m_ObjectHideFlags: 0
