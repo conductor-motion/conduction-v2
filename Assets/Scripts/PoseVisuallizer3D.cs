@@ -121,7 +121,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         Debug.Log("---");
     }
 
-    /*void OnRenderObject(){
+    void OnRenderObject(){
         // Use predicted pose world landmark results on the ComputeBuffer (GPU) memory.
         material.SetBuffer("_worldVertices", detecter.worldLandmarkBuffer);
         // Set pose landmark counts.
@@ -137,7 +137,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         // Draw 33 world landmark points.
         material.SetPass(3);
         Graphics.DrawProceduralNow(MeshTopology.Triangles, 6, detecter.vertexCount);
-    }*/
+    }
 
     void OnDestroy()
     {
