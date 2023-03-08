@@ -250,6 +250,7 @@
     <Compile Include="Assets\K2Examples\KinectScripts\Interfaces\Nuitrack\NuitrackLoader.cs" />
     <Compile Include="Assets\Evereal\VideoCapture\Scripts\Hotkey\VideoCaptureManagerHotkey.cs" />
     <Compile Include="Assets\Evereal\VideoCapture\Scripts\Internal\Encoder\FFmpegStreamer.cs" />
+    <Compile Include="Assets\Scripts\Recording\ToggleHotkey.cs" />
     <Compile Include="Assets\K2Examples\KinectDemos\FittingRoomDemo\Scripts\CloudFaceScripts\FaceObjs\ClientError.cs" />
     <Compile Include="Assets\K2Examples\KinectDemos\VisualizerDemo\Scripts\MousePointOverlayer.cs" />
     <Compile Include="Assets\K2Examples\KinectDemos\FittingRoomDemo\Scripts\CloudFaceScripts\FaceObjs\FaceLandmarks.cs" />
@@ -263,6 +264,7 @@
     <Compile Include="Assets\K2Examples\KinectDemos\FaceTrackingDemo\Scripts\FacePointOverlayer.cs" />
     <Compile Include="Assets\Evereal\VideoCapture\Scripts\Internal\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\MainManager.cs" />
+    <Compile Include="Assets\Scripts\Recording\PanelOpener.cs" />
     <Compile Include="Assets\Evereal\VideoCapture\Scripts\ImageCapture.cs" />
     <Compile Include="Assets\Evereal\VideoCapture\Scripts\Internal\FreeTrial.cs" />
     <Compile Include="Assets\Scripts\MediaControls.cs" />
@@ -284,8 +286,6 @@
     <Compile Include="Assets\K2Examples\KinectScripts\Samples\FollowUserRotation.cs" />
     <Compile Include="Assets\K2Examples\KinectDemos\ColliderDemo\Scripts\DepthSpriteViewer.cs" />
     <Compile Include="Assets\K2Examples\KinectDemos\PhysicsDemo\Scripts\BarrelTrigger.cs" />
-    <Compile Include="Assets\Scripts\Recording\PanelOpener.cs" />
-    <Compile Include="Assets\Scripts\Recording\ToggleHotkey.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
