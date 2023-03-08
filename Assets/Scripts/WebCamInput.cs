@@ -1,5 +1,4 @@
 using System.Text;
-using UnityEditor.Media;
 using UnityEngine;
 using System.IO;
 using System.Collections;
@@ -11,11 +10,6 @@ public class WebCamInput : MonoBehaviour
     [SerializeField] Vector2 webCamResolution = new Vector2(1920, 1080);
     public Texture staticInput;
 
-    MediaEncoder encoder;
-    VideoTrackAttributes videoAttr;
-    AudioTrackAttributes audioAttr;
-
-    string fullPath;
 
     // Provide input image Texture.
     public Texture inputImageTexture
