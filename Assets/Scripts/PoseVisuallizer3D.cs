@@ -118,7 +118,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         temp.z = detecter.GetPoseWorldLandmark(13).z;
         leftElbowTarget.position = temp;
 
-        Debug.Log("---");
+        //Debug.Log("---");
     }
 
     /*void OnRenderObject(){
