@@ -92,13 +92,6 @@ public int isExtremeEdges(float x, float y)
 }
 public void Displaytemplate()
  {
-        for(int i= 0; i < RightxVals.Count; i++)
-        {
-            Debug.Log(RightxVals[i]);
-            Debug.Log(RightyVals[i]);
-        }
-            
-
         float totalframes = LeftyVals.Count;
         //Initializing frame counter values for the left and right hands
         float LbadTLCcnt = 0;
