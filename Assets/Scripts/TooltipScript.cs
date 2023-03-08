@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class TooltipScript : MonoBehaviour
 {
     public static TooltipScript instance;
-    //public bool test = true;
     public Text tooltipText;
     public RectTransform tooltipBackground;
 
@@ -23,14 +22,12 @@ public class TooltipScript : MonoBehaviour
     public void Update()
     {
         Vector2 localPoint;
-        //We need UI position 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), Input.mousePosition, UICamera, out localPoint);
         transform.localPosition = localPoint;
     }
 
-    public void displayTooltip(string tooltipString/*, Vector2 anchoredPosition*/) {
+    public void displayTooltip(string tooltipString) {
         gameObject.SetActive(true);
-        //gameObject.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
         tooltipText.text = tooltipString;
         float textPaddingSize = 4f;
         Vector2 background_size = new Vector2(tooltipText.preferredWidth + textPaddingSize * 2f, tooltipText.preferredHeight + textPaddingSize * 2f);
@@ -40,14 +37,11 @@ public class TooltipScript : MonoBehaviour
     }
 
     public void hideTooltip() {
-        //hides game object
         gameObject.SetActive(false);
     }
 
-    //static funcs to easily use this class from other classes
-
-    public static void static_displayTooltip(string tooltipString/*, Vector2 anchoredPosition*/) {
-        instance.displayTooltip(tooltipString/*, anchoredPosition*/); 
+    public static void static_displayTooltip(string tooltipString) {
+        instance.displayTooltip(tooltipString); 
     }
 
     public static void static_hideTooltip() {

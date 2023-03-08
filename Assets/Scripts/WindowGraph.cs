@@ -1,18 +1,17 @@
+using SimpleJSON;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using CodeMonkey.Utils;
 using System.IO;
 using System.Linq;
-using SimpleJSON;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UITtooltip.Utils;
 
 public class WindowGraph : MonoBehaviour
 {
-    //to display each dot on graph
-    [SerializeField] private Sprite dot_sprite;
-    //get reference to graph container
+    //reference to graph container
     private RectTransform graphContainer;
     //reference to X and Y labels
     private RectTransform Xtemp;
@@ -22,18 +21,16 @@ public class WindowGraph : MonoBehaviour
     private RectTransform DashYTemp;
 
     TooltipScript tooltipScript;
-    //this obj is private but still visible within the editor
     [SerializeField] GameObject tooltip;
 
     public GameObject metronome;
     MetronomeStorage metronomeStorage;
 
-    
-    //maybe remove static
+    [SerializeField] private Sprite BlackDotSprite;
+    [SerializeField] private Sprite WhiteDotSprite;
+
     private static List<float> yVals = new List<float>();
    
-
-    //awake gets called first, start gets called after
     private void Awake() {
         graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
         Xtemp = graphContainer.Find("Xtemp").GetComponent<RectTransform>();
@@ -49,15 +46,10 @@ public class WindowGraph : MonoBehaviour
             metronomeStorage = metronome.GetComponent<MetronomeStorage>();
             //Debug.Log("tempo:" + metronomeStorage.tempo);
         } 
-       
     
-    
-       displayGraph((int _i) => "0:" + (_i+5));
-
+       displayGraph();
     }
 
-    
- 
     public static string GetTimeValues(int totalCount) {
         int counter = 0;
         for(int i=1; i<yVals.Count; i++) {
@@ -73,7 +65,6 @@ public class WindowGraph : MonoBehaviour
             int remainingSeconds = seconds % 60;
             string time = minutes + ":" + remainingSeconds.ToString("D2");
             if (timeString.Length > 0) {
-               // timeString += ", ";
                timeString += " ";
             } 
             timeString += time;
@@ -82,14 +73,8 @@ public class WindowGraph : MonoBehaviour
        Debug.Log(timeString);
        return timeString; 
     }
-
-
-
-
-
    
-    private static FileInfo GetNewestFile(DirectoryInfo directory)
-        {
+    private static FileInfo GetNewestFile(DirectoryInfo directory) {
             return directory.GetFiles()
                 .Union(directory.GetDirectories().Select(d => GetNewestFile(d)))
                 .OrderByDescending(f => (f == null ? DateTime.MinValue : f.LastWriteTime))
@@ -101,9 +86,9 @@ public class WindowGraph : MonoBehaviour
         n = n["frames"];
 
         for(int i=0; i<n.Count; i++) {
-            for(int j=0; j<n[j].Count; j++) {
-                yVals.Add(n[i]["data"][j]["yVal"]);
-            }
+            //for(int j=0; j<n[j].Count; j++) {
+                yVals.Add(n[i]["data"][1]["yVal"]);
+           // }
         }
     }
 
@@ -121,7 +106,7 @@ public class WindowGraph : MonoBehaviour
                     }
             }
             if(counter%150 == 0) {
-                tempoCalc = (downbeat*12);
+                tempoCalc = downbeat*12;
                 tempo.Add(tempoCalc);
                 downbeat = 0;
             }
@@ -131,26 +116,20 @@ public class WindowGraph : MonoBehaviour
         return tempo;
     }
 
-    //to display graph 
-    //would probably have to change parameters later
-    private void displayGraph(Func<int, string> findXAxisLabel = null, Func<float, string> findYAxisLabel = null) {
+    
+    private void displayGraph(Func<float, string> findYAxisLabel = null) {
         float x_size = 50f;
-       
+        float graphHeight = graphContainer.sizeDelta.y;
         List<int> tempo = new List<int>();
 
-
-        float graphHeight = graphContainer.sizeDelta.y;
-
         //store reference to prev game obj
-        GameObject prevDotGameObj = null;
-
-        GameObject prevEx = null;
+        GameObject prevDotGameObjConductor = null;
+        GameObject prevDotGameObjMetronome = null;
 
         FileInfo newestFile = GetNewestFile(new DirectoryInfo(@"Assets/Conduction/Data"));
         //Debug.Log(newestFile.Name);
         string json = File.ReadAllText(newestFile.FullName);
         //Debug.Log(json);
-
         ParseData(json);
 
         /*for(int i=0; i<yVals.Count; i++) {
@@ -166,15 +145,11 @@ public class WindowGraph : MonoBehaviour
         float yMax = tempo[0];
         float yMin = tempo[0];
 
-        if(findXAxisLabel == null) {
-            findXAxisLabel = delegate (int _i) { return _i.ToString(); };
-        }
-
-         if(findYAxisLabel == null) {
+        if(findYAxisLabel == null) {
             findYAxisLabel = delegate (float _f) { return Mathf.RoundToInt(_f).ToString(); };
         }
         
-         //increase by 20% of the diff b/w max and min
+        //increase by 20% of the diff b/w max and min
         yMax = yMax + ((yMax - yMin) * 0.2f);
         //same thing but decrease
         yMin = yMin - ((yMax - yMin) * 0.2f);
@@ -200,88 +175,214 @@ public class WindowGraph : MonoBehaviour
         string s = GetTimeValues(tempo.Count);
         string[] arr = s.Split(' ');
 
-        if( !(arr[arr.Length-1].Equals("3:00")) && !(arr[arr.Length-1].Equals("2:55")) ) {
+        if( !(arr[arr.Length-1].Equals("3:00")) ) {
             //if video is at 3 mins, the graph will go off screen
             //shrink graph?
             //a performance can be up to 20 minutes?
-            if(arr[arr.Length-1].Equals("3:55")  || arr[arr.Length-1].Equals("4:00") || arr[arr.Length-1].Equals("3:55") || arr[arr.Length-1].Equals("4:05") || arr[arr.Length-1].Equals("4:10") || arr[arr.Length-1].Equals("4:15")) {
-                x_size -= 13f;
-            }
+            if(arr[arr.Length-1].Equals("3:05") || 
+               arr[arr.Length-1].Equals("3:10") ||
+               arr[arr.Length-1].Equals("3:15") ||
+               arr[arr.Length-1].Equals("3:20")) {
+                    x_size -= 5f;
+                }
 
-            if(arr[arr.Length-1].Equals("5:00")) {
-                x_size -= -12f;
-            }
-            //x_size -= 20f;
-            //if vid is at 6 mins? or every three mins? keep shrinking
+            if(arr[arr.Length-1].Equals("3:25") ||
+               arr[arr.Length-1].Equals("3:30") ||
+               arr[arr.Length-1].Equals("3:35") ||
+               arr[arr.Length-1].Equals("3:40")) {
+                    x_size -=10f;
+                }
+
+            if(arr[arr.Length-1].Equals("3:45") ||
+               arr[arr.Length-1].Equals("3:50") ||
+               arr[arr.Length-1].Equals("3:55") || 
+               arr[arr.Length-1].Equals("4:00")) {
+                    x_size -= 15f;
+                }
+            
+            if(arr[arr.Length-1].Equals("4:05") || 
+               arr[arr.Length-1].Equals("4:10") || 
+               arr[arr.Length-1].Equals("4:15") ||
+               arr[arr.Length-1].Equals("4:20")) {
+                    x_size -= 20f;
+                }
+
+            if(arr[arr.Length-1].Equals("4:25") ||
+               arr[arr.Length-1].Equals("4:30") ||
+               arr[arr.Length-1].Equals("4:35") ||
+               arr[arr.Length-1].Equals("4:40")) {
+                x_size -= 25f;
+               }
+
+            if(arr[arr.Length-1].Equals("4:45") ||
+               arr[arr.Length-1].Equals("4:50") ||
+               arr[arr.Length-1].Equals("4:55") ||
+               arr[arr.Length-1].Equals("5:00")) {
+                x_size -= 30f;
+               }
+
+            if(arr[arr.Length-1].Equals("5:05") ||
+               arr[arr.Length-1].Equals("5:10") ||
+               arr[arr.Length-1].Equals("5:15") ||
+               arr[arr.Length-1].Equals("5:20")) {
+                x_size -= 35f;
+              }
+
+            if(arr[arr.Length-1].Equals("5:25") ||
+               arr[arr.Length-1].Equals("5:30") ||
+               arr[arr.Length-1].Equals("5:35") ||
+               arr[arr.Length-1].Equals("5:40")) {
+                x_size -= 40f;
+               }
+            
+            if(arr[arr.Length-1].Equals("5:45") ||
+               arr[arr.Length-1].Equals("5:50") ||
+               arr[arr.Length-1].Equals("5:55") ||
+               arr[arr.Length-1].Equals("6:00")) {
+                x_size -= 45f;
+               }
+            
+            if(arr[arr.Length-1].Equals("6:05") ||
+               arr[arr.Length-1].Equals("6:10") ||
+               arr[arr.Length-1].Equals("6:15") ||
+               arr[arr.Length-1].Equals("6:20")) {
+                x_size -= 50f;
+               }
+            
+            if(arr[arr.Length-1].Equals("6:25") ||
+               arr[arr.Length-1].Equals("6:30") ||
+               arr[arr.Length-1].Equals("6:35") ||
+               arr[arr.Length-1].Equals("6:40")) {
+                x_size -= 55f;
+               }
+            
+            if(arr[arr.Length-1].Equals("6:45") ||
+               arr[arr.Length-1].Equals("6:50") ||
+               arr[arr.Length-1].Equals("6:55") ||
+               arr[arr.Length-1].Equals("7:00")) {
+                x_size -= 60f;
+               }
+            
+            if(arr[arr.Length-1].Equals("7:05") ||
+               arr[arr.Length-1].Equals("7:10") ||
+               arr[arr.Length-1].Equals("7:15") ||
+               arr[arr.Length-1].Equals("7:20")) {
+                x_size -= 65f;
+               }
+            
+            if(arr[arr.Length-1].Equals("7:25") ||
+               arr[arr.Length-1].Equals("7:30") ||
+               arr[arr.Length-1].Equals("7:35") ||
+               arr[arr.Length-1].Equals("7:40")) {
+                x_size -= 70f;
+               }
+            
+            if(arr[arr.Length-1].Equals("7:45") ||
+               arr[arr.Length-1].Equals("7:50") ||
+               arr[arr.Length-1].Equals("7:55") ||
+               arr[arr.Length-1].Equals("8:00")) {
+                x_size -= 75f;
+               }
+            
+            if(arr[arr.Length-1].Equals("8:05") ||
+               arr[arr.Length-1].Equals("8:10") ||
+               arr[arr.Length-1].Equals("8:15") ||
+               arr[arr.Length-1].Equals("8:20")) {
+                x_size -= 80f;
+               }
+
+            if(arr[arr.Length-1].Equals("8:25") ||
+               arr[arr.Length-1].Equals("8:30") ||
+               arr[arr.Length-1].Equals("8:35") ||
+               arr[arr.Length-1].Equals("8:40")) {
+                x_size -= 85f;
+               }
+            
+            if(arr[arr.Length-1].Equals("8:45") ||
+               arr[arr.Length-1].Equals("8:50") ||
+               arr[arr.Length-1].Equals("8:55") ||
+               arr[arr.Length-1].Equals("9:00")) {
+                x_size -= 90f;
+               }
+            
+            if(arr[arr.Length-1].Equals("9:05") ||
+               arr[arr.Length-1].Equals("9:10") ||
+               arr[arr.Length-1].Equals("9:15") ||
+               arr[arr.Length-1].Equals("9:20")) {
+                x_size -= 95f;
+               }
+            
+            if(arr[arr.Length-1].Equals("9:25") ||
+               arr[arr.Length-1].Equals("9:30") ||
+               arr[arr.Length-1].Equals("9:35") ||
+               arr[arr.Length-1].Equals("9:40")) {
+                x_size -= 100f;
+               }
+            
+            if(arr[arr.Length-1].Equals("9:45") ||
+               arr[arr.Length-1].Equals("9:50") ||
+               arr[arr.Length-1].Equals("9:55") ||
+               arr[arr.Length-1].Equals("10:00")) {
+                x_size -= 105f;
+               }
+           
+           
         }
 
-        //Metronome graph
-        //loop till however many y values
-
+        //Metronome line
         for(int i= 0; i<tempo.Count; i++) {
             float x_pos = i*x_size + x_size;
             float y_pos = (metronomeStorage.GetTempo()/yMax)*graphHeight;
-            //change dot color for metronome
-            GameObject dotGameObj = createPoint(new Vector2(x_pos, y_pos));
+            
+            GameObject dotGameObj = createPoint(new Vector2(x_pos, y_pos), 1);
 
             string tooltip_x = arr[i];
             string tooltip_y = findYAxisLabel(metronomeStorage.GetTempo());
             string tooltip_text = "(" + tooltip_x + "," + tooltip_y + ")";
 
-            Button_UI dotButtonUI = dotGameObj.AddComponent<Button_UI>();
+           TooltipUI dotButtonUI = dotGameObj.AddComponent<TooltipUI>();
 
-            dotButtonUI.MouseOverOnceFunc += () => {
+            dotButtonUI.MouseOverOnce += () => {
                 TooltipScript.static_displayTooltip(tooltip_text);
             };
 
-            dotButtonUI.MouseOutOnceFunc += () => {
+            dotButtonUI.MouseOutOnce += () => {
                 TooltipScript.static_hideTooltip();
             };
 
-            if(prevEx != null) {
-                drawDotLine(prevEx.GetComponent<RectTransform>().anchoredPosition, dotGameObj.GetComponent<RectTransform>().anchoredPosition, new Color(1,1,1, .5f));
+            if(prevDotGameObjMetronome != null) {
+                drawDotLine(prevDotGameObjMetronome.GetComponent<RectTransform>().anchoredPosition, dotGameObj.GetComponent<RectTransform>().anchoredPosition, new Color(1,1,1, .5f));
             }
-            prevEx = dotGameObj;
+            prevDotGameObjMetronome = dotGameObj;
 
         } 
 
-
-            
-            
-
+        //Conductor line
         for(int i=0; i<tempo.Count; i++) {
-            //find pos for both x and y values 
-
-            //X-axis - Minutes
-            //distance b/w each point on x axis
             float x_pos = i*x_size + x_size;
-
-            //Y-axis - BPM
-            //temp val is only being used to calculate the y pos
-            float y_pos = (/*(*/tempo[i] /*- yMin)*/ / /*(*/yMax /*- yMin)*/)*graphHeight;
-            //position in the graph it'll be in
+            float y_pos = (tempo[i] / yMax)*graphHeight;
+            
             GameObject dotGameObj = createPoint(new Vector2(x_pos, y_pos));
-            //Debug.Log("x position: " + x_pos + "\ny position: " + y_pos);
 
             string tooltip_x = arr[i];
             string tooltip_y = findYAxisLabel(tempo[i]);
             string tooltip_text = "(" + tooltip_x + "," + tooltip_y + ")";
 
-            Button_UI dotButtonUI = dotGameObj.AddComponent<Button_UI>();
+           TooltipUI dotButtonUI = dotGameObj.AddComponent<TooltipUI>();
 
-            dotButtonUI.MouseOverOnceFunc += () => {
+            dotButtonUI.MouseOverOnce += () => {
                 TooltipScript.static_displayTooltip(tooltip_text);
             };
 
-            dotButtonUI.MouseOutOnceFunc += () => {
+            dotButtonUI.MouseOutOnce += () => {
                 TooltipScript.static_hideTooltip();
             };
 
             //if it's not the first dot
-            if(prevDotGameObj != null) {
-                drawDotLine(prevDotGameObj.GetComponent<RectTransform>().anchoredPosition, dotGameObj.GetComponent<RectTransform>().anchoredPosition, new Color(0,0,0, .5f));
+            if(prevDotGameObjConductor != null) {
+                drawDotLine(prevDotGameObjConductor.GetComponent<RectTransform>().anchoredPosition, dotGameObj.GetComponent<RectTransform>().anchoredPosition, new Color(0,0,0, .5f));
             }
-            prevDotGameObj = dotGameObj;
+            prevDotGameObjConductor = dotGameObj;
 
            
             //graph height = x_size*.9f?
@@ -293,8 +394,6 @@ public class WindowGraph : MonoBehaviour
             X_label.gameObject.SetActive(true);
             X_label.anchoredPosition = new Vector2(x_pos, -20f);
             X_label.GetComponent<Text>().text = arr[i];
-           
-            //X_label.GetComponent<Text>().text = //GetTimeValues(tempo.Count); //findXAxisLabel(i);
 
             RectTransform X_dash = Instantiate(DashXTemp);
             X_dash.SetParent(graphContainer, false);
@@ -302,7 +401,7 @@ public class WindowGraph : MonoBehaviour
             X_dash.anchoredPosition = new Vector2(x_pos, 3f);
 
         } 
-
+        
         int separate_count = 10;
         for(int i=0; i<=separate_count; i++) {
             RectTransform Y_label = Instantiate(Ytemp);
@@ -318,20 +417,18 @@ public class WindowGraph : MonoBehaviour
             Y_dash.anchoredPosition = new Vector2(20f, normalizedVal*graphHeight);
            
         }
-
-      
     }
 
-    //function to create each point
-    private GameObject createPoint(Vector2 anchoredPosition) {
+    private GameObject createPoint(Vector2 anchoredPosition, int dotColor = 0) {
         GameObject gameObject = new GameObject("point", typeof(Image));
-        //transform is the position, rotation, and scale of the obj
-        //setting worldPositionStays to false means the gameObj will be positioned next to its new parent in the same way if that gameObj was next to its parent
-        //instead of a world position, the world of the point gameObj centers around the graphContainer
         gameObject.transform.SetParent(graphContainer, false);
-        //accessing the GameObject
-        gameObject.GetComponent<Image>().sprite = dot_sprite;
-        
+
+        if(dotColor == 1) {
+            gameObject.GetComponent<Image>().sprite = WhiteDotSprite;
+        }
+        else {
+            gameObject.GetComponent<Image>().sprite = BlackDotSprite;
+        }
         
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
 
@@ -348,19 +445,17 @@ public class WindowGraph : MonoBehaviour
     private void drawDotLine(Vector2 dot1, Vector2 dot2, Color c) {
         GameObject gameObject = new GameObject("dotLine", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);
-        gameObject.GetComponent<Image>().color = /*new Color(0,0,0, .5f)*/ c;
+        gameObject.GetComponent<Image>().color = c;
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
-        //when normalized, a vector keeps the same direction but its length/magnitude is 1.0
         Vector2 direction = (dot2 - dot1).normalized;
         float dist = Vector2.Distance(dot1, dot2);
         //anchor to lower left
         rectTransform.anchorMin = new Vector2(0,0);
         rectTransform.anchorMax = new Vector2(0,0);
         rectTransform.sizeDelta = new Vector2(dist, 3f);
-        //maybe change up code here
+        
         rectTransform.anchoredPosition = dot1 + direction * dist * .5f;
         rectTransform.localEulerAngles = new Vector3(0,0, findAngle(direction));
-
     }
 
     private float findAngle(Vector3 direction) {
