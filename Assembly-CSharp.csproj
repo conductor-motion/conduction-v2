@@ -284,6 +284,8 @@
     <Compile Include="Assets\K2Examples\KinectScripts\Samples\FollowUserRotation.cs" />
     <Compile Include="Assets\K2Examples\KinectDemos\ColliderDemo\Scripts\DepthSpriteViewer.cs" />
     <Compile Include="Assets\K2Examples\KinectDemos\PhysicsDemo\Scripts\BarrelTrigger.cs" />
+    <Compile Include="Assets\Scripts\Recording\PanelOpener.cs" />
+    <Compile Include="Assets\Scripts\Recording\ToggleHotkey.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
