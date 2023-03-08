@@ -60,7 +60,7 @@ public class WindowGraph : MonoBehaviour
         //Debug.Log(durationSeconds);
         
         string timeString = "";
-        for (int seconds = 5; seconds <= durationSeconds; seconds += 5) {
+        for (int seconds = 2; seconds <= durationSeconds; seconds += 2) {
             int minutes = seconds / 60;
             int remainingSeconds = seconds % 60;
             string time = minutes + ":" + remainingSeconds.ToString("D2");
@@ -105,7 +105,7 @@ public class WindowGraph : MonoBehaviour
                         downbeat++;
                     }
             }
-            if(counter%150 == 0) {
+            if(counter%60 == 0) {
                 tempoCalc = downbeat*12;
                 tempo.Add(tempoCalc);
                 downbeat = 0;

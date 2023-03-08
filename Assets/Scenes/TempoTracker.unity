@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 20, y: -2.9999542}
+  m_AnchoredPosition: {x: 20, y: -2.999939}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &95505471
@@ -373,7 +373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 5.000122, y: -2.5000458}
+  m_AnchoredPosition: {x: 5.000122, y: -2.500061}
   m_SizeDelta: {x: 1800, y: 1}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &243276301
@@ -543,7 +543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00024414062, y: -7.873062}
+  m_AnchoredPosition: {x: 0.00024414062, y: -7.873047}
   m_SizeDelta: {x: -0.00061035, y: 15.7451}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &284676176
@@ -1097,8 +1097,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.4007, y: 102}
-  m_SizeDelta: {x: 2066.4817, y: 484.558}
+  m_AnchoredPosition: {x: 1.4007, y: 91.456}
+  m_SizeDelta: {x: 2066.482, y: 505.638}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &540512003
 MonoBehaviour:
@@ -1214,7 +1214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &666452026
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1965,8 +1965,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1066.0088, y: 248.43196}
-  m_SizeDelta: {x: 1958.4945, y: 427.5381}
+  m_AnchoredPosition: {x: 1053.688, y: 248.43205}
+  m_SizeDelta: {x: 1983.137, y: 427.539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1136564949
 GameObject:
@@ -2647,7 +2647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.7922363, y: -8.6102295}
+  m_AnchoredPosition: {x: -5.7922363, y: -8.610199}
   m_SizeDelta: {x: 11.584, y: 142.466}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1743029932
@@ -2979,7 +2979,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This tool tracks the conductor's tempo on a five second interval. The results
+  m_text: This tool tracks the conductor's tempo on a two second interval. The results
     are displayed as a line graph with each point representing the tempo and its
     corresponding time. The conductor's tempo is calculated by counting each downbeat
     in the right hand.
