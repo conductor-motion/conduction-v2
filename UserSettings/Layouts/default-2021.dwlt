@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1280
     height: 629.3334
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 4878
+  controlID: 641
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 4879
+  controlID: 642
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 4880
+  controlID: 643
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -270,8 +270,8 @@ MonoBehaviour:
     y: 0
     width: 339.3333
     height: 579.3333
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -400,9 +400,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: a0590000
       m_LastClickedID: 0
-      m_ExpandedIDs: fa86ffffe287ffff7a9affff769cffff66b0ffffbeb1ffffbec4ffff26c7ffff46f2ffff76f8ffff36fbffff0a5a0000325a0000525a0000665a00009e5a0000fc7100002472000058720000ec8100001482000048820000f29100001a9200004e920000e0a1000008a200003ca20000
+      m_ExpandedIDs: a0e9ffffbaeaffff80f8ffffdcf8ffff36fbfffffc640000246500004465000058650000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -702,11 +702,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: -0, y: 0, z: -0, w: -1}
   m_Size:
-    m_Target: 64.27366
+    m_Target: 70.18844
     speed: 2
-    m_Value: 64.27366
+    m_Value: 70.18844
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -800,21 +800,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Conduction/Data
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Conduction/Data/2023-03-08T15-14
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\allis\OneDrive\Documents\GitHub\conduction-v2
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 127}
-    m_SelectedIDs: 1e590000
-    m_LastClickedID: 22814
+    m_SelectedIDs: 3c590000
+    m_LastClickedID: 22844
     m_ExpandedIDs: 00000000185900001a5900001c5900001e5900002059000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
