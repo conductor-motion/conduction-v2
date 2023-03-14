@@ -726,175 +726,134 @@
      <Reference Include="netstandard">
      <HintPath>/Applications/Unity/Hub/Editor/2021.3.18f1/Unity.app/Contents/UnityReferenceAssemblies/unity-4.8-api/Facades/netstandard.dll</HintPath>
      </Reference>
+     <Reference Include="UnityEngine.TestRunner">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.TestRunner">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Barracuda.ONNX">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Barracuda.ONNX.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Barracuda.iOSBLAS">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Barracuda.iOSBLAS.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Barracuda.BurstBLAS">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Barracuda.BurstBLAS.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VSCode.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.TextMeshPro.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualStudio.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Sysroot.Linux_x86_64">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Barracuda">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Barracuda.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.XR.Management.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.XR.Management.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Mediapipe.PoseDetection.Runtime">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Mediapipe.PoseDetection.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Timeline">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.TextMeshPro">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Burst.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Sprite.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Subsystem.Registration">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.UI">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.InputSystem">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Rider.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.PlasticSCM.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.UI">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.SpatialTracking">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+     </Reference>
+     <Reference Include="Mediapipe.BlazePose.Runtime">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Mediapipe.BlazePose.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Mathematics">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Burst">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+     </Reference>
+     <Reference Include="Mediapipe.PoseLandmark.Runtime">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Mediapipe.PoseLandmark.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Timeline.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.XR.ARSubsystems.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.XR.ARSubsystems.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.XR.Management">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.XR.Management.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Mathematics.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.XR.ARSubsystems">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.XR.ARSubsystems.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.XR.ARFoundation.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.XR.ARFoundation.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.SpatialTracking">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Barracuda.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Barracuda.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Barracuda.MacBLAS">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Barracuda.MacBLAS.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.XR.ARFoundation">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.XR.ARFoundation.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.SysrootPackage.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
+     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{bf93711c-8a2c-052b-bc59-d77e690eb081}</Project>
       <Name>Assembly-CSharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{e22bbd31-7e27-4e1a-65e7-df927dd58f73}</Project>
-      <Name>UnityEngine.TestRunner</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{fb273e4d-29f3-7cea-3173-b2c3164fd625}</Project>
-      <Name>UnityEditor.TestRunner</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.ONNX.csproj">
-      <Project>{fdf86b41-e122-ed88-5213-7606970b0b25}</Project>
-      <Name>Unity.Barracuda.ONNX</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.iOSBLAS.csproj">
-      <Project>{42ecbcde-bfea-e41f-e35e-9927da8dbeaf}</Project>
-      <Name>Unity.Barracuda.iOSBLAS</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.BurstBLAS.csproj">
-      <Project>{f964030e-efc0-f934-839b-1c1977bf2f45}</Project>
-      <Name>Unity.Barracuda.BurstBLAS</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VSCode.Editor.csproj">
-      <Project>{2bb19067-9728-4777-c34c-399754ff8394}</Project>
-      <Name>Unity.VSCode.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
-      <Project>{e4bbcdb4-7b56-5bb5-b4ae-9cc87b8e9c4c}</Project>
-      <Name>Unity.TextMeshPro.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
-      <Project>{79fd24e6-b2a6-6c56-5893-33b6c7b39164}</Project>
-      <Name>Unity.VisualStudio.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Sysroot.Linux_x86_64.csproj">
-      <Project>{fc8f29ac-16d2-b34f-c32b-560034e17cc2}</Project>
-      <Name>Unity.Sysroot.Linux_x86_64</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.csproj">
-      <Project>{da4c90c9-e7ad-8682-8435-bfa33685844c}</Project>
-      <Name>Unity.Barracuda</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.XR.Management.Editor.csproj">
-      <Project>{dd923b97-ed20-7fb2-beec-6b314557134e}</Project>
-      <Name>Unity.XR.Management.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mediapipe.PoseDetection.Runtime.csproj">
-      <Project>{6929b1b4-fd28-44d2-66db-cb7c0cd3c86d}</Project>
-      <Name>Mediapipe.PoseDetection.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{ff2595e7-6dd2-b15a-3812-c3018c2871cd}</Project>
-      <Name>Unity.Timeline</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{ce27b5fd-0728-60bf-300e-c4ba79a53fa1}</Project>
-      <Name>Unity.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.Editor.csproj">
-      <Project>{55b26439-3e3f-23a9-c430-36d269ab8206}</Project>
-      <Name>Unity.Burst.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Subsystem.Registration.csproj">
-      <Project>{e2166a70-105c-d401-1ced-75f721db567c}</Project>
-      <Name>Unity.Subsystem.Registration</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{9c0d3017-c049-491d-0208-d3c549703fc1}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
-      <Project>{5fc81517-2fff-74aa-3b0b-7803491425b9}</Project>
-      <Name>Unity.PlasticSCM.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{d0f3e52b-fc68-00c1-66f9-76d3e8f5adae}</Project>
-      <Name>Unity.Rider.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mediapipe.BlazePose.Runtime.csproj">
-      <Project>{0b48932b-befa-149a-025e-c213a9b8d758}</Project>
-      <Name>Mediapipe.BlazePose.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{c7a22c67-870e-3079-648c-7cd14a09335e}</Project>
-      <Name>UnityEngine.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.SpatialTracking.csproj">
-      <Project>{a9f6aafc-5493-7129-be37-202ca958dc55}</Project>
-      <Name>UnityEngine.SpatialTracking</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{f9e966e0-48de-d08b-e25d-a91544a2bc04}</Project>
-      <Name>Unity.Mathematics</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.csproj">
-      <Project>{56973859-db3d-86b7-76cc-8e2db22df41b}</Project>
-      <Name>Unity.Burst</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.XR.LegacyInputHelpers.csproj">
-      <Project>{13391ccc-268b-2b30-314e-af1b69ab5559}</Project>
-      <Name>UnityEngine.XR.LegacyInputHelpers</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mediapipe.PoseLandmark.Runtime.csproj">
-      <Project>{ba4cce7d-a112-7847-5b48-a6fb5ae418fd}</Project>
-      <Name>Mediapipe.PoseLandmark.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj">
-      <Project>{595c570e-2e02-20fe-de7d-f74fc251e4fb}</Project>
-      <Name>Unity.Toolchain.Win-x86_64-Linux-x86_64</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.Editor.csproj">
-      <Project>{5c183869-9dc6-0da1-d2b0-40b8e218653b}</Project>
-      <Name>Unity.Timeline.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.XR.ARSubsystems.Editor.csproj">
-      <Project>{6a333914-7ef2-6a4b-d394-ed75cbeb8574}</Project>
-      <Name>Unity.XR.ARSubsystems.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.XR.LegacyInputHelpers.csproj">
-      <Project>{912c0399-2ccd-046c-b523-4b1afa5ba50a}</Project>
-      <Name>UnityEditor.XR.LegacyInputHelpers</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.XR.Management.csproj">
-      <Project>{b1f51ad1-1c6b-2a33-c65a-86aa8bc53632}</Project>
-      <Name>Unity.XR.Management</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
-      <Project>{d41b5e9c-3ec8-5caf-ba22-2b56bdf5013c}</Project>
-      <Name>Unity.Mathematics.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.XR.ARSubsystems.csproj">
-      <Project>{0753a3cb-d8f4-887e-f43e-3accd597eb21}</Project>
-      <Name>Unity.XR.ARSubsystems</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.XR.ARFoundation.Editor.csproj">
-      <Project>{c5cafed7-2cb8-df1a-4e78-fe7270ea49b0}</Project>
-      <Name>Unity.XR.ARFoundation.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.SpatialTracking.csproj">
-      <Project>{514adbe1-16c7-5828-2110-9714822d52d2}</Project>
-      <Name>UnityEditor.SpatialTracking</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.Editor.csproj">
-      <Project>{15e63322-a363-5922-d2ca-689dccfeb04a}</Project>
-      <Name>Unity.Barracuda.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.MacBLAS.csproj">
-      <Project>{14cbc9ce-d58a-c852-c527-7696aa2bbed9}</Project>
-      <Name>Unity.Barracuda.MacBLAS</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.XR.ARFoundation.csproj">
-      <Project>{b89910bf-2c7c-2c02-bec9-ac3e464c5ff4}</Project>
-      <Name>Unity.XR.ARFoundation</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
-      <Project>{60f759a4-b68f-3c3f-cd14-64d0c90e7b01}</Project>
-      <Name>Unity.SysrootPackage.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InputSystem.csproj">
-      <Project>{90718a74-3748-a77a-444c-6a36defb442c}</Project>
-      <Name>Unity.InputSystem</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{af38003f-8c58-3188-05d3-ff4a5eacc4c9}</Project>
-      <Name>Unity.2D.Sprite.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

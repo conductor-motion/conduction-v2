@@ -67,9 +67,9 @@
      <Compile Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Scripts/ThirdPersonCamera.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/GesturesDemo/Scripts/ModelPresentationScript.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs" />
-     <Compile Include="Assets/K2Examples/KinectDemos/InteractionDemo/Scripts/GrabDropScript.cs" />
      <Compile Include="Assets/Scripts/BackButtonUI.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/OverlayDemo/Scripts/SkeletonOverlayer.cs" />
+     <Compile Include="Assets/K2Examples/KinectDemos/InteractionDemo/Scripts/GrabDropScript.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/Interfaces/Kinect2UwpInterface.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Legacy/ScreenShot.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/GUI/VideoCaptureManagerGUI.cs" />
@@ -86,17 +86,17 @@
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Internal/Base/CaptureBase.cs" />
      <Compile Include="Assets/Scripts/CameraController.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/FaceTrackingDemo/Scripts/SetFaceTexture.cs" />
-     <Compile Include="Assets/Scripts/MarkupManager.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/CloudFaceScripts/FaceObjs/HeadPose.cs" />
+     <Compile Include="Assets/Scripts/MarkupManager.cs" />
      <Compile Include="Assets/Scripts/Template.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Internal/Interfaces/IVideoCapture.cs" />
      <Compile Include="Assets/Scripts/AnalyticsButtonUI.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/SequenceCapture.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/GUI/Legacy/ScreenShotGUI.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/AudioCapture.cs" />
+     <Compile Include="Assets/Scripts/RecordingController.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Scripts/BotControlScript.cs" />
      <Compile Include="Assets/Scripts/Recording/AudioSlider.cs" />
-     <Compile Include="Assets/Scripts/RecordingController.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Demos/Scripts/DisplayTime.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Hotkey/SequenceCaptureHotkey.cs" />
      <Compile Include="Assets/Scripts/ErrorAnalytics.cs" />
@@ -134,8 +134,8 @@
      <Compile Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Scripts/ProjectorCamera.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/Samples/GetJointPositionDemo.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/InteractionDemo/Scripts/GrabRotateScript.cs" />
-     <Compile Include="Assets/K2Examples/KinectDemos/AvatarsDemo/U_Character/IKController.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Events/CaptureErrorEvent.cs" />
+     <Compile Include="Assets/K2Examples/KinectDemos/AvatarsDemo/U_Character/IKController.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/BlobDetectionDemo/Scripts/BlobDetector.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/CloudFaceScripts/CloudFaceManager.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/InteractionManager.cs" />
@@ -159,8 +159,8 @@
      <Compile Include="Assets/K2Examples/KinectScripts/Samples/SimpleVisualGestureListener.cs" />
      <Compile Include="Assets/Scripts/MicrophoneRecorder.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/FacetrackingManager.cs" />
-     <Compile Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Scripts/BallController.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/KinectDataServer.cs" />
+     <Compile Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Scripts/BallController.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Demos/Scripts/MicDevices.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/Samples/JointAngleCalculator.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/MultiScene/LocateAvatarsAndGestureListeners.cs" />
@@ -197,10 +197,10 @@
      <Compile Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/UserBodyBlender.cs" />
      <Compile Include="Assets/Scripts/Frames.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/VisualizerDemo/Scripts/UserHeadCamera.cs" />
-     <Compile Include="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/FFmpegEncoder.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/Interfaces/OrbbecAstraInterface.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/OverlayDemo/Scripts/JointOverlayer.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Hotkey/ImageCaptureHotkey.cs" />
+     <Compile Include="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/FFmpegEncoder.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/GUI/ImageCaptureGUI.cs" />
      <Compile Include="Assets/Scripts/FrameData.cs" />
      <Compile Include="Assets/Scripts/buttontester.cs" />
@@ -218,15 +218,15 @@
      <Compile Include="Assets/K2Examples/KinectScripts/Cubeman/CubemanController.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/RecorderDemo/Scripts/PlayerDetectorController.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/FFmpegMuxer.cs" />
-     <Compile Include="Assets/Scripts/Recording.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/BackgroundRemovalDemo/Scripts/ForegroundToRawImage.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/ColliderDemo/Scripts/BallSpawner.cs" />
      <Compile Include="Assets/Scripts/DontDestroyOnLoad_Metronome.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/Interfaces/Nuitrack/NuitrackFaceInfo.cs" />
      <Compile Include="Assets/Scripts/ColorSelectorController.cs" />
+     <Compile Include="Assets/Scripts/Recording.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Internal/Enums.cs" />
-     <Compile Include="Assets/Scripts/UseofSpaceV2.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/Cubeman/PointmanController.cs" />
+     <Compile Include="Assets/Scripts/UseofSpaceV2.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/VisualGestureManager.cs" />
      <Compile Include="Assets/Scripts/SimpleJSON.cs" />
      <Compile Include="Assets/Scripts/CharacterRotation.cs" />
@@ -292,235 +292,129 @@
      <Folder Include="Assets" />
      <Folder Include="Assets/StreamingAssets/FFmpeg/x86" />
      <Folder Include="Assets/Conduction/Data/2023-02-08T15-41" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/mergetool.ja.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/FaceTrackingDemo/Models/Materials" />
      <Folder Include="Assets/K2Examples/KinectDemos/GesturesDemo/Textures" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/images.zh-Hans.txt" />
      <Folder Include="Assets/Resources" />
-     <None Include="Library/PackageCache/com.unity.modules.subsystems@1.0.0/package.json" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/guihelp.zh-Hant.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Clothing/0000" />
      <Folder Include="Assets/K2Examples/KinectDemos/AvatarsDemo/Materials" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
-     <None Include="Library/PackageCache/com.unity.modules.jsonserialize@1.0.0/package.json" />
+     <None Include="Assets/Conduction/Data/2023-03-13T21-42/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/VisualizerDemo/Scripts" />
-     <Folder Include="Library/PackageCache/com.unity.test-framework@1.1.31" />
      <None Include="Assets/Conduction/Data/2023-03-08T16-25/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/VisualizerDemo" />
-     <Folder Include="Library/PackageCache/com.unity.sysroot@2.0.0" />
-     <None Include="Library/PackageCache/com.unity.modules.screencapture@1.0.0/package.json" />
-     <None Include="Library/PackageCache/com.unity.modules.cloth@1.0.0/package.json" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
-     <Folder Include="Library/PackageCache/com.unity.barracuda@2.0.0/Barracuda/Runtime" />
-     <Folder Include="Library/PackageCache/com.unity.modules.imgui@1.0.0" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/plastic-gui.zh-Hant.txt" />
      <Folder Include="Assets/TextMesh Pro/Sprites" />
-     <None Include="Library/PackageCache/com.unity.modules.unitywebrequesttexture@1.0.0/package.json" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T16-25" />
      <None Include="Assets/smcs.rsp" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/images.es.txt" />
-     <None Include="Library/PackageCache/com.unity.inputsystem@1.4.4/package.json" />
-     <None Include="Library/PackageCache/com.unity.modules.ai@1.0.0/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Clothing/0000/Materials" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/differences.es.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/commontypes.zh-Hans.txt" />
      <Folder Include="Assets/Evereal/VideoCapture/Plugins/FFmpegEncoder.bundle/Contents/_CodeSignature" />
      <Folder Include="Assets/K2Examples/_Readme" />
-     <Folder Include="Library/PackageCache/com.unity.xr.legacyinputhelpers@2.1.10/Tests/Runtime" />
      <Folder Include="Assets/K2Examples/KinectDemos/ProjectorDemo" />
-     <Folder Include="Library/PackageCache/com.unity.modules.animation@1.0.0" />
      <Folder Include="Assets/K2Examples/KinectScripts/Playmaker" />
      <None Include="Assets/Conduction/Data/2023-03-08T16-59/data.json" />
-     <None Include="Library/PackageCache/com.unity.inputsystem@1.4.4/ValidationConfig.json" />
-     <Folder Include="Library/PackageCache/com.unity.sysroot@2.0.0/Tests" />
      <Folder Include="Assets/K2Examples/KinectDemos/RecorderDemo/Resources" />
-     <None Include="Library/PackageCache/com.unity.ugui@1.0.0/package.json" />
-     <Folder Include="Library/PackageCache/com.unity.modules.xr@1.0.0" />
      <None Include="Assets/Conduction/Data/2023-03-08T13-09/data.json" />
      <Folder Include="Assets/TextMesh Pro/Resources/Sprite Assets" />
      <Folder Include="Assets/Conduction/Data/2023-03-06T12-00" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/mergetool.es.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/InteractionDemo" />
-     <None Include="Library/PackageCache/com.unity.ext.nunit@1.0.6/package.json" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/basecommands.es.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/cm.es.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/basecommands.ko.txt" />
      <Folder Include="Assets/Conduction/Data/2023-03-06T16-44" />
      <None Include="Assets/Conduction/Data/2023-03-08T15-12/data.json" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T18-47" />
-     <Folder Include="Library/PackageCache/com.unity.ide.rider@3.0.18/Rider" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/semantic.zh-Hant.txt" />
      <Folder Include="Assets/Evereal/VideoCapture/Demos/Audios" />
      <Folder Include="Assets/K2Examples" />
      <Folder Include="Assets/K2Examples/KinectDemos" />
      <Folder Include="Assets/Conduction/Data/2023-02-07T18-07" />
      <Folder Include="Assets/StreamingAssets" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/clientcommon.es.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Prefabs" />
-     <Folder Include="Library/PackageCache/com.unity.barracuda@2.0.0/Barracuda/Runtime/Plugins" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.posedetection@21c7f98642/ComputeShader/PostProcess2.compute" />
-     <Folder Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/Editor Resources" />
-     <None Include="Library/PackageCache/com.unity.xr.legacyinputhelpers@2.1.10/package.json" />
      <None Include="Assets/Conduction/Data/2023-02-08T15-40/data.json" />
-     <None Include="Library/PackageCache/com.unity.modules.assetbundle@1.0.0/package.json" />
-     <Folder Include="Library/PackageCache/com.unity.inputsystem@1.4.4/Tests" />
-     <Folder Include="Library/PackageCache/com.unity.xr.arsubsystems@4.2.7" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
      <None Include="Assets/Conduction/Data/2023-03-07T18-33/data.json" />
-     <None Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/package.json" />
      <Folder Include="Assets/Conduction/Data/2023-02-20T16-38" />
      <Folder Include="Assets/K2Examples/KinectDemos/BackgroundRemovalDemo/Materials" />
      <Folder Include="Assets/K2Examples/KinectScripts/MultiScene" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/guihelp.ja.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/AvatarsDemo/U_Character" />
-     <None Include="Library/PackageCache/com.unity.modules.imgui@1.0.0/package.json" />
      <Folder Include="Assets/Evereal/VideoCapture/Plugins/FFmpegEncoder.bundle/Contents/MacOS" />
-     <Folder Include="Library/PackageCache/com.unity.sysroot.linux-x86_64@2.0.0" />
-     <Folder Include="Library/PackageCache/com.unity.xr.management@4.2.0" />
      <Folder Include="Assets/K2Examples/KinectDemos/BackgroundRemovalDemo/Scripts" />
      <Folder Include="Assets/Conduction/Data" />
-     <None Include="Library/PackageCache/com.unity.sysroot.linux-x86_64@2.0.0/package.json" />
      <None Include="Assets/Conduction/Data/2023-03-06T12-34/data.json" />
-     <Folder Include="Library/PackageCache/jp.ikep.mediapipe.blazepose@809c62bd49/Resources" />
-     <None Include="Library/PackageCache/com.unity.modules.tilemap@1.0.0/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/ColliderDemo/Materials" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Materials" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/xdiff.ja.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/configurehelper.es.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources" />
-     <Folder Include="Library/PackageCache/com.unity.modules.assetbundle@1.0.0" />
-     <Folder Include="Library/PackageCache/com.unity.burst@1.6.6/Tests" />
      <None Include="Assets/K2Examples/Plugins/UWP/Attribution.txt" />
      <None Include="Assets/Conduction/Data/2023-03-07T18-47/data.json" />
      <None Include="Assets/K2Examples/Resources/Dilate.shader" />
      <Folder Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Models" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T15-05" />
-     <None Include="Library/PackageCache/com.unity.timeline@1.6.4/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/BackgroundRemovalDemo/Textures" />
-     <None Include="Library/PackageCache/com.unity.xr.arsubsystems@4.2.7/package.json" />
-     <Folder Include="Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom" />
      <Folder Include="Assets/Conduction/Data/2023-03-06T12-34" />
      <Folder Include="Assets/StreamingAssets/FFmpeg" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/configurehelper.en.txt" />
      <None Include="Assets/K2Examples/_Readme/致盗版使用者-ToPiracyUsers.txt" />
      <None Include="Assets/Conduction/Data/2023-03-08T16-20/data.json" />
      <None Include="Assets/K2Examples/Resources/Body2DepthShaderNN.shader" />
-     <None Include="Library/PackageCache/com.unity.toolchain.win-x86_64-linux-x86_64@2.0.0/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Animations/Materials" />
-     <Folder Include="Library/PackageCache/com.unity.barracuda@2.0.0/Barracuda/Runtime/Plugins/ProtoBuffer" />
      <None Include="Assets/Conduction/Data/2023-03-08T15-11/data.json" />
      <Folder Include="Assets/Evereal/VideoCapture/Demos/Scenes" />
-     <None Include="Library/PackageCache/com.unity.barracuda@2.0.0/package.json" />
      <Folder Include="Assets/TextMesh Pro/Resources/Fonts &amp; Materials" />
      <Folder Include="Assets/K2Examples/KinectScripts/Utilities" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Clothing/0001" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.posedetection@21c7f98642/ComputeShader/Preprocess.compute" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Sprites/_Countdown" />
      <None Include="Assets/K2Examples/Resources/DepthShader.shader" />
      <Folder Include="Assets/Data" />
-     <None Include="Library/PackageCache/com.unity.ide.visualstudio@2.0.17/ValidationConfig.json" />
      <None Include="Assets/Conduction/Data/2023-02-07T18-07/data.json" />
-     <Folder Include="Library/PackageCache/com.unity.ext.nunit@1.0.6/net35" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/basecommands.zh-Hant.txt" />
      <Folder Include="Assets/Shader" />
      <Folder Include="Assets/Audio" />
      <Folder Include="Assets/K2Examples/KinectDemos/InteractionDemo/Materials" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.blazepose@809c62bd49/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/FaceTrackingDemo/Models" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" />
      <None Include="Assets/Evereal/VideoCapture/Resources/Shaders/Downsample.shader" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/cm-help.es.txt" />
-     <None Include="Library/PackageCache/com.unity.modules.terrainphysics@1.0.0/package.json" />
-     <None Include="Library/PackageCache/com.unity.mathematics@1.2.6/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/ColliderDemo/Models/Materials" />
      <Folder Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo" />
-     <Folder Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM" />
      <None Include="Assets/K2Examples/Resources/BlurShader3.shader" />
      <Folder Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Scripts" />
      <Folder Include="Assets/Evereal/VideoCapture/Plugins/FFmpegEncoder.bundle" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T13-25" />
-     <None Include="Library/PackageCache/com.unity.sysroot@2.0.0/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Props" />
      <Folder Include="Assets/K2Examples/Plugins/Android/Assets" />
      <None Include="Assets/K2Examples/Plugins/Android/AndroidManifest.xml" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/differences.zh-Hant.txt" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T15-12" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" />
      <Folder Include="Assets/TextMesh Pro/Resources" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/plastic-gui.ko.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/AvatarsDemo/Scripts" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/basecommands.ja.txt" />
      <None Include="Assets/Conduction/Data/2023-03-06T16-17/data.json" />
-     <Folder Include="Library/PackageCache/com.unity.modules.screencapture@1.0.0" />
      <Folder Include="Assets/K2Examples/KinectDemos/ColliderDemo" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/GUI" />
-     <None Include="Library/PackageCache/com.unity.timeline@1.6.4/ValidationExceptions.json" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/package.json" />
      <None Include="Assets/K2Examples/Resources/Color2BodyShader.shader" />
      <Folder Include="Assets/K2Examples/KinectDemos/BlobDetectionDemo/Scripts" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/xdiff.zh-Hans.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/xdiff.ko.txt" />
-     <Folder Include="Library/PackageCache/com.unity.timeline@1.6.4" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/clientcommon.ja.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Sprites/Batman" />
      <Folder Include="Assets/Conduction/Data/2023-03-06T12-01" />
      <Folder Include="Assets/Evereal/VideoCapture/Plugins/FFmpegEncoder.bundle/Contents" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T15-11" />
      <Folder Include="Assets/Evereal/VideoCapture/Plugins/x86_64" />
-     <Folder Include="Library/PackageCache/com.unity.modules.cloth@1.0.0" />
-     <Folder Include="Library/PackageCache/com.unity.xr.arfoundation@4.2.7" />
      <Folder Include="Assets/Prefabs" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/basecommands.zh-Hans.txt" />
-     <None Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/PackageConversionData.json" />
-     <None Include="Library/PackageCache/com.unity.modules.unitywebrequestassetbundle@1.0.0/package.json" />
-     <Folder Include="Library/PackageCache/jp.ikep.mediapipe.posedetection@21c7f98642/ONNX" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/guihelp.en.txt" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.blazepose@809c62bd49/ComputeShader/Process.compute" />
-     <Folder Include="Library/PackageCache/com.unity.ext.nunit@1.0.6" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/differences.ja.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/configurehelper.ja.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Models" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T16-55" />
      <None Include="Assets/K2Examples/Resources/CoordMapper.compute" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T17-03" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/semantic.en.txt" />
      <None Include="Assets/Evereal/VideoCapture/Resources/Shaders/StereoPack.shader" />
-     <Folder Include="Library/PackageCache/com.unity.burst@1.6.6" />
-     <None Include="Library/PackageCache/com.unity.ide.visualstudio@2.0.17/package.json" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/workspaceserver.ko.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Models/Barrel" />
      <Folder Include="Assets/Evereal/VideoCapture/Demos" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T16-59" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.poselandmark@6a3659339e/ComputeShader/Postprocess.compute" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" />
-     <Folder Include="Library/PackageCache/com.unity.modules.imageconversion@1.0.0" />
      <Folder Include="Assets/K2Examples/KinectDemos/VariousDemos/Scripts" />
-     <Folder Include="Library/PackageCache/com.unity.modules.terrainphysics@1.0.0" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/plastic-gui.zh-Hans.txt" />
-     <None Include="Library/PackageCache/com.unity.modules.imageconversion@1.0.0/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/GesturesDemo/Scripts" />
      <Folder Include="Assets/K2Examples/KinectDemos/MovieSequenceDemo/Scripts" />
-     <Folder Include="Library/PackageCache/com.unity.modules.unitywebrequest@1.0.0" />
-     <None Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/ValidationExceptions.json" />
-     <Folder Include="Library/PackageCache/com.unity.modules.unitywebrequestassetbundle@1.0.0" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.poselandmark@6a3659339e/package.json" />
      <Folder Include="Assets/K2Examples/Plugins/Android" />
      <None Include="Assets/Conduction/Data/2023-03-08T17-04/data.json" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/cm.en.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/FaceTrackingDemo/Models/textures" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Internal/Base" />
      <Folder Include="Assets/Scripts/MultiScene" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/commontypes.en.txt" />
      <Folder Include="Assets/K2Examples/Resources" />
      <None Include="Assets/mcs.rsp" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/commontypes.es.txt" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Events" />
      <Folder Include="Assets/TextMesh Pro" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/images.zh-Hant.txt" />
      <None Include="Assets/Data/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Props/Materials" />
      <Folder Include="Assets/K2Examples/KinectScripts" />
-     <None Include="Library/PackageCache/com.unity.modules.unityanalytics@1.0.0/package.json" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/GUI/Legacy" />
      <Folder Include="Assets/K2Examples/Plugins/UWP" />
      <None Include="Assets/K2Examples/Resources/BlurShader1.shader" />
@@ -528,15 +422,10 @@
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Models/Barrel/Textures" />
      <Folder Include="Assets/K2Examples/KinectDemos/AvatarsDemo" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Clothing" />
-     <Folder Include="Library/PackageCache/com.unity.modules.subsystems@1.0.0" />
-     <Folder Include="Library/PackageCache/jp.ikep.mediapipe.blazepose@809c62bd49/ComputeShader" />
      <Folder Include="Assets/K2Examples/KinectDemos/AvatarsDemo/Cubeman/ColorCube.fbm" />
-     <None Include="Library/PackageCache/com.unity.ide.rider@3.0.18/package.json" />
      <Folder Include="Assets/K2Examples/Plugins" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/i3.zh-Hans.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/AvatarsDemo/Cubeman" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T18-18" />
-     <None Include="Library/PackageCache/com.unity.modules.video@1.0.0/package.json" />
      <None Include="Assets/Conduction/Data/2023-03-07T18-21/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/InteractionDemo/Scripts" />
      <None Include="Assets/Shader/Visualizer.shader" />
@@ -545,189 +434,99 @@
      <Folder Include="Assets/Conduction/Data/2023-03-06T12-02" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T16-20" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Models/Materials" />
-     <None Include="Library/PackageCache/com.unity.test-framework@1.1.31/package.json" />
-     <Folder Include="Library/PackageCache/com.unity.modules.unityanalytics@1.0.0" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo" />
-     <Folder Include="Library/PackageCache/com.unity.modules.physics@1.0.0" />
-     <Folder Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts" />
-     <Folder Include="Library/PackageCache/com.unity.xr.arfoundation@4.2.7/Materials" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/basecommands.en.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Textures" />
-     <Folder Include="Library/PackageCache/com.unity.modules.vr@1.0.0" />
-     <Folder Include="Library/PackageCache/com.unity.sysroot.linux-x86_64@2.0.0/Tests" />
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Models/Barrel/Materials" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/images.ko.txt" />
      <None Include="Assets/Conduction/Data/2023-03-07T18-48/data.json" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/workspaceserver.es.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/AvatarsDemo/Cubeman/Materials" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Legacy" />
-     <Folder Include="Library/PackageCache/com.unity.modules.physics2d@1.0.0" />
      <Folder Include="Assets/K2Examples/KinectScripts/Interfaces/Nuitrack" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Sprites/Superman" />
      <None Include="Assets/K2Examples/Resources/Depth2ColorShaderNN.shader" />
      <Folder Include="Assets/Evereal/VideoCapture/Resources" />
-     <Folder Include="Library/PackageCache/com.unity.toolchain.win-x86_64-linux-x86_64@2.0.0/Tests" />
-     <Folder Include="Library/PackageCache/jp.ikep.mediapipe.poselandmark@6a3659339e" />
      <None Include="Assets/Conduction/Data/2023-03-06T12-00/data.json" />
-     <Folder Include="Library/PackageCache/com.unity.inputsystem@1.4.4" />
      <None Include="Assets/Evereal/VideoCapture/Resources/Shaders/CopyReverse.shader" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/cm-help.en.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/AvatarsDemo/Textures" />
      <None Include="Assets/Conduction/Data/2023-03-04T14-57/data.json" />
-     <None Include="Library/PackageCache/com.unity.modules.particlesystem@1.0.0/package.json" />
      <Folder Include="Assets/K2Examples/KinectScripts/Interfaces" />
      <Folder Include="Assets/K2Examples/KinectDemos/RecorderDemo" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/binmergetool.ko.txt" />
      <Folder Include="Assets/Evereal/VideoCapture/Resources/Shaders" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/mergetool.en.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/workspaceserver.zh-Hans.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Scripts" />
-     <Folder Include="Library/PackageCache/com.unity.modules.wind@1.0.0" />
      <None Include="Assets/Conduction/Data/2023-03-08T16-17/data.json" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/binmergetool.zh-Hant.txt" />
-     <Folder Include="Library/PackageCache/com.unity.barracuda@2.0.0/Barracuda" />
      <None Include="Assets/Conduction/Data/2023-03-07T18-32/data.json" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/plastic-gui.en.txt" />
-     <Folder Include="Library/PackageCache/jp.ikep.mediapipe.poselandmark@6a3659339e/ComputeShader" />
      <Folder Include="Assets/K2Examples/KinectScripts/Filters" />
-     <None Include="Library/PackageCache/com.unity.modules.physics2d@1.0.0/package.json" />
-     <Folder Include="Library/PackageCache/com.unity.barracuda@2.0.0" />
      <None Include="Assets/Conduction/Data/2023-03-08T13-25/data.json" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" />
-     <None Include="Library/PackageCache/com.unity.xr.arfoundation@4.2.7/package.json" />
      <Folder Include="Assets/Trails" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/differences.zh-Hans.txt" />
-     <None Include="Library/PackageCache/com.unity.modules.vr@1.0.0/package.json" />
      <Folder Include="Assets/Evereal" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/binmergetool.en.txt" />
      <Folder Include="Assets/Inputs" />
-     <Folder Include="Library/PackageCache/com.unity.modules.uielements@1.0.0" />
      <Folder Include="Assets/K2Examples/KinectDemos/GesturesDemo/SlideTextures" />
-     <Folder Include="Library/PackageCache/com.unity.modules.unitywebrequestaudio@1.0.0" />
      <Folder Include="Assets/Textures/Masks" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/CloudFaceScripts/FaceObjs" />
      <None Include="Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" />
-     <Folder Include="Library/PackageCache/com.unity.modules.particlesystem@1.0.0" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/configurehelper.zh-Hant.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/cm-help.zh-Hans.txt" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Hotkey/Legacy" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/semantic.ko.txt" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF.shader" />
-     <None Include="Library/PackageCache/com.unity.toolchain.win-x86_64-linux-x86_64@2.0.0/ValidationConfig.json" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/workspaceserver.en.txt" />
      <Folder Include="Assets/Conduction/Data/2023-03-02T15-56" />
      <None Include="Assets/Conduction/Data/2023-03-06T11-44/data.json" />
-     <None Include="Library/PackageCache/com.unity.ide.visualstudio@2.0.17/ValidationExceptions.json" />
-     <None Include="Library/PackageCache/com.unity.xr.management@4.2.0/package.json" />
      <None Include="Assets/Conduction/Data/2023-03-02T15-56/data.json" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/cm-help.zh-Hant.txt" />
-     <None Include="Library/PackageCache/com.unity.modules.wind@1.0.0/package.json" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.posedetection@21c7f98642/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Resources" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/clientcommon.zh-Hant.txt" />
-     <Folder Include="Library/PackageCache/com.unity.ugui@1.0.0/Tests" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/xdiff.zh-Hant.txt" />
      <None Include="Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" />
-     <None Include="Library/PackageCache/com.unity.modules.umbra@1.0.0/package.json" />
      <Folder Include="Assets/Conduction/Data/2023-03-06T16-39" />
      <None Include="Assets/Conduction/Data/2023-02-20T16-38/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/VariousDemos" />
-     <Folder Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/Editor Resources/Textures" />
-     <Folder Include="Library/PackageCache/com.unity.2d.sprite@1.0.0" />
-     <Folder Include="Library/PackageCache/com.unity.modules.tilemap@1.0.0" />
      <None Include="Assets/Conduction/Data/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Sprites/Medusa" />
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo" />
      <Folder Include="Assets/Sprites" />
      <Folder Include="Assets/StreamingAssets/FFmpeg/x86_64" />
      <Folder Include="Assets/Evereal/VideoCapture/Plugins/x86" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/i3.zh-Hant.txt" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T18-22" />
-     <Folder Include="Library/PackageCache/jp.ikep.mediapipe.posedetection@21c7f98642/ComputeShader" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/cm.ko.txt" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.poselandmark@6a3659339e/ComputeShader/Common.cginc" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/guihelp.zh-Hans.txt" />
      <Folder Include="Assets/Evereal/VideoCapture/Plugins" />
-     <Folder Include="Library/PackageCache/com.unity.modules.ui@1.0.0" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" />
      <None Include="Assets/Conduction/Data/2023-03-06T12-16/data.json" />
-     <None Include="Library/PackageCache/com.unity.subsystemregistration@1.1.0/package.json" />
      <None Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Shaders/UserBlendShader.shader" />
      <None Include="Assets/K2Examples/Plugins/Android/Assets/OSIG_Readme.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Sprites" />
      <None Include="Assets/K2Examples/KinectDemos/VisualizerDemo/Shaders/HoloTriangles.shader" />
-     <Folder Include="Library/PackageCache/com.unity.xr.legacyinputhelpers@2.1.10/Tests" />
-     <Folder Include="Library/PackageCache/com.unity.mathematics@1.2.6" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Sprites/Zeus" />
      <Folder Include="Assets/K2Examples/KinectScripts/SharpZipLib" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/FileSystemWatcherLicense.txt" />
      <Folder Include="Assets/Conduction/Data/2023-03-06T12-16" />
      <Folder Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Scripts/RoomAliveToolkit" />
-     <Folder Include="Library/PackageCache/com.unity.modules.androidjni@1.0.0" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" />
-     <None Include="Library/PackageCache/com.unity.inputsystem@1.4.4/ValidationExceptions.json" />
      <None Include="Assets/K2Examples/Resources/Body2DepthShaderInvNN.shader" />
      <Folder Include="Assets/TextMesh Pro/Shaders" />
-     <Folder Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/Editor Resources/Gizmos" />
-     <None Include="Library/PackageCache/com.unity.modules.audio@1.0.0/package.json" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/cm-help.ko.txt" />
      <None Include="Assets/Evereal/VideoCapture/License.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/cm-help.ja.txt" />
-     <Folder Include="Library/PackageCache/com.unity.barracuda@2.0.0/Barracuda/Tests" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/clientcommon.en.txt" />
-     <None Include="Library/PackageCache/com.unity.modules.physics@1.0.0/package.json" />
-     <Folder Include="Library/PackageCache/jp.ikep.mediapipe.blazepose@809c62bd49" />
-     <Folder Include="Library/PackageCache/com.unity.collab-proxy@2.0.0" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T18-40" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/binmergetool.zh-Hans.txt" />
-     <Folder Include="Library/PackageCache/com.unity.toolchain.win-x86_64-linux-x86_64@2.0.0" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Clothing/0002/Materials" />
      <Folder Include="Assets/K2Examples/KinectDemos/RecorderDemo/Scripts" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/i3.es.txt" />
      <Folder Include="Assets/TextMesh Pro/Resources/Style Sheets" />
      <None Include="Assets/Conduction/Data/2023-03-08T15-05/data.json" />
      <Folder Include="Assets/Conduction/Data/2023-03-05T17-27" />
      <None Include="Assets/K2Examples/Resources/DepthHistImageShader.shader" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/mergetool.zh-Hans.txt" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T18-32" />
      <None Include="Assets/K2Examples/KinectDemos/RecorderDemo/Resources/PlayerGrammar.grxml.txt" />
      <None Include="Assets/K2Examples/Resources/Color2BodyShaderNN.shader" />
      <Folder Include="Assets/Conduction/Data/2023-03-06T11-44" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/commontypes.zh-Hant.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/differences.ko.txt" />
      <Folder Include="Assets/TextMesh Pro/Fonts" />
-     <None Include="Library/PackageCache/com.unity.modules.vehicles@1.0.0/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/VisualizerDemo/Shaders" />
      <Folder Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Models/Materials" />
      <None Include="Assets/Evereal/VideoCapture/Resources/Shaders/CubemapDisplay.shader" />
-     <Folder Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor" />
      <Folder Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Animations" />
      <Folder Include="Assets/Conduction/Data/2023-02-08T15-40" />
      <Folder Include="Assets/K2Examples/KinectDemos/MultiSceneDemo" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/plastic-gui.es.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/images.en.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/binmergetool.ja.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/BlobDetectionDemo" />
      <Folder Include="Assets/Conduction/Data/2023-02-04T15-13" />
-     <Folder Include="Library/PackageCache/com.unity.xr.legacyinputhelpers@2.1.10/Prefabs" />
-     <Folder Include="Library/PackageCache/com.unity.textmeshpro@3.0.6" />
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Scripts" />
-     <Folder Include="Library/PackageCache/com.unity.subsystemregistration@1.1.0/Tests" />
-     <None Include="Library/PackageCache/com.unity.modules.uielementsnative@1.0.0/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Models" />
-     <Folder Include="Library/PackageCache/jp.ikep.mediapipe.poselandmark@6a3659339e/ResourceSet" />
-     <Folder Include="Library/PackageCache/com.unity.ide.rider@3.0.18" />
-     <None Include="Library/PackageCache/com.unity.modules.unitywebrequestwww@1.0.0/package.json" />
      <None Include="Assets/Conduction/Data/2023-03-13T21-37/data.json" />
      <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/MocapAnimatorDemo/Scripts" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T16-23" />
      <Folder Include="Assets/K2Examples/KinectDemos/MovieSequenceDemo" />
-     <None Include="Library/PackageCache/com.unity.modules.unitywebrequestaudio@1.0.0/package.json" />
      <None Include="Assets/Conduction/Data/2023-03-07T18-22/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/MocapAnimatorDemo/Animations" />
      <Folder Include="Assets/K2Examples/KinectDemos/GesturesDemo" />
@@ -736,91 +535,53 @@
      <Folder Include="Assets/Evereal/VideoCapture/Resources/Prefabs" />
      <Folder Include="Assets/Conduction/Data/2023-03-06T16-47" />
      <Folder Include="Assets/Conduction/Data/2023-02-08T16-05" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/binmergetool.es.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/cm.ja.txt" />
-     <Folder Include="Library/PackageCache/com.unity.subsystemregistration@1.1.0" />
      <Folder Include="Assets/Evereal/VideoCapture/Resources/Prefabs/Legacy" />
      <Folder Include="Assets/K2Examples/KinectDemos/GesturesDemo/Prefabs" />
-     <None Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/Editor Resources/Shaders/TMP_SDF_SSD.cginc" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Sprites/Anonymous" />
      <None Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Scripts/RoomAliveToolkit/Attribution.txt" />
      <Folder Include="Assets/Evereal/VideoCapture/Textures" />
-     <Folder Include="Library/PackageCache/com.unity.xr.arfoundation@4.2.7/Tests" />
      <Folder Include="Assets/Scripts/Recording" />
      <None Include="Assets/csc.rsp" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/ValidationConfig.json" />
      <None Include="Assets/Conduction/Data/2023-03-08T17-03/data.json" />
      <Folder Include="Assets/Evereal/VideoCapture/Demos/Materials" />
      <Folder Include="Assets/K2Examples/KinectDemos/KinectDataServer" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/images.ja.txt" />
      <None Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Resources/calibration-empty.xml" />
-     <Folder Include="Library/PackageCache/com.unity.xr.arsubsystems@4.2.7/Tests" />
      <Folder Include="Assets/Conduction/Data/2023-03-04T14-57" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.blazepose@809c62bd49/ComputeShader/Misc.cginc" />
-     <Folder Include="Library/PackageCache/com.unity.ide.vscode@1.2.5" />
-     <Folder Include="Library/PackageCache/com.unity.modules.vehicles@1.0.0" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.posedetection@21c7f98642/ComputeShader/Postprocess.compute" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T18-21" />
-     <None Include="Library/PackageCache/com.unity.modules.xr@1.0.0/package.json" />
-     <Folder Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/Tests" />
-     <None Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/Editor Resources/Shaders/TMP_Properties.cginc" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T15-03" />
      <None Include="Assets/Conduction/Data/2023-02-08T15-41/data.json" />
      <None Include="Assets/K2Examples/KinectDemos/VisualizerDemo/Attribution.txt" />
      <None Include="Assets/K2Examples/Resources/Body2DepthShaderInv.shader" />
-     <Folder Include="Library/PackageCache/jp.ikep.mediapipe.posedetection@21c7f98642" />
      <Folder Include="Assets/K2Examples/KinectDemos/FaceTrackingDemo" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T16-27" />
-     <None Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/Editor Resources/Shaders/TMP_SDF Internal Editor.shader" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/xdiff.es.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/configurehelper.zh-Hans.txt" />
-     <Folder Include="Library/PackageCache/com.unity.modules.umbra@1.0.0" />
      <Folder Include="Assets/K2Examples/KinectScripts/LZ4Sharp" />
      <None Include="Assets/K2Examples/Resources/Depth2BodyShaderNN.shader" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/mergetool.zh-Hant.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/clientcommon.zh-Hans.txt" />
      <None Include="Assets/K2Examples/Resources/SpeechGrammar.grxml.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/MovieSequenceDemo/Textures/MovieSequence" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" />
      <Folder Include="Assets/Conduction" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/semantic.ja.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Scripts" />
      <None Include="Assets/Conduction/Data/2023-03-08T16-23/data.json" />
-     <Folder Include="Library/PackageCache/com.unity.modules.unitywebrequestwww@1.0.0" />
-     <Folder Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib" />
      <None Include="Assets/Evereal/VideoCapture/Readme.txt" />
-     <None Include="Library/PackageCache/com.unity.modules.director@1.0.0/package.json" />
-     <Folder Include="Library/PackageCache/jp.ikep.mediapipe.poselandmark@6a3659339e/ONNX" />
      <None Include="Assets/Conduction/Data/2023-03-06T16-47/data.json" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T18-33" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Internal" />
      <None Include="Assets/K2Examples/Resources/Depth2ColorShader.shader" />
-     <None Include="Library/PackageCache/com.unity.ide.vscode@1.2.5/ValidationExceptions.json" />
-     <Folder Include="Library/PackageCache/com.unity.modules.jsonserialize@1.0.0" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.poselandmark@6a3659339e/ComputeShader/Preprocess.compute" />
      <None Include="Assets/K2Examples/Resources/BlurShader.shader" />
      <Folder Include="Assets/Textures" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T15-13" />
-     <Folder Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/Editor Resources/Shaders" />
-     <Folder Include="Library/PackageCache/com.unity.modules.director@1.0.0" />
      <Folder Include="Assets/K2Examples/KinectDemos/ColliderDemo/Models" />
-     <Folder Include="Library/PackageCache/com.unity.modules.audio@1.0.0" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/CloudFaceScripts" />
      <None Include="Assets/Conduction/Data/2023-03-08T16-26/data.json" />
      <Folder Include="Assets/Scripts" />
      <Folder Include="Assets/Scenes" />
-     <Folder Include="Library/PackageCache/jp.ikep.mediapipe.posedetection@21c7f98642/ResourceSet" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts" />
      <Folder Include="Assets/Scripts/MainMenu" />
      <None Include="Assets/K2Examples/Resources/Body2ColorShader.shader" />
-     <None Include="Library/PackageCache/com.unity.modules.terrain@1.0.0/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/BlobDetectionDemo/Prefabs" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T13-09" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/commontypes.ko.txt" />
-     <None Include="Library/PackageCache/com.unity.2d.sprite@1.0.0/package.json" />
      <None Include="Assets/gmcs.rsp" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo" />
-     <Folder Include="Library/PackageCache/com.unity.ide.visualstudio@2.0.17" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T18-20" />
      <None Include="Assets/K2Examples/Resources/BlurShader4.shader" />
      <Folder Include="Assets/Audio/Metronome" />
@@ -828,17 +589,12 @@
      <Folder Include="Assets/K2Examples/KinectDemos/VariousDemos/Materials" />
      <Folder Include="Assets/K2Examples/KinectDemos/AvatarsDemo/U_Character/Materials" />
      <None Include="Assets/K2Examples/Resources/BlurShader2.shader" />
-     <None Include="Library/PackageCache/com.unity.modules.androidjni@1.0.0/package.json" />
      <None Include="Assets/Conduction/Data/2023-03-06T12-02/data.json" />
      <None Include="Assets/K2Examples/Resources/AstraSpaceMapper.compute" />
      <Folder Include="Assets/K2Examples/KinectDemos/RecorderDemo/Materials" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/commontypes.ja.txt" />
      <None Include="Assets/K2Examples/Resources/Body2ColorShaderInv.shader" />
-     <Folder Include="Library/PackageCache/com.unity.modules.video@1.0.0" />
-     <Folder Include="Library/PackageCache/com.unity.modules.ai@1.0.0" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/configurehelper.ko.txt" />
-     <None Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/PackageConversionData_Assets.json" />
+     <Folder Include="Assets/Conduction/Data/2023-03-13T21-42" />
      <None Include="Assets/Conduction/Data/2023-03-06T12-01/data.json" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" />
      <Folder Include="Assets/K2Examples/KinectDemos/VisualizerDemo/Materials" />
@@ -848,78 +604,41 @@
      <None Include="Assets/Conduction/Data/2023-03-08T15-13/data.json" />
      <Folder Include="Assets/Conduction/Data/2023-03-06T16-17" />
      <Folder Include="Assets/Conduction/Data/2023-03-13T21-37" />
-     <Folder Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Editor" />
      <None Include="Assets/Conduction/Data/2023-03-08T15-03/data.json" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T16-17" />
      <None Include="Assets/Conduction/Data/2023-03-08T16-55/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Clothing/0002" />
-     <None Include="Library/PackageCache/com.unity.mathematics@1.2.6/ValidationExceptions.json" />
-     <Folder Include="Library/PackageCache/com.unity.textmeshpro@3.0.6/Package Resources" />
      <None Include="Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt" />
-     <Folder Include="Library/PackageCache/com.unity.modules.terrain@1.0.0" />
-     <Folder Include="Library/PackageCache/com.unity.2d.sprite@1.0.0/Tests" />
      <None Include="Assets/K2Examples/Resources/BlurShader5.shader" />
-     <None Include="Library/PackageCache/com.unity.modules.animation@1.0.0/package.json" />
      <Folder Include="Assets/Evereal/VideoCapture/Demos/Textures" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T16-26" />
      <Folder Include="Assets/TextMesh Pro/Documentation" />
-     <Folder Include="Library/PackageCache/com.unity.modules.uielementsnative@1.0.0" />
      <None Include="Assets/K2Examples/Resources/Body2DepthShader.shader" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/guihelp.es.txt" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.blazepose@809c62bd49/ComputeShader/LowPassFilter.cginc" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/differences.en.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/workspaceserver.ja.txt" />
      <None Include="Assets/Evereal/VideoCapture/Resources/Shaders/CubemapToCylinder.shader" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/mergetool.ko.txt" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Hotkey" />
      <None Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Resources/calibration.xml" />
      <None Include="Assets/Conduction/Data/2023-03-07T18-40/data.json" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T14-16" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/clientcommon.ko.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/i3.ja.txt" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" />
      <None Include="Assets/Evereal/VideoCapture/Resources/Shaders/Blitter.shader" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T17-04" />
      <Folder Include="Assets/K2Examples/KinectScripts/Samples" />
-     <None Include="Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.Unsafe.xml" />
-     <Folder Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/cm.zh-Hans.txt" />
-     <Folder Include="Library/PackageCache/com.unity.xr.management@4.2.0/Tests/TestPackage" />
-     <None Include="Library/PackageCache/com.unity.modules.unitywebrequest@1.0.0/package.json" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.blazepose@809c62bd49/ComputeShader/PoseRegion.cginc" />
-     <Folder Include="Library/PackageCache/com.unity.xr.management@4.2.0/Tests" />
-     <None Include="Library/PackageCache/com.unity.modules.uielements@1.0.0/package.json" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/plastic-gui.ja.txt" />
-     <None Include="Library/PackageCache/com.unity.burst@1.6.6/package.json" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/i3.en.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/workspaceserver.zh-Hant.txt" />
-     <Folder Include="Library/PackageCache/com.unity.modules.unitywebrequesttexture@1.0.0" />
      <None Include="Assets/K2Examples/Resources/AstraCoordMapper.compute" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/cm.zh-Hant.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/xdiff.en.txt" />
      <Folder Include="Assets/Evereal/VideoCapture" />
      <Folder Include="Assets/K2Examples/KinectScripts/Cubeman" />
      <None Include="Assets/TextMesh Pro/Sprites/EmojiOne.json" />
      <None Include="Assets/K2Examples/Resources/Erode.shader" />
-     <Folder Include="Library/PackageCache/com.unity.ugui@1.0.0" />
-     <Folder Include="Library/PackageCache/com.unity.xr.legacyinputhelpers@2.1.10" />
      <Folder Include="Assets/K2Examples/KinectDemos/BackgroundRemovalDemo" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Internal/Interfaces" />
-     <None Include="Library/PackageCache/jp.ikep.mediapipe.posedetection@21c7f98642/ComputeShader/Common.cginc" />
      <None Include="Assets/K2Examples/Resources/Gradient.shader" />
-     <None Include="Library/PackageCache/com.unity.modules.ui@1.0.0/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/FaceTrackingDemo/Scripts" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T18-48" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/semantic.zh-Hans.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/i3.ko.txt" />
-     <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/guihelp.ko.txt" />
      <None Include="Assets/K2Examples/Resources/MedianShader.shader" />
      <None Include="Assets/Evereal/VideoCapture/Resources/Shaders/CubemapToEquirect.shader" />
      <Folder Include="Assets/K2Examples/KinectDemos/MocapAnimatorDemo" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Shaders" />
      <Folder Include="Assets/K2Examples/KinectDemos/ColliderDemo/Scripts" />
-     <None Include="Library/PackageCache/com.unity.ide.vscode@1.2.5/package.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Clothing/0001/Materials" />
      <Reference Include="UnityEngine">
      <HintPath>/Applications/Unity/Hub/Editor/2021.3.18f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -1560,164 +1279,125 @@
      <Reference Include="mscorlib">
      <HintPath>/Applications/Unity/Hub/Editor/2021.3.18f1/Unity.app/Contents/NetStandard/compat/2.1.0/shims/netfx/mscorlib.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.Barracuda.ONNX">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Barracuda.ONNX.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Barracuda.iOSBLAS">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Barracuda.iOSBLAS.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Barracuda.BurstBLAS">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Barracuda.BurstBLAS.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VSCode.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.TextMeshPro.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualStudio.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Sysroot.Linux_x86_64">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Barracuda">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Barracuda.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.XR.Management.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.XR.Management.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Mediapipe.PoseDetection.Runtime">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Mediapipe.PoseDetection.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Timeline">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.TextMeshPro">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Burst.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Sprite.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Subsystem.Registration">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.UI">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.InputSystem">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Rider.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.PlasticSCM.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.UI">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.SpatialTracking">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+     </Reference>
+     <Reference Include="Mediapipe.BlazePose.Runtime">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Mediapipe.BlazePose.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Mathematics">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Burst">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+     </Reference>
+     <Reference Include="Mediapipe.PoseLandmark.Runtime">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Mediapipe.PoseLandmark.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Timeline.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.XR.ARSubsystems.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.XR.ARSubsystems.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.XR.Management">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.XR.Management.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Mathematics.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.XR.ARSubsystems">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.XR.ARSubsystems.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.XR.ARFoundation.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.XR.ARFoundation.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.SpatialTracking">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Barracuda.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Barracuda.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Barracuda.MacBLAS">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Barracuda.MacBLAS.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.XR.ARFoundation">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.XR.ARFoundation.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.SysrootPackage.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
+     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.Barracuda.ONNX.csproj">
-      <Project>{fdf86b41-e122-ed88-5213-7606970b0b25}</Project>
-      <Name>Unity.Barracuda.ONNX</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.iOSBLAS.csproj">
-      <Project>{42ecbcde-bfea-e41f-e35e-9927da8dbeaf}</Project>
-      <Name>Unity.Barracuda.iOSBLAS</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.BurstBLAS.csproj">
-      <Project>{f964030e-efc0-f934-839b-1c1977bf2f45}</Project>
-      <Name>Unity.Barracuda.BurstBLAS</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VSCode.Editor.csproj">
-      <Project>{2bb19067-9728-4777-c34c-399754ff8394}</Project>
-      <Name>Unity.VSCode.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
-      <Project>{e4bbcdb4-7b56-5bb5-b4ae-9cc87b8e9c4c}</Project>
-      <Name>Unity.TextMeshPro.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
-      <Project>{79fd24e6-b2a6-6c56-5893-33b6c7b39164}</Project>
-      <Name>Unity.VisualStudio.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Sysroot.Linux_x86_64.csproj">
-      <Project>{fc8f29ac-16d2-b34f-c32b-560034e17cc2}</Project>
-      <Name>Unity.Sysroot.Linux_x86_64</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.csproj">
-      <Project>{da4c90c9-e7ad-8682-8435-bfa33685844c}</Project>
-      <Name>Unity.Barracuda</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.XR.Management.Editor.csproj">
-      <Project>{dd923b97-ed20-7fb2-beec-6b314557134e}</Project>
-      <Name>Unity.XR.Management.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mediapipe.PoseDetection.Runtime.csproj">
-      <Project>{6929b1b4-fd28-44d2-66db-cb7c0cd3c86d}</Project>
-      <Name>Mediapipe.PoseDetection.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{ff2595e7-6dd2-b15a-3812-c3018c2871cd}</Project>
-      <Name>Unity.Timeline</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{ce27b5fd-0728-60bf-300e-c4ba79a53fa1}</Project>
-      <Name>Unity.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.Editor.csproj">
-      <Project>{55b26439-3e3f-23a9-c430-36d269ab8206}</Project>
-      <Name>Unity.Burst.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Subsystem.Registration.csproj">
-      <Project>{e2166a70-105c-d401-1ced-75f721db567c}</Project>
-      <Name>Unity.Subsystem.Registration</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{9c0d3017-c049-491d-0208-d3c549703fc1}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
-      <Project>{5fc81517-2fff-74aa-3b0b-7803491425b9}</Project>
-      <Name>Unity.PlasticSCM.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{d0f3e52b-fc68-00c1-66f9-76d3e8f5adae}</Project>
-      <Name>Unity.Rider.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mediapipe.BlazePose.Runtime.csproj">
-      <Project>{0b48932b-befa-149a-025e-c213a9b8d758}</Project>
-      <Name>Mediapipe.BlazePose.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{c7a22c67-870e-3079-648c-7cd14a09335e}</Project>
-      <Name>UnityEngine.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.SpatialTracking.csproj">
-      <Project>{a9f6aafc-5493-7129-be37-202ca958dc55}</Project>
-      <Name>UnityEngine.SpatialTracking</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{f9e966e0-48de-d08b-e25d-a91544a2bc04}</Project>
-      <Name>Unity.Mathematics</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.csproj">
-      <Project>{56973859-db3d-86b7-76cc-8e2db22df41b}</Project>
-      <Name>Unity.Burst</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.XR.LegacyInputHelpers.csproj">
-      <Project>{13391ccc-268b-2b30-314e-af1b69ab5559}</Project>
-      <Name>UnityEngine.XR.LegacyInputHelpers</Name>
-    </ProjectReference>
-    <ProjectReference Include="Mediapipe.PoseLandmark.Runtime.csproj">
-      <Project>{ba4cce7d-a112-7847-5b48-a6fb5ae418fd}</Project>
-      <Name>Mediapipe.PoseLandmark.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj">
-      <Project>{595c570e-2e02-20fe-de7d-f74fc251e4fb}</Project>
-      <Name>Unity.Toolchain.Win-x86_64-Linux-x86_64</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.Editor.csproj">
-      <Project>{5c183869-9dc6-0da1-d2b0-40b8e218653b}</Project>
-      <Name>Unity.Timeline.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.XR.ARSubsystems.Editor.csproj">
-      <Project>{6a333914-7ef2-6a4b-d394-ed75cbeb8574}</Project>
-      <Name>Unity.XR.ARSubsystems.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.XR.LegacyInputHelpers.csproj">
-      <Project>{912c0399-2ccd-046c-b523-4b1afa5ba50a}</Project>
-      <Name>UnityEditor.XR.LegacyInputHelpers</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.XR.Management.csproj">
-      <Project>{b1f51ad1-1c6b-2a33-c65a-86aa8bc53632}</Project>
-      <Name>Unity.XR.Management</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
-      <Project>{d41b5e9c-3ec8-5caf-ba22-2b56bdf5013c}</Project>
-      <Name>Unity.Mathematics.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.XR.ARSubsystems.csproj">
-      <Project>{0753a3cb-d8f4-887e-f43e-3accd597eb21}</Project>
-      <Name>Unity.XR.ARSubsystems</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.XR.ARFoundation.Editor.csproj">
-      <Project>{c5cafed7-2cb8-df1a-4e78-fe7270ea49b0}</Project>
-      <Name>Unity.XR.ARFoundation.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.SpatialTracking.csproj">
-      <Project>{514adbe1-16c7-5828-2110-9714822d52d2}</Project>
-      <Name>UnityEditor.SpatialTracking</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.Editor.csproj">
-      <Project>{15e63322-a363-5922-d2ca-689dccfeb04a}</Project>
-      <Name>Unity.Barracuda.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.MacBLAS.csproj">
-      <Project>{14cbc9ce-d58a-c852-c527-7696aa2bbed9}</Project>
-      <Name>Unity.Barracuda.MacBLAS</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.XR.ARFoundation.csproj">
-      <Project>{b89910bf-2c7c-2c02-bec9-ac3e464c5ff4}</Project>
-      <Name>Unity.XR.ARFoundation</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
-      <Project>{60f759a4-b68f-3c3f-cd14-64d0c90e7b01}</Project>
-      <Name>Unity.SysrootPackage.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InputSystem.csproj">
-      <Project>{90718a74-3748-a77a-444c-6a36defb442c}</Project>
-      <Name>Unity.InputSystem</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{af38003f-8c58-3188-05d3-ff4a5eacc4c9}</Project>
-      <Name>Unity.2D.Sprite.Editor</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
