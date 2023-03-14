@@ -90,7 +90,7 @@
      <Compile Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/CloudFaceScripts/FaceObjs/HeadPose.cs" />
      <Compile Include="Assets/Scripts/Template.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Internal/Interfaces/IVideoCapture.cs" />
-     <Compile Include="Assets/AnalyticsButtonUI.cs" />
+     <Compile Include="Assets/Scripts/AnalyticsButtonUI.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/SequenceCapture.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/GUI/Legacy/ScreenShotGUI.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/AudioCapture.cs" />
@@ -139,7 +139,7 @@
      <Compile Include="Assets/K2Examples/KinectDemos/BlobDetectionDemo/Scripts/BlobDetector.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/CloudFaceScripts/CloudFaceManager.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/InteractionManager.cs" />
-     <Compile Include="Assets/SummaryText.cs" />
+     <Compile Include="Assets/Scripts/SummaryText.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/Interfaces/Kinect1Interface.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/Filters/BoneOrientationsConstraint.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Demos/Scripts/RotateCube.cs" />
@@ -189,7 +189,7 @@
      <Compile Include="Assets/K2Examples/KinectDemos/GesturesDemo/Scripts/CubeGestureListener.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/InteractionDemo/Scripts/GuiWindowScript.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/PortraitBackground.cs" />
-     <Compile Include="Assets/MediaControlsV2.cs" />
+     <Compile Include="Assets/Scripts/MediaControlsV2.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/KinectDataClient.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/VideoCaptureManager.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/WavEncoder.cs" />
@@ -203,7 +203,7 @@
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Hotkey/ImageCaptureHotkey.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/GUI/ImageCaptureGUI.cs" />
      <Compile Include="Assets/Scripts/FrameData.cs" />
-     <Compile Include="Assets/buttontester.cs" />
+     <Compile Include="Assets/Scripts/buttontester.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/GUI/VideoCaptureGUI.cs" />
      <Compile Include="Assets/Scripts/FPS.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/Samples/GetFaceSmileStatus.cs" />
@@ -229,7 +229,7 @@
      <Compile Include="Assets/K2Examples/KinectScripts/Cubeman/PointmanController.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/VisualGestureManager.cs" />
      <Compile Include="Assets/Scripts/SimpleJSON.cs" />
-     <Compile Include="Assets/CharacterRotation.cs" />
+     <Compile Include="Assets/Scripts/CharacterRotation.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/VisualizerDemo/Scripts/SceneMeshVisualizer.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/KinectGestures.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/CategorySelector.cs" />
@@ -286,7 +286,7 @@
      <Compile Include="Assets/Scripts/MultiScene/SceneLoader.cs" />
      <Compile Include="Assets/Scripts/Recording/MetronomeStorage.cs" />
      <Compile Include="Assets/K2Examples/KinectScripts/Samples/FollowUserRotation.cs" />
-     <Compile Include="Assets/FirstButtonUIScript.cs" />
+     <Compile Include="Assets/Scripts/FirstButtonUIScript.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/ColliderDemo/Scripts/DepthSpriteViewer.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Scripts/BarrelTrigger.cs" />
      <Folder Include="Assets" />
@@ -417,6 +417,7 @@
      <None Include="Library/PackageCache/jp.ikep.mediapipe.posedetection@21c7f98642/ComputeShader/Preprocess.compute" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Sprites/_Countdown" />
      <None Include="Assets/K2Examples/Resources/DepthShader.shader" />
+     <Folder Include="Assets/Data" />
      <None Include="Library/PackageCache/com.unity.ide.visualstudio@2.0.17/ValidationConfig.json" />
      <None Include="Assets/Conduction/Data/2023-02-07T18-07/data.json" />
      <Folder Include="Library/PackageCache/com.unity.ext.nunit@1.0.6/net35" />
@@ -516,7 +517,7 @@
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Events" />
      <Folder Include="Assets/TextMesh Pro" />
      <None Include="Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/localization/images.zh-Hant.txt" />
-     <None Include="Assets/data.json" />
+     <None Include="Assets/Data/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Props/Materials" />
      <Folder Include="Assets/K2Examples/KinectScripts" />
      <None Include="Library/PackageCache/com.unity.modules.unityanalytics@1.0.0/package.json" />
