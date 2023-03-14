@@ -207,3 +207,45 @@ Received Import Request.
   path: Assets/Prefabs/Template Holder.prefab
   artifactKey: Guid(0f15bf45b370cd341aad9a5f14ee329e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Prefabs/Template Holder.prefab using Guid(0f15bf45b370cd341aad9a5f14ee329e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57f1d553f5af9f203f6d884b7007bdfe') in 0.244648 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 350.997922 seconds.
+  path: Assets/Models/brian/Ch01_1001_Diffuse.png
+  artifactKey: Guid(ed2926250b67743228393fbede57c979) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/brian/Ch01_1001_Diffuse.png using Guid(ed2926250b67743228393fbede57c979) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd759dada517bdd087e942d01487aff5f') in 1.801179 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000210 seconds.
+  path: Assets/Models/brian/Ch01_1001_Glossiness.png
+  artifactKey: Guid(7347dd195e6a74d779b78fff68c412ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/brian/Ch01_1001_Glossiness.png using Guid(7347dd195e6a74d779b78fff68c412ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '351f8f4610a58cd54f791b042492cdf7') in 0.030798 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.803158 seconds.
+  path: Assets/Models/brian/Ch01_1001_Normal.png
+  artifactKey: Guid(2a5f92bd5447c4da692824eea79d98b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/brian/Ch01_1001_Normal.png using Guid(2a5f92bd5447c4da692824eea79d98b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29776ba1c74478afec22c321158b9149') in 0.034407 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 111.008811 seconds.
+  path: Assets/Models/brian/Ch01_1001_Diffuse 1.png
+  artifactKey: Guid(65b2710928f7b4d22985f8c502e0557b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/brian/Ch01_1001_Diffuse 1.png using Guid(65b2710928f7b4d22985f8c502e0557b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abe3244754cd4f4c07752924bdf8c34a') in 0.085611 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000110 seconds.
+  path: Assets/Models/brian/Ch01_1001_Glossiness 1.png
+  artifactKey: Guid(1a14c8bb36678426d99e00127e41b1f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/brian/Ch01_1001_Glossiness 1.png using Guid(1a14c8bb36678426d99e00127e41b1f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5cba5b54f2397d68604ac46dbef177b7') in 0.034606 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000200 seconds.
+  path: Assets/Models/brian/Ch01_1001_Specular 1.png
+  artifactKey: Guid(4e8ad746ddd5740fd9a58a7efe8adf50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/brian/Ch01_1001_Specular 1.png using Guid(4e8ad746ddd5740fd9a58a7efe8adf50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d8758dde9824b205107bb1c971d7645') in 0.032419 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000127 seconds.
+  path: Assets/Models/brian/Ch01_1001_Normal 1.png
+  artifactKey: Guid(cb86b3b43336f4528888b63a100573aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/brian/Ch01_1001_Normal 1.png using Guid(cb86b3b43336f4528888b63a100573aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b5eecabed0f65230e6f9d5e44577133') in 0.037280 seconds 

@@ -207,3 +207,39 @@ Received Import Request.
   path: Assets/Prefabs/Models
   artifactKey: Guid(f6a077007a1434c84959c62d9bac4349) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Prefabs/Models using Guid(f6a077007a1434c84959c62d9bac4349) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa55cf0827fe28a0ec0b4c24d35b262f') in 0.001927 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 347.338241 seconds.
+  path: Assets/Models/brian/brian.fbx
+  artifactKey: Guid(c611e15986b25433b8f9f02932166b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/brian/brian.fbx using Guid(c611e15986b25433b8f9f02932166b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '239680a6b88b0e682e574447b2fb0ca9') in 0.327057 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000413 seconds.
+  path: Assets/Models/brian/Ch01_1001_Normal.png
+  artifactKey: Guid(2a5f92bd5447c4da692824eea79d98b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/brian/Ch01_1001_Normal.png using Guid(2a5f92bd5447c4da692824eea79d98b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bad30665fade273de9708044cfb5dac3') in 1.459389 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000072 seconds.
+  path: Assets/Models/brian/Ch01_1001_Specular.png
+  artifactKey: Guid(372ca31b0f48d47148c771cd3817c26e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/brian/Ch01_1001_Specular.png using Guid(372ca31b0f48d47148c771cd3817c26e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '559ad10242594faf3e3cb6f15620c1a7') in 0.028628 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.805700 seconds.
+  path: Assets/Models/brian/brian.fbx
+  artifactKey: Guid(c611e15986b25433b8f9f02932166b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/brian/brian.fbx using Guid(c611e15986b25433b8f9f02932166b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74a0dd4ff233ff2180159c0e63dfed4a') in 0.132296 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 110.910781 seconds.
+  path: Assets/Models/brian/brian.fbx
+  artifactKey: Guid(c611e15986b25433b8f9f02932166b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/brian/brian.fbx using Guid(c611e15986b25433b8f9f02932166b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6bdf12d4808b608f376764899432d4fd') in 0.283897 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 55.723962 seconds.
+  path: Assets/Shader
+  artifactKey: Guid(b396092fa7334478e87366b1c0a13dc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shader using Guid(b396092fa7334478e87366b1c0a13dc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1719992f11afccbd1ed7ce2061c8bfd4') in 0.001503 seconds 
