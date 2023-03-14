@@ -435,6 +435,7 @@
      <Folder Include="Assets/Conduction/Data/2023-03-08T16-20" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Models/Materials" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo" />
+     <Folder Include="Assets/Prefabs/Models" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Textures" />
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Models/Barrel/Materials" />
      <None Include="Assets/Conduction/Data/2023-03-07T18-48/data.json" />
@@ -466,6 +467,7 @@
      <None Include="Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts" />
+     <Folder Include="Assets/Models" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Hotkey/Legacy" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF.shader" />
      <Folder Include="Assets/Conduction/Data/2023-03-02T15-56" />
@@ -477,6 +479,7 @@
      <Folder Include="Assets/Conduction/Data/2023-03-06T16-39" />
      <None Include="Assets/Conduction/Data/2023-02-20T16-38/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/VariousDemos" />
+     <Folder Include="Assets/Models/louise" />
      <None Include="Assets/Conduction/Data/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Sprites/Medusa" />
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo" />
@@ -519,14 +522,17 @@
      <Folder Include="Assets/Conduction/Data/2023-02-08T15-40" />
      <Folder Include="Assets/K2Examples/KinectDemos/MultiSceneDemo" />
      <Folder Include="Assets/K2Examples/KinectDemos/BlobDetectionDemo" />
+     <Folder Include="Assets/Models/martha" />
      <Folder Include="Assets/Conduction/Data/2023-02-04T15-13" />
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Scripts" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Models" />
+     <Folder Include="Assets/Models/josh" />
      <None Include="Assets/Conduction/Data/2023-03-13T21-37/data.json" />
      <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
      <Folder Include="Assets/K2Examples/KinectDemos/MocapAnimatorDemo/Scripts" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T16-23" />
      <Folder Include="Assets/K2Examples/KinectDemos/MovieSequenceDemo" />
+     <Folder Include="Assets/Models/brian" />
      <None Include="Assets/Conduction/Data/2023-03-07T18-22/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/MocapAnimatorDemo/Animations" />
      <Folder Include="Assets/K2Examples/KinectDemos/GesturesDemo" />
