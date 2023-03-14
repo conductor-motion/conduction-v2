@@ -637,6 +637,7 @@
      <Folder Include="Assets/K2Examples/KinectDemos/BackgroundRemovalDemo" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Internal/Interfaces" />
      <None Include="Assets/K2Examples/Resources/Gradient.shader" />
+     <Folder Include="Assets/Animations" />
      <Folder Include="Assets/K2Examples/KinectDemos/FaceTrackingDemo/Scripts" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T18-48" />
@@ -1324,17 +1325,11 @@
      <Reference Include="Unity.Burst.Editor">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.2D.Sprite.Editor">
-     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.Subsystem.Registration">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.UI">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.InputSystem">
-     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Rider.Editor">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
@@ -1401,6 +1396,12 @@
      </Reference>
      <Reference Include="Unity.SysrootPackage.Editor">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.InputSystem">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Sprite.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>

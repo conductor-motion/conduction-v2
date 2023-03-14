@@ -384,6 +384,11 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!4 &270612284 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2973283718405154916, guid: c611e15986b25433b8f9f02932166b05, type: 3}
+  m_PrefabInstance: {fileID: 1721058375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &321805711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,6 +1444,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1228461918 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -7741082164918855784, guid: c611e15986b25433b8f9f02932166b05, type: 3}
+  m_PrefabInstance: {fileID: 1721058375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1263440686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,15 +1608,10 @@ MonoBehaviour:
   inputImageUI: {fileID: 714883641}
   shader: {fileID: 4800000, guid: b643afb13b83a4048a9772002eaeb573, type: 3}
   humanExistThreshold: 0.5
-  animator: {fileID: 0}
-  rightHandTarget: {fileID: 1787269934}
-  leftHandTarget: {fileID: 901001543}
-  rightElbowTarget: {fileID: 1479989933}
-  leftElbowTarget: {fileID: 321805712}
-  rightFootTarget: {fileID: 796860449}
-  leftFootTarget: {fileID: 1825282763}
-  rightKneeTarget: {fileID: 1049761396}
-  leftKneeTarget: {fileID: 1506718907}
+  leftBicep: {fileID: 0}
+  rightBicep: {fileID: 0}
+  leftForearm: {fileID: 0}
+  rightForearm: {fileID: 0}
 --- !u!1 &1465406654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,6 +1921,16 @@ Transform:
   m_Father: {fileID: 1907771428}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1569267751 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -9153572958596185397, guid: c611e15986b25433b8f9f02932166b05, type: 3}
+  m_PrefabInstance: {fileID: 1721058375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1573684831 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -7471964760970041724, guid: c611e15986b25433b8f9f02932166b05, type: 3}
+  m_PrefabInstance: {fileID: 1721058375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1573815863
 GameObject:
   m_ObjectHideFlags: 0
@@ -2285,6 +2300,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d6ae18b507e8647ddb008ce3c60033bb, type: 2}
+    - target: {fileID: 5866666021909216657, guid: c611e15986b25433b8f9f02932166b05, type: 3}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: c611e15986b25433b8f9f02932166b05, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c611e15986b25433b8f9f02932166b05, type: 3}
 --- !u!1 &1721058376 stripped
@@ -2304,20 +2327,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522197604370344bdb831b90b8f3490b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  webCamInput: {fileID: 0}
-  inputImageUI: {fileID: 0}
-  shader: {fileID: 0}
+  mainCamera: {fileID: 2132550432}
+  webCamInput: {fileID: 1187057161}
+  inputImageUI: {fileID: 714883641}
+  shader: {fileID: 4800000, guid: b643afb13b83a4048a9772002eaeb573, type: 3}
   humanExistThreshold: 0.5
-  animator: {fileID: 0}
-  rightHandTarget: {fileID: 0}
-  leftHandTarget: {fileID: 0}
-  rightElbowTarget: {fileID: 0}
-  leftElbowTarget: {fileID: 0}
-  rightFootTarget: {fileID: 0}
-  leftFootTarget: {fileID: 0}
-  rightKneeTarget: {fileID: 0}
-  leftKneeTarget: {fileID: 0}
+  leftBicep: {fileID: 270612284}
+  rightBicep: {fileID: 1573684831}
+  leftForearm: {fileID: 1228461918}
+  rightForearm: {fileID: 1569267751}
 --- !u!1 &1752293241
 GameObject:
   m_ObjectHideFlags: 0
