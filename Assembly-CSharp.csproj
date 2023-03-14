@@ -1325,11 +1325,17 @@
      <Reference Include="Unity.Burst.Editor">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.2D.Sprite.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Subsystem.Registration">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.UI">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.InputSystem">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Rider.Editor">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
@@ -1397,11 +1403,11 @@
      <Reference Include="Unity.SysrootPackage.Editor">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.InputSystem">
-     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
+     <Reference Include="Unity.Animation.Rigging.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Animation.Rigging.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.2D.Sprite.Editor">
-     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+     <Reference Include="Unity.Animation.Rigging">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Animation.Rigging.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>
