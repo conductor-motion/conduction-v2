@@ -50,9 +50,9 @@ public int isGoodZone(float x, float y)
             return 1;
         if ((x <= .50 && x >= 0) && (y <= .50 && y >= 0)) // Green/Good Top Right
             return 2;
-        if ((x >= -.50 && x <= 0) && (y >= -.50 && y <= 0)) // Green/Good Bottom Left 
+        if ((x >= -.50 && x <= 0) && (y >= -.20 && y <= 0)) // Green/Good Bottom Left 
             return 3;
-        if ((x <= .50 && x >= 0) && (y >= -.50 && y <= 0)) // Green/Good Bottom Right
+        if ((x <= .50 && x >= 0) && (y >= -.20 && y <= 0)) // Green/Good Bottom Right
             return 4;
         return 0;
 }
@@ -63,9 +63,9 @@ public int isExtremeCorners(float x, float y)
             return 1;
         if (x > .50 && y > .50) //Top right corner
             return 2;
-        if (x < -.50 && y < -.50) //Bottom left corner
+        if (x < -.50 && y < -.20) //Bottom left corner
             return 3;
-        if (x > .50 && y < -.50) //Bottom right corner
+        if (x > .50 && y < -.20) //Bottom right corner
             return 4;
         return 0;
 }
@@ -76,23 +76,52 @@ public int isExtremeEdges(float x, float y)
             return 1;
         if (x < -.50 && (y <= .50 && y >= 0)) //Top left leftward edge 
             return 2;
-        if ((x >= -.50 && x <= 0) && y < -.50) //Bottom left lower edge 
+        if ((x >= -.50 && x <= 0) && y < -.20) //Bottom left lower edge 
             return 3;
-        if (x < -.50 && (y >= -.50 && y <= 0)) //Bottom left leftward edge 
+        if (x < -.50 && (y >= -.20 && y <= 0)) //Bottom left leftward edge 
             return 4;
         if ((x <= .50 && x >= 0) && y > .50) //Top right upper edge 
             return 5;
         if (x > .50 && (y <= .50 && y >= 0)) //Top right rightward edge 
             return 6;
-        if ((x <= .50 && x >= 0) && y < -.50) // Bottom right lower edge 
+        if ((x <= .50 && x >= 0) && y < -.20) // Bottom right lower edge 
             return 7;
-        if (x > .50 && (y >= -.50 && y <= 0)) // Bottom right rightward edge 
+        if (x > .50 && (y >= -.20 && y <= 0)) // Bottom right rightward edge 
             return 8;
         return 0;
 }
+//Function to substract the axis position to the data values to get the coordinates based off of the set axis position
+/*
+public void GetOffset(float n)
+{
+    for(int i = 0; i < n; i++)
+    {
+            LeftxVals[i] = GameObject.FindGameObjectWithTag("Axis").transform.position.x - LeftxVals[i];
+            RightxVals[i] = GameObject.FindGameObjectWithTag("Axis").transform.position.x - RightxVals[i];
+            LeftyVals[i] = GameObject.FindGameObjectWithTag("Axis").transform.position.y - LeftyVals[i];
+            RightyVals[i] = GameObject.FindGameObjectWithTag("Axis").transform.position.y - RightyVals[i];
+    }
+}
+*/
+public void SetyToCenter(float n)  
+{
+        float centeringVal = .30F;
+        for (int i = 0; i < n; i++)
+        {
+            LeftyVals[i] = LeftyVals[i] - centeringVal;
+            RightyVals[i] = RightyVals[i] - centeringVal;
+        }
+
+    }
 public void Displaytemplate()
  {
+        //Display axis X and Y coordinates
+        Debug.Log(GameObject.FindGameObjectWithTag("Axis").transform.position.x);
+        Debug.Log(GameObject.FindGameObjectWithTag("Axis").transform.position.y);
         float totalframes = LeftyVals.Count;
+        //GetOffset(totalframes);
+        SetyToCenter(totalframes);
+
         //Initializing frame counter values for the left and right hands
         float LbadTLCcnt = 0;
         float LbadBLCcnt = 0;
