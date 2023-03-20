@@ -53,6 +53,9 @@ public class PoseVisuallizer3D : MonoBehaviour
 
         if(SceneManager.GetActiveScene().name == "RecordingPage")
             CreateDataFile();
+        mainCamera = Camera.main;
+        webCamInput = FindObjectOfType<WebCamInput>();
+        inputImageUI = GameObject.Find("RawImage").GetComponent<RawImage>();
     }
 
     void LateUpdate()

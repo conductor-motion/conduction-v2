@@ -317,9 +317,11 @@
      <Folder Include="Assets/TextMesh Pro/Resources/Sprite Assets" />
      <Folder Include="Assets/Conduction/Data/2023-03-06T12-00" />
      <Folder Include="Assets/K2Examples/KinectDemos/InteractionDemo" />
+     <Folder Include="Assets/Conduction/Data/2023-03-20T18-21" />
      <Folder Include="Assets/Conduction/Data/2023-03-06T16-44" />
      <None Include="Assets/Conduction/Data/2023-03-08T15-12/data.json" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T18-47" />
+     <None Include="Assets/Conduction/Data/2023-03-20T18-21/data.json" />
      <Folder Include="Assets/Evereal/VideoCapture/Demos/Audios" />
      <Folder Include="Assets/K2Examples" />
      <Folder Include="Assets/K2Examples/KinectDemos" />
@@ -329,6 +331,7 @@
      <None Include="Assets/Conduction/Data/2023-02-08T15-40/data.json" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
      <None Include="Assets/Conduction/Data/2023-03-07T18-33/data.json" />
+     <None Include="Assets/Conduction/Data/2023-03-20T18-06/data.json" />
      <Folder Include="Assets/Conduction/Data/2023-02-20T16-38" />
      <Folder Include="Assets/K2Examples/KinectDemos/BackgroundRemovalDemo/Materials" />
      <Folder Include="Assets/K2Examples/KinectScripts/MultiScene" />
@@ -345,6 +348,7 @@
      <None Include="Assets/K2Examples/Resources/Dilate.shader" />
      <Folder Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Models" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T15-05" />
+     <None Include="Assets/Conduction/Data/2023-03-20T18-19/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/BackgroundRemovalDemo/Textures" />
      <Folder Include="Assets/Conduction/Data/2023-03-06T12-34" />
      <Folder Include="Assets/StreamingAssets/FFmpeg" />
@@ -352,6 +356,7 @@
      <None Include="Assets/Conduction/Data/2023-03-08T16-20/data.json" />
      <None Include="Assets/K2Examples/Resources/Body2DepthShaderNN.shader" />
      <Folder Include="Assets/K2Examples/KinectDemos/SpeechRecognitionDemo/Animations/Materials" />
+     <Folder Include="Assets/Conduction/Data/2023-03-20T18-04" />
      <None Include="Assets/Conduction/Data/2023-03-08T15-11/data.json" />
      <Folder Include="Assets/Evereal/VideoCapture/Demos/Scenes" />
      <Folder Include="Assets/TextMesh Pro/Resources/Fonts &amp; Materials" />
@@ -391,6 +396,7 @@
      <Folder Include="Assets/Conduction/Data/2023-03-08T15-11" />
      <Folder Include="Assets/Evereal/VideoCapture/Plugins/x86_64" />
      <Folder Include="Assets/Prefabs" />
+     <None Include="Assets/Conduction/Data/2023-03-20T18-04/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Models" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T16-55" />
      <None Include="Assets/K2Examples/Resources/CoordMapper.compute" />
@@ -553,6 +559,7 @@
      <Folder Include="Assets/K2Examples/KinectDemos/KinectDataServer" />
      <None Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Resources/calibration-empty.xml" />
      <Folder Include="Assets/Conduction/Data/2023-03-04T14-57" />
+     <Folder Include="Assets/Conduction/Data/2023-03-20T17-54" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T18-21" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T15-03" />
      <None Include="Assets/Conduction/Data/2023-02-08T15-41/data.json" />
@@ -569,6 +576,7 @@
      <Folder Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Scripts" />
      <None Include="Assets/Conduction/Data/2023-03-08T16-23/data.json" />
      <None Include="Assets/Evereal/VideoCapture/Readme.txt" />
+     <Folder Include="Assets/Conduction/Data/2023-03-20T18-06" />
      <None Include="Assets/Conduction/Data/2023-03-06T16-47/data.json" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T18-33" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Internal" />
@@ -618,6 +626,7 @@
      <None Include="Assets/K2Examples/Resources/BlurShader5.shader" />
      <Folder Include="Assets/Evereal/VideoCapture/Demos/Textures" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T16-26" />
+     <None Include="Assets/Conduction/Data/2023-03-20T18-05/data.json" />
      <Folder Include="Assets/TextMesh Pro/Documentation" />
      <None Include="Assets/K2Examples/Resources/Body2DepthShader.shader" />
      <None Include="Assets/Evereal/VideoCapture/Resources/Shaders/CubemapToCylinder.shader" />
@@ -625,11 +634,13 @@
      <None Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Resources/calibration.xml" />
      <None Include="Assets/Conduction/Data/2023-03-07T18-40/data.json" />
      <Folder Include="Assets/Conduction/Data/2023-03-07T14-16" />
+     <Folder Include="Assets/Conduction/Data/2023-03-20T18-05" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" />
      <None Include="Assets/Evereal/VideoCapture/Resources/Shaders/Blitter.shader" />
      <Folder Include="Assets/Conduction/Data/2023-03-08T17-04" />
      <Folder Include="Assets/K2Examples/KinectScripts/Samples" />
      <None Include="Assets/K2Examples/Resources/AstraCoordMapper.compute" />
+     <Folder Include="Assets/Conduction/Data/2023-03-20T18-19" />
      <Folder Include="Assets/Evereal/VideoCapture" />
      <Folder Include="Assets/K2Examples/KinectScripts/Cubeman" />
      <None Include="Assets/TextMesh Pro/Sprites/EmojiOne.json" />
