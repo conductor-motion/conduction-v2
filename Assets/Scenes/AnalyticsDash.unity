@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -297,8 +297,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0091992, y: -0.00096113}
-  m_SizeDelta: {x: 2112.3, y: 981.67}
+  m_AnchoredPosition: {x: -0.010151, y: -0.00096113}
+  m_SizeDelta: {x: 1919.7, y: 981.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &17304189
 MonoBehaviour:
@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 55223867}
   - component: {fileID: 55223866}
   - component: {fileID: 55223865}
+  - component: {fileID: 55223868}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -422,7 +423,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 55223866}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 55223868}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &55223866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,6 +474,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55223863}
   m_CullTransparentMesh: 1
+--- !u!114 &55223868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55223863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953fdb55eea5d2f4bb33d781e7b00cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: Scenes/ViewingPage
+  promptBeforeGo: 0
+  prompt: {fileID: 0}
 --- !u!1 &318351026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,8 +1174,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.015015, y: 471}
-  m_SizeDelta: {x: 2112.3, y: 45.2649}
+  m_AnchoredPosition: {x: 2.3215, y: 469.6}
+  m_SizeDelta: {x: 1924.3, y: 42.467}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1186095376
 MonoBehaviour:
