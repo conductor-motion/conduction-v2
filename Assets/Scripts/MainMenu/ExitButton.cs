@@ -9,6 +9,7 @@ public class ExitButton : MonoBehaviour
     // Start is called before the first frame update
     public void DoExitGame()
     {
+        Debug.Log("This works I promise");
         Application.Quit();
     }
 }
