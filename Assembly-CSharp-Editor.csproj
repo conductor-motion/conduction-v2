@@ -41,13 +41,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/Evereal/VideoCapture/Scripts/Editor/Legacy/ScreenShotEditor.cs" />
+     <Compile Include="Assets/Evereal/VideoCapture/Scripts/Editor/ReadmeEditor.cs" />
+     <Compile Include="Assets/Evereal/VideoCapture/Scripts/Editor/SequenceCaptureEditor.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Editor/VideoCaptureManagerEditor.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Editor/AudioCaptureEditor.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Editor/MenuEditor.cs" />
-     <Compile Include="Assets/Evereal/VideoCapture/Scripts/Editor/Legacy/ScreenShotEditor.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Editor/ImageCaptureEditor.cs" />
-     <Compile Include="Assets/Evereal/VideoCapture/Scripts/Editor/ReadmeEditor.cs" />
-     <Compile Include="Assets/Evereal/VideoCapture/Scripts/Editor/SequenceCaptureEditor.cs" />
      <Compile Include="Assets/Evereal/VideoCapture/Scripts/Editor/VideoCaptureEditor.cs" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Editor" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Editor/Legacy" />
@@ -798,6 +798,9 @@
      <Reference Include="Mediapipe.BlazePose.Runtime">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Mediapipe.BlazePose.Runtime.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.Animation.Rigging">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Animation.Rigging.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Mathematics">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
      </Reference>
@@ -837,6 +840,9 @@
      <Reference Include="UnityEditor.SpatialTracking">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.Animation.Rigging.Editor">
+     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Animation.Rigging.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Barracuda.Editor">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Barracuda.Editor.dll</HintPath>
      </Reference>
@@ -848,12 +854,6 @@
      </Reference>
      <Reference Include="Unity.SysrootPackage.Editor">
      <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Animation.Rigging.Editor">
-     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Animation.Rigging.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Animation.Rigging">
-     <HintPath>/Users/jhaldas/Documents/GitHub/conduction-v2/Library/ScriptAssemblies/Unity.Animation.Rigging.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>
