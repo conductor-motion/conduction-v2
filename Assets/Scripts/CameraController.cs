@@ -30,8 +30,10 @@ public class CameraController : MonoBehaviour
 
         // Updates the camera's position
         // camera.transform.position = new Vector3(Mathf.Cos(angle) * radius, cameraHeight, Mathf.Sin(angle) * radius + 3);
-        camera.transform.position += new Vector3(0, 0, zoomSpeed);
-        radius -= zoomSpeed;
+        //camera.transform.position += new Vector3(0, 0, zoomSpeed);
+        //radius -= zoomSpeed;
+        
+        camera.transform.Translate(zoomSpeed * camera.transform.forward); 
     }
 
     // Move the camera farther from the robot
@@ -42,8 +44,10 @@ public class CameraController : MonoBehaviour
 
         // Updates the camera's position
         //camera.transform.position = new Vector3(Mathf.Cos(angle) * radius, cameraHeight, Mathf.Sin(angle) * radius + 3);
-        camera.transform.position -= new Vector3(0, 0, zoomSpeed);
-        radius += zoomSpeed;
+        // camera.transform.position -= new Vector3(0, 0, zoomSpeed);
+        // radius += zoomSpeed;
+        
+        camera.transform.Translate(-zoomSpeed * camera.transform.forward); 
     }
 
     // Rotates the camera and grid 45 degrees counter clockwise
