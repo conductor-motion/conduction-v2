@@ -115,9 +115,6 @@ public void SetyToCenter(float n)
     }
 public void Displaytemplate()
  {
-        //Display axis X and Y coordinates
-        Debug.Log(GameObject.FindGameObjectWithTag("Axis").transform.position.x);
-        Debug.Log(GameObject.FindGameObjectWithTag("Axis").transform.position.y);
         float totalframes = LeftyVals.Count;
         //GetOffset(totalframes);
         SetyToCenter(totalframes);

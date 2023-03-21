@@ -30,7 +30,7 @@ public class WindowGraph : MonoBehaviour
     [SerializeField] private Sprite WhiteDotSprite;
 
     private static List<float> yVals = new List<float>();
-   
+    private static bool graphcounter = true;
     private void Awake() {
         graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
         Xtemp = graphContainer.Find("Xtemp").GetComponent<RectTransform>();
@@ -45,9 +45,20 @@ public class WindowGraph : MonoBehaviour
         if(metronome) {
             metronomeStorage = metronome.GetComponent<MetronomeStorage>();
             //Debug.Log("tempo:" + metronomeStorage.tempo);
-        } 
-    
-       displayGraph();
+        }
+        FileInfo newestFile = GetNewestFile(new DirectoryInfo(@"Assets/Conduction/Data"));
+        //Debug.Log(newestFile.Name);
+        string json = File.ReadAllText(newestFile.FullName);
+        //Debug.Log(json);
+        ParseData(json);
+
+        if (graphcounter)
+        {
+            displayGraph();
+           graphcounter = false;
+        }
+
+       
     }
 
     public static string GetTimeValues(int totalCount) {
@@ -56,7 +67,7 @@ public class WindowGraph : MonoBehaviour
             counter++;
         }
         //number between 29 and 29.9
-        int durationSeconds = (int)(Math.Ceiling(counter/29.75));//24;
+        int durationSeconds = (int)(Math.Ceiling(counter/15.5));//24;
         //Debug.Log(durationSeconds);
         
         string timeString = "";
@@ -105,8 +116,8 @@ public class WindowGraph : MonoBehaviour
                         downbeat++;
                     }
             }
-            if(counter%60 == 0) {
-                tempoCalc = downbeat*12;
+            if(counter%31 == 0) {
+                tempoCalc = downbeat*30;
                 tempo.Add(tempoCalc);
                 downbeat = 0;
             }
@@ -126,12 +137,7 @@ public class WindowGraph : MonoBehaviour
         GameObject prevDotGameObjConductor = null;
         GameObject prevDotGameObjMetronome = null;
 
-        FileInfo newestFile = GetNewestFile(new DirectoryInfo(@"Assets/Conduction/Data"));
-        //Debug.Log(newestFile.Name);
-        string json = File.ReadAllText(newestFile.FullName);
-        //Debug.Log(json);
-        ParseData(json);
-
+        
         /*for(int i=0; i<yVals.Count; i++) {
             Debug.Log(yVals[i]);
         }*/
