@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using Evereal.VideoCapture;
 using System;
-using UnityEditor.MemoryProfiler;
+using TMPro;
+//using UnityEditor.MemoryProfiler;
+using UnityEngine.InputSystem;
 
 public class RecordingController : MonoBehaviour
 {
@@ -22,13 +24,19 @@ public class RecordingController : MonoBehaviour
     public Transform recInfo;
 
     [Tooltip("UI Text to display information messages.")]
-    public UnityEngine.UI.Text infoText;
+    public TextMeshProUGUI infoText;
 
     [Tooltip("Sprite to display while recording is in progress.")]
     public Texture2D recordingTexture;
 
     [Tooltip("Sprite to display while recording is not in progress.")]
     public Texture2D notRecordingTexture;
+
+    [Tooltip("HUD Elements that'll be hidden during the recording")]
+    public HidableHud hideableHUD;
+
+    [Tooltip("Metronome used during the recording")]
+    public BeatChecker _metronome;
 
     // Control the recording button
     private bool recordButtonPressed = false;
@@ -71,7 +79,7 @@ public class RecordingController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("space") || recordButtonPressed)
+        if (recordButtonPressed)
         {
             recordButtonPressed = false;
             if (!isRecording)
@@ -98,6 +106,14 @@ public class RecordingController : MonoBehaviour
             {
                 infoText.text = string.Format("{0}:{1}", Math.Floor(recordTime / 60), (recordTime % 60).ToString("00"));
             }
+        }
+    }
+
+    public void KeyPress(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            RecordButton();
         }
     }
 
@@ -161,9 +177,8 @@ public class RecordingController : MonoBehaviour
     private IEnumerator CountdownAndStartRecording()
     {
         // Hide non-essential UI elements while recording
-        recInfo.gameObject.SetActive(false);
-        AxisInstructionsUI.SetActive(false);
-        MetronomeUI.SetActive(false);
+
+        hideableHUD.HideHud();
 
         if (countdown != null && countdown.Length > 0)
         {
@@ -191,6 +206,7 @@ public class RecordingController : MonoBehaviour
         if (isRecording)
         {
             isRecording = false;
+            _metronome.stopMetronome();
             videoCapture.StopCapture();
             StartCoroutine(SwapIcon());
             videoCapture.OnComplete += HandleSceneChange;

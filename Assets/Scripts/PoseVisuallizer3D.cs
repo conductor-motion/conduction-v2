@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Mediapipe.BlazePose;
 using System.IO;
-using UnityEditor.Media;
+//using UnityEditor.Media;
 using Google.Protobuf;
 using UnityEngine.SceneManagement;
 
@@ -24,18 +24,12 @@ public class PoseVisuallizer3D : MonoBehaviour
     string dirPath;
 
     Transform objToPickUp;
-    public Animator animator;
 
-    public Transform rightHandTarget;
-    public Transform leftHandTarget;
-    public Transform rightElbowTarget;
-    public Transform leftElbowTarget;
-    public Transform rightFootTarget;
-    public Transform leftFootTarget;
-    public Transform rightKneeTarget;
-    public Transform leftKneeTarget;
+    public Transform leftBicep;
+    public Transform rightBicep;
 
-
+    public Transform leftForearm;
+    public Transform rightForearm;
 
     // Lines count of body's topology.
     const int BODY_LINE_NUM = 35;
@@ -59,6 +53,9 @@ public class PoseVisuallizer3D : MonoBehaviour
 
         if(SceneManager.GetActiveScene().name == "RecordingPage")
             CreateDataFile();
+        mainCamera = Camera.main;
+        webCamInput = FindObjectOfType<WebCamInput>();
+        inputImageUI = GameObject.Find("RawImage").GetComponent<RawImage>();
     }
 
     void LateUpdate()
@@ -93,32 +90,102 @@ public class PoseVisuallizer3D : MonoBehaviour
             writer.Write("}");
 
         Vector3 temp = new Vector3();
+        Vector3 offset = new Vector3();
 
+        // Right bicep
+        temp = detecter.GetPoseWorldLandmark(14) -
+               detecter.GetPoseWorldLandmark(12);
+        rightBicep.rotation = Quaternion.LookRotation(temp) * Quaternion.Euler(Vector3.right * 90);
+        
+        // Left bicep
+        temp = detecter.GetPoseWorldLandmark(13) - 
+               detecter.GetPoseWorldLandmark(11);
+        leftBicep.rotation = Quaternion.LookRotation(temp) * Quaternion.Euler(Vector3.right * 90);
+        
+        // Right forearm
+        temp = detecter.GetPoseWorldLandmark(16) - 
+               detecter.GetPoseWorldLandmark(14);
+        rightForearm.rotation = Quaternion.LookRotation(temp) * Quaternion.Euler(Vector3.right * 90);
+        
+        // Left forearm
+        temp = detecter.GetPoseWorldLandmark(15) - 
+               detecter.GetPoseWorldLandmark(13);
+        leftForearm.rotation = Quaternion.LookRotation(temp) * Quaternion.Euler(Vector3.right * 90);
+        
+        // // Spine
+        // temp = ((detecter.GetPoseWorldLandmark(12) + 
+        //        detecter.GetPoseWorldLandmark(11))/2);
+        // spine.rotation = Quaternion.LookRotation(temp) * Quaternion.Euler(Vector3.right * 90);
+        
+        // Almost works
+        // Head
+        // temp = ((detecter.GetPoseWorldLandmark(5) + 
+        //                 detecter.GetPoseWorldLandmark(2))/2) -
+        //        ((detecter.GetPoseWorldLandmark(12) + 
+        //                detecter.GetPoseWorldLandmark(11))/2);
+        //         
+        //          head.rotation = Quaternion.LookRotation(temp) * Quaternion.Euler(Vector3.right * 90) * Quaternion.Euler(Vector3.up * 10) * Quaternion.Euler(Vector3.forward * 45);
+        //
 
-        temp.x = detecter.GetPoseWorldLandmark(15).x;
-        temp.y = detecter.GetPoseWorldLandmark(15).y;
-        temp.z = detecter.GetPoseWorldLandmark(15).z;
-        leftHandTarget.position = temp;
+        // Needs more testing
+        // Head
+        // temp = detecter.GetPoseWorldLandmark(5)
+        //        - detecter.GetPoseWorldLandmark(2);
+        // head.rotation = Quaternion.LookRotation(temp) * Quaternion.Euler(Vector3.up * -90);
+        
+        
+        
+        
+        // temp.x = detecter.GetPoseWorldLandmark(14).x;
+        // temp.y = detecter.GetPoseWorldLandmark(14).y;
+        // temp.z = detecter.GetPoseWorldLandmark(14).z;
+        // leftElbowTarget.position = temp;
+        //
+        //
+        // temp.x = detecter.GetPoseWorldLandmark(13).x;
+        // temp.y = detecter.GetPoseWorldLandmark(13).y;
+        // temp.z = detecter.GetPoseWorldLandmark(13).z;
+        // rightElbowTarget.position = temp;
 
-
-        temp.x = detecter.GetPoseWorldLandmark(16).x;
-        temp.y = detecter.GetPoseWorldLandmark(16).y;
-        temp.z = detecter.GetPoseWorldLandmark(16).z;
-        rightHandTarget.position = temp;
-
-
-        temp.x = detecter.GetPoseWorldLandmark(14).x;
-        temp.y = detecter.GetPoseWorldLandmark(14).y;
-        temp.z = detecter.GetPoseWorldLandmark(14).z;
-        rightElbowTarget.position = temp;
-
-
-        temp.x = detecter.GetPoseWorldLandmark(13).x;
-        temp.y = detecter.GetPoseWorldLandmark(13).y;
-        temp.z = detecter.GetPoseWorldLandmark(13).z;
-        leftElbowTarget.position = temp;
-
-        Debug.Log("---");
+        // Vector3 leftIndex;
+        // Vector3 leftPinky;
+        // Vector3 leftThumb;
+        //
+        // leftIndex = detecter.GetPoseWorldLandmark(20);
+        // leftPinky = detecter.GetPoseWorldLandmark(18);
+        // leftThumb = detecter.GetPoseWorldLandmark(16);
+        //
+        // Vector3 leftNormal = Vector3.Cross(leftPinky - leftIndex, leftThumb - leftIndex);
+        //
+        // leftHandTarget.rotation = Quaternion.LookRotation(leftNormal);
+        //
+        // Vector3 rightIndex;
+        // Vector3 rightPinky;
+        // Vector3 rightThumb;
+        //
+        // rightIndex = detecter.GetPoseWorldLandmark(19);
+        // rightPinky = detecter.GetPoseWorldLandmark(17);
+        // rightThumb = detecter.GetPoseWorldLandmark(21);
+        //
+        // Vector3 rightNormal = Vector3.Cross(rightPinky - rightIndex, rightThumb - rightIndex);
+        //
+        // rightHandTarget.rotation = Quaternion.LookRotation(rightNormal);
+        //
+        // temp.x = detecter.GetPoseWorldLandmark(0).x;
+        // temp.y = detecter.GetPoseWorldLandmark(0).y;
+        // temp.z = 0;
+        // headTarget.position = temp;
+        //
+        // // temp.x = detecter.GetPoseWorldLandmark(11).x;
+        // // temp.y = detecter.GetPoseWorldLandmark(11).y;
+        // // temp.z = detecter.GetPoseWorldLandmark(11).z;
+        // // rightShoulderTarget.position = temp;
+        // //
+        // // temp.x = detecter.GetPoseWorldLandmark(12).x;
+        // // temp.y = detecter.GetPoseWorldLandmark(12).y;
+        // // temp.z = detecter.GetPoseWorldLandmark(12).z;
+        // // leftShoulderTarget.position = temp;
+        //
     }
 
     void OnRenderObject(){
@@ -138,6 +205,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         material.SetPass(3);
         Graphics.DrawProceduralNow(MeshTopology.Triangles, 6, detecter.vertexCount);
     }
+    
 
     void OnDestroy()
     {
