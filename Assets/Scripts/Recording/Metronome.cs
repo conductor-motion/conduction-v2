@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 // Controls the metronome behavior given to the user on the Recording page
 public class Metronome : MonoBehaviour
