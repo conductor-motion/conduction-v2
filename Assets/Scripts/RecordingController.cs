@@ -6,7 +6,7 @@ using System.IO;
 using Evereal.VideoCapture;
 using System;
 using TMPro;
-using UnityEditor.MemoryProfiler;
+//using UnityEditor.MemoryProfiler;
 using UnityEngine.InputSystem;
 
 public class RecordingController : MonoBehaviour
