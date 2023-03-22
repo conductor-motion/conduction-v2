@@ -26,6 +26,10 @@ public class WindowGraph : MonoBehaviour
     public GameObject metronome;
     MetronomeStorage metronomeStorage;
 
+    //needs to be tested
+    public GameObject WebCamInput;
+    WebCamInput webCamInput;
+
     [SerializeField] private Sprite BlackDotSprite;
     [SerializeField] private Sprite WhiteDotSprite;
 
@@ -47,10 +51,22 @@ public class WindowGraph : MonoBehaviour
         if(metronome) {
             metronomeStorage = metronome.GetComponent<MetronomeStorage>();
             //Debug.Log("tempo:" + metronomeStorage.tempo);
+        }
+
+        WebCamInput = GameObject.Find("WebCamInput");
+        if(WebCamInput) {
+            //videoPlayer = WebCamInput.GetComponent<VideoPlayer>();
+            Debug.Log("video game object found!!");
         } 
+
+        //video of performance can be in a popup panel on the scene, so that user doesn't have to
+        //go back and forth with scenes
+
+        //to play video player on screen, if this method doesn't show the video duration labels
+        //take path from game object and find it within the conduction folder and display it?
        
       // if(graphCounter) {
-        displayGraph();
+    //    displayGraph();
        // graphCounter = false;
       // }
 
@@ -70,7 +86,7 @@ public class WindowGraph : MonoBehaviour
             counter++;
         }
         
-        int durationSeconds = /*(int)*/(/*Math.*/(counter/16));
+        int durationSeconds = (counter/16);
         Debug.Log("duration seconds:" + durationSeconds);
         
         string timeString = "";
