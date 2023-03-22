@@ -56,13 +56,13 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Evereal\VideoCapture\Scripts\Editor\Legacy\ScreenShotEditor.cs" />
+    <Compile Include="Assets\Evereal\VideoCapture\Scripts\Editor\ReadmeEditor.cs" />
+    <Compile Include="Assets\Evereal\VideoCapture\Scripts\Editor\SequenceCaptureEditor.cs" />
     <Compile Include="Assets\Evereal\VideoCapture\Scripts\Editor\VideoCaptureManagerEditor.cs" />
     <Compile Include="Assets\Evereal\VideoCapture\Scripts\Editor\AudioCaptureEditor.cs" />
     <Compile Include="Assets\Evereal\VideoCapture\Scripts\Editor\MenuEditor.cs" />
-    <Compile Include="Assets\Evereal\VideoCapture\Scripts\Editor\Legacy\ScreenShotEditor.cs" />
     <Compile Include="Assets\Evereal\VideoCapture\Scripts\Editor\ImageCaptureEditor.cs" />
-    <Compile Include="Assets\Evereal\VideoCapture\Scripts\Editor\ReadmeEditor.cs" />
-    <Compile Include="Assets\Evereal\VideoCapture\Scripts\Editor\SequenceCaptureEditor.cs" />
     <Compile Include="Assets\Evereal\VideoCapture\Scripts\Editor\VideoCaptureEditor.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -813,6 +813,9 @@
     <Reference Include="Mediapipe.BlazePose.Runtime">
       <HintPath>Library\ScriptAssemblies\Mediapipe.BlazePose.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Animation.Rigging">
+      <HintPath>Library\ScriptAssemblies\Unity.Animation.Rigging.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Mathematics">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
@@ -851,6 +854,9 @@
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Animation.Rigging.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Animation.Rigging.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Barracuda.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Barracuda.Editor.dll</HintPath>
