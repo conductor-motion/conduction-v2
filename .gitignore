@@ -1,3 +1,5 @@
 Library/
 test.app*
 [Tt]emp/
+Logs/
+*.log
