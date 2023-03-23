@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Mediapipe.BlazePose;
 using System.IO;
+using System.Collections;
 //using UnityEditor.Media;
 using Google.Protobuf;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,9 @@ public class PoseVisuallizer3D : MonoBehaviour
     private StreamWriter writer;
     string filePath;
     string dirPath;
+    int frameIndex = 0;
+    Frames frames = new Frames();
+    List<HandMovementData> data = new List<HandMovementData>();
 
     Transform objToPickUp;
 
@@ -64,6 +68,7 @@ public class PoseVisuallizer3D : MonoBehaviour
 
         // Predict pose by neural network model.
         detecter.ProcessImage(webCamInput.inputImageTexture);
+        FrameData frame = new FrameData(frameIndex);
 
         // Output landmark values(33 values) and the score whether human pose is visible (1 values).
         for (int i = 0; i < detecter.vertexCount + 1; i++)
@@ -82,12 +87,14 @@ public class PoseVisuallizer3D : MonoBehaviour
             //Debug.LogFormat("{0}: {1}", i, detecter.GetPoseWorldLandmark(i));
             if (RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage" && (i == 15 || i == 16))
             {
-                string json = "\n\t{\n\t\tlandmarkIndex: " + i + "\n\t\tlandmarkData: " + detecter.GetPoseWorldLandmark(i) + "\n\t}\n";
-                writer.Write(json);
+                frame.data.Add(new HandMovementData(i, detecter.GetPoseWorldLandmark(i).x, detecter.GetPoseWorldLandmark(i).y, detecter.GetPoseWorldLandmark(i).z, detecter.GetPoseWorldLandmark(i).w));
             }
         }
         if (RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage")
-            writer.Write("}");
+        {
+            frames.frames.Add(frame);
+            frameIndex++;
+        }
 
         Vector3 temp = new Vector3();
         Vector3 offset = new Vector3();
@@ -209,6 +216,11 @@ public class PoseVisuallizer3D : MonoBehaviour
 
     void OnDestroy()
     {
+        if (SceneManager.GetActiveScene().name == "RecordingPage")
+        {
+            string json = JsonUtility.ToJson(frames, true);
+            writer.Write(json);
+        }
         detecter.Dispose();
         if (SceneManager.GetActiveScene().name == "RecordingPage")
         {
@@ -234,7 +246,6 @@ public class PoseVisuallizer3D : MonoBehaviour
         }
         filePath = dirPath + "/data.json";
         writer = new StreamWriter(filePath, true);
-        writer.Write("{");
     }
 
 }
