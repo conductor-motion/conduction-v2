@@ -1,3 +1,7 @@
 Library/
 test.app*
 [Tt]emp/
+*.log
+Logs/
+Captures/
+.DS_STORE
