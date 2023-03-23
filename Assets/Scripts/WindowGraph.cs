@@ -29,6 +29,8 @@ public class WindowGraph : MonoBehaviour
     [SerializeField] private Sprite BlackDotSprite;
     [SerializeField] private Sprite WhiteDotSprite;
 
+    public static bool graphCounter = true;
+
     private static List<float> yVals = new List<float>();
    
     private void Awake() {
@@ -46,18 +48,30 @@ public class WindowGraph : MonoBehaviour
             metronomeStorage = metronome.GetComponent<MetronomeStorage>();
             //Debug.Log("tempo:" + metronomeStorage.tempo);
         } 
-    
-       displayGraph();
+       
+      // if(graphCounter) {
+        displayGraph();
+       // graphCounter = false;
+      // }
+
+      /* else {
+        if(!graphCounter) {
+            displayGraph();
+        }
+       }
+      */
+       
+       
     }
 
     public static string GetTimeValues(int totalCount) {
-        int counter = 0;
+        int counter = 1;
         for(int i=1; i<yVals.Count; i++) {
             counter++;
         }
-        //number between 29 and 29.9
-        int durationSeconds = (int)(Math.Ceiling(counter/29.75));//24;
-        //Debug.Log(durationSeconds);
+        
+        int durationSeconds = /*(int)*/(/*Math.*/(counter/16));
+        Debug.Log("duration seconds:" + durationSeconds);
         
         string timeString = "";
         for (int seconds = 2; seconds <= durationSeconds; seconds += 2) {
@@ -86,9 +100,7 @@ public class WindowGraph : MonoBehaviour
         n = n["frames"];
 
         for(int i=0; i<n.Count; i++) {
-            //for(int j=0; j<n[j].Count; j++) {
-                yVals.Add(n[i]["data"][1]["yVal"]);
-           // }
+            yVals.Add(n[i]["data"][1]["yVal"]);
         }
     }
 
@@ -105,8 +117,8 @@ public class WindowGraph : MonoBehaviour
                         downbeat++;
                     }
             }
-            if(counter%60 == 0) {
-                tempoCalc = downbeat*12;
+            if(counter%32 == 0) {
+                tempoCalc = downbeat*30;
                 tempo.Add(tempoCalc);
                 downbeat = 0;
             }

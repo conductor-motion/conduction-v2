@@ -129,6 +129,7 @@
     <Compile Include="Assets\Evereal\VideoCapture\Scripts\Internal\Encoder\GPUEncoder.cs" />
     <Compile Include="Assets\K2Examples\KinectScripts\InteractionInputModule.cs" />
     <Compile Include="Assets\K2Examples\KinectDemos\GesturesDemo\Scripts\CubePresentationScript.cs" />
+    <Compile Include="Assets\backButtonToViewingPage.cs" />
     <Compile Include="Assets\K2Examples\KinectScripts\Samples\SequentialGestureListener.cs" />
     <Compile Include="Assets\K2Examples\KinectDemos\FittingRoomDemo\Scripts\CloudFaceScripts\FaceObjs\Face.cs" />
     <Compile Include="Assets\K2Examples\KinectScripts\KinectRecorderPlayer.cs" />
