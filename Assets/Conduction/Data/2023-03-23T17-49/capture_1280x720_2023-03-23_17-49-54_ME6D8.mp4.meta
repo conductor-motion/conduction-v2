@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Conduction/Data/2023-03-08T16-26/capture_1280x720_2023-03-08_16-26-46_A23XI.mp4.meta
+guid: 1ccbbc4f3be0edc42ab0f6665fc8736c
+=======
+guid: 5d24b398ca7fb4b5097f8a31162dfba8
+>>>>>>> main:Assets/Conduction/Data/2023-03-23T17-49/capture_1280x720_2023-03-23_17-49-54_ME6D8.mp4.meta
+VideoClipImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  frameRange: 0
+  startFrame: -1
+  endFrame: -1
+  colorSpace: 0
+  deinterlace: 0
+  encodeAlpha: 0
+  flipVertical: 0
+  flipHorizontal: 0
+  importAudio: 1
+  targetSettings: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

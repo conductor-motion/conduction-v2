@@ -12,7 +12,6 @@
     "com.unity.timeline": "1.6.4",
     "com.unity.toolchain.win-x86_64-linux-x86_64": "2.0.0",
     "com.unity.ugui": "1.0.0",
-    "com.unity.xr.arfoundation": "4.2.7",
     "jp.ikep.mediapipe.blazepose": "https://github.com/creativeIKEP/BlazePoseBarracuda.git?path=Packages/BlazePoseBarracuda#v1.3.0",
     "jp.ikep.mediapipe.posedetection": "https://github.com/creativeIKEP/PoseDetectionBarracuda.git?path=Packages/PoseDetectionBarracuda#v1.0.1",
     "jp.ikep.mediapipe.poselandmark": "https://github.com/creativeIKEP/PoseLandmarkBarracuda.git?path=Packages/PoseLandmarkBarracuda#v1.1.1",

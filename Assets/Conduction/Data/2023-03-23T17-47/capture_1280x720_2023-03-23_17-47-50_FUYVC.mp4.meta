@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Conduction/Data/2023-03-08T16-27/capture_1280x720_2023-03-08_16-27-35_PECGG.mp4.meta
+guid: eb05d46a978b1d342b3b40cf345a2f97
+=======
+guid: 501d5e41fba484c0ca89785c53f75a5f
+>>>>>>> main:Assets/Conduction/Data/2023-03-23T17-47/capture_1280x720_2023-03-23_17-47-50_FUYVC.mp4.meta
+VideoClipImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  frameRange: 0
+  startFrame: -1
+  endFrame: -1
+  colorSpace: 0
+  deinterlace: 0
+  encodeAlpha: 0
+  flipVertical: 0
+  flipHorizontal: 0
+  importAudio: 1
+  targetSettings: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
