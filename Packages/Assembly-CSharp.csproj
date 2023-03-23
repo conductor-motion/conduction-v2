@@ -306,7 +306,6 @@
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Clothing/0000/Materials" />
      <Folder Include="Assets/Evereal/VideoCapture/Plugins/FFmpegEncoder.bundle/Contents/_CodeSignature" />
      <Folder Include="Assets/K2Examples/_Readme" />
-     <None Include="Assets/Conduction/Data/2023-03-23T17-43/data.json" />
      <Folder Include="Assets/K2Examples/KinectDemos/ProjectorDemo" />
      <Folder Include="Assets/K2Examples/KinectScripts/Playmaker" />
      <Folder Include="Assets/K2Examples/KinectDemos/RecorderDemo/Resources" />
@@ -363,11 +362,9 @@
      <None Include="Assets/K2Examples/Resources/Color2BodyShader.shader" />
      <Folder Include="Assets/K2Examples/KinectDemos/BlobDetectionDemo/Scripts" />
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Sprites/Batman" />
-     <Folder Include="Assets/Conduction/Data/2023-03-23T17-49" />
      <Folder Include="Assets/Evereal/VideoCapture/Plugins/FFmpegEncoder.bundle/Contents" />
      <Folder Include="Assets/Evereal/VideoCapture/Plugins/x86_64" />
      <Folder Include="Assets/Prefabs" />
-     <Folder Include="Assets/Conduction/Data/2023-03-23T17-47" />
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Models" />
      <None Include="Assets/K2Examples/Resources/CoordMapper.compute" />
      <None Include="Assets/Evereal/VideoCapture/Resources/Shaders/StereoPack.shader" />
@@ -389,7 +386,6 @@
      <Folder Include="Assets/K2Examples/KinectScripts" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/GUI/Legacy" />
      <Folder Include="Assets/K2Examples/Plugins/UWP" />
-     <Folder Include="Assets/Conduction/Data/2023-03-23T17-43" />
      <None Include="Assets/K2Examples/Resources/BlurShader1.shader" />
      <Folder Include="Assets/Evereal/VideoCapture/Demos/Scripts" />
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Models/Barrel/Textures" />
