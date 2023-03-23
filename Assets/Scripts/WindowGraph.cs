@@ -66,7 +66,7 @@ public class WindowGraph : MonoBehaviour
         //take path from game object and find it within the conduction folder and display it?
        
       // if(graphCounter) {
-    //    displayGraph();
+        displayGraph();
        // graphCounter = false;
       // }
 
