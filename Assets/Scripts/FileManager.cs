@@ -5,6 +5,7 @@ using UnityEditor.UI;
 using SimpleFileBrowser;
 using System.IO;
 using UnityEngine.SceneManagement;
+using Google.Protobuf;
 
 public class FileManager : MonoBehaviour
 {
@@ -44,6 +45,12 @@ public class FileManager : MonoBehaviour
             rec.GetComponent<Recording>().text.text = MainManager.Instance.dirPath.Substring(MainManager.Instance.dirPath.LastIndexOf("/") + 1);
             rec.GetComponent<Recording>().fullDir = MainManager.Instance.dirPath;
             ListController.savedList.Insert(0, rec);
+
+            string dateString = System.DateTime.Now.ToString("s").Replace(":", "-");
+            string dataPath = Application.dataPath + "/Conduction/Data/" + dateString.Remove(dateString.Length - 3);
+            Directory.CreateDirectory(dataPath);
+            string destinationPath = Path.Combine(dataPath, FileBrowserHelpers.GetFilename(FileBrowser.Result[0]));
+            FileBrowserHelpers.CopyFile(FileBrowser.Result[0], destinationPath);
 
             SceneManager.LoadScene("ViewingPage");
         }
