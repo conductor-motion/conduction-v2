@@ -7,6 +7,7 @@ public class MainManager : MonoBehaviour
     public static MainManager Instance;
 
     public string dirPath;
+    public string mode = "Recording";
 
     private void Awake()
     {
@@ -28,5 +29,10 @@ public class MainManager : MonoBehaviour
     public void SetDirPath(string dirPath)
     {
         MainManager.Instance.dirPath = dirPath;
+    }
+
+    public void SetMode(string mode)
+    {
+        MainManager.Instance.mode = mode;
     }
 }

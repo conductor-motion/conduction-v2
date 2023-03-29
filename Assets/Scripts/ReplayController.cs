@@ -39,6 +39,7 @@ public class ReplayController : MonoBehaviour
         if (MainManager.Instance != null)
         {
             string dir = MainManager.Instance.dirPath;
+            MainManager.Instance.SetMode("Replaying");
 
             if (!File.Exists(dir))
             {

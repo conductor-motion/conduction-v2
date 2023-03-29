@@ -73,6 +73,9 @@ public class RecordingController : MonoBehaviour
 
     void Start()
     {
+        if (MainManager.Instance != null)
+            MainManager.Instance.SetMode("Recording");
+
         videoCapture.inputTexture = (RenderTexture)webCamInput.inputImageTexture;
         videoCapture.saveFolder = "Assets/Conduction/Data/" + MainManager.Instance.dirPath;
 

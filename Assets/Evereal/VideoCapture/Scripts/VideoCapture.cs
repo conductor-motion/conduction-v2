@@ -387,7 +387,8 @@ namespace Evereal.VideoCapture
       lastVideoFile = savePath;
 
       Debug.LogFormat(LOG_FORMAT, "Video generated success!");
-      MainManager.Instance.SetDirPath(savePath);
+      if(MainManager.Instance.mode == "Recording")
+        MainManager.Instance.SetDirPath(savePath);
       print(MainManager.Instance.dirPath);
     }
 
