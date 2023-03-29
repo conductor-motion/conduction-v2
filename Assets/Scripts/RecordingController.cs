@@ -54,15 +54,6 @@ public class RecordingController : MonoBehaviour
     public static bool isRecording = false;
     private bool isCountingDown = false;
 
-    // Audio recording
-    private bool canRecordAudio = false;
-    private string chosenMic = "";
-    public AudioSource audioSource;
-
-    // "Audio vectors" storage so this can be serialized to a file and loaded with the animation when needed
-    List<float> audioRecording = new List<float>();
-    public static float[] finalRecording;
-    public static AudioClip recordedAudio;
 
     // Game objects to save data and video
     public WebCamInput webCamInput;
@@ -94,13 +85,6 @@ public class RecordingController : MonoBehaviour
 
         }
 
-        // If we found any microhpone that works, we can record audio
-        if (firstAcceptableMic.Length > 0)
-        {
-            canRecordAudio = true;
-
-            if (chosenMic.Length == 0) chosenMic = firstAcceptableMic;
-        }
     }
 
     void Update()
@@ -219,12 +203,6 @@ public class RecordingController : MonoBehaviour
                     countdown[i].gameObject.SetActive(false);
             }
         }
-        if(canRecordAudio)
-        {
-            audioSource.clip = Microphone.Start(chosenMic, true, 60, 44100);
-            //audioSource.Play();
-            Invoke("ResizeRecording", 60);
-        }
 
         // Begin recording motion
         isCountingDown = false;
@@ -233,54 +211,11 @@ public class RecordingController : MonoBehaviour
         StartCoroutine(SwapIcon());
     }
 
-    // Add the next minute of recording audio to the audio vector list
-    void ResizeRecording()
-    {
-        if (isRecording)
-        {
-            int length = 44100 * 60;
-            float[] clipData = new float[length];
-            audioSource.clip.GetData(clipData, 0);
-            audioRecording.AddRange(clipData);
-            Invoke("ResizeRecording", 60);
-        }
-    }
 
     private void StopRecording()
     {
         if (isRecording)
         {
-            // Halt recording audio and record its last sub-second audio to the vector list
-            if (canRecordAudio)
-            {
-                int length = Microphone.GetPosition(chosenMic);
-                Microphone.End(null);
-                float[] clipData = new float[length];
-                audioSource.clip.GetData(clipData, 0);
-
-                // Create a final concatenated audio clip
-                float[] fullClip = new float[clipData.Length + audioRecording.Count];
-                for (int i = 0; i < fullClip.Length; i++)
-                {
-                    if (i < audioRecording.Count)
-                    {
-                        fullClip[i] = audioRecording[i];
-                    }
-                    else
-                    {
-                        fullClip[i] = clipData[i - audioRecording.Count];
-                    }
-                }
-
-                finalRecording = fullClip;
-
-                // Create a Unity audio clip from the recorded data to play in playback
-                recordedAudio = AudioClip.Create("recordingAudio", finalRecording.Length, 1, 44100, false);
-                recordedAudio.SetData(finalRecording, 0);
-                
-            }
-
-
             isRecording = false;
             _metronome.stopMetronome();
             videoCapture.StopCapture();

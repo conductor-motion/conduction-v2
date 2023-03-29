@@ -389,7 +389,6 @@ namespace Evereal.VideoCapture
       Debug.LogFormat(LOG_FORMAT, "Video generated success!");
       if(MainManager.Instance.mode == "Recording")
         MainManager.Instance.SetDirPath(savePath);
-      print(MainManager.Instance.dirPath);
     }
 
     #endregion
