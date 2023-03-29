@@ -1,22 +1,24 @@
-﻿<Properties StartupConfiguration="{1122F043-2B59-EC64-7F34-AE685EAD66C1}|">
+﻿<Properties StartupConfiguration="{1C7193BF-2C8A-2B05-BC59-D77E690EB081}|">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp-Editor PreferredExecutionTarget="fd3e0f1d-de50-400a-9133-24ac9cb66102" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ea3b0089-8ad1-4166-b2cc-cb7ab605ac70" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WebCamInput.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MediaControlsV2.cs">
     <Files>
-      <File FileName="Assets/Scripts/RecordingController.cs" Line="59" Column="55" IsPinned="True" />
+      <File FileName="Assets/Scripts/RecordingController.cs" Line="69" Column="82" IsPinned="True" />
       <File FileName="Assets/Scripts/MainManager.cs" Line="24" Column="13" IsPinned="True" />
       <File FileName="Assets/Scripts/ReplayController.cs" Line="45" Column="1" IsPinned="True" />
       <File FileName="Assets/Scripts/PoseVisuallizer3D.cs" />
-      <File FileName="Assets/MediaControlsV2.cs" />
       <File FileName="Assets/Scripts/MediaControls.cs" />
-      <File FileName="Assets/Scripts/WebCamInput.cs" Line="62" Column="1" />
+      <File FileName="Assets/Scripts/WebCamInput.cs" />
       <File FileName="Assets/Scripts/MocapRecorderOurs.cs" />
       <File FileName="Assets/Scripts/TrailController.cs" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/FFmpegEncoder.cs" />
+      <File FileName="Assets/Scripts/MediaControlsV2.cs" Line="44" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
 </Properties>

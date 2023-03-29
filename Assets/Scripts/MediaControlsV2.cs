@@ -31,7 +31,7 @@ public class MediaControlsV2 : MonoBehaviour
     private bool isMuted = false;
     private UnityEngine.UI.Slider volumeController = null;
     private UnityEngine.UI.Text volumeLabel = null;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     // Control trails when changing clip timing
     private GameObject[] trails;
@@ -41,7 +41,6 @@ public class MediaControlsV2 : MonoBehaviour
     void Start()
     {
 
-        audioSource = GameObject.Find("U_CharacterUser").GetComponent<AudioSource>();
         vidSpeed = 1f;
 
         // Get the trails in the scene

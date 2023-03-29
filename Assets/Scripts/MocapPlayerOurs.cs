@@ -9,8 +9,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 // Our implementation of the Kinect Mocap Player from the Kinect v2 Examples library
 // Differs greatly in that it uses legacy animations and performs audio loading operations
+
 public class MocapPlayerOurs : MonoBehaviour
-{
+{/*
     // initial position & rotation of the model
     private Vector3 initialPos = Vector3.zero;
     private Quaternion initialRot = Quaternion.identity;
@@ -233,6 +234,6 @@ public class MocapPlayerOurs : MonoBehaviour
         FileStream audioFile = new FileStream(Path.Combine(Application.streamingAssetsPath, fileName + ".audio"), FileMode.Create);
         bf.Serialize(audioFile, audioRecordingData);
         audioFile.Close();
-    }
+    }*/
 }
 

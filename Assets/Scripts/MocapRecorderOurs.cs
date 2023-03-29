@@ -6,10 +6,11 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using System.Text;
 
+
 // Our implementation of the Kinect Mocap Recorder from the Kinect v2 Examples library
 // Differs greatly in that it uses legacy animations and performs audio recording operations
 public class MocapRecorderOurs : MonoBehaviour
-{
+{/*
     [Tooltip("The avatar, whose motion will be captured in the animation clip.")]
     public IKController avatarModel;
 
@@ -202,7 +203,7 @@ public class MocapRecorderOurs : MonoBehaviour
         /*if (avatarModel && (avatarModel.playerId == 0 && !editorOverride))
         {
             StopRecording();
-        }*/
+        }
     }
 
     public void RecordButton()
@@ -290,7 +291,7 @@ public class MocapRecorderOurs : MonoBehaviour
             audioSource.clip = Microphone.Start(chosenMic, true, 60, 44100);
             audioSource.Play();
             Invoke("ResizeRecording", 60);
-        }*/
+        }
         
         // Begin recording motion
         isCountingDown = false;
@@ -376,7 +377,7 @@ public class MocapRecorderOurs : MonoBehaviour
                 // Create a Unity audio clip from the recorded data to play in playback
                 recordedAudio = AudioClip.Create("recordingAudio", finalRecording.Length, 1, 44100, false);
                 recordedAudio.SetData(finalRecording, 0);
-            }*/
+            }
 
             // Realistically is impossible for nothing to be recorded when a countdown is included
             bool isAnythingRecorded = true;
@@ -517,4 +518,5 @@ public class MocapRecorderOurs : MonoBehaviour
 
         return animClip;
     }
+    */
 }

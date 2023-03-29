@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -415,6 +415,17 @@ Transform:
   m_Father: {fileID: 1907771428}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &333031936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1721058377, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
+  m_PrefabInstance: {fileID: 7368345398768570757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522197604370344bdb831b90b8f3490b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &407318177
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,9 +698,11 @@ MonoBehaviour:
   notRecordingTexture: {fileID: 0}
   hideableHUD: {fileID: 0}
   _metronome: {fileID: 0}
+  audioSource: {fileID: 0}
   webCamInput: {fileID: 0}
   visuallizer: {fileID: 0}
   videoCapture: {fileID: 0}
+  recordingPrefab: {fileID: 0}
 --- !u!1 &653973460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,6 +2043,7 @@ GameObject:
   - component: {fileID: 1263440688}
   - component: {fileID: 1263440687}
   - component: {fileID: 1263440689}
+  - component: {fileID: 1263440690}
   m_Layer: 0
   m_Name: RecordingController
   m_TagString: Untagged
@@ -2061,9 +2075,11 @@ MonoBehaviour:
   notRecordingTexture: {fileID: 2800000, guid: 3a3133e05e55c0e4a8ffcbd5c0cfe742, type: 3}
   hideableHUD: {fileID: 5491292833631456978}
   _metronome: {fileID: 5491292832650881101}
+  audioSource: {fileID: 1263440690}
   webCamInput: {fileID: 1187057161}
-  visuallizer: {fileID: 0}
+  visuallizer: {fileID: 333031936}
   videoCapture: {fileID: 1580344348}
+  recordingPrefab: {fileID: 4436089052978443391, guid: 37ca4994cccde2e46969ffed7731a2bd, type: 3}
 --- !u!4 &1263440688
 Transform:
   m_ObjectHideFlags: 0
@@ -2092,6 +2108,102 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxFrames: 60
+--- !u!82 &1263440690
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263440686}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2871db81b74cabd46ad453e67c799ee0, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 1
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1334022763
 GameObject:
   m_ObjectHideFlags: 0

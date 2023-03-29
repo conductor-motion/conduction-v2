@@ -52,8 +52,8 @@ public class MediaControls : MonoBehaviour
     // Initialize variables necessary for controlling media playback
     void Start()
     {
-        clipName = MocapPlayerOurs.recordedClip.name;
-
+        //clipName = MocapPlayerOurs.recordedClip.name;
+        clipName = "test";
         playerAnimatorLegacy = GameObject.Find("U_Character_REF").GetComponent<Animation>();
         audioSource = GameObject.Find("U_Character_REF").GetComponent<AudioSource>();
 
