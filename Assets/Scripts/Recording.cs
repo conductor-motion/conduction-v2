@@ -21,8 +21,6 @@ public class Recording : MonoBehaviour
         ListController.savedList.Remove(newest);
         ListController.savedList.Insert(0, newest);
         MainManager.Instance.SetDirPath(fullDir);
-        print(fullDir);
-        print(MainManager.Instance.dirPath);
         SceneManager.LoadScene("ViewingPage");
     }
     

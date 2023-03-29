@@ -48,8 +48,6 @@ public class ListController : MonoBehaviour
             rec.GetComponent<Recording>().text.text = name;
             rec.GetComponent<Recording>().fullDir = file.FullName;
 
-            print(file.FullName);
-
             savedList.Add(rec);
         }
 

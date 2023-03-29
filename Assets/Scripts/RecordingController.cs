@@ -292,7 +292,7 @@ public class RecordingController : MonoBehaviour
         DontDestroyOnLoad(rec);
         rec.GetComponent<Recording>().text.text = MainManager.Instance.dirPath.Substring(MainManager.Instance.dirPath.LastIndexOf("/") + 1);
         rec.GetComponent<Recording>().fullDir = MainManager.Instance.dirPath;
-        ListController.savedList.Add(rec);
+        ListController.savedList.Insert(0, rec);
         SceneManager.LoadScene("ViewingPage");
     }
 }

@@ -105,6 +105,7 @@
     <Compile Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/CloudFaceScripts/FaceObjs/HeadPose.cs" />
     <Compile Include="Assets/Scripts/Template.cs" />
     <Compile Include="Assets/Evereal/VideoCapture/Scripts/Internal/Interfaces/IVideoCapture.cs" />
+    <Compile Include="Assets/Scripts/FileManager.cs" />
     <Compile Include="Assets/Scripts/AnalyticsButtonUI.cs" />
     <Compile Include="Assets/Evereal/VideoCapture/Scripts/SequenceCapture.cs" />
     <Compile Include="Assets/Evereal/VideoCapture/Scripts/GUI/Legacy/ScreenShotGUI.cs" />
@@ -192,7 +193,7 @@
     <Compile Include="Assets/K2Examples/KinectScripts/MultiScene/LoadLevelWithDelay.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/BackgroundDepthImage.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/GesturesDemo/Scripts/CubePresentationScript.cs" />
-    <Compile Include="Assets/backButtonToViewingPage.cs" />
+    <Compile Include="Assets/Scripts/backButtonToViewingPage.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/BackgroundRemovalManager.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/Samples/SequentialGestureListener.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/CloudFaceScripts/FaceObjs/Face.cs" />
@@ -1123,6 +1124,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="SimpleFileBrowser.Runtime.csproj">
+      <Project>{5DC1DA90-1F94-73D8-FD7C-5D0B6F5D4D5B}</Project>
+      <Name>SimpleFileBrowser.Runtime</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
