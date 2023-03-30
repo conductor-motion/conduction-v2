@@ -30,7 +30,7 @@ public class ListController : MonoBehaviour
             return;
 
         // Get the files from the directory and sort them by time accessed
-        DirectoryInfo dirInfo = new DirectoryInfo(Application.dataPath + "/Conduction/Data/");
+        DirectoryInfo dirInfo = new DirectoryInfo(Directory.GetCurrentDirectory() + "/Data/");
         FileInfo[] files = dirInfo.GetFiles("*.mp4", SearchOption.AllDirectories);
 
         // Sort the FileInfo array

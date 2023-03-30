@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.UI;
+using UnityEngine.UI;
 using SimpleFileBrowser;
 using System.IO;
 using UnityEngine.SceneManagement;
@@ -47,7 +47,7 @@ public class FileManager : MonoBehaviour
             ListController.savedList.Insert(0, rec);
 
             string dateString = System.DateTime.Now.ToString("s").Replace(":", "-");
-            string dataPath = Application.dataPath + "/Conduction/Data/" + dateString.Remove(dateString.Length - 3);
+            string dataPath = Directory.GetCurrentDirectory() + "/Data/" + dateString.Remove(dateString.Length - 3);
             Directory.CreateDirectory(dataPath);
             string destinationPath = Path.Combine(dataPath, FileBrowserHelpers.GetFilename(FileBrowser.Result[0]));
             FileBrowserHelpers.CopyFile(FileBrowser.Result[0], destinationPath);

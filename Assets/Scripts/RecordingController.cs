@@ -68,7 +68,7 @@ public class RecordingController : MonoBehaviour
             MainManager.Instance.SetMode("Recording");
 
         videoCapture.inputTexture = (RenderTexture)webCamInput.inputImageTexture;
-        videoCapture.saveFolder = "Assets/Conduction/Data/" + MainManager.Instance.dirPath;
+        videoCapture.saveFolder = "Data/" + MainManager.Instance.dirPath;
 
         // Instantiate sprites for icon swapping
         isRec = Sprite.Create(recordingTexture, new Rect(0.0f, 0.0f, recordingTexture.width, recordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);

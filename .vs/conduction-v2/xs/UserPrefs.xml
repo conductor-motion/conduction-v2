@@ -1,15 +1,19 @@
 ﻿<Properties StartupConfiguration="{1C7193BF-2C8A-2B05-BC59-D77E690EB081}|">
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="369ec2ea-8c3e-4e49-92b4-fbc463f1731c" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4f8c9027-770c-4387-bfbc-974742f85a4e" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FileManager.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs">
     <Files>
-      <File FileName="Assets/Scripts/RecordingController.cs" Line="285" Column="58" IsPinned="True" />
-      <File FileName="Assets/Scripts/MainManager.cs" Line="9" Column="27" IsPinned="True" />
+      <File FileName="Assets/Scripts/MainManager.cs" Line="10" Column="38" IsPinned="True" />
       <File FileName="Assets/Scripts/ReplayController.cs" Line="41" Column="34" IsPinned="True" />
       <File FileName="Assets/Scripts/Recording.cs" Line="46" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/ListController.cs" Line="46" Column="1" IsPinned="True" />
+      <File FileName="Assets/Scripts/ListController.cs" Line="38" Column="10" IsPinned="True" />
+      <File FileName="Assets/Scripts/RecordingController.cs" Line="234" Column="1" IsPinned="True" />
       <File FileName="Assets/Scripts/MocapRecorderOurs.cs" />
-      <File FileName="Assets/Scripts/PoseVisuallizer3D.cs" />
+      <File FileName="Assets/Scripts/PoseVisuallizer3D.cs" Line="251" Column="1" />
       <File FileName="Assets/Scripts/MediaControls.cs" />
       <File FileName="Assets/Scripts/WebCamInput.cs" />
       <File FileName="Assets/Scripts/MediaControlsV2.cs" />
@@ -17,12 +21,32 @@
       <File FileName="Assets/Scripts/AnimationLoader.cs" />
       <File FileName="Assets/Scripts/MocapPlayerOurs.cs" />
       <File FileName="Assets/Evereal/VideoCapture/Scripts/VideoCapture.cs" />
-      <File FileName="Assets/FileManager.cs" Line="5" Column="25" />
+      <File FileName="Assets/Scripts/FileManager.cs" Line="55" Column="1" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/FFmpegMuxer.cs" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Base/CaptureBase.cs" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/FFmpegEncoder.cs" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs" Line="382" Column="8" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="conduction-v2" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Evereal" expanded="True">
+                <Node name="VideoCapture" expanded="True">
+                  <Node name="Scripts" expanded="True">
+                    <Node name="Internal" expanded="True">
+                      <Node name="Encoder" expanded="True" />
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+              <Node name="Scripts" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

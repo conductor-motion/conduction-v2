@@ -237,7 +237,7 @@ public class PoseVisuallizer3D : MonoBehaviour
     }
     void CreateDataFile()
     {
-        dirPath = Application.dataPath + "/Conduction/Data/" + MainManager.Instance.dirPath;
+        dirPath = Directory.GetCurrentDirectory() + "/Data/" + MainManager.Instance.dirPath;
 
         if (!Directory.Exists(dirPath))
         {
