@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UITtooltip.Utils;
+using UnityEngine.Video;
 
 public class WindowGraph : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class WindowGraph : MonoBehaviour
 
     public GameObject metronome;
     MetronomeStorage metronomeStorage;
+
+    public GameObject mainmanager;
+    MainManager mainManager;
 
     [SerializeField] private Sprite BlackDotSprite;
     [SerializeField] private Sprite WhiteDotSprite;
@@ -47,7 +51,13 @@ public class WindowGraph : MonoBehaviour
         if(metronome) {
             metronomeStorage = metronome.GetComponent<MetronomeStorage>();
             //Debug.Log("tempo:" + metronomeStorage.tempo);
-        } 
+        }  
+
+        mainmanager = GameObject.Find("MainManager");
+        if(mainmanager) {
+            mainManager = mainmanager.GetComponent<MainManager>();
+           // Debug.Log("mainManager dir" + mainManager.dirPath);
+        }
        
       // if(graphCounter) {
         displayGraph();
@@ -70,7 +80,7 @@ public class WindowGraph : MonoBehaviour
             counter++;
         }
         
-        int durationSeconds = /*(int)*/(/*Math.*/(counter/16));
+        int durationSeconds = (counter/16);
         Debug.Log("duration seconds:" + durationSeconds);
         
         string timeString = "";
@@ -87,13 +97,6 @@ public class WindowGraph : MonoBehaviour
        Debug.Log(timeString);
        return timeString; 
     }
-   
-    private static FileInfo GetNewestFile(DirectoryInfo directory) {
-            return directory.GetFiles()
-                .Union(directory.GetDirectories().Select(d => GetNewestFile(d)))
-                .OrderByDescending(f => (f == null ? DateTime.MinValue : f.LastWriteTime))
-                .FirstOrDefault();
-        }
 
     private void ParseData(string s) {
         JSONNode n = JSON.Parse(s);
@@ -138,10 +141,13 @@ public class WindowGraph : MonoBehaviour
         GameObject prevDotGameObjConductor = null;
         GameObject prevDotGameObjMetronome = null;
 
-        FileInfo newestFile = GetNewestFile(new DirectoryInfo(@"Assets/Conduction/Data"));
-        //Debug.Log(newestFile.Name);
-        string json = File.ReadAllText(newestFile.FullName);
-        //Debug.Log(json);
+       //gets index of last "/"
+       string inputData = mainManager.dirPath;
+       inputData = inputData.Substring(0, inputData.LastIndexOf(@"\"));
+       inputData = inputData + @"\data.json";
+
+        string json = File.ReadAllText(inputData);
+       // Debug.Log("json", json);
         ParseData(json);
 
         /*for(int i=0; i<yVals.Count; i++) {
