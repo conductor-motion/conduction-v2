@@ -1,52 +1,28 @@
 ﻿<Properties StartupConfiguration="{1C7193BF-2C8A-2B05-BC59-D77E690EB081}|">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4f8c9027-770c-4387-bfbc-974742f85a4e" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PoseVisuallizer3D.cs">
     <Files>
-      <File FileName="Assets/Scripts/MainManager.cs" Line="10" Column="38" IsPinned="True" />
-      <File FileName="Assets/Scripts/ReplayController.cs" Line="41" Column="34" IsPinned="True" />
-      <File FileName="Assets/Scripts/Recording.cs" Line="46" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/ListController.cs" Line="38" Column="10" IsPinned="True" />
-      <File FileName="Assets/Scripts/RecordingController.cs" Line="234" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/MocapRecorderOurs.cs" />
-      <File FileName="Assets/Scripts/PoseVisuallizer3D.cs" Line="251" Column="1" />
+      <File FileName="Assets/Scripts/MainManager.cs" Line="34" Column="1" IsPinned="True" />
+      <File FileName="Assets/Scripts/ReplayController.cs" Line="91" Column="21" IsPinned="True" />
+      <File FileName="Assets/Scripts/Recording.cs" Line="32" Column="72" IsPinned="True" />
+      <File FileName="Assets/Scripts/ListController.cs" Line="33" Column="86" IsPinned="True" />
+      <File FileName="Assets/Scripts/RecordingController.cs" Line="234" Column="140" IsPinned="True" />
+      <File FileName="Assets/Scripts/PoseVisuallizer3D.cs" Line="242" Column="6" />
       <File FileName="Assets/Scripts/MediaControls.cs" />
-      <File FileName="Assets/Scripts/WebCamInput.cs" />
       <File FileName="Assets/Scripts/MediaControlsV2.cs" />
       <File FileName="Assets/Scripts/MicrophoneRecorder.cs" />
       <File FileName="Assets/Scripts/AnimationLoader.cs" />
       <File FileName="Assets/Scripts/MocapPlayerOurs.cs" />
       <File FileName="Assets/Evereal/VideoCapture/Scripts/VideoCapture.cs" />
-      <File FileName="Assets/Scripts/FileManager.cs" Line="55" Column="1" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/FFmpegMuxer.cs" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Base/CaptureBase.cs" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/FFmpegEncoder.cs" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs" Line="382" Column="8" />
+      <File FileName="Assets/Scripts/FileManager.cs" Line="39" Column="144" />
+      <File FileName="Assets/Scripts/UseofSpaceV2.cs" Line="17" Column="36" />
+      <File FileName="Assets/Scripts/MultiScene/SceneLoader.cs" Line="20" Column="20" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="conduction-v2" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Evereal" expanded="True">
-                <Node name="VideoCapture" expanded="True">
-                  <Node name="Scripts" expanded="True">
-                    <Node name="Internal" expanded="True">
-                      <Node name="Encoder" expanded="True" />
-                    </Node>
-                  </Node>
-                </Node>
-              </Node>
-              <Node name="Scripts" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9f5a6c44-d5be-4203-b333-aef30165f779" />
 </Properties>

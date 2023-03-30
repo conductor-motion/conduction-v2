@@ -21,22 +21,16 @@ public class Recording : MonoBehaviour
         ListController.savedList.Remove(newest);
         ListController.savedList.Insert(0, newest);
         MainManager.Instance.SetDirPath(fullDir);
+        MainManager.Instance.setNewUpload(false);
         SceneManager.LoadScene("ViewingPage");
     }
     
     // When the delete button is pressed, remove all references to the selected animation
     public void delete()
-    {
-        // Attempt to delete the associated .anim file for this recording
+    {   
         File.Delete(fullDir);
-        /*try
-        {
-            File.Delete(Path.Combine(Application.streamingAssetsPath, text.text + ".audio"));
-        }
-        catch
-        {
-            Debug.Log("No associated audio for this animation to delete.");
-        }*/
+        File.Delete(fullDir.Substring(0, fullDir.LastIndexOf("/")) + "/data.json");
+        Directory.Delete(fullDir.Substring(0, fullDir.LastIndexOf("/")));
 
         ListController.savedList.Remove(ListController.savedList.Find(item => item.GetComponent<Recording>().text.text == text.text));
         Destroy(this.gameObject);

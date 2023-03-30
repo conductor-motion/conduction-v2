@@ -30,15 +30,9 @@ public class FileManager : MonoBehaviour
         yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.FilesAndFolders);
 
         if(FileBrowser.Success)
-        {
-            Debug.Log(FileBrowser.Result[0]);
+        {;
             dir = FileBrowser.Result[0];
 
-
-            if (MainManager.Instance != null)
-            {
-                MainManager.Instance.SetDirPath(dir);
-            }
 
             GameObject rec = Instantiate(recordingPrefab);
             DontDestroyOnLoad(rec);
@@ -50,7 +44,16 @@ public class FileManager : MonoBehaviour
             string dataPath = Directory.GetCurrentDirectory() + "/Data/" + dateString.Remove(dateString.Length - 3);
             Directory.CreateDirectory(dataPath);
             string destinationPath = Path.Combine(dataPath, FileBrowserHelpers.GetFilename(FileBrowser.Result[0]));
+            print(destinationPath);
             FileBrowserHelpers.CopyFile(FileBrowser.Result[0], destinationPath);
+
+
+
+            if (MainManager.Instance != null)
+            {
+                MainManager.Instance.SetDirPath(destinationPath);
+                MainManager.Instance.setNewUpload(true);
+            }
 
             SceneManager.LoadScene("ViewingPage");
         }

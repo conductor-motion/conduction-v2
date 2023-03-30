@@ -25,6 +25,7 @@ public class PoseVisuallizer3D : MonoBehaviour
     int frameIndex = 0;
     Frames frames = new Frames();
     List<HandMovementData> data = new List<HandMovementData>();
+    public bool showLines = true;
 
     Transform objToPickUp;
 
@@ -54,7 +55,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         material = new Material(shader);
         detecter = new BlazePoseDetecter();
 
-        if(SceneManager.GetActiveScene().name == "RecordingPage")
+        if(SceneManager.GetActiveScene().name == "RecordingPage" || MainManager.Instance.newUpload == true)
             CreateDataFile();
         mainCamera = Camera.main;
         webCamInput = FindObjectOfType<WebCamInput>();
@@ -84,12 +85,12 @@ public class PoseVisuallizer3D : MonoBehaviour
             This data is (score, 0, 0, 0).
             */
             //Debug.LogFormat("{0}: {1}", i, detecter.GetPoseWorldLandmark(i));
-            if (RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage" && (i == 15 || i == 16))
+            if (((RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage") || MainManager.Instance.newUpload == true) && (i == 15 || i == 16))
             {
                 frame.data.Add(new HandMovementData(i, detecter.GetPoseWorldLandmark(i).x, detecter.GetPoseWorldLandmark(i).y, detecter.GetPoseWorldLandmark(i).z, detecter.GetPoseWorldLandmark(i).w));
             }
         }
-        if (RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage")
+        if ((RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage") || MainManager.Instance.newUpload == true)
         {
             frames.frames.Add(frame);
             frameIndex++;
@@ -194,35 +195,37 @@ public class PoseVisuallizer3D : MonoBehaviour
         //
     }
 
-    void OnRenderObject(){
-        // Use predicted pose world landmark results on the ComputeBuffer (GPU) memory.
-        material.SetBuffer("_worldVertices", detecter.worldLandmarkBuffer);
-        // Set pose landmark counts.
-        material.SetInt("_keypointCount", detecter.vertexCount);
-        material.SetFloat("_humanExistThreshold", humanExistThreshold);
-        material.SetVectorArray("_linePair", linePair);
-        material.SetMatrix("_invViewMatrix", mainCamera.worldToCameraMatrix.inverse);
+    void OnRenderObject()
+    {
+        if (showLines) { 
+            // Use predicted pose world landmark results on the ComputeBuffer (GPU) memory.
+            material.SetBuffer("_worldVertices", detecter.worldLandmarkBuffer);
+            // Set pose landmark counts.
+            material.SetInt("_keypointCount", detecter.vertexCount);
+            material.SetFloat("_humanExistThreshold", humanExistThreshold);
+            material.SetVectorArray("_linePair", linePair);
+            material.SetMatrix("_invViewMatrix", mainCamera.worldToCameraMatrix.inverse);
 
-        // Draw 35 world body topology lines.
-        material.SetPass(2);
-        Graphics.DrawProceduralNow(MeshTopology.Triangles, 6, BODY_LINE_NUM);
+            // Draw 35 world body topology lines.
+            material.SetPass(2);
+            Graphics.DrawProceduralNow(MeshTopology.Triangles, 6, BODY_LINE_NUM);
 
-        // Draw 33 world landmark points.
-        material.SetPass(3);
-        Graphics.DrawProceduralNow(MeshTopology.Triangles, 6, detecter.vertexCount);
+            // Draw 33 world landmark points.
+            material.SetPass(3);
+            Graphics.DrawProceduralNow(MeshTopology.Triangles, 6, detecter.vertexCount);
+        }
     }
     
-
+    
     void OnDestroy()
     {
-        if (SceneManager.GetActiveScene().name == "RecordingPage")
+
+        detecter.Dispose();
+        if (SceneManager.GetActiveScene().name == "RecordingPage" || MainManager.Instance.newUpload == true)
         {
             string json = JsonUtility.ToJson(frames, true);
             writer.Write(json);
-        }
-        detecter.Dispose();
-        if (SceneManager.GetActiveScene().name == "RecordingPage")
-        {
+            MainManager.Instance.setNewUpload(false);
             writer.Close();
             if (new FileInfo(filePath).Length == 1)
             {
@@ -237,7 +240,13 @@ public class PoseVisuallizer3D : MonoBehaviour
     }
     void CreateDataFile()
     {
-        dirPath = Directory.GetCurrentDirectory() + "/Data/" + MainManager.Instance.dirPath;
+        if (!MainManager.Instance.newUpload)
+        {
+            dirPath = Directory.GetCurrentDirectory() + "/Data/" + MainManager.Instance.dirPath;
+        } else
+        {
+            dirPath = MainManager.Instance.dirPath.Substring(0, MainManager.Instance.dirPath.LastIndexOf("/"));
+        }
 
         if (!Directory.Exists(dirPath))
         {
@@ -245,6 +254,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         }
         filePath = dirPath + "/data.json";
         writer = new StreamWriter(filePath, true);
+        writer.AutoFlush = true;
     }
 
 }

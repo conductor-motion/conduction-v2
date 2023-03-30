@@ -8,6 +8,7 @@ public class MainManager : MonoBehaviour
 
     public string dirPath;
     public string mode = "Recording";
+    public bool newUpload = false;
 
     private void Awake()
     {
@@ -35,4 +36,9 @@ public class MainManager : MonoBehaviour
     {
         MainManager.Instance.mode = mode;
     }
+
+    public void setNewUpload(bool newUpload)
+    {
+        MainManager.Instance.newUpload = newUpload;
+    } 
 }

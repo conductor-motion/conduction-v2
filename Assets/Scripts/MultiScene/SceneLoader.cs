@@ -13,12 +13,12 @@ public class SceneLoader : MonoBehaviour
     // Open a dialog to go to the desired scene or just go there
     public void LoadScene()
     {
-        if (promptBeforeGo)
+        /*if (promptBeforeGo)
         {
             // Display the prompt
             prompt.SetActive(true);
             return;
-        }
+        }*/
 
         // If no prompt is to be shown, just load the target scene
         ForceLoad();

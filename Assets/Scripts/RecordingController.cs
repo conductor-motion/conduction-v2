@@ -65,7 +65,10 @@ public class RecordingController : MonoBehaviour
     void Start()
     {
         if (MainManager.Instance != null)
+        {
             MainManager.Instance.SetMode("Recording");
+            MainManager.Instance.setNewUpload(false);
+        }
 
         videoCapture.inputTexture = (RenderTexture)webCamInput.inputImageTexture;
         videoCapture.saveFolder = "Data/" + MainManager.Instance.dirPath;
@@ -76,7 +79,7 @@ public class RecordingController : MonoBehaviour
 
         MetronomeUI = GameObject.Find("Metronome UI");
         AxisInstructionsUI = GameObject.Find("Axes instructions");
-
+        
         string firstAcceptableMic = "";
         foreach (string device in Microphone.devices)
         {
