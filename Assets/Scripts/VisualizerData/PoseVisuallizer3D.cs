@@ -240,7 +240,7 @@ public class PoseVisuallizer3D : MonoBehaviour
     }
     void CreateDataFile()
     {
-        if (!MainManager.Instance.newUpload)
+        if (!MainManager.Instance.newUpload && MainManager.Instance.dirPath.Length <= 16)
         {
             dirPath = Directory.GetCurrentDirectory() + "/Data/" + MainManager.Instance.dirPath;
         } else

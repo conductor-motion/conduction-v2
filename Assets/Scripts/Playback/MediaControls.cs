@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Video;
 using static UnityEngine.ParticleSystem;
 
-public class MediaControlsV2 : MonoBehaviour
+public class MediaControls : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
 
