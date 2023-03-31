@@ -138,9 +138,9 @@ public class WindowGraph : MonoBehaviour
         GameObject prevDotGameObjConductor = null;
         GameObject prevDotGameObjMetronome = null;
 
-        FileInfo newestFile = GetNewestFile(new DirectoryInfo(@"Assets/Conduction/Data"));
+        FileInfo currentFile = new FileInfo(MainManager.Instance.dirPath.Substring(0, MainManager.Instance.dirPath.LastIndexOf("/")) + "/data.json");
         //Debug.Log(newestFile.Name);
-        string json = File.ReadAllText(newestFile.FullName);
+        string json = File.ReadAllText(currentFile.FullName);
         //Debug.Log(json);
         ParseData(json);
 

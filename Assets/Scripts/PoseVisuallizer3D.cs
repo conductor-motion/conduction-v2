@@ -227,7 +227,7 @@ public class PoseVisuallizer3D : MonoBehaviour
             writer.Write(json);
             MainManager.Instance.setNewUpload(false);
             writer.Close();
-            if (new FileInfo(filePath).Length == 1)
+            if (frames.length() == 0)
             {
                 File.Delete(filePath);
                 try

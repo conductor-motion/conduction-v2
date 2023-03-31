@@ -6,4 +6,11 @@ using UnityEngine;
 public class Frames
 {
     public List<FrameData> frames = new List<FrameData>();
+
+
+    public int length()
+    {
+        return frames.Count;
+    }
+
 }

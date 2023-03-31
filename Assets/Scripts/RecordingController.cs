@@ -68,6 +68,7 @@ public class RecordingController : MonoBehaviour
         {
             MainManager.Instance.SetMode("Recording");
             MainManager.Instance.setNewUpload(false);
+            MainManager.Instance.resetDirPath();
         }
 
         videoCapture.inputTexture = (RenderTexture)webCamInput.inputImageTexture;

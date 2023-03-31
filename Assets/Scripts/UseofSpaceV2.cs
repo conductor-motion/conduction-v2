@@ -13,9 +13,8 @@ public class UseofSpaceV2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FileInfo newestFile = new FileInfo(MainManager.Instance.dirPath.Substring(0, MainManager.Instance.dirPath.LastIndexOf("/")) + "/data.json");
-        print(newestFile.FullName);
-        string json = File.ReadAllText(newestFile.FullName);
+        FileInfo currentFile = new FileInfo(MainManager.Instance.dirPath.Substring(0, MainManager.Instance.dirPath.LastIndexOf("/")) + "/data.json");
+        string json = File.ReadAllText(currentFile.FullName);
         ParseData(json);
         Displaytemplate();
     }   

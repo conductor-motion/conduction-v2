@@ -27,6 +27,13 @@ public class MainManager : MonoBehaviour
         }
     }
 
+    //Should be reset with every new recording
+    public void resetDirPath()
+    {
+        string dateString = System.DateTime.Now.ToString("s").Replace(":", "-");
+        SetDirPath(dateString.Remove(dateString.Length - 3));
+    }
+
     public void SetDirPath(string dirPath)
     {
         MainManager.Instance.dirPath = dirPath;
