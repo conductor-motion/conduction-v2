@@ -10,14 +10,29 @@ using System;
 public class UseofSpaceV2 : MonoBehaviour
 {
     public Template templatePrefab;
+
+    SpriteRenderer axisComponent;
+    GameObject axis;
     // Start is called before the first frame update
+    void Awake()
+    {
+        axis = GameObject.FindWithTag("Axis");
+        axisComponent = axis.GetComponent<SpriteRenderer>();
+        axisComponent.enabled = false;
+    }
     void Start()
     {
-        FileInfo newestFile = GetNewestFile(new DirectoryInfo(@"Assets/Conduction/Data"));
-        string json = File.ReadAllText(newestFile.FullName);
+        string inputData = MainManager.Instance.dirPath;
+        inputData = inputData.Substring(0, inputData.LastIndexOf(@"\"));
+        inputData = inputData + @"\data.json";
+        string json = File.ReadAllText(inputData);
         ParseData(json);
         Displaytemplate();
     }   
+    void OnDestroy()
+    {
+        axisComponent.enabled = true;
+    }
 
 List<float> LeftyVals = new List<float>();
 List<float> LeftxVals = new List<float>();
@@ -35,13 +50,6 @@ public void ParseData(string s)
         RightyVals.Add(n[i]["data"][1]["yVal"]);
         RightxVals.Add(n[i]["data"][1]["xVal"]);
     }
-}
-private static FileInfo GetNewestFile(DirectoryInfo directory)
-{
-        return directory.GetFiles()
-            .Union(directory.GetDirectories().Select(d => GetNewestFile(d)))
-            .OrderByDescending(f => (f == null ? DateTime.MinValue : f.LastWriteTime))
-            .FirstOrDefault();
 }
 // Checks and returns an int based on which zone the x and y value are on the Good/Green zones of the template 
 public int isGoodZone(float x, float y)
