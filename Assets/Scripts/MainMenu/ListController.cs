@@ -19,6 +19,7 @@ public class ListController : MonoBehaviour
     // Populate the list and display it to the user
     void Start()
     {
+        MainManager.Instance.resetDirPath();
         LoadFromFileSystem();
         LoadRecordings();
     }

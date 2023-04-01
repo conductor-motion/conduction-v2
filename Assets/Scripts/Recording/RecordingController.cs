@@ -68,13 +68,10 @@ public class RecordingController : MonoBehaviour
         {
             MainManager.Instance.SetMode("Recording");
             MainManager.Instance.setNewUpload(false);
-            MainManager.Instance.resetDirPath();
-            print(MainManager.Instance.dirPath);
         }
 
         videoCapture.inputTexture = (RenderTexture)webCamInput.inputImageTexture;
-        videoCapture.saveFolder = "Data/" + MainManager.Instance.dirPath;
-        print("save folder " + videoCapture.saveFolder);
+        videoCapture.saveFolder = "Data/" + MainManager.Instance.dirPath.Substring(MainManager.Instance.dirPath.LastIndexOf("/") + 1);
 
         // Instantiate sprites for icon swapping
         isRec = Sprite.Create(recordingTexture, new Rect(0.0f, 0.0f, recordingTexture.width, recordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
@@ -234,7 +231,8 @@ public class RecordingController : MonoBehaviour
     {
         GameObject rec = Instantiate(recordingPrefab);
         DontDestroyOnLoad(rec);
-        rec.GetComponent<Recording>().text.text = MainManager.Instance.dirPath.Substring(MainManager.Instance.dirPath.LastIndexOf("/") + 1);
+        string fileName = MainManager.Instance.dirPath.Substring(MainManager.Instance.dirPath.LastIndexOf("/") + 1);
+        rec.GetComponent<Recording>().text.text = fileName.Substring(0, fileName.Length - 4);
         rec.GetComponent<Recording>().fullDir = MainManager.Instance.dirPath;
         ListController.savedList.Insert(0, rec);
         SceneManager.LoadScene("ViewingPage");
