@@ -7,12 +7,8 @@ using UnityEngine.UI;
 
 public class TempoTrackerVideoManager : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
-
-    public GameObject WebCamInput;
-    VideoPlayer webCamInput; 
+    VideoPlayer videoPlayer;
     public Image progress;
-
-   // public VideoCapture videoCapture;
 
     public Text currMins;
     public Text currSecs;
@@ -20,33 +16,31 @@ public class TempoTrackerVideoManager : MonoBehaviour, IDragHandler, IPointerDow
     public Text totalSecs;
 
     void Awake() {
-        WebCamInput = GameObject.Find("WebCamInput");
-        if(WebCamInput) {
-           webCamInput = WebCamInput.gameObject.GetComponent<VideoPlayer>();
-
-            if(webCamInput.isLooping) {
-                webCamInput.isLooping = false;
+        videoPlayer = GetComponent<VideoPlayer>();
+        if(videoPlayer) {
+            videoPlayer.url = MainManager.Instance.dirPath;
+            
+            if(videoPlayer.isLooping) {
+                videoPlayer.isLooping = false;
             }
 
-            if(webCamInput.isPlaying) {
-                webCamInput.Pause();
-                webCamInput.time = 0.0f;
+            if(videoPlayer.isPlaying) {
+                videoPlayer.Pause();
+                videoPlayer.time = 0.0f;
             }
-
-        } 
-
+        }
 
 
     }
     
     void Update()
     {
-        if(webCamInput.frameCount > 0)
-            progress.fillAmount = (float)webCamInput.frame / (float)webCamInput.frameCount;
-        if(webCamInput.isPlaying)
+        if(videoPlayer.frameCount > 0)
+            progress.fillAmount = (float)videoPlayer.frame / (float)videoPlayer.frameCount;
+        if(videoPlayer.isPlaying)
             SetCurrentTimeUI();
         SetTotalTimeUI();
-    }
+    } 
     public void OnDrag(PointerEventData eventData)
     {
         TrySkip(eventData);
@@ -57,9 +51,9 @@ public class TempoTrackerVideoManager : MonoBehaviour, IDragHandler, IPointerDow
     }
     private void SkipToPercent(float pct)
     {
-        var frame = webCamInput.frameCount * pct;
-        webCamInput.frame = (long)frame;
-    }
+        var frame = videoPlayer.frameCount * pct;
+        videoPlayer.frame = (long)frame;
+    } 
     private void TrySkip(PointerEventData eventData)
     {
         Vector2 localPoint;
@@ -72,26 +66,26 @@ public class TempoTrackerVideoManager : MonoBehaviour, IDragHandler, IPointerDow
     }
     public void VideoPlayerPause()
     {
-        if(webCamInput != null)
-            webCamInput.Pause();
+        if(videoPlayer != null)
+            videoPlayer.Pause();
     }
     public void VideoPlayerPlay()
     {
-        if(webCamInput != null)
-            webCamInput.Play();  
+        if(videoPlayer != null)
+            videoPlayer.Play();  
     }
 
     void SetCurrentTimeUI() {
-        string mins = Mathf.Floor((int) webCamInput.time / 60).ToString("00");
-        string secs = ((int)webCamInput.time % 60).ToString("00");
+        string mins = Mathf.Floor((int)videoPlayer.time / 60).ToString("00");
+        string secs = ((int)videoPlayer.time % 60).ToString("00");
 
         currMins.text = mins;
         currSecs.text = secs;
     }
 
     void SetTotalTimeUI() {
-        string mins = Mathf.Floor((int) webCamInput.length / 60).ToString("00");
-        string secs = ((int)webCamInput.length % 60).ToString("00");
+        string mins = Mathf.Floor((int)videoPlayer.length / 60).ToString("00");
+        string secs = ((int)videoPlayer.length % 60).ToString("00");
 
         totalMins.text = mins;
         totalSecs.text = secs;

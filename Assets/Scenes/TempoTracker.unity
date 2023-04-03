@@ -346,6 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 107321836}
   - component: {fileID: 107321837}
+  - component: {fileID: 107321838}
   m_Layer: 0
   m_Name: VideoManager
   m_TagString: Untagged
@@ -385,12 +386,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a7ee2cbd64a9143bd7e97e58fb421f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WebCamInput: {fileID: 0}
   progress: {fileID: 2060244200}
   currMins: {fileID: 1030895150}
   currSecs: {fileID: 623173330}
   totalMins: {fileID: 806168342}
   totalSecs: {fileID: 1563431469}
+--- !u!328 &107321838
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107321835}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 0}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: dfe3a70afa4e74a6294472da7d17f98c, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 1
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!1 &220161708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,8 +1600,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltip: {fileID: 1015527534}
-  metronome: {fileID: 0}
-  mainmanager: {fileID: 0}
   BlackDotSprite: {fileID: 21300000, guid: 604b8263f386cf2488b7469e7ec39cad, type: 3}
   WhiteDotSprite: {fileID: 21300000, guid: 2b9cdb70ee5d30b4b8efe802b9a40eac, type: 3}
 --- !u!1 &602731021

@@ -43,17 +43,7 @@ public class WindowGraph : MonoBehaviour
         DashYTemp = graphContainer.Find("DashYTemp").GetComponent<RectTransform>();
        
         tooltipScript = GameObject.Find("Tooltip").GetComponent<TooltipScript>();
-        tooltipScript = tooltip.GetComponent<TooltipScript>();
-
-       /* metronome = GameObject.FindWithTag("Metronome");
-        if(metronome) {
-            metronomeStorage = metronome.GetComponent<MetronomeStorage>();
-            beatChecker = metronome.GetComponent<BeatChecker>();
-            Debug.Log("beatChecker.getPlayBeat: " + beatChecker.getPlayBeat());
-        }
-*/
-
-        //if metronome not found, instantiate  
+        tooltipScript = tooltip.GetComponent<TooltipScript>(); 
 
       // if(graphCounter) {
         displayGraph();
