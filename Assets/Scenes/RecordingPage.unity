@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -1784,6 +1784,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirPath: 
+  metronome: {fileID: 0}
+  metronomePlay: 0
+  tempoBeat: 0
+  flag: 1
 --- !u!4 &1101802198
 Transform:
   m_ObjectHideFlags: 0
@@ -6440,6 +6444,7 @@ MonoBehaviour:
   UIToggle: {fileID: 5491292833147011394}
   playExtraBeatLength: 1
   metMode: 1
+  play: 0
 --- !u!82 &5491292832650881102
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6569,7 +6574,6 @@ GameObject:
   - component: {fileID: 5491292832650881100}
   - component: {fileID: 5491292832650881101}
   - component: {fileID: 5491292832650881102}
-  - component: {fileID: 5491292832650881137}
   m_Layer: 5
   m_Name: Metronome
   m_TagString: Metronome
@@ -6577,19 +6581,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5491292832650881137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5491292832650881136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4af31b6c25d203e4ca75c87153fbdab0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Metronome: {fileID: 5491292832650881136}
 --- !u!114 &5491292832687693332
 MonoBehaviour:
   m_ObjectHideFlags: 0

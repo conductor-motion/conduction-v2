@@ -77,6 +77,7 @@ struct metronomeInfo
 
     public float GetTempo()
     {
+        MainManager.Instance.tempoBeat = tempo;
         return tempo;
     }
 

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SecondButtonUI : MonoBehaviour
+public class AnalyticsDashFirstButtonUI : MonoBehaviour
 {
-    [SerializeField] private string chart = "TempoTracker";
+    [SerializeField] private string chart = "UseOfSpace";
 
-   public void secondGraphButton() {
+    public void firstGraphButton() {
     SceneManager.LoadScene(chart);
    }
 }

@@ -9,8 +9,10 @@ public class TempoTrackerVideoManager : MonoBehaviour, IDragHandler, IPointerDow
 {
 
     public GameObject WebCamInput;
-    VideoPlayer webCamInput;
+    VideoPlayer webCamInput; 
     public Image progress;
+
+   // public VideoCapture videoCapture;
 
     public Text currMins;
     public Text currSecs;
@@ -31,7 +33,9 @@ public class TempoTrackerVideoManager : MonoBehaviour, IDragHandler, IPointerDow
                 webCamInput.time = 0.0f;
             }
 
-        }
+        } 
+
+
 
     }
     

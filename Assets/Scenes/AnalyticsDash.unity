@@ -1621,7 +1621,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 384960146}
-        m_TargetAssemblyTypeName: FirstButtonUIScript, Assembly-CSharp
+        m_TargetAssemblyTypeName: AnalyticsDashFirstButtonUI, Assembly-CSharp
         m_MethodName: firstGraphButton
         m_Mode: 1
         m_Arguments:

@@ -24,12 +24,10 @@ public class WindowGraph : MonoBehaviour
     TooltipScript tooltipScript;
     [SerializeField] GameObject tooltip;
 
-    public GameObject metronome;
+   /* public GameObject metronome;
     MetronomeStorage metronomeStorage;
-
-    public GameObject mainmanager;
-    MainManager mainManager;
-
+    BeatChecker beatChecker;
+*/
     [SerializeField] private Sprite BlackDotSprite;
     [SerializeField] private Sprite WhiteDotSprite;
 
@@ -47,18 +45,16 @@ public class WindowGraph : MonoBehaviour
         tooltipScript = GameObject.Find("Tooltip").GetComponent<TooltipScript>();
         tooltipScript = tooltip.GetComponent<TooltipScript>();
 
-        metronome = GameObject.FindWithTag("Metronome");
+       /* metronome = GameObject.FindWithTag("Metronome");
         if(metronome) {
             metronomeStorage = metronome.GetComponent<MetronomeStorage>();
-            //Debug.Log("tempo:" + metronomeStorage.tempo);
-        }  
-
-        mainmanager = GameObject.Find("MainManager");
-        if(mainmanager) {
-            mainManager = mainmanager.GetComponent<MainManager>();
-           // Debug.Log("mainManager dir" + mainManager.dirPath);
+            beatChecker = metronome.GetComponent<BeatChecker>();
+            Debug.Log("beatChecker.getPlayBeat: " + beatChecker.getPlayBeat());
         }
-       
+*/
+
+        //if metronome not found, instantiate  
+
       // if(graphCounter) {
         displayGraph();
        // graphCounter = false;
@@ -131,6 +127,41 @@ public class WindowGraph : MonoBehaviour
         return tempo;
     }
 
+    void createMetronomeLine(List<int> tempo, float x_size, float yMax, float graphHeight, string[] arr, Func<float, string> findYAxisLabel = null) {
+         GameObject prevDotGameObjMetronome = null;
+         
+         if(findYAxisLabel == null) {
+            findYAxisLabel = delegate (float _f) { return Mathf.RoundToInt(_f).ToString(); };
+        }
+        
+        for(int i= 0; i<tempo.Count; i++) {
+            float x_pos = i*x_size + x_size;
+            float y_pos = (/*metronomeStorage.GetTempo()*/ MainManager.Instance.tempoBeat/yMax)*graphHeight;
+            
+            GameObject dotGameObj = createPoint(new Vector2(x_pos, y_pos), 1);
+
+            string tooltip_x = arr[i];
+            string tooltip_y = findYAxisLabel( MainManager.Instance.tempoBeat);
+            string tooltip_text = "(" + tooltip_x + "," + tooltip_y + ")";
+
+           TooltipUI dotButtonUI = dotGameObj.AddComponent<TooltipUI>();
+
+            dotButtonUI.MouseOverOnce += () => {
+                TooltipScript.static_displayTooltip(tooltip_text);
+            };
+
+            dotButtonUI.MouseOutOnce += () => {
+                TooltipScript.static_hideTooltip();
+            };
+
+            if(prevDotGameObjMetronome != null) {
+                drawDotLine(prevDotGameObjMetronome.GetComponent<RectTransform>().anchoredPosition, dotGameObj.GetComponent<RectTransform>().anchoredPosition, new Color(1,1,1, .5f));
+            }
+            prevDotGameObjMetronome = dotGameObj;
+
+        } 
+    }
+
     
     private void displayGraph(Func<float, string> findYAxisLabel = null) {
         float x_size = 50f;
@@ -139,20 +170,14 @@ public class WindowGraph : MonoBehaviour
 
         //store reference to prev game obj
         GameObject prevDotGameObjConductor = null;
-        GameObject prevDotGameObjMetronome = null;
 
-       //gets index of last "/"
-       string inputData = mainManager.dirPath;
+       string inputData = MainManager.Instance.dirPath;
        inputData = inputData.Substring(0, inputData.LastIndexOf(@"\"));
        inputData = inputData + @"\data.json";
 
         string json = File.ReadAllText(inputData);
-       // Debug.Log("json", json);
+       
         ParseData(json);
-
-        /*for(int i=0; i<yVals.Count; i++) {
-            Debug.Log(yVals[i]);
-        }*/
 
         tempo = tempoTracker();
 
@@ -163,9 +188,6 @@ public class WindowGraph : MonoBehaviour
         float yMax = tempo[0];
         float yMin = tempo[0];
 
-        if(findYAxisLabel == null) {
-            findYAxisLabel = delegate (float _f) { return Mathf.RoundToInt(_f).ToString(); };
-        }
         
         //increase by 20% of the diff b/w max and min
         yMax = yMax + ((yMax - yMin) * 0.2f);
@@ -182,12 +204,12 @@ public class WindowGraph : MonoBehaviour
             
         }
 
-        if(yMax < metronomeStorage.GetTempo()) {
-            yMax = metronomeStorage.GetTempo();
+        if(yMax <  MainManager.Instance.tempoBeat) {
+            yMax =  MainManager.Instance.tempoBeat;
         }
 
-        if(yMin < metronomeStorage.GetTempo()) {
-            yMin = metronomeStorage.GetTempo();
+        if(yMin <  MainManager.Instance.tempoBeat) {
+            yMin =  MainManager.Instance.tempoBeat;
         }
         
         string s = GetTimeValues(tempo.Count);
@@ -348,32 +370,14 @@ public class WindowGraph : MonoBehaviour
         }
 
         //Metronome line
-        for(int i= 0; i<tempo.Count; i++) {
-            float x_pos = i*x_size + x_size;
-            float y_pos = (metronomeStorage.GetTempo()/yMax)*graphHeight;
-            
-            GameObject dotGameObj = createPoint(new Vector2(x_pos, y_pos), 1);
+        if(MainManager.Instance.metronomePlay) {
+            createMetronomeLine(tempo, x_size, yMax, graphHeight, arr, findYAxisLabel = null);
+        }
+        
 
-            string tooltip_x = arr[i];
-            string tooltip_y = findYAxisLabel(metronomeStorage.GetTempo());
-            string tooltip_text = "(" + tooltip_x + "," + tooltip_y + ")";
-
-           TooltipUI dotButtonUI = dotGameObj.AddComponent<TooltipUI>();
-
-            dotButtonUI.MouseOverOnce += () => {
-                TooltipScript.static_displayTooltip(tooltip_text);
-            };
-
-            dotButtonUI.MouseOutOnce += () => {
-                TooltipScript.static_hideTooltip();
-            };
-
-            if(prevDotGameObjMetronome != null) {
-                drawDotLine(prevDotGameObjMetronome.GetComponent<RectTransform>().anchoredPosition, dotGameObj.GetComponent<RectTransform>().anchoredPosition, new Color(1,1,1, .5f));
-            }
-            prevDotGameObjMetronome = dotGameObj;
-
-        } 
+         if(findYAxisLabel == null) {
+            findYAxisLabel = delegate (float _f) { return Mathf.RoundToInt(_f).ToString(); };
+        }
 
         //Conductor line
         for(int i=0; i<tempo.Count; i++) {
