@@ -1,3 +1,8 @@
 Library/
-test.app*
+*.app*
 [Tt]emp/
+*.log
+Logs/
+Captures/
+.DS_STORE
+*.mp4
