@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Materials/Play.mat.meta
 guid: 8e9a923dff181d4418be6ca925036c4f
 NativeFormatImporter:
+========
+guid: 469a4325b02504caa819262b0fcfd9b3
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> main:Assets/Scripts/Legacy.meta
   externalObjects: {}
   mainObjectFileID: 2100000
   userData: 

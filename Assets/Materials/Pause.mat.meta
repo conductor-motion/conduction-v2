@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Materials/Pause.mat.meta
 guid: 27d821e8d7000424c91adbe978eae57d
 NativeFormatImporter:
+========
+guid: ab6968b51f2404888a980d83dc4c9924
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> main:Assets/Scripts/Playback.meta
   externalObjects: {}
   mainObjectFileID: 2100000
   userData: 
