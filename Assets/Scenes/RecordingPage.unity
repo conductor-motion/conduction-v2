@@ -690,6 +690,7 @@ MonoBehaviour:
   webCamInput: {fileID: 0}
   visuallizer: {fileID: 0}
   videoCapture: {fileID: 0}
+  recordingPrefab: {fileID: 0}
 --- !u!1 &653973460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,7 +1788,8 @@ MonoBehaviour:
   metronome: {fileID: 0}
   metronomePlay: 0
   tempoBeat: 0
-  flag: 1
+  mode: Recording
+  newUpload: 0
 --- !u!4 &1101802198
 Transform:
   m_ObjectHideFlags: 0
@@ -2068,6 +2070,7 @@ MonoBehaviour:
   webCamInput: {fileID: 1187057161}
   visuallizer: {fileID: 0}
   videoCapture: {fileID: 1580344348}
+  recordingPrefab: {fileID: 4436089052978443391, guid: 37ca4994cccde2e46969ffed7731a2bd, type: 3}
 --- !u!4 &1263440688
 Transform:
   m_ObjectHideFlags: 0

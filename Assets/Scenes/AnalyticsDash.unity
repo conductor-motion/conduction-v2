@@ -424,9 +424,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 55223868}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 321874185}
+        m_TargetAssemblyTypeName: backButtonToViewingPage, Assembly-CSharp
+        m_MethodName: backButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 321874183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68f9580c3f5808344b1308f4f7786edf, type: 3}
+  m_Script: {fileID: 11500000, guid: 8519809cdbdaab94f9d855c63e8017df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   backToViewingPage: ViewingPage
@@ -860,7 +860,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 472976194}
-        m_TargetAssemblyTypeName: SecondButtonUI, Assembly-CSharp
+        m_TargetAssemblyTypeName: AnalyticsDashSecondButtonUI, Assembly-CSharp
         m_MethodName: secondGraphButton
         m_Mode: 1
         m_Arguments:
