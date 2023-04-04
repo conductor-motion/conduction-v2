@@ -698,7 +698,6 @@ MonoBehaviour:
   notRecordingTexture: {fileID: 0}
   hideableHUD: {fileID: 0}
   _metronome: {fileID: 0}
-  audioSource: {fileID: 0}
   webCamInput: {fileID: 0}
   visuallizer: {fileID: 0}
   videoCapture: {fileID: 0}
@@ -1746,6 +1745,10 @@ PrefabInstance:
       propertyPath: captureMicrophone
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114708477723034198, guid: 8fa59c0c9387c3d428a0a4989b7d1cb3, type: 3}
+      propertyPath: enableInternalSettings
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fa59c0c9387c3d428a0a4989b7d1cb3, type: 3}
 --- !u!1 &1049761395
@@ -1810,6 +1813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dirPath: 
   mode: Recording
+  newUpload: 0
 --- !u!4 &1101802198
 Transform:
   m_ObjectHideFlags: 0
@@ -2087,7 +2091,6 @@ MonoBehaviour:
   notRecordingTexture: {fileID: 2800000, guid: 3a3133e05e55c0e4a8ffcbd5c0cfe742, type: 3}
   hideableHUD: {fileID: 5491292833631456978}
   _metronome: {fileID: 5491292832650881101}
-  audioSource: {fileID: 2132550435}
   webCamInput: {fileID: 1187057161}
   visuallizer: {fileID: 333031936}
   videoCapture: {fileID: 1580344348}
@@ -2157,6 +2160,59 @@ RectTransform:
   m_AnchoredPosition: {x: -6.70002, y: -1.0000172}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1456002711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1456002713}
+  - component: {fileID: 1456002712}
+  m_Layer: 0
+  m_Name: CameraCapture
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1456002712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456002711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66fbd5ffe9b9d64da304996f1919f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _width: 1920
+  _height: 1080
+  _preset: 0
+  _frameRate: 60
+  _tempRT: {fileID: 0}
+  _blitter: {fileID: 0}
+  _frameCount: 0
+  _startTime: 0
+  _frameDropCount: 0
+--- !u!4 &1456002713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456002711}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1465406654
 GameObject:
   m_ObjectHideFlags: 0

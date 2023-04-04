@@ -73,6 +73,7 @@ public class RecordingController : MonoBehaviour
         }
 
         videoCapture.inputTexture = (RenderTexture)webCamInput.inputImageTexture;
+        videoCapture.inputTexture.format = RenderTextureFormat.ARGB32;
         videoCapture.saveFolder = "Data/" + MainManager.Instance.dirPath;
         print("save folder " + videoCapture.saveFolder);
 
