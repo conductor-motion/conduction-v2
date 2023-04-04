@@ -10,6 +10,8 @@ TagManager:
   - Trail
   - PlayButton
   - Axis
+  - BtnPlay
+  - BtnPause
   layers:
   - Default
   - TransparentFX

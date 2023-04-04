@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UITtooltip.Utils;
+using UnityEngine.Video;
 
 public class WindowGraph : MonoBehaviour
 {
@@ -23,9 +24,10 @@ public class WindowGraph : MonoBehaviour
     TooltipScript tooltipScript;
     [SerializeField] GameObject tooltip;
 
-    public GameObject metronome;
+   /* public GameObject metronome;
     MetronomeStorage metronomeStorage;
-
+    BeatChecker beatChecker;
+*/
     [SerializeField] private Sprite BlackDotSprite;
     [SerializeField] private Sprite WhiteDotSprite;
 
@@ -41,14 +43,8 @@ public class WindowGraph : MonoBehaviour
         DashYTemp = graphContainer.Find("DashYTemp").GetComponent<RectTransform>();
        
         tooltipScript = GameObject.Find("Tooltip").GetComponent<TooltipScript>();
-        tooltipScript = tooltip.GetComponent<TooltipScript>();
+        tooltipScript = tooltip.GetComponent<TooltipScript>(); 
 
-        metronome = GameObject.FindWithTag("Metronome");
-        if(metronome) {
-            metronomeStorage = metronome.GetComponent<MetronomeStorage>();
-            //Debug.Log("tempo:" + metronomeStorage.tempo);
-        } 
-       
       // if(graphCounter) {
         displayGraph();
        // graphCounter = false;
@@ -70,7 +66,7 @@ public class WindowGraph : MonoBehaviour
             counter++;
         }
         
-        int durationSeconds = /*(int)*/(/*Math.*/(counter/16));
+        int durationSeconds = (counter/16);
         Debug.Log("duration seconds:" + durationSeconds);
         
         string timeString = "";
@@ -87,13 +83,6 @@ public class WindowGraph : MonoBehaviour
        Debug.Log(timeString);
        return timeString; 
     }
-   
-    private static FileInfo GetNewestFile(DirectoryInfo directory) {
-            return directory.GetFiles()
-                .Union(directory.GetDirectories().Select(d => GetNewestFile(d)))
-                .OrderByDescending(f => (f == null ? DateTime.MinValue : f.LastWriteTime))
-                .FirstOrDefault();
-        }
 
     private void ParseData(string s) {
         JSONNode n = JSON.Parse(s);
@@ -110,7 +99,7 @@ public class WindowGraph : MonoBehaviour
         int tempoCalc = 0;
         List<int> tempo = new List<int>();
 
-        for(int i=1; i<yVals.Count; i++) {
+        for(int i=1; i<yVals.Count-32; i++) {
             if(yVals[i] < yVals[i-1]) {
                 if(i != yVals.Count-1)
                     if(yVals[i] < yVals[i+1]) {
@@ -128,6 +117,41 @@ public class WindowGraph : MonoBehaviour
         return tempo;
     }
 
+    void createMetronomeLine(List<int> tempo, float x_size, float yMax, float graphHeight, string[] arr, Func<float, string> findYAxisLabel = null) {
+         GameObject prevDotGameObjMetronome = null;
+         
+         if(findYAxisLabel == null) {
+            findYAxisLabel = delegate (float _f) { return Mathf.RoundToInt(_f).ToString(); };
+        }
+        
+        for(int i= 0; i<tempo.Count; i++) {
+            float x_pos = i*x_size + x_size;
+            float y_pos = (MainManager.Instance.tempoBeat/yMax)*graphHeight;
+            
+            GameObject dotGameObj = createPoint(new Vector2(x_pos, y_pos), 1);
+
+            string tooltip_x = arr[i];
+            string tooltip_y = findYAxisLabel( MainManager.Instance.tempoBeat);
+            string tooltip_text = "(" + tooltip_x + "," + tooltip_y + ")";
+
+           TooltipUI dotButtonUI = dotGameObj.AddComponent<TooltipUI>();
+
+            dotButtonUI.MouseOverOnce += () => {
+                TooltipScript.static_displayTooltip(tooltip_text);
+            };
+
+            dotButtonUI.MouseOutOnce += () => {
+                TooltipScript.static_hideTooltip();
+            };
+
+            if(prevDotGameObjMetronome != null) {
+                drawDotLine(prevDotGameObjMetronome.GetComponent<RectTransform>().anchoredPosition, dotGameObj.GetComponent<RectTransform>().anchoredPosition, new Color(1,1,1, .5f));
+            }
+            prevDotGameObjMetronome = dotGameObj;
+
+        } 
+    }
+
     
     private void displayGraph(Func<float, string> findYAxisLabel = null) {
         float x_size = 50f;
@@ -136,17 +160,15 @@ public class WindowGraph : MonoBehaviour
 
         //store reference to prev game obj
         GameObject prevDotGameObjConductor = null;
-        GameObject prevDotGameObjMetronome = null;
 
-        FileInfo currentFile = new FileInfo(MainManager.Instance.dirPath.Substring(0, MainManager.Instance.dirPath.LastIndexOf("/")) + "/data.json");
-        //Debug.Log(newestFile.Name);
-        string json = File.ReadAllText(currentFile.FullName);
-        //Debug.Log(json);
+       FileInfo fileInfo = new FileInfo(MainManager.Instance.dirPath);
+       string inputData = fileInfo.DirectoryName;
+       inputData = Path.Combine(inputData, "data.json");
+
+
+        string json = File.ReadAllText(inputData);
+       
         ParseData(json);
-
-        /*for(int i=0; i<yVals.Count; i++) {
-            Debug.Log(yVals[i]);
-        }*/
 
         tempo = tempoTracker();
 
@@ -157,9 +179,6 @@ public class WindowGraph : MonoBehaviour
         float yMax = tempo[0];
         float yMin = tempo[0];
 
-        if(findYAxisLabel == null) {
-            findYAxisLabel = delegate (float _f) { return Mathf.RoundToInt(_f).ToString(); };
-        }
         
         //increase by 20% of the diff b/w max and min
         yMax = yMax + ((yMax - yMin) * 0.2f);
@@ -176,12 +195,12 @@ public class WindowGraph : MonoBehaviour
             
         }
 
-        if(yMax < metronomeStorage.GetTempo()) {
-            yMax = metronomeStorage.GetTempo();
+        if(yMax <  MainManager.Instance.tempoBeat) {
+            yMax =  MainManager.Instance.tempoBeat;
         }
 
-        if(yMin < metronomeStorage.GetTempo()) {
-            yMin = metronomeStorage.GetTempo();
+        if(yMin <  MainManager.Instance.tempoBeat) {
+            yMin =  MainManager.Instance.tempoBeat;
         }
         
         string s = GetTimeValues(tempo.Count);
@@ -342,32 +361,14 @@ public class WindowGraph : MonoBehaviour
         }
 
         //Metronome line
-        for(int i= 0; i<tempo.Count; i++) {
-            float x_pos = i*x_size + x_size;
-            float y_pos = (metronomeStorage.GetTempo()/yMax)*graphHeight;
-            
-            GameObject dotGameObj = createPoint(new Vector2(x_pos, y_pos), 1);
+        if(MainManager.Instance.metronomePlay) {
+            createMetronomeLine(tempo, x_size, yMax, graphHeight, arr, findYAxisLabel = null);
+        }
+        
 
-            string tooltip_x = arr[i];
-            string tooltip_y = findYAxisLabel(metronomeStorage.GetTempo());
-            string tooltip_text = "(" + tooltip_x + "," + tooltip_y + ")";
-
-           TooltipUI dotButtonUI = dotGameObj.AddComponent<TooltipUI>();
-
-            dotButtonUI.MouseOverOnce += () => {
-                TooltipScript.static_displayTooltip(tooltip_text);
-            };
-
-            dotButtonUI.MouseOutOnce += () => {
-                TooltipScript.static_hideTooltip();
-            };
-
-            if(prevDotGameObjMetronome != null) {
-                drawDotLine(prevDotGameObjMetronome.GetComponent<RectTransform>().anchoredPosition, dotGameObj.GetComponent<RectTransform>().anchoredPosition, new Color(1,1,1, .5f));
-            }
-            prevDotGameObjMetronome = dotGameObj;
-
-        } 
+         if(findYAxisLabel == null) {
+            findYAxisLabel = delegate (float _f) { return Mathf.RoundToInt(_f).ToString(); };
+        }
 
         //Conductor line
         for(int i=0; i<tempo.Count; i++) {

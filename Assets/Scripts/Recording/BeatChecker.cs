@@ -19,7 +19,7 @@ public class BeatChecker : MonoBehaviour
     private float nextBeatTime;
     private bool playBeat; //variable anything that involves rhythm will look at to know if it should move
     private bool finishedPickup; //variable that is used in determining if the beat will be based on the pickup time sig or the remainder of the song's time sig
-    private bool play = false;
+    public bool play = false;
 
     private void Start()
     {
@@ -195,6 +195,7 @@ public class BeatChecker : MonoBehaviour
     public void startMetronome()
     {
         play = true;
+        MainManager.Instance.metronomePlay = play;
         previousBeatTime = Time.time; //the time that the last beat played was played
         nextBeatTime = Time.time; //when the next beat should be played
         nextBeat = 1;

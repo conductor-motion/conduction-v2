@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SecondButtonUI : MonoBehaviour
+public class AnalyticsDashSecondButtonUI : MonoBehaviour
 {
     [SerializeField] private string chart = "TempoTracker";
 
