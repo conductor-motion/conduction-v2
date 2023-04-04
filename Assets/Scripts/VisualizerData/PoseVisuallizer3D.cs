@@ -239,10 +239,11 @@ public class PoseVisuallizer3D : MonoBehaviour
         }
     }
     void CreateDataFile()
-    {
+    {   
         if (!MainManager.Instance.newUpload && MainManager.Instance.dirPath.Length <= 16)
         {
             dirPath = Directory.GetCurrentDirectory() + "/Data/" + MainManager.Instance.dirPath;
+            MainManager.Instance.SetDirPath(dirPath);
         } else
         {
             dirPath = MainManager.Instance.dirPath.Substring(0, MainManager.Instance.dirPath.LastIndexOf("/"));
@@ -250,6 +251,10 @@ public class PoseVisuallizer3D : MonoBehaviour
 
         if (!Directory.Exists(dirPath))
         {
+            Directory.CreateDirectory(dirPath);
+        } else
+        {
+            dirPath += "-2";
             Directory.CreateDirectory(dirPath);
         }
         filePath = dirPath + "/data.json";
