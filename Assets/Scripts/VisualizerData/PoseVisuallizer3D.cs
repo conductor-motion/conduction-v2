@@ -252,7 +252,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         if (!Directory.Exists(dirPath))
         {
             Directory.CreateDirectory(dirPath);
-        } else
+        } else if (!MainManager.Instance.newUpload)
         {
             dirPath += "-2";
             Directory.CreateDirectory(dirPath);

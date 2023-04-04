@@ -1989,6 +1989,10 @@ PrefabInstance:
       propertyPath: captureMicrophone
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114708477723034198, guid: 8fa59c0c9387c3d428a0a4989b7d1cb3, type: 3}
+      propertyPath: enableInternalSettings
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fa59c0c9387c3d428a0a4989b7d1cb3, type: 3}
 --- !u!1 &1049761395
@@ -2052,6 +2056,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirPath: 
+  metronome: {fileID: 0}
+  metronomePlay: 0
+  tempoBeat: 0
   mode: Recording
   newUpload: 0
 --- !u!4 &1101802198
@@ -7231,6 +7238,7 @@ MonoBehaviour:
   UIToggle: {fileID: 5491292833147011394}
   playExtraBeatLength: 1
   metMode: 1
+  play: 0
 --- !u!82 &5491292832650881102
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7380,7 +7388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af31b6c25d203e4ca75c87153fbdab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Metronome: {fileID: 5491292832650881136}
 --- !u!114 &5491292832687693332
 MonoBehaviour:
   m_ObjectHideFlags: 0
