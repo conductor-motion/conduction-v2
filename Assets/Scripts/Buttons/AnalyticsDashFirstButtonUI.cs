@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FirstButtonUIScript : MonoBehaviour
+public class AnalyticsDashFirstButtonUI : MonoBehaviour
 {
     [SerializeField] private string chart = "UseOfSpace";
 

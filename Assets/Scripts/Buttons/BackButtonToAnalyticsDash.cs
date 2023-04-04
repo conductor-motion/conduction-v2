@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BackButtonUI : MonoBehaviour
+public class BackButtonToAnalyticsDash : MonoBehaviour
 {
     [SerializeField] private string backToDash = "AnalyticsDash";
 
