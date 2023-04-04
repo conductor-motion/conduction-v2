@@ -122,6 +122,8 @@
     <Compile Include="Assets/K2Examples/KinectDemos/OverlayDemo/Scripts/PhotoShooter.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Scripts/SkeletonProjection.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/RecorderDemo/Scripts/KinectPlayerController.cs" />
+    <Compile Include="Assets/Scripts/Analytics/TempoTrackerVideoPanelOpener.cs" />
+    <Compile Include="Assets/Scripts/Analytics/TempoTrackerVideoManager.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/ColliderDemo/Scripts/DepthImageViewer.cs" />
     <Compile Include="Assets/Scripts/Recording/DragModulePerspective.cs" />
     <Compile Include="Assets/Scripts/Recording/PlayButton.cs" />
@@ -145,6 +147,7 @@
     <Compile Include="Assets/K2Examples/KinectDemos/VariousDemos/Scripts/SimpleHolographicCamera.cs" />
     <Compile Include="Assets/Scripts/Recording/HidableHud.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/HeadMover.cs" />
+    <Compile Include="Assets/Scripts/Buttons/backButtonToViewingPage.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/MultiScene/LoadLevelWhenNoUser.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/OverlayDemo/Scripts/HandOverlayer.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Scripts/ProjectorCamera.cs" />
@@ -302,9 +305,6 @@
     <Compile Include="Assets/Scripts/Buttons/AnalyticsDashFirstButtonUI.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/ColliderDemo/Scripts/DepthSpriteViewer.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Scripts/BarrelTrigger.cs" />
-    <Compile Include="Assets/Scripts/Buttons/backButtonToViewingPage.cs" />
-    <Compile Include="Assets/Scripts/Analytics/TempoTrackerVideoPanelOpener.cs" />
-    <Compile Include="Assets/Scripts/Analytics/TempoTrackerVideoManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

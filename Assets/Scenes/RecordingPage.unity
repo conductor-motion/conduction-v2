@@ -415,6 +415,17 @@ Transform:
   m_Father: {fileID: 1907771428}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &333031936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1721058377, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
+  m_PrefabInstance: {fileID: 7368345398768570757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522197604370344bdb831b90b8f3490b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &407318177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,6 +1722,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114708477723034198, guid: 8fa59c0c9387c3d428a0a4989b7d1cb3, type: 3}
+      propertyPath: captureAudio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114708477723034198, guid: 8fa59c0c9387c3d428a0a4989b7d1cb3, type: 3}
       propertyPath: inputTexture
       value: 
       objectReference: {fileID: 0}
@@ -1720,6 +1735,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114708477723034198, guid: 8fa59c0c9387c3d428a0a4989b7d1cb3, type: 3}
       propertyPath: encoderPreset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114708477723034198, guid: 8fa59c0c9387c3d428a0a4989b7d1cb3, type: 3}
+      propertyPath: offlineRender
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114708477723034198, guid: 8fa59c0c9387c3d428a0a4989b7d1cb3, type: 3}
+      propertyPath: captureMicrophone
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114708477723034198, guid: 8fa59c0c9387c3d428a0a4989b7d1cb3, type: 3}
+      propertyPath: enableInternalSettings
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2068,7 +2095,7 @@ MonoBehaviour:
   hideableHUD: {fileID: 5491292833631456978}
   _metronome: {fileID: 5491292832650881101}
   webCamInput: {fileID: 1187057161}
-  visuallizer: {fileID: 0}
+  visuallizer: {fileID: 333031936}
   videoCapture: {fileID: 1580344348}
   recordingPrefab: {fileID: 4436089052978443391, guid: 37ca4994cccde2e46969ffed7731a2bd, type: 3}
 --- !u!4 &1263440688
@@ -3930,8 +3957,8 @@ GameObject:
   - component: {fileID: 2132550432}
   - component: {fileID: 2132550430}
   - component: {fileID: 2132550429}
-  - component: {fileID: 2132550434}
   - component: {fileID: 2132550435}
+  - component: {fileID: 2132550434}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4013,7 +4040,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &2132550434
+--- !u!114 &2132550434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132550428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f604f4b2d3b9c24d9b7a84bd3bdeb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &2132550435
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4109,18 +4148,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2132550435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2132550428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f604f4b2d3b9c24d9b7a84bd3bdeb70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &5491292831788435117
 Animator:
   serializedVersion: 5
@@ -6687,6 +6714,7 @@ GameObject:
   - component: {fileID: 5491292832650881100}
   - component: {fileID: 5491292832650881101}
   - component: {fileID: 5491292832650881102}
+  - component: {fileID: 5491292832650881137}
   m_Layer: 5
   m_Name: Metronome
   m_TagString: Metronome
@@ -6694,6 +6722,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5491292832650881137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491292832650881136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af31b6c25d203e4ca75c87153fbdab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5491292832687693332
 MonoBehaviour:
   m_ObjectHideFlags: 0
