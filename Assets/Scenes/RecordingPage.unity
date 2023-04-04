@@ -1812,6 +1812,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirPath: 
+  metronome: {fileID: 0}
+  metronomePlay: 0
+  tempoBeat: 0
   mode: Recording
   newUpload: 0
 --- !u!4 &1101802198
@@ -2160,59 +2163,6 @@ RectTransform:
   m_AnchoredPosition: {x: -6.70002, y: -1.0000172}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1456002711
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1456002713}
-  - component: {fileID: 1456002712}
-  m_Layer: 0
-  m_Name: CameraCapture
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1456002712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456002711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a66fbd5ffe9b9d64da304996f1919f40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _width: 1920
-  _height: 1080
-  _preset: 0
-  _frameRate: 60
-  _tempRT: {fileID: 0}
-  _blitter: {fileID: 0}
-  _frameCount: 0
-  _startTime: 0
-  _frameDropCount: 0
---- !u!4 &1456002713
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456002711}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1465406654
 GameObject:
   m_ObjectHideFlags: 0
@@ -6634,6 +6584,7 @@ MonoBehaviour:
   UIToggle: {fileID: 5491292833147011394}
   playExtraBeatLength: 1
   metMode: 1
+  play: 0
 --- !u!82 &5491292832650881102
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6783,7 +6734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af31b6c25d203e4ca75c87153fbdab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Metronome: {fileID: 5491292832650881136}
 --- !u!114 &5491292832687693332
 MonoBehaviour:
   m_ObjectHideFlags: 0
