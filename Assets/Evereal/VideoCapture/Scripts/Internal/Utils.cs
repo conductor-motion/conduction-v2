@@ -187,7 +187,7 @@ namespace Evereal.VideoCapture
         UnityEngine.Object.Destroy(t2Create);
       }
 
-      //t2Create = new Texture2D(width, height, TextureFormat.RGBA32, false);
+      t2Create = new Texture2D(width, height, TextureFormat.RGBA32, false);
       t2Create.hideFlags = HideFlags.HideAndDontSave;
 
       return t2Create;

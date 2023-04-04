@@ -8,17 +8,17 @@
       <File FileName="Assets/Scripts/MainMenu/ListController.cs" />
       <File FileName="Assets/Scripts/Recording/RecordingController.cs" />
       <File FileName="Assets/Scripts/VisualizerData/PoseVisuallizer3D.cs" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/FFmpegEncoder.cs" Line="267" Column="6" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/FFmpeg.cs" Line="1" Column="1" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs" Line="41" Column="28" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Base/CaptureBase.cs" Line="612" Column="19" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/FFmpegEncoder.cs" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/FFmpeg.cs" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs" Line="190" Column="7" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Base/CaptureBase.cs" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="a735cac8-df7b-442a-aac0-0c56bb762b5d" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="320e602d-1582-4ae8-950c-7273e8ac14a0" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
