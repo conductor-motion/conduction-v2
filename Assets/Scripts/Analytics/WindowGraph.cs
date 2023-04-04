@@ -99,7 +99,7 @@ public class WindowGraph : MonoBehaviour
         int tempoCalc = 0;
         List<int> tempo = new List<int>();
 
-        for(int i=1; i<yVals.Count; i++) {
+        for(int i=1; i<yVals.Count-32; i++) {
             if(yVals[i] < yVals[i-1]) {
                 if(i != yVals.Count-1)
                     if(yVals[i] < yVals[i+1]) {
@@ -126,7 +126,7 @@ public class WindowGraph : MonoBehaviour
         
         for(int i= 0; i<tempo.Count; i++) {
             float x_pos = i*x_size + x_size;
-            float y_pos = (/*metronomeStorage.GetTempo()*/ MainManager.Instance.tempoBeat/yMax)*graphHeight;
+            float y_pos = (MainManager.Instance.tempoBeat/yMax)*graphHeight;
             
             GameObject dotGameObj = createPoint(new Vector2(x_pos, y_pos), 1);
 
@@ -161,9 +161,10 @@ public class WindowGraph : MonoBehaviour
         //store reference to prev game obj
         GameObject prevDotGameObjConductor = null;
 
-       string inputData = MainManager.Instance.dirPath;
-       inputData = inputData.Substring(0, inputData.LastIndexOf(@"\"));
-       inputData = inputData + @"\data.json";
+       FileInfo fileInfo = new FileInfo(MainManager.Instance.dirPath);
+       string inputData = fileInfo.DirectoryName;
+       inputData = Path.Combine(inputData, "data.json");
+
 
         string json = File.ReadAllText(inputData);
        
