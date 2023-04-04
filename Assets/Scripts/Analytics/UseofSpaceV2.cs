@@ -22,9 +22,9 @@ public class UseofSpaceV2 : MonoBehaviour
     }
     void Start()
     {
-        string inputData = MainManager.Instance.dirPath;
-        inputData = inputData.Substring(0, inputData.LastIndexOf(@"\"));
-        inputData = inputData + @"\data.json";
+        FileInfo fileInfo = new FileInfo(MainManager.Instance.dirPath);
+        string inputData = fileInfo.DirectoryName;
+        inputData = Path.Combine(inputData, "data.json");
         string json = File.ReadAllText(inputData);
         ParseData(json);
         Displaytemplate();
