@@ -25,7 +25,7 @@ public class PoseVisuallizer3D : MonoBehaviour
     int frameIndex = 0;
     Frames frames = new Frames();
     List<HandMovementData> data = new List<HandMovementData>();
-    public bool showLines = true;
+    public bool showLines = false;
 
     Transform objToPickUp;
 
@@ -260,6 +260,11 @@ public class PoseVisuallizer3D : MonoBehaviour
         filePath = dirPath + "/data.json";
         writer = new StreamWriter(filePath, true);
         writer.AutoFlush = true;
+    }
+
+    public void ToggleLines()
+    {
+        showLines= !showLines;
     }
 
 }
