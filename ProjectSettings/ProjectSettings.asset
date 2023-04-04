@@ -366,7 +366,7 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: Used for Kinect motion tracking
+  cameraUsageDescription: Used for webcam motion tracking
   locationUsageDescription: 
   microphoneUsageDescription: Used for background noise capture and evaluation video
     recording
