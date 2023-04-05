@@ -3,6 +3,7 @@ using UnityEngine;
 using System.IO;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Windows.Kinect;
 
 public class WebCamInput : MonoBehaviour
 {
@@ -54,6 +55,12 @@ public class WebCamInput : MonoBehaviour
         Graphics.Blit(webCamTexture, inputRT, scale, offset);
 
 
+    }
+
+    public void OnValueChanged(float value)
+    {
+        UnityEngine.Video.VideoPlayer videoPlayer = GetComponent<UnityEngine.Video.VideoPlayer>();
+        videoPlayer.SetDirectAudioVolume(0, value);
     }
 
     void OnDestroy()

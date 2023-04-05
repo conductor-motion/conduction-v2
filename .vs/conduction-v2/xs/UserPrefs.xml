@@ -1,24 +1,23 @@
 ﻿<Properties StartupConfiguration="{1C7193BF-2C8A-2B05-BC59-D77E690EB081}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs">
-    <Files>
-      <File FileName="Assets/Scripts/VisualizerData/FrameData.cs" />
-      <File FileName="Assets/Scripts/VisualizerData/HandMovementData.cs" />
-      <File FileName="Assets/Scripts/VisualizerData/WebCamInput.cs" />
-      <File FileName="Assets/Scripts/MainMenu/FileManager.cs" />
-      <File FileName="Assets/Scripts/MainMenu/ListController.cs" />
-      <File FileName="Assets/Scripts/Recording/RecordingController.cs" />
-      <File FileName="Assets/Scripts/VisualizerData/PoseVisuallizer3D.cs" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/FFmpegEncoder.cs" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/FFmpeg.cs" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs" Line="190" Column="7" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Base/CaptureBase.cs" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="320e602d-1582-4ae8-950c-7273e8ac14a0" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/VisualizerData/PoseVisuallizer3D.cs">
+    <Files>
+      <File FileName="Assets/Scripts/VisualizerData/PoseVisuallizer3D.cs" Line="102" Column="50" />
+      <File FileName="Assets/Scripts/VisualizerData/FrameData.cs" />
+      <File FileName="Assets/Scripts/VisualizerData/HandMovementData.cs" />
+      <File FileName="Assets/Scripts/VisualizerData/WebCamInput.cs" Line="63" Column="52" />
+      <File FileName="Assets/Scripts/MainMenu/FileManager.cs" />
+      <File FileName="Assets/Scripts/MainMenu/ListController.cs" />
+      <File FileName="Assets/Scripts/Recording/RecordingController.cs" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Base/CaptureBase.cs" />
+      <File FileName="Assets/Scripts/Playback/MicrophoneRecorder.cs" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="a656d503-b589-4e08-b4c1-a0b1a356644c" />
 </Properties>

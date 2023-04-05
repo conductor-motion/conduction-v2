@@ -356,6 +356,7 @@
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
     <None Include="Assets/K2Examples/Resources/ForegroundBlendShader.shader" />
     <None Include="Assets/K2Examples/Resources/BodyShader.shader" />
+    <None Include="Assets/UI Toolkit/LoadingPopup.uxml" />
     <None Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Scripts/RoomAliveToolkit/Attribution.txt" />
     <None Include="Assets/csc.rsp" />
     <None Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Resources/calibration-empty.xml" />
