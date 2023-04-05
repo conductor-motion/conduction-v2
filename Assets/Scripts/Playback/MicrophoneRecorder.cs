@@ -14,17 +14,20 @@ public class MicrophoneRecorder : MonoBehaviour
         audioSource.clip = Microphone.Start(null, true, 1000, 44100);
         audioSource.Play();
     }
-
-    public void ToggleSound()
+    private void Update()
     {
         if (play)
         {
-            audioSource.clip = Microphone.Start(null, true, 1000, 44100);
-            audioSource.Play();
+            audioSource.mute = false;
         }
         else
         {
-            audioSource.Stop();
+            audioSource.mute = true;
         }
+    }
+
+    public void ToggleSound()
+    {
+        play = !play;
     }
 }
