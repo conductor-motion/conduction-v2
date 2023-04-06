@@ -5,16 +5,12 @@ using UnityEngine;
 public class LoadAvatar1 : MonoBehaviour
 {
     public GameObject[] characters;
-    public GameObject animator;
     // Start is called before the first frame update
     void Start()
     {
-        characters[PlayerPrefs.GetInt("selectedCharacter")].SetActive(true);  
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        characters[PlayerPrefs.GetInt("selectedCharacter")].SetActive(true);
+        int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
+        GameObject prefab = characters[selectedCharacter];
+        GameObject clone = Instantiate(prefab);
     }
 }
