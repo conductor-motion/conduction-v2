@@ -2,9 +2,9 @@
     <ui:VisualElement name="selectWebcam" style="flex-grow: 1; align-items: center; justify-content: center; display: flex;">
         <ui:VisualElement style="align-items: center; justify-content: space-around; width: 80%; height: 80%; background-color: rgb(255, 255, 255); -unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&amp;guid=e3265ab4bf004d28a9537516768c1c75&amp;type=3#LiberationSans&apos;); display: flex;">
             <ui:VisualElement style="width: 100%; background-color: rgba(0, 0, 0, 0);">
-                <ui:Button display-tooltip-when-elided="true" name="backButton" style="-unity-text-align: middle-left; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/d_iconclosebutton@2x.png?fileID=2800000&amp;guid=0525793900d728a42936791a8a6de63b&amp;type=3#d_iconclosebutton@2x&apos;); width: 2%; -unity-background-image-tint-color: rgb(255, 1, 1);" />
+                <ui:Button display-tooltip-when-elided="true" name="backButton" style="-unity-text-align: middle-left; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/d_iconclosebutton@2x.png?fileID=2800000&amp;guid=0525793900d728a42936791a8a6de63b&amp;type=3#d_iconclosebutton@2x&apos;); width: 2.5%; -unity-background-image-tint-color: rgb(255, 1, 1); height: auto;" />
             </ui:VisualElement>
-            <ui:Label text="Select Webcam" display-tooltip-when-elided="true" name="title" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: upper-center; width: 100%; height: 20%;" />
+            <ui:Label text="Select Webcam" display-tooltip-when-elided="true" name="title" style="font-size: 50%; color: rgb(0, 0, 0); -unity-text-align: middle-center; width: initial; height: auto;" />
             <ui:ListView focusable="true" name="webcamList" style="flex-direction: column; flex-wrap: nowrap; height: 60%; width: 50%; left: 0; top: 0; right: 0; bottom: 0; justify-content: center; align-items: center; background-color: rgb(200, 200, 200);" />
         </ui:VisualElement>
     </ui:VisualElement>
