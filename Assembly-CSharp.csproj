@@ -299,6 +299,7 @@
      <Compile Include="Assets/K2Examples/KinectDemos/ColliderDemo/Scripts/DepthSpriteViewer.cs" />
      <Compile Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Scripts/BarrelTrigger.cs" />
      <Compile Include="Assets/CurrentlySelected.cs" />
+     <Compile Include="Assets/EnableLines.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets/StreamingAssets/FFmpeg/x86" />
      <Folder Include="Assets/K2Examples/KinectDemos/FaceTrackingDemo/Models/Materials" />

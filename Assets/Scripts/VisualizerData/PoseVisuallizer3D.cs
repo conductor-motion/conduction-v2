@@ -29,7 +29,7 @@ public class PoseVisuallizer3D : MonoBehaviour
     int frameIndex = 0;
     Frames frames = new Frames();
     List<HandMovementData> data = new List<HandMovementData>();
-    public static bool showLines = false;
+    public static bool showLines;
 
     UIDocument loadingPopup;
     public UnityEngine.Video.VideoPlayer videoPlayer;
@@ -57,11 +57,15 @@ public class PoseVisuallizer3D : MonoBehaviour
     };
 
 
+    void Awake()
+    {
+        showLines = false;
+    }
+
     void Start()
     {
         material = new Material(shader);
         detecter = new BlazePoseDetecter();
-
         loadingPopup = FindObjectOfType<UIDocument>();
 
         if (SceneManager.GetActiveScene().name == "RecordingPage" || MainManager.Instance.newUpload == true)

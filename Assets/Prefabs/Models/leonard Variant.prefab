@@ -341,7 +341,6 @@ MonoBehaviour:
   inputImageUI: {fileID: 0}
   shader: {fileID: 4800000, guid: b643afb13b83a4048a9772002eaeb573, type: 3}
   humanExistThreshold: 0.5
-  showLines: 1
   videoPlayer: {fileID: 0}
   leftBicep: {fileID: 4634081800140423184}
   rightBicep: {fileID: 5290637495546624979}
