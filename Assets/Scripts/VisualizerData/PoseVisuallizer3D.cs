@@ -29,7 +29,7 @@ public class PoseVisuallizer3D : MonoBehaviour
     int frameIndex = 0;
     Frames frames = new Frames();
     List<HandMovementData> data = new List<HandMovementData>();
-    public bool showLines = false;
+    public static bool showLines = false;
 
     UIDocument loadingPopup;
     public UnityEngine.Video.VideoPlayer videoPlayer;
