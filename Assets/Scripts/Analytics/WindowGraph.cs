@@ -99,7 +99,7 @@ public class WindowGraph : MonoBehaviour
         int tempoCalc = 0;
         List<int> tempo = new List<int>();
 
-        for(int i=1; i<yVals.Count-32; i++) {
+        for(int i=1; i<yVals.Count-16; i++) {
             if(yVals[i] < yVals[i-1]) {
                 if(i != yVals.Count-1)
                     if(yVals[i] < yVals[i+1]) {
@@ -157,6 +157,7 @@ public class WindowGraph : MonoBehaviour
         float x_size = 50f;
         float graphHeight = graphContainer.sizeDelta.y;
         List<int> tempo = new List<int>();
+        int counter = 0;
 
         //store reference to prev game obj
         GameObject prevDotGameObjConductor = null;
@@ -175,6 +176,10 @@ public class WindowGraph : MonoBehaviour
         for(int i=0; i<tempo.Count; i++) {
             Debug.Log(tempo[i]);
         }
+
+        /*for(int i=1; i<yVals.Count; i++) {
+            counter++;
+        }*/
 
         float yMax = tempo[0];
         float yMin = tempo[0];
