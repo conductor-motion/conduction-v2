@@ -422,6 +422,7 @@
      <Folder Include="Assets/Prefabs/Models" />
      <Folder Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Textures" />
      <Folder Include="Assets/Icons" />
+     <Folder Include="Assets/Materials" />
      <Folder Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Models/Barrel/Materials" />
      <Folder Include="Assets/K2Examples/KinectDemos/AvatarsDemo/Cubeman/Materials" />
      <Folder Include="Assets/Evereal/VideoCapture/Scripts/Legacy" />
@@ -470,7 +471,6 @@
      <Folder Include="Assets/K2Examples/KinectDemos/OverlayDemo/Sprites/Zeus" />
      <Folder Include="Assets/K2Examples/KinectScripts/SharpZipLib" />
      <Folder Include="Assets/K2Examples/KinectDemos/ProjectorDemo/Scripts/RoomAliveToolkit" />
-     <Folder Include="Assets/Materials" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" />
      <None Include="Assets/K2Examples/Resources/Body2DepthShaderInvNN.shader" />
      <Folder Include="Assets/TextMesh Pro/Shaders" />

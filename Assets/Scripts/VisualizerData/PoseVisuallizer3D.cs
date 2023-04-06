@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using System.Xml.Linq;
 using UnityEngine.UIElements;
 using Google.Protobuf.WellKnownTypes;
+using UnityEngine.Video;
 
 public class PoseVisuallizer3D : MonoBehaviour
 {
@@ -68,6 +69,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         mainCamera = Camera.main;
         webCamInput = FindObjectOfType<WebCamInput>();
         inputImageUI = GameObject.Find("RawImage").GetComponent<RawImage>();
+        videoPlayer = FindObjectOfType<VideoPlayer>();
     }
 
     void LateUpdate()

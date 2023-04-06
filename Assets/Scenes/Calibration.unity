@@ -288,8 +288,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1826273744}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
@@ -1744,6 +1743,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirPath: 
+  webCamName: 
+  metronome: {fileID: 0}
+  metronomePlay: 0
+  tempoBeat: 0
   mode: Recording
   newUpload: 0
 --- !u!4 &1101802198
@@ -2186,6 +2189,7 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: b643afb13b83a4048a9772002eaeb573, type: 3}
   humanExistThreshold: 0.5
   showLines: 1
+  videoPlayer: {fileID: 0}
   leftBicep: {fileID: 0}
   rightBicep: {fileID: 0}
   leftForearm: {fileID: 0}
@@ -3022,68 +3026,6 @@ Transform:
   m_Father: {fileID: 1907771428}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1826273742
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 189505129}
-    m_Modifications:
-    - target: {fileID: 7046768256175321641, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046768256175321641, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046768256175321641, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046768256175321641, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046768256175321641, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046768256175321641, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046768256175321641, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046768256175321641, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046768256175321641, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046768256175321641, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046768256175321641, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674405105392969875, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
-      propertyPath: m_Name
-      value: brian Variant (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
---- !u!4 &1826273744 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7046768256175321641, guid: d7ad2a75564e144e2af09c1610ff4c1e, type: 3}
-  m_PrefabInstance: {fileID: 1826273742}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1907771427
 GameObject:
   m_ObjectHideFlags: 0

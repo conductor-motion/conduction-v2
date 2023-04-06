@@ -179,11 +179,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c611e15986b25433b8f9f02932166b05, type: 3}
       propertyPath: m_Name
-      value: brian
+      value: brian Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c611e15986b25433b8f9f02932166b05, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: c611e15986b25433b8f9f02932166b05, type: 3}
       propertyPath: m_Controller
@@ -473,6 +473,7 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: b643afb13b83a4048a9772002eaeb573, type: 3}
   humanExistThreshold: 0.5
   showLines: 1
+  videoPlayer: {fileID: 0}
   leftBicep: {fileID: 3530075744169050718}
   rightBicep: {fileID: 9083655698001015622}
   leftForearm: {fileID: 8274161248976699994}
