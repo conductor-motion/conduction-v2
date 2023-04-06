@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CharacterSelection : MonoBehaviour
@@ -6,7 +7,11 @@ public class CharacterSelection : MonoBehaviour
 	public GameObject[] characters;
 	public int selectedCharacter = 0;
 
-	
+	public void Start()
+	{
+		selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
+		characters[selectedCharacter].SetActive(true);
+	}
 
 	public void NextCharacter()
 	{
@@ -24,6 +29,11 @@ public class CharacterSelection : MonoBehaviour
 			selectedCharacter += characters.Length;
 		}
 		characters[selectedCharacter].SetActive(true);
+	}
+
+	public void SelectCharacter()
+	{
+		PlayerPrefs.SetInt("selectedCharacter", selectedCharacter);
 	}
 
 	public void StartGame()
