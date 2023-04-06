@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="list-entry" style="height: 10%; align-items: center; justify-content: center; background-color: rgba(57, 54, 135, 0); flex-direction: row; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;">
+        <ui:Label text="Label" display-tooltip-when-elided="true" name="webcamName" style="-unity-text-align: middle-left;" />
+        <ui:VisualElement name="check" style="background-image: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=a3d815e782c6f43caa7ddfe9bc984dd9&amp;type=3#check&apos;); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; -unity-background-image-tint-color: rgb(0, 0, 0);" />
+    </ui:VisualElement>
+</ui:UXML>

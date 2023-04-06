@@ -28,6 +28,7 @@ public class WebCamInput : MonoBehaviour
     {
         if (staticInput == null)
         {
+            webCamName = MainManager.Instance.webCamName; 
             webCamTexture = new WebCamTexture(webCamName, (int)webCamResolution.x, (int)webCamResolution.y);
             webCamTexture.Play();
         }
@@ -54,6 +55,12 @@ public class WebCamInput : MonoBehaviour
         Graphics.Blit(webCamTexture, inputRT, scale, offset);
 
 
+    }
+
+    public void OnValueChanged(float value)
+    {
+        UnityEngine.Video.VideoPlayer videoPlayer = GetComponent<UnityEngine.Video.VideoPlayer>();
+        videoPlayer.SetDirectAudioVolume(0, value);
     }
 
     void OnDestroy()

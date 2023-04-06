@@ -6,6 +6,9 @@ using System.IO;
 using System.Collections;
 using Google.Protobuf;
 using UnityEngine.SceneManagement;
+using System.Xml.Linq;
+using UnityEngine.UIElements;
+using Google.Protobuf.WellKnownTypes;
 
 public class PoseVisuallizer3D : MonoBehaviour
 {
@@ -25,7 +28,10 @@ public class PoseVisuallizer3D : MonoBehaviour
     int frameIndex = 0;
     Frames frames = new Frames();
     List<HandMovementData> data = new List<HandMovementData>();
-    public bool showLines = true;
+    public bool showLines = false;
+
+    UIDocument loadingPopup;
+    public UnityEngine.Video.VideoPlayer videoPlayer;
 
     Transform objToPickUp;
 
@@ -55,7 +61,9 @@ public class PoseVisuallizer3D : MonoBehaviour
         material = new Material(shader);
         detecter = new BlazePoseDetecter();
 
-        if(SceneManager.GetActiveScene().name == "RecordingPage" || MainManager.Instance.newUpload == true)
+        loadingPopup = FindObjectOfType<UIDocument>();
+
+        if (SceneManager.GetActiveScene().name == "RecordingPage" || MainManager.Instance.newUpload == true)
             CreateDataFile();
         mainCamera = Camera.main;
         webCamInput = FindObjectOfType<WebCamInput>();
@@ -88,6 +96,20 @@ public class PoseVisuallizer3D : MonoBehaviour
             if (((RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage") || MainManager.Instance.newUpload == true) && (i == 15 || i == 16))
             {
                 frame.data.Add(new HandMovementData(i, detecter.GetPoseWorldLandmark(i).x, detecter.GetPoseWorldLandmark(i).y, detecter.GetPoseWorldLandmark(i).z, detecter.GetPoseWorldLandmark(i).w));
+            }
+            if (SceneManager.GetActiveScene().name == "ViewingPage" && loadingPopup.enabled && (i == 15 || i == 16))
+            {
+                inputImageUI.enabled = false;
+                videoPlayer.SetDirectAudioMute(0, true);
+                print(detecter.GetPoseWorldLandmark(i).w);
+                if(detecter.GetPoseWorldLandmark(i).w > 0.5)
+                {
+                    inputImageUI.enabled = true;
+                    loadingPopup.enabled = false;
+                    videoPlayer.time = 0;
+                    videoPlayer.SetDirectAudioMute(0, false);
+                }
+
             }
         }
         if ((RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage") || MainManager.Instance.newUpload == true)
@@ -252,7 +274,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         if (!Directory.Exists(dirPath))
         {
             Directory.CreateDirectory(dirPath);
-        } else
+        } else if (!MainManager.Instance.newUpload)
         {
             dirPath += "-2";
             Directory.CreateDirectory(dirPath);
@@ -260,6 +282,11 @@ public class PoseVisuallizer3D : MonoBehaviour
         filePath = dirPath + "/data.json";
         writer = new StreamWriter(filePath, true);
         writer.AutoFlush = true;
+    }
+
+    public void ToggleLines()
+    {
+        showLines= !showLines;
     }
 
 }

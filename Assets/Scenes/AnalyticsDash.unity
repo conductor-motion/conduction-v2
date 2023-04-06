@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -297,8 +297,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.010151, y: -0.00096113}
-  m_SizeDelta: {x: 1919.7, y: 981.67}
+  m_AnchoredPosition: {x: -0.089985, y: -0.0090027}
+  m_SizeDelta: {x: 1919.8, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &17304189
 MonoBehaviour:
@@ -377,7 +377,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -877, y: 0}
+  m_AnchoredPosition: {x: -887, y: 0}
   m_SizeDelta: {x: 114.0443, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55223865
@@ -424,9 +424,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 55223868}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 321874185}
+        m_TargetAssemblyTypeName: backButtonToViewingPage, Assembly-CSharp
+        m_MethodName: backButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -670,10 +670,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 321874183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 672a6c061151fde40bf5eba486d31ea8, type: 3}
+  m_Script: {fileID: 11500000, guid: 8519809cdbdaab94f9d855c63e8017df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backToDash: AnalyticsDash
+  backToViewingPage: ViewingPage
 --- !u!1 &384960144
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 500, y: -5}
+  m_AnchoredPosition: {x: 477, y: -5}
   m_SizeDelta: {x: 928.97, y: 572.2604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &764387044
@@ -860,7 +860,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 472976194}
-        m_TargetAssemblyTypeName: SecondButtonUI, Assembly-CSharp
+        m_TargetAssemblyTypeName: AnalyticsDashSecondButtonUI, Assembly-CSharp
         m_MethodName: secondGraphButton
         m_Mode: 1
         m_Arguments:
@@ -884,7 +884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41117835, g: 0.4939211, b: 0.5283019, a: 1}
+  m_Color: {r: 0.88174635, g: 0.8244927, b: 0.9056604, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1174,8 +1174,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.3215, y: 469.6}
-  m_SizeDelta: {x: 1924.3, y: 42.467}
+  m_AnchoredPosition: {x: 0.035733, y: 520}
+  m_SizeDelta: {x: 1919.7, y: 42.467}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1186095376
 MonoBehaviour:
@@ -1573,7 +1573,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -464.49, y: -5}
+  m_AnchoredPosition: {x: -471, y: -5}
   m_SizeDelta: {x: 928.97, y: 572.2604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1801384755
@@ -1621,7 +1621,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 384960146}
-        m_TargetAssemblyTypeName: FirstButtonUIScript, Assembly-CSharp
+        m_TargetAssemblyTypeName: AnalyticsDashFirstButtonUI, Assembly-CSharp
         m_MethodName: firstGraphButton
         m_Mode: 1
         m_Arguments:

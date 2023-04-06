@@ -21,8 +21,6 @@ public class Metronome : MonoBehaviour
         metronome = GameObject.FindGameObjectWithTag("Metronome").GetComponent<MetronomeStorage>();
         beatChecker = GameObject.FindGameObjectWithTag("Metronome").GetComponent<BeatChecker>();
         audioSource = GameObject.FindGameObjectWithTag("Metronome").GetComponent<AudioSource>();
-        timeSigUpTextBox.text = metronome.GetTimeSigUp().ToString();
-        timeSigDownDropdown.value = (int)Mathf.Log(metronome.GetTimeSigLow(), 2);
         timeSigDownDropdown.onValueChanged.AddListener(delegate { updateTimeSig(); });
         timeSigUpTextBox.onValueChanged.AddListener(delegate { updateTimeSig(); });
     }

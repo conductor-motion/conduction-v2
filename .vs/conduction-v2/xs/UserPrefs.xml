@@ -1,47 +1,29 @@
 ﻿<Properties StartupConfiguration="{1C7193BF-2C8A-2B05-BC59-D77E690EB081}|">
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/VisualizerData/PoseVisuallizer3D.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="58c51cf0-43f3-4cb8-8656-6c6b70c15f2d" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Shader/Visualizer.shader">
     <Files>
-      <File FileName="Assets/Scripts/MainManager.cs" Line="1" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/ReplayController.cs" Line="1" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/Recording.cs" Line="1" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/ListController.cs" Line="1" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/RecordingController.cs" Line="77" Column="57" IsPinned="True" />
-      <File FileName="Assets/Scripts/PoseVisuallizer3D.cs" Line="243" Column="90" />
-      <File FileName="Assets/Scripts/MediaControlsV2.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/FileManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Frames.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/VisualizerData/FrameData.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/VisualizerData/HandMovementData.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/VisualizerData/WebCamInput.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/VisualizerData/PoseVisuallizer3D.cs" Line="229" Column="90" IsPinned="True" />
+      <File FileName="Assets/Shader/Visualizer.shader" Line="115" Column="22" IsPinned="True" />
+      <File FileName="Library/PackageCache/com.unity.barracuda@2.0.0/Barracuda/Runtime/Core/Backends/BarracudaReferenceCompute.cs" Line="585" Column="22" />
+      <File FileName="Assets/Scripts/VisualizerData/HandMovementData.cs" />
+      <File FileName="Assets/Scripts/VisualizerData/WebCamInput.cs" Line="5" Column="35" />
+      <File FileName="Assets/Scripts/MainMenu/FileManager.cs" />
+      <File FileName="Assets/Scripts/MainMenu/ListController.cs" />
+      <File FileName="Assets/Scripts/Recording/RecordingController.cs" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Base/CaptureBase.cs" />
+      <File FileName="Assets/Scripts/Playback/MicrophoneRecorder.cs" />
+      <File FileName="Assets/Scripts/Playback/MediaControls.cs" />
+      <File FileName="Assets/Scripts/MultiScene/MainManager.cs" />
+      <File FileName="Assets/Scripts/MainMenu/ListEntryController.cs" />
+      <File FileName="Assets/Scripts/MainMenu/WebCamData.cs" />
+      <File FileName="Library/PackageCache/com.unity.animation.rigging@1.1.1/Editor/Utils/BoneRendererUtils.cs" Line="350" Column="46" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="conduction-v2" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Evereal" expanded="True">
-                <Node name="VideoCapture" expanded="True">
-                  <Node name="Scripts" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="Scripts" expanded="True">
-                <Node name="MainMenu" expanded="True" />
-                <Node name="MultiScene" expanded="True" />
-                <Node name="Playback" expanded="True" />
-                <Node name="Recording" expanded="True" />
-                <Node name="VisualizerData" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9d73d499-05ef-4927-a7e1-a1cbf90eb72c" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
