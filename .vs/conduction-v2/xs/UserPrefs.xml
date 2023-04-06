@@ -1,24 +1,29 @@
 ﻿<Properties StartupConfiguration="{1C7193BF-2C8A-2B05-BC59-D77E690EB081}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs">
-    <Files>
-      <File FileName="Assets/Scripts/VisualizerData/FrameData.cs" />
-      <File FileName="Assets/Scripts/VisualizerData/HandMovementData.cs" />
-      <File FileName="Assets/Scripts/VisualizerData/WebCamInput.cs" />
-      <File FileName="Assets/Scripts/MainMenu/FileManager.cs" />
-      <File FileName="Assets/Scripts/MainMenu/ListController.cs" />
-      <File FileName="Assets/Scripts/Recording/RecordingController.cs" />
-      <File FileName="Assets/Scripts/VisualizerData/PoseVisuallizer3D.cs" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/FFmpegEncoder.cs" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/FFmpeg.cs" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs" Line="190" Column="7" />
-      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Base/CaptureBase.cs" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="320e602d-1582-4ae8-950c-7273e8ac14a0" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="58c51cf0-43f3-4cb8-8656-6c6b70c15f2d" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Shader/Visualizer.shader">
+    <Files>
+      <File FileName="Assets/Scripts/VisualizerData/PoseVisuallizer3D.cs" Line="229" Column="90" IsPinned="True" />
+      <File FileName="Assets/Shader/Visualizer.shader" Line="115" Column="22" IsPinned="True" />
+      <File FileName="Library/PackageCache/com.unity.barracuda@2.0.0/Barracuda/Runtime/Core/Backends/BarracudaReferenceCompute.cs" Line="585" Column="22" />
+      <File FileName="Assets/Scripts/VisualizerData/HandMovementData.cs" />
+      <File FileName="Assets/Scripts/VisualizerData/WebCamInput.cs" Line="5" Column="35" />
+      <File FileName="Assets/Scripts/MainMenu/FileManager.cs" />
+      <File FileName="Assets/Scripts/MainMenu/ListController.cs" />
+      <File FileName="Assets/Scripts/Recording/RecordingController.cs" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Utils.cs" />
+      <File FileName="Assets/Evereal/VideoCapture/Scripts/Internal/Base/CaptureBase.cs" />
+      <File FileName="Assets/Scripts/Playback/MicrophoneRecorder.cs" />
+      <File FileName="Assets/Scripts/Playback/MediaControls.cs" />
+      <File FileName="Assets/Scripts/MultiScene/MainManager.cs" />
+      <File FileName="Assets/Scripts/MainMenu/ListEntryController.cs" />
+      <File FileName="Assets/Scripts/MainMenu/WebCamData.cs" />
+      <File FileName="Library/PackageCache/com.unity.animation.rigging@1.1.1/Editor/Utils/BoneRendererUtils.cs" Line="350" Column="46" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
