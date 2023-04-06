@@ -29,6 +29,7 @@ public class WebCamInput : MonoBehaviour
     {
         if (staticInput == null)
         {
+            webCamName = MainManager.Instance.webCamName;
             webCamTexture = new WebCamTexture(webCamName, (int)webCamResolution.x, (int)webCamResolution.y);
             webCamTexture.Play();
         }

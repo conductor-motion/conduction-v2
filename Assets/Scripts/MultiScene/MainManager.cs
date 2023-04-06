@@ -8,6 +8,7 @@ public class MainManager : MonoBehaviour
     public static MainManager Instance;
 
     public string dirPath;
+    public string webCamName = "";
 
     public GameObject metronome;
     MetronomeStorage metronomeStorage;
@@ -80,5 +81,10 @@ public class MainManager : MonoBehaviour
     public void setNewUpload(bool newUpload)
     {
         MainManager.Instance.newUpload = newUpload;
-    } 
+    }
+
+    public void setWebCamName(string webCamName)
+    {
+        MainManager.Instance.webCamName = webCamName;
+    }
 }

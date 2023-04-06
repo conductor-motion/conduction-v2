@@ -306,6 +306,9 @@
     <Compile Include="Assets/Scripts/Buttons/AnalyticsDashFirstButtonUI.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/ColliderDemo/Scripts/DepthSpriteViewer.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Scripts/BarrelTrigger.cs" />
+    <Compile Include="Assets/Scripts/MainMenu/WebcamSelectController.cs" />
+    <Compile Include="Assets/Scripts/MainMenu/ListEntryController.cs" />
+    <Compile Include="Assets/Scripts/MainMenu/WebCamData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
@@ -341,6 +344,7 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets/UI Toolkit/WebcamSelectTemplate.uxml" />
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" />
     <None Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Resources/Shaders/UserBlendShader.shader" />
@@ -386,6 +390,7 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" />
     <None Include="Assets/Evereal/VideoCapture/Resources/Shaders/Blitter.shader" />
     <None Include="Assets/K2Examples/KinectScripts/Interfaces/Nuitrack/nuitrack.net.dll" />
+    <None Include="Assets/UI Toolkit/ListEntry.uxml" />
     <None Include="Assets/K2Examples/Resources/AstraCoordMapper.compute" />
     <None Include="Assets/K2Examples/Resources/Erode.shader" />
     <None Include="Assets/K2Examples/Resources/Gradient.shader" />
