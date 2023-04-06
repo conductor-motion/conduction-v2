@@ -3,7 +3,6 @@ using UnityEngine;
 using System.IO;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using Windows.Kinect;
 
 public class WebCamInput : MonoBehaviour
 {
@@ -29,7 +28,7 @@ public class WebCamInput : MonoBehaviour
     {
         if (staticInput == null)
         {
-            webCamName = MainManager.Instance.webCamName;
+            webCamName = MainManager.Instance.webCamName; 
             webCamTexture = new WebCamTexture(webCamName, (int)webCamResolution.x, (int)webCamResolution.y);
             webCamTexture.Play();
         }

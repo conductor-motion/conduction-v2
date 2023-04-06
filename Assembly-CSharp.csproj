@@ -143,6 +143,7 @@
     <Compile Include="Assets/K2Examples/KinectScripts/Samples/K2SensorChecker.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/FaceTrackingDemo/Scripts/ViewFaceProperties.cs" />
     <Compile Include="Assets/Evereal/VideoCapture/Scripts/Internal/VideoCache.cs" />
+    <Compile Include="Assets/Scripts/MainMenu/WebcamSelectController.cs" />
     <Compile Include="Assets/Scripts/TrailController.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/VariousDemos/Scripts/SimpleHolographicCamera.cs" />
     <Compile Include="Assets/Scripts/Recording/HidableHud.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="Assets/Evereal/VideoCapture/Scripts/Internal/Encoder/GPUEncoder.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/InteractionInputModule.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/MultiScene/LoadLevelWithDelay.cs" />
+    <Compile Include="Assets/Scripts/MainMenu/ListEntryController.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/BackgroundDepthImage.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/GesturesDemo/Scripts/CubePresentationScript.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/BackgroundRemovalManager.cs" />
@@ -247,6 +249,7 @@
     <Compile Include="Assets/Scripts/VisualizerData/SimpleJSON.cs" />
     <Compile Include="Assets/Scripts/CharacterRotation.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/VisualizerDemo/Scripts/SceneMeshVisualizer.cs" />
+    <Compile Include="Assets/Scripts/MainMenu/WebCamData.cs" />
     <Compile Include="Assets/K2Examples/KinectScripts/KinectGestures.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/FittingRoomDemo/Scripts/CategorySelector.cs" />
     <Compile Include="Assets/Scripts/Analytics/TooltipScript.cs" />
@@ -306,9 +309,6 @@
     <Compile Include="Assets/Scripts/Buttons/AnalyticsDashFirstButtonUI.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/ColliderDemo/Scripts/DepthSpriteViewer.cs" />
     <Compile Include="Assets/K2Examples/KinectDemos/PhysicsDemo/Scripts/BarrelTrigger.cs" />
-    <Compile Include="Assets/Scripts/MainMenu/WebcamSelectController.cs" />
-    <Compile Include="Assets/Scripts/MainMenu/ListEntryController.cs" />
-    <Compile Include="Assets/Scripts/MainMenu/WebCamData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
