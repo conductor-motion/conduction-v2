@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using System.Xml.Linq;
 using UnityEngine.UIElements;
 using Google.Protobuf.WellKnownTypes;
+using UnityEngine.Video;
 
 public class PoseVisuallizer3D : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class PoseVisuallizer3D : MonoBehaviour
     int frameIndex = 0;
     Frames frames = new Frames();
     List<HandMovementData> data = new List<HandMovementData>();
-    public bool showLines = false;
+    public static bool showLines;
 
     UIDocument loadingPopup;
     public UnityEngine.Video.VideoPlayer videoPlayer;
@@ -56,11 +57,15 @@ public class PoseVisuallizer3D : MonoBehaviour
     };
 
 
+    void Awake()
+    {
+        showLines = false;
+    }
+
     void Start()
     {
         material = new Material(shader);
         detecter = new BlazePoseDetecter();
-
         loadingPopup = FindObjectOfType<UIDocument>();
 
         if (SceneManager.GetActiveScene().name == "RecordingPage" || MainManager.Instance.newUpload == true)
@@ -68,6 +73,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         mainCamera = Camera.main;
         webCamInput = FindObjectOfType<WebCamInput>();
         inputImageUI = GameObject.Find("RawImage").GetComponent<RawImage>();
+        videoPlayer = FindObjectOfType<VideoPlayer>();
     }
 
     void LateUpdate()
