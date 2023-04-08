@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UITtooltip.Utils;
-using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class WindowGraph : MonoBehaviour
 {
@@ -31,34 +31,24 @@ public class WindowGraph : MonoBehaviour
     [SerializeField] private Sprite BlackDotSprite;
     [SerializeField] private Sprite WhiteDotSprite;
 
-    public static bool graphCounter = true;
+    public GameObject ErrorPopUpPanel;
 
     private static List<float> yVals = new List<float>();
    
     private void Awake() {
-        graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
-        Xtemp = graphContainer.Find("Xtemp").GetComponent<RectTransform>();
-        Ytemp = graphContainer.Find("Ytemp").GetComponent<RectTransform>();
-        DashXTemp = graphContainer.Find("DashXTemp").GetComponent<RectTransform>();
-        DashYTemp = graphContainer.Find("DashYTemp").GetComponent<RectTransform>();
+       graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
+       Xtemp = graphContainer.Find("Xtemp").GetComponent<RectTransform>();
+       Ytemp = graphContainer.Find("Ytemp").GetComponent<RectTransform>();
+       DashXTemp = graphContainer.Find("DashXTemp").GetComponent<RectTransform>();
+       DashYTemp = graphContainer.Find("DashYTemp").GetComponent<RectTransform>();
        
-        tooltipScript = GameObject.Find("Tooltip").GetComponent<TooltipScript>();
-        tooltipScript = tooltip.GetComponent<TooltipScript>(); 
+       tooltipScript = GameObject.Find("Tooltip").GetComponent<TooltipScript>();
+       tooltipScript = tooltip.GetComponent<TooltipScript>(); 
 
-      // if(graphCounter) {
-        displayGraph();
-       // graphCounter = false;
-      // }
-
-      /* else {
-        if(!graphCounter) {
-            displayGraph();
-        }
-       }
-      */
-       
+       displayGraph();
        
     }
+
 
     public static string GetTimeValues(int totalCount) {
         int counter = 1;
@@ -99,7 +89,7 @@ public class WindowGraph : MonoBehaviour
         int tempoCalc = 0;
         List<int> tempo = new List<int>();
 
-        for(int i=1; i<yVals.Count-32; i++) {
+        for(int i=1; i<yVals.Count-16; i++) {
             if(yVals[i] < yVals[i-1]) {
                 if(i != yVals.Count-1)
                     if(yVals[i] < yVals[i+1]) {
@@ -157,6 +147,7 @@ public class WindowGraph : MonoBehaviour
         float x_size = 50f;
         float graphHeight = graphContainer.sizeDelta.y;
         List<int> tempo = new List<int>();
+        int counter = 1;
 
         //store reference to prev game obj
         GameObject prevDotGameObjConductor = null;
@@ -167,269 +158,280 @@ public class WindowGraph : MonoBehaviour
 
 
         string json = File.ReadAllText(inputData);
-       
+
         ParseData(json);
-
-        tempo = tempoTracker();
-
-        for(int i=0; i<tempo.Count; i++) {
-            Debug.Log(tempo[i]);
+        for(int i=1; i<yVals.Count; i++) {
+            counter++;
         }
 
-        float yMax = tempo[0];
-        float yMin = tempo[0];
+        if(counter < 32) {
+            Debug.Log("counter: " + counter);
+            ErrorPopUpPanel.SetActive(true);
+        }
 
-        
-        //increase by 20% of the diff b/w max and min
-        yMax = yMax + ((yMax - yMin) * 0.2f);
-        //same thing but decrease
-        yMin = yMin - ((yMax - yMin) * 0.2f);
+        else {
+            tempo = tempoTracker();
 
-        foreach(int val in tempo) {
-            if(val > yMax) {
-                yMax = val;
+            for(int i=0; i<tempo.Count; i++) {
+                Debug.Log(tempo[i]);
             }
-            if(val < yMin) {
-                yMin = val;
+
+
+            float yMax = tempo[0];
+            float yMin = tempo[0];
+
+            
+            //increase by 20% of the diff b/w max and min
+            yMax = yMax + ((yMax - yMin) * 0.2f);
+            //same thing but decrease
+            yMin = yMin - ((yMax - yMin) * 0.2f);
+
+            foreach(int val in tempo) {
+                if(val > yMax) {
+                    yMax = val;
+                }
+                if(val < yMin) {
+                    yMin = val;
+                }
+                
+            }
+
+            if(yMax <  MainManager.Instance.tempoBeat) {
+                yMax =  MainManager.Instance.tempoBeat;
+            }
+
+            if(yMin <  MainManager.Instance.tempoBeat) {
+                yMin =  MainManager.Instance.tempoBeat;
             }
             
-        }
+            string s = GetTimeValues(tempo.Count);
+            string[] arr = s.Split(' ');
 
-        if(yMax <  MainManager.Instance.tempoBeat) {
-            yMax =  MainManager.Instance.tempoBeat;
-        }
+            if( !(arr[arr.Length-1].Equals("3:00")) ) {
+                //if video is at 3 mins, the graph will go off screen
+                //shrink graph?
+                //a performance can be up to 20 minutes?
+                if(arr[arr.Length-1].Equals("3:05") || 
+                arr[arr.Length-1].Equals("3:10") ||
+                arr[arr.Length-1].Equals("3:15") ||
+                arr[arr.Length-1].Equals("3:20")) {
+                        x_size -= 5f;
+                    }
 
-        if(yMin <  MainManager.Instance.tempoBeat) {
-            yMin =  MainManager.Instance.tempoBeat;
-        }
-        
-        string s = GetTimeValues(tempo.Count);
-        string[] arr = s.Split(' ');
+                if(arr[arr.Length-1].Equals("3:25") ||
+                arr[arr.Length-1].Equals("3:30") ||
+                arr[arr.Length-1].Equals("3:35") ||
+                arr[arr.Length-1].Equals("3:40")) {
+                        x_size -=10f;
+                    }
 
-        if( !(arr[arr.Length-1].Equals("3:00")) ) {
-            //if video is at 3 mins, the graph will go off screen
-            //shrink graph?
-            //a performance can be up to 20 minutes?
-            if(arr[arr.Length-1].Equals("3:05") || 
-               arr[arr.Length-1].Equals("3:10") ||
-               arr[arr.Length-1].Equals("3:15") ||
-               arr[arr.Length-1].Equals("3:20")) {
-                    x_size -= 5f;
+                if(arr[arr.Length-1].Equals("3:45") ||
+                arr[arr.Length-1].Equals("3:50") ||
+                arr[arr.Length-1].Equals("3:55") || 
+                arr[arr.Length-1].Equals("4:00")) {
+                        x_size -= 15f;
+                    }
+                
+                if(arr[arr.Length-1].Equals("4:05") || 
+                arr[arr.Length-1].Equals("4:10") || 
+                arr[arr.Length-1].Equals("4:15") ||
+                arr[arr.Length-1].Equals("4:20")) {
+                        x_size -= 20f;
+                    }
+
+                if(arr[arr.Length-1].Equals("4:25") ||
+                arr[arr.Length-1].Equals("4:30") ||
+                arr[arr.Length-1].Equals("4:35") ||
+                arr[arr.Length-1].Equals("4:40")) {
+                    x_size -= 25f;
                 }
 
-            if(arr[arr.Length-1].Equals("3:25") ||
-               arr[arr.Length-1].Equals("3:30") ||
-               arr[arr.Length-1].Equals("3:35") ||
-               arr[arr.Length-1].Equals("3:40")) {
-                    x_size -=10f;
+                if(arr[arr.Length-1].Equals("4:45") ||
+                arr[arr.Length-1].Equals("4:50") ||
+                arr[arr.Length-1].Equals("4:55") ||
+                arr[arr.Length-1].Equals("5:00")) {
+                    x_size -= 30f;
                 }
 
-            if(arr[arr.Length-1].Equals("3:45") ||
-               arr[arr.Length-1].Equals("3:50") ||
-               arr[arr.Length-1].Equals("3:55") || 
-               arr[arr.Length-1].Equals("4:00")) {
-                    x_size -= 15f;
-                }
-            
-            if(arr[arr.Length-1].Equals("4:05") || 
-               arr[arr.Length-1].Equals("4:10") || 
-               arr[arr.Length-1].Equals("4:15") ||
-               arr[arr.Length-1].Equals("4:20")) {
-                    x_size -= 20f;
+                if(arr[arr.Length-1].Equals("5:05") ||
+                arr[arr.Length-1].Equals("5:10") ||
+                arr[arr.Length-1].Equals("5:15") ||
+                arr[arr.Length-1].Equals("5:20")) {
+                    x_size -= 35f;
                 }
 
-            if(arr[arr.Length-1].Equals("4:25") ||
-               arr[arr.Length-1].Equals("4:30") ||
-               arr[arr.Length-1].Equals("4:35") ||
-               arr[arr.Length-1].Equals("4:40")) {
-                x_size -= 25f;
-               }
+                if(arr[arr.Length-1].Equals("5:25") ||
+                arr[arr.Length-1].Equals("5:30") ||
+                arr[arr.Length-1].Equals("5:35") ||
+                arr[arr.Length-1].Equals("5:40")) {
+                    x_size -= 40f;
+                }
+                
+                if(arr[arr.Length-1].Equals("5:45") ||
+                arr[arr.Length-1].Equals("5:50") ||
+                arr[arr.Length-1].Equals("5:55") ||
+                arr[arr.Length-1].Equals("6:00")) {
+                    x_size -= 45f;
+                }
+                
+                if(arr[arr.Length-1].Equals("6:05") ||
+                arr[arr.Length-1].Equals("6:10") ||
+                arr[arr.Length-1].Equals("6:15") ||
+                arr[arr.Length-1].Equals("6:20")) {
+                    x_size -= 50f;
+                }
+                
+                if(arr[arr.Length-1].Equals("6:25") ||
+                arr[arr.Length-1].Equals("6:30") ||
+                arr[arr.Length-1].Equals("6:35") ||
+                arr[arr.Length-1].Equals("6:40")) {
+                    x_size -= 55f;
+                }
+                
+                if(arr[arr.Length-1].Equals("6:45") ||
+                arr[arr.Length-1].Equals("6:50") ||
+                arr[arr.Length-1].Equals("6:55") ||
+                arr[arr.Length-1].Equals("7:00")) {
+                    x_size -= 60f;
+                }
+                
+                if(arr[arr.Length-1].Equals("7:05") ||
+                arr[arr.Length-1].Equals("7:10") ||
+                arr[arr.Length-1].Equals("7:15") ||
+                arr[arr.Length-1].Equals("7:20")) {
+                    x_size -= 65f;
+                }
+                
+                if(arr[arr.Length-1].Equals("7:25") ||
+                arr[arr.Length-1].Equals("7:30") ||
+                arr[arr.Length-1].Equals("7:35") ||
+                arr[arr.Length-1].Equals("7:40")) {
+                    x_size -= 70f;
+                }
+                
+                if(arr[arr.Length-1].Equals("7:45") ||
+                arr[arr.Length-1].Equals("7:50") ||
+                arr[arr.Length-1].Equals("7:55") ||
+                arr[arr.Length-1].Equals("8:00")) {
+                    x_size -= 75f;
+                }
+                
+                if(arr[arr.Length-1].Equals("8:05") ||
+                arr[arr.Length-1].Equals("8:10") ||
+                arr[arr.Length-1].Equals("8:15") ||
+                arr[arr.Length-1].Equals("8:20")) {
+                    x_size -= 80f;
+                }
 
-            if(arr[arr.Length-1].Equals("4:45") ||
-               arr[arr.Length-1].Equals("4:50") ||
-               arr[arr.Length-1].Equals("4:55") ||
-               arr[arr.Length-1].Equals("5:00")) {
-                x_size -= 30f;
-               }
-
-            if(arr[arr.Length-1].Equals("5:05") ||
-               arr[arr.Length-1].Equals("5:10") ||
-               arr[arr.Length-1].Equals("5:15") ||
-               arr[arr.Length-1].Equals("5:20")) {
-                x_size -= 35f;
-              }
-
-            if(arr[arr.Length-1].Equals("5:25") ||
-               arr[arr.Length-1].Equals("5:30") ||
-               arr[arr.Length-1].Equals("5:35") ||
-               arr[arr.Length-1].Equals("5:40")) {
-                x_size -= 40f;
-               }
+                if(arr[arr.Length-1].Equals("8:25") ||
+                arr[arr.Length-1].Equals("8:30") ||
+                arr[arr.Length-1].Equals("8:35") ||
+                arr[arr.Length-1].Equals("8:40")) {
+                    x_size -= 85f;
+                }
+                
+                if(arr[arr.Length-1].Equals("8:45") ||
+                arr[arr.Length-1].Equals("8:50") ||
+                arr[arr.Length-1].Equals("8:55") ||
+                arr[arr.Length-1].Equals("9:00")) {
+                    x_size -= 90f;
+                }
+                
+                if(arr[arr.Length-1].Equals("9:05") ||
+                arr[arr.Length-1].Equals("9:10") ||
+                arr[arr.Length-1].Equals("9:15") ||
+                arr[arr.Length-1].Equals("9:20")) {
+                    x_size -= 95f;
+                }
+                
+                if(arr[arr.Length-1].Equals("9:25") ||
+                arr[arr.Length-1].Equals("9:30") ||
+                arr[arr.Length-1].Equals("9:35") ||
+                arr[arr.Length-1].Equals("9:40")) {
+                    x_size -= 100f;
+                }
+                
+                if(arr[arr.Length-1].Equals("9:45") ||
+                arr[arr.Length-1].Equals("9:50") ||
+                arr[arr.Length-1].Equals("9:55") ||
+                arr[arr.Length-1].Equals("10:00")) {
+                    x_size -= 105f;
+                }
             
-            if(arr[arr.Length-1].Equals("5:45") ||
-               arr[arr.Length-1].Equals("5:50") ||
-               arr[arr.Length-1].Equals("5:55") ||
-               arr[arr.Length-1].Equals("6:00")) {
-                x_size -= 45f;
-               }
             
-            if(arr[arr.Length-1].Equals("6:05") ||
-               arr[arr.Length-1].Equals("6:10") ||
-               arr[arr.Length-1].Equals("6:15") ||
-               arr[arr.Length-1].Equals("6:20")) {
-                x_size -= 50f;
-               }
-            
-            if(arr[arr.Length-1].Equals("6:25") ||
-               arr[arr.Length-1].Equals("6:30") ||
-               arr[arr.Length-1].Equals("6:35") ||
-               arr[arr.Length-1].Equals("6:40")) {
-                x_size -= 55f;
-               }
-            
-            if(arr[arr.Length-1].Equals("6:45") ||
-               arr[arr.Length-1].Equals("6:50") ||
-               arr[arr.Length-1].Equals("6:55") ||
-               arr[arr.Length-1].Equals("7:00")) {
-                x_size -= 60f;
-               }
-            
-            if(arr[arr.Length-1].Equals("7:05") ||
-               arr[arr.Length-1].Equals("7:10") ||
-               arr[arr.Length-1].Equals("7:15") ||
-               arr[arr.Length-1].Equals("7:20")) {
-                x_size -= 65f;
-               }
-            
-            if(arr[arr.Length-1].Equals("7:25") ||
-               arr[arr.Length-1].Equals("7:30") ||
-               arr[arr.Length-1].Equals("7:35") ||
-               arr[arr.Length-1].Equals("7:40")) {
-                x_size -= 70f;
-               }
-            
-            if(arr[arr.Length-1].Equals("7:45") ||
-               arr[arr.Length-1].Equals("7:50") ||
-               arr[arr.Length-1].Equals("7:55") ||
-               arr[arr.Length-1].Equals("8:00")) {
-                x_size -= 75f;
-               }
-            
-            if(arr[arr.Length-1].Equals("8:05") ||
-               arr[arr.Length-1].Equals("8:10") ||
-               arr[arr.Length-1].Equals("8:15") ||
-               arr[arr.Length-1].Equals("8:20")) {
-                x_size -= 80f;
-               }
-
-            if(arr[arr.Length-1].Equals("8:25") ||
-               arr[arr.Length-1].Equals("8:30") ||
-               arr[arr.Length-1].Equals("8:35") ||
-               arr[arr.Length-1].Equals("8:40")) {
-                x_size -= 85f;
-               }
-            
-            if(arr[arr.Length-1].Equals("8:45") ||
-               arr[arr.Length-1].Equals("8:50") ||
-               arr[arr.Length-1].Equals("8:55") ||
-               arr[arr.Length-1].Equals("9:00")) {
-                x_size -= 90f;
-               }
-            
-            if(arr[arr.Length-1].Equals("9:05") ||
-               arr[arr.Length-1].Equals("9:10") ||
-               arr[arr.Length-1].Equals("9:15") ||
-               arr[arr.Length-1].Equals("9:20")) {
-                x_size -= 95f;
-               }
-            
-            if(arr[arr.Length-1].Equals("9:25") ||
-               arr[arr.Length-1].Equals("9:30") ||
-               arr[arr.Length-1].Equals("9:35") ||
-               arr[arr.Length-1].Equals("9:40")) {
-                x_size -= 100f;
-               }
-            
-            if(arr[arr.Length-1].Equals("9:45") ||
-               arr[arr.Length-1].Equals("9:50") ||
-               arr[arr.Length-1].Equals("9:55") ||
-               arr[arr.Length-1].Equals("10:00")) {
-                x_size -= 105f;
-               }
-           
-           
-        }
-
-        //Metronome line
-        if(MainManager.Instance.metronomePlay) {
-            createMetronomeLine(tempo, x_size, yMax, graphHeight, arr, findYAxisLabel = null);
-        }
-        
-
-         if(findYAxisLabel == null) {
-            findYAxisLabel = delegate (float _f) { return Mathf.RoundToInt(_f).ToString(); };
-        }
-
-        //Conductor line
-        for(int i=0; i<tempo.Count; i++) {
-            float x_pos = i*x_size + x_size;
-            float y_pos = (tempo[i] / yMax)*graphHeight;
-            
-            GameObject dotGameObj = createPoint(new Vector2(x_pos, y_pos));
-
-            string tooltip_x = arr[i];
-            string tooltip_y = findYAxisLabel(tempo[i]);
-            string tooltip_text = "(" + tooltip_x + "," + tooltip_y + ")";
-
-           TooltipUI dotButtonUI = dotGameObj.AddComponent<TooltipUI>();
-
-            dotButtonUI.MouseOverOnce += () => {
-                TooltipScript.static_displayTooltip(tooltip_text);
-            };
-
-            dotButtonUI.MouseOutOnce += () => {
-                TooltipScript.static_hideTooltip();
-            };
-
-            //if it's not the first dot
-            if(prevDotGameObjConductor != null) {
-                drawDotLine(prevDotGameObjConductor.GetComponent<RectTransform>().anchoredPosition, dotGameObj.GetComponent<RectTransform>().anchoredPosition, new Color(0,0,0, .5f));
             }
-            prevDotGameObjConductor = dotGameObj;
 
-           
-            //graph height = x_size*.9f?
-            //graph width = xsize
+            //Metronome line
+            if(MainManager.Instance.metronomePlay) {
+                createMetronomeLine(tempo, x_size, yMax, graphHeight, arr, findYAxisLabel = null);
+            }
+            
 
-            //X axis separator
-            RectTransform X_label = Instantiate(Xtemp);
-            X_label.SetParent(graphContainer, false);
-            X_label.gameObject.SetActive(true);
-            X_label.anchoredPosition = new Vector2(x_pos, -20f);
-            X_label.GetComponent<Text>().text = arr[i];
+            if(findYAxisLabel == null) {
+                findYAxisLabel = delegate (float _f) { return Mathf.RoundToInt(_f).ToString(); };
+            }
 
-            RectTransform X_dash = Instantiate(DashXTemp);
-            X_dash.SetParent(graphContainer, false);
-            X_dash.gameObject.SetActive(true);
-            X_dash.anchoredPosition = new Vector2(x_pos, 3f);
+            //Conductor line
+            for(int i=0; i<tempo.Count; i++) {
+                float x_pos = i*x_size + x_size;
+                float y_pos = (tempo[i] / yMax)*graphHeight;
+                
+                GameObject dotGameObj = createPoint(new Vector2(x_pos, y_pos));
 
-        } 
-        
-        int separate_count = 10;
-        for(int i=0; i<=separate_count; i++) {
-            RectTransform Y_label = Instantiate(Ytemp);
-            Y_label.SetParent(graphContainer, false);
-            Y_label.gameObject.SetActive(true);
-            float normalizedVal = i*1f/separate_count;
-            Y_label.anchoredPosition = new Vector2(-10f, normalizedVal*graphHeight);
-            Y_label.GetComponent<Text>().text = findYAxisLabel(normalizedVal*yMax);
+                string tooltip_x = arr[i];
+                string tooltip_y = findYAxisLabel(tempo[i]);
+                string tooltip_text = "(" + tooltip_x + "," + tooltip_y + ")";
 
-            RectTransform Y_dash = Instantiate(DashYTemp);
-            Y_dash.SetParent(graphContainer, false);
-            Y_dash.gameObject.SetActive(true);
-            Y_dash.anchoredPosition = new Vector2(20f, normalizedVal*graphHeight);
-           
-        }
+            TooltipUI dotButtonUI = dotGameObj.AddComponent<TooltipUI>();
+
+                dotButtonUI.MouseOverOnce += () => {
+                    TooltipScript.static_displayTooltip(tooltip_text);
+                };
+
+                dotButtonUI.MouseOutOnce += () => {
+                    TooltipScript.static_hideTooltip();
+                };
+
+                //if it's not the first dot
+                if(prevDotGameObjConductor != null) {
+                    drawDotLine(prevDotGameObjConductor.GetComponent<RectTransform>().anchoredPosition, dotGameObj.GetComponent<RectTransform>().anchoredPosition, new Color(0,0,0, .5f));
+                }
+                prevDotGameObjConductor = dotGameObj;
+
+            
+                //graph height = x_size*.9f?
+                //graph width = xsize
+
+                //X axis separator
+                RectTransform X_label = Instantiate(Xtemp);
+                X_label.SetParent(graphContainer, false);
+                X_label.gameObject.SetActive(true);
+                X_label.anchoredPosition = new Vector2(x_pos, -20f);
+                X_label.GetComponent<Text>().text = arr[i];
+
+                RectTransform X_dash = Instantiate(DashXTemp);
+                X_dash.SetParent(graphContainer, false);
+                X_dash.gameObject.SetActive(true);
+                X_dash.anchoredPosition = new Vector2(x_pos, 3f);
+
+            } 
+            
+            int separate_count = 10;
+            for(int i=0; i<=separate_count; i++) {
+                RectTransform Y_label = Instantiate(Ytemp);
+                Y_label.SetParent(graphContainer, false);
+                Y_label.gameObject.SetActive(true);
+                float normalizedVal = i*1f/separate_count;
+                Y_label.anchoredPosition = new Vector2(-10f, normalizedVal*graphHeight);
+                Y_label.GetComponent<Text>().text = findYAxisLabel(normalizedVal*yMax);
+
+                RectTransform Y_dash = Instantiate(DashYTemp);
+                Y_dash.SetParent(graphContainer, false);
+                Y_dash.gameObject.SetActive(true);
+                Y_dash.anchoredPosition = new Vector2(20f, normalizedVal*graphHeight);
+            
+            }
+       }
     }
 
     private GameObject createPoint(Vector2 anchoredPosition, int dotColor = 0) {
