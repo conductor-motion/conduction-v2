@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 // Controls the behavior of the controllable axis lines
 public class AxisController : MonoBehaviour
@@ -14,7 +15,12 @@ public class AxisController : MonoBehaviour
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Axis");
 
-        if (objs.Length > 1)
+        if (objs.Length > 1 && SceneManager.GetActiveScene().name == "RecordingPage")
+        {
+            Destroy(objs[0]);
+        }
+
+        if (objs.Length > 1 && SceneManager.GetActiveScene().name != "RecordingPage")
         {
             Destroy(this.gameObject);
         }
