@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using System.Xml.Linq;
 using UnityEngine.UIElements;
 using Google.Protobuf.WellKnownTypes;
+using UnityEngine.Video;
 
 public class PoseVisuallizer3D : MonoBehaviour
 {
@@ -28,7 +29,10 @@ public class PoseVisuallizer3D : MonoBehaviour
     int frameIndex = 0;
     Frames frames = new Frames();
     List<HandMovementData> data = new List<HandMovementData>();
-    public bool showLines = false;
+    public static bool showLines;
+
+    UIDocument loadingPopup;
+    public UnityEngine.Video.VideoPlayer videoPlayer;
 
     Transform objToPickUp;
 
@@ -53,16 +57,23 @@ public class PoseVisuallizer3D : MonoBehaviour
     };
 
 
+    void Awake()
+    {
+        showLines = false;
+    }
+
     void Start()
     {
         material = new Material(shader);
         detecter = new BlazePoseDetecter();
+        loadingPopup = FindObjectOfType<UIDocument>();
 
         if (SceneManager.GetActiveScene().name == "RecordingPage" || MainManager.Instance.newUpload == true)
             CreateDataFile();
         mainCamera = Camera.main;
         webCamInput = FindObjectOfType<WebCamInput>();
         inputImageUI = GameObject.Find("RawImage").GetComponent<RawImage>();
+        videoPlayer = FindObjectOfType<VideoPlayer>();
     }
 
     void LateUpdate()
@@ -91,6 +102,20 @@ public class PoseVisuallizer3D : MonoBehaviour
             if (((RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage") || MainManager.Instance.newUpload == true) && (i == 15 || i == 16))
             {
                 frame.data.Add(new HandMovementData(i, detecter.GetPoseWorldLandmark(i).x, detecter.GetPoseWorldLandmark(i).y, detecter.GetPoseWorldLandmark(i).z, detecter.GetPoseWorldLandmark(i).w));
+            }
+            if (SceneManager.GetActiveScene().name == "ViewingPage" && loadingPopup.enabled && (i == 15 || i == 16))
+            {
+                inputImageUI.enabled = false;
+                videoPlayer.SetDirectAudioMute(0, true);
+                print(detecter.GetPoseWorldLandmark(i).w);
+                if(detecter.GetPoseWorldLandmark(i).w > 0.5)
+                {
+                    inputImageUI.enabled = true;
+                    loadingPopup.enabled = false;
+                    videoPlayer.time = 0;
+                    videoPlayer.SetDirectAudioMute(0, false);
+                }
+
             }
         }
         if ((RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage") || MainManager.Instance.newUpload == true)
