@@ -397,7 +397,6 @@ MonoBehaviour:
   inputImageUI: {fileID: 0}
   shader: {fileID: 4800000, guid: b643afb13b83a4048a9772002eaeb573, type: 3}
   humanExistThreshold: 0.5
-  videoPlayer: {fileID: 0}
   leftBicep: {fileID: 504369502}
   rightBicep: {fileID: 118866771}
   leftForearm: {fileID: 2121032625}
@@ -3573,8 +3572,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MediaControlsV2, Assembly-CSharp
+      - m_Target: {fileID: 1534882840}
+        m_TargetAssemblyTypeName: MediaControls, Assembly-CSharp
         m_MethodName: Forward
         m_Mode: 1
         m_Arguments:
@@ -4747,8 +4746,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MediaControlsV2, Assembly-CSharp
+      - m_Target: {fileID: 1534882840}
+        m_TargetAssemblyTypeName: MediaControls, Assembly-CSharp
         m_MethodName: Reverse
         m_Mode: 1
         m_Arguments:
@@ -6135,8 +6134,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MediaControlsV2, Assembly-CSharp
+      - m_Target: {fileID: 1534882840}
+        m_TargetAssemblyTypeName: MediaControls, Assembly-CSharp
         m_MethodName: TogglePlayback
         m_Mode: 1
         m_Arguments:
