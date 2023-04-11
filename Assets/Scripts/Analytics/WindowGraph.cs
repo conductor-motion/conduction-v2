@@ -29,7 +29,10 @@ public class WindowGraph : MonoBehaviour
 
     public GameObject ErrorPopUpPanel;
 
-    private static List<float> yVals = new List<float>();
+    SpriteRenderer axisComponent;
+    GameObject axis;
+
+    private List<float> yVals = new List<float>();
     
     private void Awake() {
        graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
@@ -39,33 +42,22 @@ public class WindowGraph : MonoBehaviour
        DashYTemp = graphContainer.Find("DashYTemp").GetComponent<RectTransform>();
        
        tooltipScript = GameObject.Find("Tooltip").GetComponent<TooltipScript>();
-       tooltipScript = tooltip.GetComponent<TooltipScript>(); 
+       tooltipScript = tooltip.GetComponent<TooltipScript>();
+
+       axis = GameObject.FindWithTag("Axis");
+       axisComponent = axis.GetComponent<SpriteRenderer>();
+       axisComponent.enabled = false; 
 
        displayGraph();
-    
-       //SceneManager.LoadSceneAsync("TempoTracker");
-       
     }
 
-   /* void Start() {
-       displayGraph(); 
-    }
-*/
-
-
-   /* void OnDestroy() {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-     
-    } */
-    
-   /* void OnDestroy()
+     void OnDestroy()
     {
-        Debug.Log("OnDestroy1");
-        //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        axisComponent.enabled = true;
     }
-*/
 
-    public static string GetTimeValues(int totalCount) {
+
+    public string GetTimeValues(int totalCount) {
         int counter = 1;
         for(int i=1; i<yVals.Count; i++) {
             counter++;
