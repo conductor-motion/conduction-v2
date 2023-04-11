@@ -9,13 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/LandingPage.unity
     guid: 0d1d3cc34d6d91e4a94a530f41710014
   - enabled: 0
-    path: Assets/Scenes/RecordingPageV1.unity
+    path: 
     guid: a632e74d82e72ca49a381b8cc9b318b0
   - enabled: 0
-    path: Assets/Scenes/ViewingPage-orig.unity
+    path: 
     guid: ebb0cbe092dd4c344a37e944e3fe7901
+  - enabled: 1
+    path: Assets/Scenes/TestingScene.unity
+    guid: fd9cfb48362eabe46b574992219995b6
   - enabled: 0
-    path: Assets/Scenes/RecordingPage-orig.unity
+    path: 
     guid: ed62da430d7dd43eda820aa37e2c3720
   - enabled: 1
     path: Assets/Scenes/RecordingPage.unity
