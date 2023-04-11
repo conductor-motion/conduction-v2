@@ -246,10 +246,7 @@ public class MediaControls : MonoBehaviour
     // Sets the animation and audio to play in reverse
     public void Reverse()
     {
-        isRewind = true;
-        videoPlayer.playbackSpeed = vidSpeed * -1;
-        lastSpeed = vidSpeed;
-        audioSource.pitch = -vidSpeed;
+        videoPlayer.time = 0;
     }
 
     // Sets the animation and audio to play normally

@@ -8,6 +8,7 @@ using System;
 using TMPro;
 //using UnityEditor.MemoryProfiler;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class RecordingController : MonoBehaviour
 {
@@ -49,6 +50,11 @@ public class RecordingController : MonoBehaviour
     private GameObject MetronomeUI;
     private GameObject AxisInstructionsUI;
 
+    // Popup Elementst
+    private bool displayPopup = false;
+    private UIDocument loadingPopup;
+
+
     // recording parameters
     [HideInInspector]
     public static bool isRecording = false;
@@ -69,6 +75,8 @@ public class RecordingController : MonoBehaviour
             MainManager.Instance.SetMode("Recording");
             MainManager.Instance.setNewUpload(false);
         }
+
+        loadingPopup = FindObjectOfType<UIDocument>();
 
         videoCapture.inputTexture = (RenderTexture)webCamInput.inputImageTexture;
         videoCapture.inputTexture.format = RenderTextureFormat.ARGB32;
@@ -122,6 +130,10 @@ public class RecordingController : MonoBehaviour
                 infoText.text = string.Format("{0}:{1}", Math.Floor(recordTime / 60), (recordTime % 60).ToString("00"));
             }
         }
+
+        if (!isRecording && displayPopup)
+            loadingPopup.enabled = true;
+            
     }
 
     public void KeyPress(InputAction.CallbackContext context)
@@ -225,6 +237,7 @@ public class RecordingController : MonoBehaviour
             _metronome.stopMetronome();
             videoCapture.StopCapture();
             StartCoroutine(SwapIcon());
+            displayPopup = true;
             videoCapture.OnComplete += HandleSceneChange;
         }
     }
