@@ -8,7 +8,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UITtooltip.Utils;
-using UnityEngine.SceneManagement;
 
 public class WindowGraph : MonoBehaviour
 {
@@ -20,13 +19,13 @@ public class WindowGraph : MonoBehaviour
     //reference to X and Y axis lines
     private RectTransform DashXTemp;
     private RectTransform DashYTemp;
-
+    //reference to tooltip game object
     TooltipScript tooltipScript;
     [SerializeField] GameObject tooltip;
-
+    //reference to sprites used for points
     [SerializeField] private Sprite BlackDotSprite;
     [SerializeField] private Sprite WhiteDotSprite;
-
+    //reference to error pop up panel
     public GameObject ErrorPopUpPanel;
 
     SpriteRenderer axisComponent;
@@ -50,13 +49,13 @@ public class WindowGraph : MonoBehaviour
 
        displayGraph();
     }
-
+    //removes axis lines that show in build mode
      void OnDestroy()
     {
         axisComponent.enabled = true;
     }
 
-
+    //Gets the duration of the video using the frame count and creates labels for the x-axis
     public string GetTimeValues(int totalCount) {
         int counter = 1;
         for(int i=1; i<yVals.Count; i++) {
@@ -80,7 +79,8 @@ public class WindowGraph : MonoBehaviour
        Debug.Log(timeString);
        return timeString; 
     }
-
+    
+    //Parses data.json to get the yVals
     private void ParseData(string s) {
         JSONNode n = JSON.Parse(s);
         n = n["frames"];
@@ -90,6 +90,8 @@ public class WindowGraph : MonoBehaviour
         }
     }
 
+    /*Calculates tempo by counting the downbeat every 2 seconds(32 frames because 15-16fps)
+    and multiply by 30 to get the BPM to store in the tempo list*/
     private List<int> tempoTracker() {
         int downbeat = 0;
         int counter = 1;
@@ -114,6 +116,7 @@ public class WindowGraph : MonoBehaviour
         return tempo;
     }
 
+    //Is called if user ticked the metronome in the recording scene
     void createMetronomeLine(List<int> tempo, float x_size, float yMax, float graphHeight, string[] arr, Func<float, string> findYAxisLabel = null) {
          GameObject prevDotGameObjMetronome = null;
          
@@ -156,9 +159,9 @@ public class WindowGraph : MonoBehaviour
         List<int> tempo = new List<int>();
         int counter = 1;
 
-        //store reference to prev game obj
-        GameObject prevDotGameObjConductor = null;
-
+       //store reference to prev game obj
+       GameObject prevDotGameObjConductor = null;
+       //Get data.json file from MainManager
        FileInfo fileInfo = new FileInfo(MainManager.Instance.dirPath);
        string inputData = fileInfo.DirectoryName;
        inputData = Path.Combine(inputData, "data.json");
@@ -170,7 +173,7 @@ public class WindowGraph : MonoBehaviour
         for(int i=1; i<yVals.Count; i++) {
             counter++;
         }
-
+        //If video is less than 2 seconds, tempo tracker will not work
         if(counter < 32) {
             Debug.Log("counter: " + counter);
             ErrorPopUpPanel.SetActive(true);
@@ -405,8 +408,6 @@ public class WindowGraph : MonoBehaviour
                 }
                 prevDotGameObjConductor = dotGameObj;
 
-            
-                //graph height = x_size*.9f?
                 //graph width = xsize
 
                 //X axis separator
@@ -442,6 +443,7 @@ public class WindowGraph : MonoBehaviour
 
     }
 
+    //Creates a black or white point for the conductor or metronome line
     private GameObject createPoint(Vector2 anchoredPosition, int dotColor = 0) {
         GameObject gameObject = new GameObject("point", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);
@@ -464,7 +466,8 @@ public class WindowGraph : MonoBehaviour
 
         return gameObject;
     }
-
+    
+    //Connects each point to one another
     private void drawDotLine(Vector2 dot1, Vector2 dot2, Color c) {
         GameObject gameObject = new GameObject("dotLine", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);

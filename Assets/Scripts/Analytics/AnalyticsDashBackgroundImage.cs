@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This script makes sure the axis lines aren't visible in build mode
 public class AnalyticsDashBackgroundImage : MonoBehaviour
 {
     SpriteRenderer axisComponent;
