@@ -25,29 +25,27 @@ public class CameraController : MonoBehaviour
     // Moves the camera closer to the robot
     public void ZoomIn()
     {
-        radius = 1.25f;
-        cameraHeight = 1.5f;
+        //radius = 1.25f;
+        //cameraHeight = 1.5f;
 
         // Updates the camera's position
         // camera.transform.position = new Vector3(Mathf.Cos(angle) * radius, cameraHeight, Mathf.Sin(angle) * radius + 3);
         //camera.transform.position += new Vector3(0, 0, zoomSpeed);
-        //radius -= zoomSpeed;
-        
-        camera.transform.Translate(zoomSpeed * camera.transform.forward); 
+        radius -= zoomSpeed;
+        camera.transform.position += (zoomSpeed * camera.transform.forward); 
     }
 
     // Move the camera farther from the robot
     public void ZoomOut()
     {
-        radius = 3f;
-        cameraHeight = 1f;
+        //radius = 3f;
+        //cameraHeight = 1f;
 
         // Updates the camera's position
         //camera.transform.position = new Vector3(Mathf.Cos(angle) * radius, cameraHeight, Mathf.Sin(angle) * radius + 3);
         // camera.transform.position -= new Vector3(0, 0, zoomSpeed);
-        // radius += zoomSpeed;
-        
-        camera.transform.Translate(-zoomSpeed * camera.transform.forward); 
+        radius += zoomSpeed;
+        camera.transform.position += (-zoomSpeed * camera.transform.forward); 
     }
 
     // Rotates the camera and grid 45 degrees counter clockwise
