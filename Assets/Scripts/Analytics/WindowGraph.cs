@@ -8,7 +8,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UITtooltip.Utils;
-using UnityEngine.SceneManagement;
 
 public class WindowGraph : MonoBehaviour
 {
@@ -20,21 +19,20 @@ public class WindowGraph : MonoBehaviour
     //reference to X and Y axis lines
     private RectTransform DashXTemp;
     private RectTransform DashYTemp;
-
+    //reference to tooltip game object
     TooltipScript tooltipScript;
     [SerializeField] GameObject tooltip;
-
-   /* public GameObject metronome;
-    MetronomeStorage metronomeStorage;
-    BeatChecker beatChecker;
-*/
+    //reference to sprites used for points
     [SerializeField] private Sprite BlackDotSprite;
     [SerializeField] private Sprite WhiteDotSprite;
-
+    //reference to error pop up panel
     public GameObject ErrorPopUpPanel;
 
-    private static List<float> yVals = new List<float>();
-   
+    SpriteRenderer axisComponent;
+    GameObject axis;
+
+    private List<float> yVals = new List<float>();
+    
     private void Awake() {
        graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
        Xtemp = graphContainer.Find("Xtemp").GetComponent<RectTransform>();
@@ -43,14 +41,22 @@ public class WindowGraph : MonoBehaviour
        DashYTemp = graphContainer.Find("DashYTemp").GetComponent<RectTransform>();
        
        tooltipScript = GameObject.Find("Tooltip").GetComponent<TooltipScript>();
-       tooltipScript = tooltip.GetComponent<TooltipScript>(); 
+       tooltipScript = tooltip.GetComponent<TooltipScript>();
+
+       axis = GameObject.FindWithTag("Axis");
+       axisComponent = axis.GetComponent<SpriteRenderer>();
+       axisComponent.enabled = false; 
 
        displayGraph();
-       
+    }
+    //removes axis lines that show in build mode
+     void OnDestroy()
+    {
+        axisComponent.enabled = true;
     }
 
-
-    public static string GetTimeValues(int totalCount) {
+    //Gets the duration of the video using the frame count and creates labels for the x-axis
+    public string GetTimeValues(int totalCount) {
         int counter = 1;
         for(int i=1; i<yVals.Count; i++) {
             counter++;
@@ -73,7 +79,8 @@ public class WindowGraph : MonoBehaviour
        Debug.Log(timeString);
        return timeString; 
     }
-
+    
+    //Parses data.json to get the yVals
     private void ParseData(string s) {
         JSONNode n = JSON.Parse(s);
         n = n["frames"];
@@ -83,6 +90,8 @@ public class WindowGraph : MonoBehaviour
         }
     }
 
+    /*Calculates tempo by counting the downbeat every 2 seconds(32 frames because 15-16fps)
+    and multiply by 30 to get the BPM to store in the tempo list*/
     private List<int> tempoTracker() {
         int downbeat = 0;
         int counter = 1;
@@ -107,6 +116,7 @@ public class WindowGraph : MonoBehaviour
         return tempo;
     }
 
+    //Is called if user ticked the metronome in the recording scene
     void createMetronomeLine(List<int> tempo, float x_size, float yMax, float graphHeight, string[] arr, Func<float, string> findYAxisLabel = null) {
          GameObject prevDotGameObjMetronome = null;
          
@@ -149,9 +159,9 @@ public class WindowGraph : MonoBehaviour
         List<int> tempo = new List<int>();
         int counter = 1;
 
-        //store reference to prev game obj
-        GameObject prevDotGameObjConductor = null;
-
+       //store reference to prev game obj
+       GameObject prevDotGameObjConductor = null;
+       //Get data.json file from MainManager
        FileInfo fileInfo = new FileInfo(MainManager.Instance.dirPath);
        string inputData = fileInfo.DirectoryName;
        inputData = Path.Combine(inputData, "data.json");
@@ -163,7 +173,7 @@ public class WindowGraph : MonoBehaviour
         for(int i=1; i<yVals.Count; i++) {
             counter++;
         }
-
+        //If video is less than 2 seconds, tempo tracker will not work
         if(counter < 32) {
             Debug.Log("counter: " + counter);
             ErrorPopUpPanel.SetActive(true);
@@ -211,154 +221,154 @@ public class WindowGraph : MonoBehaviour
                 //if video is at 3 mins, the graph will go off screen
                 //shrink graph?
                 //a performance can be up to 20 minutes?
-                if(arr[arr.Length-1].Equals("3:05") || 
-                arr[arr.Length-1].Equals("3:10") ||
-                arr[arr.Length-1].Equals("3:15") ||
-                arr[arr.Length-1].Equals("3:20")) {
+                if(arr[arr.Length-1].Equals("3:02") || 
+                arr[arr.Length-1].Equals("3:04") ||
+                arr[arr.Length-1].Equals("3:08") ||
+                arr[arr.Length-1].Equals("3:10")) {
                         x_size -= 5f;
                     }
 
-                if(arr[arr.Length-1].Equals("3:25") ||
-                arr[arr.Length-1].Equals("3:30") ||
-                arr[arr.Length-1].Equals("3:35") ||
-                arr[arr.Length-1].Equals("3:40")) {
+                if(arr[arr.Length-1].Equals("3:12") ||
+                arr[arr.Length-1].Equals("3:14") ||
+                arr[arr.Length-1].Equals("3:16") ||
+                arr[arr.Length-1].Equals("3:18")) {
                         x_size -=10f;
                     }
 
-                if(arr[arr.Length-1].Equals("3:45") ||
-                arr[arr.Length-1].Equals("3:50") ||
-                arr[arr.Length-1].Equals("3:55") || 
-                arr[arr.Length-1].Equals("4:00")) {
+                if(arr[arr.Length-1].Equals("3:20") ||
+                arr[arr.Length-1].Equals("3:22") ||
+                arr[arr.Length-1].Equals("3:24") || 
+                arr[arr.Length-1].Equals("3:26")) {
                         x_size -= 15f;
                     }
                 
-                if(arr[arr.Length-1].Equals("4:05") || 
-                arr[arr.Length-1].Equals("4:10") || 
-                arr[arr.Length-1].Equals("4:15") ||
-                arr[arr.Length-1].Equals("4:20")) {
+                if(arr[arr.Length-1].Equals("3:28") || 
+                arr[arr.Length-1].Equals("3:30") || 
+                arr[arr.Length-1].Equals("3:32") ||
+                arr[arr.Length-1].Equals("3:34")) {
                         x_size -= 20f;
                     }
 
-                if(arr[arr.Length-1].Equals("4:25") ||
-                arr[arr.Length-1].Equals("4:30") ||
-                arr[arr.Length-1].Equals("4:35") ||
-                arr[arr.Length-1].Equals("4:40")) {
+                if(arr[arr.Length-1].Equals("3:36") ||
+                arr[arr.Length-1].Equals("3:38") ||
+                arr[arr.Length-1].Equals("3:40") ||
+                arr[arr.Length-1].Equals("3:42")) {
                     x_size -= 25f;
                 }
 
-                if(arr[arr.Length-1].Equals("4:45") ||
-                arr[arr.Length-1].Equals("4:50") ||
-                arr[arr.Length-1].Equals("4:55") ||
-                arr[arr.Length-1].Equals("5:00")) {
+                if(arr[arr.Length-1].Equals("3:44") ||
+                arr[arr.Length-1].Equals("3:46") ||
+                arr[arr.Length-1].Equals("3:48") ||
+                arr[arr.Length-1].Equals("3:50")) {
                     x_size -= 30f;
                 }
 
-                if(arr[arr.Length-1].Equals("5:05") ||
-                arr[arr.Length-1].Equals("5:10") ||
-                arr[arr.Length-1].Equals("5:15") ||
-                arr[arr.Length-1].Equals("5:20")) {
+                if(arr[arr.Length-1].Equals("3:52") ||
+                arr[arr.Length-1].Equals("3:54") ||
+                arr[arr.Length-1].Equals("3:56") ||
+                arr[arr.Length-1].Equals("3:58")) {
                     x_size -= 35f;
                 }
 
-                if(arr[arr.Length-1].Equals("5:25") ||
-                arr[arr.Length-1].Equals("5:30") ||
-                arr[arr.Length-1].Equals("5:35") ||
-                arr[arr.Length-1].Equals("5:40")) {
+                if(arr[arr.Length-1].Equals("4:00") ||
+                arr[arr.Length-1].Equals("4:02") ||
+                arr[arr.Length-1].Equals("4:04") ||
+                arr[arr.Length-1].Equals("4:06")) {
                     x_size -= 40f;
                 }
                 
-                if(arr[arr.Length-1].Equals("5:45") ||
-                arr[arr.Length-1].Equals("5:50") ||
-                arr[arr.Length-1].Equals("5:55") ||
-                arr[arr.Length-1].Equals("6:00")) {
+                if(arr[arr.Length-1].Equals("4:08") ||
+                arr[arr.Length-1].Equals("4:10") ||
+                arr[arr.Length-1].Equals("4:12") ||
+                arr[arr.Length-1].Equals("4:14")) {
                     x_size -= 45f;
                 }
                 
-                if(arr[arr.Length-1].Equals("6:05") ||
-                arr[arr.Length-1].Equals("6:10") ||
-                arr[arr.Length-1].Equals("6:15") ||
-                arr[arr.Length-1].Equals("6:20")) {
+                if(arr[arr.Length-1].Equals("4:16") ||
+                arr[arr.Length-1].Equals("4:18") ||
+                arr[arr.Length-1].Equals("4:20") ||
+                arr[arr.Length-1].Equals("4:22")) {
                     x_size -= 50f;
                 }
                 
-                if(arr[arr.Length-1].Equals("6:25") ||
-                arr[arr.Length-1].Equals("6:30") ||
-                arr[arr.Length-1].Equals("6:35") ||
-                arr[arr.Length-1].Equals("6:40")) {
+                if(arr[arr.Length-1].Equals("4:24") ||
+                arr[arr.Length-1].Equals("4:26") ||
+                arr[arr.Length-1].Equals("4:28") ||
+                arr[arr.Length-1].Equals("4:30")) {
                     x_size -= 55f;
                 }
                 
-                if(arr[arr.Length-1].Equals("6:45") ||
-                arr[arr.Length-1].Equals("6:50") ||
-                arr[arr.Length-1].Equals("6:55") ||
-                arr[arr.Length-1].Equals("7:00")) {
+                if(arr[arr.Length-1].Equals("4:32") ||
+                arr[arr.Length-1].Equals("4:34") ||
+                arr[arr.Length-1].Equals("4:36") ||
+                arr[arr.Length-1].Equals("4:38")) {
                     x_size -= 60f;
                 }
                 
-                if(arr[arr.Length-1].Equals("7:05") ||
-                arr[arr.Length-1].Equals("7:10") ||
-                arr[arr.Length-1].Equals("7:15") ||
-                arr[arr.Length-1].Equals("7:20")) {
+                if(arr[arr.Length-1].Equals("4:40") ||
+                arr[arr.Length-1].Equals("4:42") ||
+                arr[arr.Length-1].Equals("4:44") ||
+                arr[arr.Length-1].Equals("4:46")) {
                     x_size -= 65f;
                 }
                 
-                if(arr[arr.Length-1].Equals("7:25") ||
-                arr[arr.Length-1].Equals("7:30") ||
-                arr[arr.Length-1].Equals("7:35") ||
-                arr[arr.Length-1].Equals("7:40")) {
+                if(arr[arr.Length-1].Equals("4:48") ||
+                arr[arr.Length-1].Equals("4:50") ||
+                arr[arr.Length-1].Equals("4:52") ||
+                arr[arr.Length-1].Equals("4:54")) {
                     x_size -= 70f;
                 }
                 
-                if(arr[arr.Length-1].Equals("7:45") ||
-                arr[arr.Length-1].Equals("7:50") ||
-                arr[arr.Length-1].Equals("7:55") ||
-                arr[arr.Length-1].Equals("8:00")) {
+                if(arr[arr.Length-1].Equals("4:56") ||
+                arr[arr.Length-1].Equals("4:58") ||
+                arr[arr.Length-1].Equals("5:00") ||
+                arr[arr.Length-1].Equals("5:02")) {
                     x_size -= 75f;
                 }
                 
-                if(arr[arr.Length-1].Equals("8:05") ||
-                arr[arr.Length-1].Equals("8:10") ||
-                arr[arr.Length-1].Equals("8:15") ||
-                arr[arr.Length-1].Equals("8:20")) {
+                if(arr[arr.Length-1].Equals("5:04") ||
+                arr[arr.Length-1].Equals("5:06") ||
+                arr[arr.Length-1].Equals("5:08") ||
+                arr[arr.Length-1].Equals("5:10")) {
                     x_size -= 80f;
                 }
 
-                if(arr[arr.Length-1].Equals("8:25") ||
-                arr[arr.Length-1].Equals("8:30") ||
-                arr[arr.Length-1].Equals("8:35") ||
-                arr[arr.Length-1].Equals("8:40")) {
+                if(arr[arr.Length-1].Equals("5:12") ||
+                arr[arr.Length-1].Equals("5:14") ||
+                arr[arr.Length-1].Equals("5:16") ||
+                arr[arr.Length-1].Equals("5:18")) {
                     x_size -= 85f;
                 }
                 
-                if(arr[arr.Length-1].Equals("8:45") ||
-                arr[arr.Length-1].Equals("8:50") ||
-                arr[arr.Length-1].Equals("8:55") ||
-                arr[arr.Length-1].Equals("9:00")) {
+                if(arr[arr.Length-1].Equals("5:20") ||
+                arr[arr.Length-1].Equals("5:22") ||
+                arr[arr.Length-1].Equals("5:24") ||
+                arr[arr.Length-1].Equals("5:26")) {
                     x_size -= 90f;
                 }
                 
-                if(arr[arr.Length-1].Equals("9:05") ||
-                arr[arr.Length-1].Equals("9:10") ||
-                arr[arr.Length-1].Equals("9:15") ||
-                arr[arr.Length-1].Equals("9:20")) {
+                if(arr[arr.Length-1].Equals("5:28") ||
+                arr[arr.Length-1].Equals("5:30") ||
+                arr[arr.Length-1].Equals("5:32") ||
+                arr[arr.Length-1].Equals("5:34")) {
                     x_size -= 95f;
                 }
                 
-                if(arr[arr.Length-1].Equals("9:25") ||
-                arr[arr.Length-1].Equals("9:30") ||
-                arr[arr.Length-1].Equals("9:35") ||
-                arr[arr.Length-1].Equals("9:40")) {
+                if(arr[arr.Length-1].Equals("5:36") ||
+                arr[arr.Length-1].Equals("5:38") ||
+                arr[arr.Length-1].Equals("5:40") ||
+                arr[arr.Length-1].Equals("5:42")) {
                     x_size -= 100f;
                 }
                 
-                if(arr[arr.Length-1].Equals("9:45") ||
-                arr[arr.Length-1].Equals("9:50") ||
-                arr[arr.Length-1].Equals("9:55") ||
-                arr[arr.Length-1].Equals("10:00")) {
+                if(arr[arr.Length-1].Equals("5:44") ||
+                arr[arr.Length-1].Equals("5:48") ||
+                arr[arr.Length-1].Equals("5:50") ||
+                arr[arr.Length-1].Equals("5:52")) {
                     x_size -= 105f;
                 }
             
-            
+            //max was 10 mins
             }
 
             //Metronome line
@@ -398,8 +408,6 @@ public class WindowGraph : MonoBehaviour
                 }
                 prevDotGameObjConductor = dotGameObj;
 
-            
-                //graph height = x_size*.9f?
                 //graph width = xsize
 
                 //X axis separator
@@ -432,8 +440,10 @@ public class WindowGraph : MonoBehaviour
             
             }
        }
+
     }
 
+    //Creates a black or white point for the conductor or metronome line
     private GameObject createPoint(Vector2 anchoredPosition, int dotColor = 0) {
         GameObject gameObject = new GameObject("point", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);
@@ -456,7 +466,8 @@ public class WindowGraph : MonoBehaviour
 
         return gameObject;
     }
-
+    
+    //Connects each point to one another
     private void drawDotLine(Vector2 dot1, Vector2 dot2, Color c) {
         GameObject gameObject = new GameObject("dotLine", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);
