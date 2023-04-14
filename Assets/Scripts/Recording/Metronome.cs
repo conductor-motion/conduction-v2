@@ -26,7 +26,7 @@ public class Metronome : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Checks every frame if it is an on-beat frame
         if (beatChecker.getPlayBeat())
