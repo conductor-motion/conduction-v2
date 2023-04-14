@@ -54,6 +54,7 @@ public class TempoTrackerVideoManager : MonoBehaviour, IDragHandler, IPointerDow
         var frame = videoPlayer.frameCount * pct;
         videoPlayer.frame = (long)frame;
     } 
+    //Video scrubbing
     private void TrySkip(PointerEventData eventData)
     {
         Vector2 localPoint;
@@ -74,16 +75,18 @@ public class TempoTrackerVideoManager : MonoBehaviour, IDragHandler, IPointerDow
         if(videoPlayer != null)
             videoPlayer.Play();  
     }
-
-    void SetCurrentTimeUI() {
+    //To display current time
+    void SetCurrentTimeUI() 
+    {
         string mins = Mathf.Floor((int)videoPlayer.time / 60).ToString("00");
         string secs = ((int)videoPlayer.time % 60).ToString("00");
 
         currMins.text = mins;
         currSecs.text = secs;
     }
-
-    void SetTotalTimeUI() {
+    //To display the total time
+    void SetTotalTimeUI() 
+    {
         string mins = Mathf.Floor((int)videoPlayer.length / 60).ToString("00");
         string secs = ((int)videoPlayer.length % 60).ToString("00");
 

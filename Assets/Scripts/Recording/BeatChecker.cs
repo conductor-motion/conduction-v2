@@ -34,7 +34,7 @@ public class BeatChecker : MonoBehaviour
         if((metronome.GetTimeSigUp() % (metronome.GetTimeSigLow() / 4))!=0)
             Debug.Log(calculateExtraBeatSize());
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (beatCheck())
         {
