@@ -3,21 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
+//MainManager class holds all data that needs to be referenced across the app
 public class MainManager : MonoBehaviour
 {
     public static MainManager Instance;
 
+    //Path where video is/will be stored
     public string dirPath;
+
+    //Name of selected webcam
     public string webCamName = "";
 
+    //Information about metronome used for tempo tracking
     public GameObject metronome;
     MetronomeStorage metronomeStorage;
     BeatChecker beatChecker;
-
     public bool metronomePlay = false;
     public float tempoBeat;
 
+    //Mode the application is currently in
     public string mode = "Recording";
+
+    //Whether or not the current video is a new upload
     public bool newUpload = false;
 
     private void Awake()
@@ -31,12 +38,12 @@ public class MainManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         if (dirPath == "" || dirPath == null)
         {
+            //Set path to current datetime string, minus the seconds
             string dateString = System.DateTime.Now.ToString("s").Replace(":", "-");
-
             SetDirPath(dateString.Remove(dateString.Length - 3));
         }
 
-
+        //Set the metronome information, if it exists
         metronome = GameObject.Find("Metronome");
         if(metronome) {
             metronomeStorage = GetComponent<MetronomeStorage>();

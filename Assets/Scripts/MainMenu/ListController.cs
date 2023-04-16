@@ -24,7 +24,7 @@ public class ListController : MonoBehaviour
         LoadRecordings();
     }
 
-    // Loads a list of the animation files in the StreamableAssets folder and populates the recording list
+    // Loads a list of the video files in the Data folder and populates the recording list
     private void LoadFromFileSystem()
     {
         if (hasLoaded)

@@ -30,12 +30,11 @@ public class ReplayController : MonoBehaviour
     public GameObject recordingPrefab;
     public Text errorField;
 
-
-    // Controlling the return home prompt if we have unsaved data
     public SceneLoader sceneLoader;
 
     void Start()
     {
+        //Find selected video
         if (MainManager.Instance != null)
         {
             string dir = MainManager.Instance.dirPath;
@@ -57,39 +56,6 @@ public class ReplayController : MonoBehaviour
         // get initial position & rotation
         initialPos = transform.position;
         initialRot = transform.rotation;
-
-        // If this is not a new recording, the button should instead be to rename rather than resave
-        if (existingRecording)
-        {
-            btnClick.gameObject.GetComponentInChildren<Text>().text = "Rename Recording";
-            userInput.text = MainManager.Instance.dirPath;
-        }
-        else
-        {
-            // We should prompt the user if they try to leave as they have unsaved progress
-            sceneLoader.promptBeforeGo = true;
-        }
-
-        // If this is not an existing recording, we have to load the audio from the file system and build an audio clip
-        /*if (existingRecording)
-        {
-            try
-            {
-                audioSource.clip = LoadRecordingFile(recordedClip.name);
-            }
-            catch
-            {
-                Debug.Log("This is a legacy animation with no included audio to play.");
-            }
-        }
-        else
-        {
-            audioRecordingData = MocapRecorderOurs.finalRecording;
-            audioSource.clip = MocapRecorderOurs.recordedAudio;
-        }
-
-        audioSource.loop = true;
-        audioSource.Play();*/
 
     }
 }

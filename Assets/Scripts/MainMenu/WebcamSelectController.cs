@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+//Based on Unity dynamically generated UIDocument list tutorial
 public class WebcamSelectController : MonoBehaviour
 {
     // UXML template for list entries

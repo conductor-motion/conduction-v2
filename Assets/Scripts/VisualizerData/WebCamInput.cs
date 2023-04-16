@@ -4,6 +4,7 @@ using System.IO;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+//Based off of BlazePose
 public class WebCamInput : MonoBehaviour
 {
     [SerializeField] string webCamName;
@@ -26,8 +27,10 @@ public class WebCamInput : MonoBehaviour
 
     void Start()
     {
+        //If there is no video provided
         if (staticInput == null)
         {
+            //grab webcam name selected in main menu
             webCamName = MainManager.Instance.webCamName; 
             webCamTexture = new WebCamTexture(webCamName, (int)webCamResolution.x, (int)webCamResolution.y);
             webCamTexture.Play();
@@ -57,6 +60,7 @@ public class WebCamInput : MonoBehaviour
 
     }
 
+    //Change volume of video
     public void OnValueChanged(float value)
     {
         UnityEngine.Video.VideoPlayer videoPlayer = GetComponent<UnityEngine.Video.VideoPlayer>();

@@ -349,17 +349,8 @@
     <Reference Include="Google.Protobuf">
       <HintPath>Library/PackageCache/com.unity.barracuda@2.0.0/Barracuda/Runtime/Plugins/ProtoBuffer/Google.Protobuf.dll</HintPath>
     </Reference>
-    <Reference Include="LZ4Sharp">
-      <HintPath>Assets/K2Examples/KinectScripts/LZ4Sharp/LZ4Sharp.dll</HintPath>
-    </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library/PackageCache/com.unity.collab-proxy@2.0.0/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
-    </Reference>
-    <Reference Include="Kinect2UnityWrapper">
-      <HintPath>Assets/K2Examples/Plugins/Kinect2UnityWrapper.dll</HintPath>
-    </Reference>
-    <Reference Include="nuitrack.net">
-      <HintPath>Assets/K2Examples/KinectScripts/Interfaces/Nuitrack/nuitrack.net.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Pdb">
       <HintPath>Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll</HintPath>

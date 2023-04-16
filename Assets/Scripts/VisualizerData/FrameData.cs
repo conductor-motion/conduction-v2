@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Class to hold data fo each frame
 [System.Serializable]
 public class FrameData
 {
