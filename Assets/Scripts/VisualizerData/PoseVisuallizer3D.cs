@@ -32,9 +32,10 @@ public class PoseVisuallizer3D : MonoBehaviour
 
     Transform objToPickUp;
 
+    // Hooked up to avatar upper arms
     public Transform leftBicep;
     public Transform rightBicep;
-
+    // Hooked up to avatar lower arms
     public Transform leftForearm;
     public Transform rightForearm;
 
@@ -108,6 +109,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         Vector3 temp = new Vector3();
         Vector3 offset = new Vector3();
 
+        // The following code moves the farms on the avatar with angle relative to blazepose landmarks.
         // Right bicep
         temp = detecter.GetPoseWorldLandmark(14) -
                detecter.GetPoseWorldLandmark(12);
@@ -127,81 +129,6 @@ public class PoseVisuallizer3D : MonoBehaviour
         temp = detecter.GetPoseWorldLandmark(15) - 
                detecter.GetPoseWorldLandmark(13);
         leftForearm.rotation = Quaternion.LookRotation(temp) * Quaternion.Euler(Vector3.right * 90);
-        
-        // // Spine
-        // temp = ((detecter.GetPoseWorldLandmark(12) + 
-        //        detecter.GetPoseWorldLandmark(11))/2);
-        // spine.rotation = Quaternion.LookRotation(temp) * Quaternion.Euler(Vector3.right * 90);
-        
-        // Almost works
-        // Head
-        // temp = ((detecter.GetPoseWorldLandmark(5) + 
-        //                 detecter.GetPoseWorldLandmark(2))/2) -
-        //        ((detecter.GetPoseWorldLandmark(12) + 
-        //                detecter.GetPoseWorldLandmark(11))/2);
-        //         
-        //          head.rotation = Quaternion.LookRotation(temp) * Quaternion.Euler(Vector3.right * 90) * Quaternion.Euler(Vector3.up * 10) * Quaternion.Euler(Vector3.forward * 45);
-        //
-
-        // Needs more testing
-        // Head
-        // temp = detecter.GetPoseWorldLandmark(5)
-        //        - detecter.GetPoseWorldLandmark(2);
-        // head.rotation = Quaternion.LookRotation(temp) * Quaternion.Euler(Vector3.up * -90);
-        
-        
-        
-        
-        // temp.x = detecter.GetPoseWorldLandmark(14).x;
-        // temp.y = detecter.GetPoseWorldLandmark(14).y;
-        // temp.z = detecter.GetPoseWorldLandmark(14).z;
-        // leftElbowTarget.position = temp;
-        //
-        //
-        // temp.x = detecter.GetPoseWorldLandmark(13).x;
-        // temp.y = detecter.GetPoseWorldLandmark(13).y;
-        // temp.z = detecter.GetPoseWorldLandmark(13).z;
-        // rightElbowTarget.position = temp;
-
-        // Vector3 leftIndex;
-        // Vector3 leftPinky;
-        // Vector3 leftThumb;
-        //
-        // leftIndex = detecter.GetPoseWorldLandmark(20);
-        // leftPinky = detecter.GetPoseWorldLandmark(18);
-        // leftThumb = detecter.GetPoseWorldLandmark(16);
-        //
-        // Vector3 leftNormal = Vector3.Cross(leftPinky - leftIndex, leftThumb - leftIndex);
-        //
-        // leftHandTarget.rotation = Quaternion.LookRotation(leftNormal);
-        //
-        // Vector3 rightIndex;
-        // Vector3 rightPinky;
-        // Vector3 rightThumb;
-        //
-        // rightIndex = detecter.GetPoseWorldLandmark(19);
-        // rightPinky = detecter.GetPoseWorldLandmark(17);
-        // rightThumb = detecter.GetPoseWorldLandmark(21);
-        //
-        // Vector3 rightNormal = Vector3.Cross(rightPinky - rightIndex, rightThumb - rightIndex);
-        //
-        // rightHandTarget.rotation = Quaternion.LookRotation(rightNormal);
-        //
-        // temp.x = detecter.GetPoseWorldLandmark(0).x;
-        // temp.y = detecter.GetPoseWorldLandmark(0).y;
-        // temp.z = 0;
-        // headTarget.position = temp;
-        //
-        // // temp.x = detecter.GetPoseWorldLandmark(11).x;
-        // // temp.y = detecter.GetPoseWorldLandmark(11).y;
-        // // temp.z = detecter.GetPoseWorldLandmark(11).z;
-        // // rightShoulderTarget.position = temp;
-        // //
-        // // temp.x = detecter.GetPoseWorldLandmark(12).x;
-        // // temp.y = detecter.GetPoseWorldLandmark(12).y;
-        // // temp.z = detecter.GetPoseWorldLandmark(12).z;
-        // // leftShoulderTarget.position = temp;
-        //
     }
 
     void OnRenderObject()
@@ -277,7 +204,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         writer = new StreamWriter(filePath, true);
         writer.AutoFlush = true; //Make sure all data is dumped from streamWriter before changing scenes
     }
-
+    // Toggles BlazePose lines on and off.
     public void ToggleLines()
     {
         showLines = !showLines;
