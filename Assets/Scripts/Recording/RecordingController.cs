@@ -6,7 +6,6 @@ using System.IO;
 using Evereal.VideoCapture;
 using System;
 using TMPro;
-//using UnityEditor.MemoryProfiler;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
@@ -50,12 +49,12 @@ public class RecordingController : MonoBehaviour
     private GameObject MetronomeUI;
     private GameObject AxisInstructionsUI;
 
-    // Popup Elementst
+    // Popup Elements
     private bool displayPopup = false;
     private UIDocument loadingPopup;
 
 
-    // recording parameters
+    //Recording parameters
     [HideInInspector]
     public static bool isRecording = false;
     private bool isCountingDown = false;
@@ -79,9 +78,8 @@ public class RecordingController : MonoBehaviour
         loadingPopup = FindObjectOfType<UIDocument>();
 
         videoCapture.inputTexture = (RenderTexture)webCamInput.inputImageTexture;
-        videoCapture.inputTexture.format = RenderTextureFormat.ARGB32;
+        videoCapture.inputTexture.format = RenderTextureFormat.ARGB32; //If not this format, video will be blue on Mac
         videoCapture.saveFolder = "Data/" + MainManager.Instance.dirPath.Substring(MainManager.Instance.dirPath.LastIndexOf("/") + 1);
-        print("save folder " + videoCapture.saveFolder);
 
         // Instantiate sprites for icon swapping
         isRec = Sprite.Create(recordingTexture, new Rect(0.0f, 0.0f, recordingTexture.width, recordingTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
@@ -122,7 +120,6 @@ public class RecordingController : MonoBehaviour
 
         if (isRecording)
         {
-            // record the current pose
             recordTime += Time.deltaTime;
 
             if (infoText & ((int)(recordTime * 10f) % 10) == 0)
@@ -237,19 +234,22 @@ public class RecordingController : MonoBehaviour
             _metronome.stopMetronome();
             videoCapture.StopCapture();
             StartCoroutine(SwapIcon());
-            displayPopup = true;
-            videoCapture.OnComplete += HandleSceneChange;
+            displayPopup = true; //Loading popup after recording stops until done processing
+            videoCapture.OnComplete += HandleSceneChange; //When processing is finished, move to playback
         }
     }
 
     private void HandleSceneChange(object sender, CaptureCompleteEventArgs args)
     {
+        //Make sure to save to our landing page list
         GameObject rec = Instantiate(recordingPrefab);
         DontDestroyOnLoad(rec);
         string fileName = MainManager.Instance.dirPath.Substring(MainManager.Instance.dirPath.LastIndexOf("/") + 1);
         rec.GetComponent<Recording>().text.text = fileName.Substring(0, fileName.Length - 4);
         rec.GetComponent<Recording>().fullDir = MainManager.Instance.dirPath;
         ListController.savedList.Insert(0, rec);
+
+        //Move to viewing page
         SceneManager.LoadScene("ViewingPage");
     }
 }

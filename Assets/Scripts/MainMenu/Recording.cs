@@ -6,22 +6,25 @@ using UnityEngine.UI;
 using System.IO;
 
 // Recording storage data structure
-// Does not include audio - that is loaded on-demand to avoid large memory usage
 public class Recording : MonoBehaviour
 {
     public string fullDir; 
     public Text text;
     public ListController listController;
 
-    // When open button clicked, open the selected animation
+    // When open button clicked, open the selected video
     public void open()
     {
         // Shift this item to the front of the saved list so that it is the most recently accessed
         GameObject newest = ListController.savedList.Find(item => item.GetComponent<Recording>().text.text == text.text);
         ListController.savedList.Remove(newest);
         ListController.savedList.Insert(0, newest);
+
+        //Add information to main manager
         MainManager.Instance.SetDirPath(fullDir);
         MainManager.Instance.setNewUpload(false);
+
+        //Load selected video into viewing page
         SceneManager.LoadScene("ViewingPage");
     }
     

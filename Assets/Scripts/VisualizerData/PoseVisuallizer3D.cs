@@ -4,13 +4,12 @@ using UnityEngine.UI;
 using Mediapipe.BlazePose;
 using System.IO;
 using System.Collections;
-using Google.Protobuf;
 using UnityEngine.SceneManagement;
 using System.Xml.Linq;
 using UnityEngine.UIElements;
-using Google.Protobuf.WellKnownTypes;
 using UnityEngine.Video;
 
+//Based on blazepose
 public class PoseVisuallizer3D : MonoBehaviour
 {
     [SerializeField] Camera mainCamera;
@@ -64,6 +63,7 @@ public class PoseVisuallizer3D : MonoBehaviour
         material = new Material(shader);
         detecter = new BlazePoseDetecter();
 
+        //Only create a data file if a new recording or new upload
         if (SceneManager.GetActiveScene().name == "RecordingPage" || MainManager.Instance.newUpload == true)
             CreateDataFile();
         mainCamera = Camera.main;
@@ -93,7 +93,7 @@ public class PoseVisuallizer3D : MonoBehaviour
             33 index data is the score whether human pose is visible ([0, 1]).
             This data is (score, 0, 0, 0).
             */
-            //Debug.LogFormat("{0}: {1}", i, detecter.GetPoseWorldLandmark(i));
+            //Add the data to a class to be later transformed into json for analytics
             if (((RecordingController.isRecording && SceneManager.GetActiveScene().name == "RecordingPage") || MainManager.Instance.newUpload == true) && (i == 15 || i == 16))
             {
                 frame.data.Add(new HandMovementData(i, detecter.GetPoseWorldLandmark(i).x, detecter.GetPoseWorldLandmark(i).y, detecter.GetPoseWorldLandmark(i).z, detecter.GetPoseWorldLandmark(i).w));
@@ -228,14 +228,16 @@ public class PoseVisuallizer3D : MonoBehaviour
     
     void OnDestroy()
     {
-
         detecter.Dispose();
         if (SceneManager.GetActiveScene().name == "RecordingPage" || MainManager.Instance.newUpload == true)
         {
+            //Write json file
             string json = JsonUtility.ToJson(frames, true);
             writer.Write(json);
             MainManager.Instance.setNewUpload(false);
             writer.Close();
+
+            //If no frames were recorded, delete the json file
             if (frames.length() == 0)
             {
                 File.Delete(filePath);
@@ -248,7 +250,8 @@ public class PoseVisuallizer3D : MonoBehaviour
         }
     }
     void CreateDataFile()
-    {   
+    {
+        //To avoid recursively burying the file if there's already a directory saved in the main manager rather than the datetime string
         if (!MainManager.Instance.newUpload && MainManager.Instance.dirPath.Length <= 16)
         {
             dirPath = Directory.GetCurrentDirectory() + "/Data/" + MainManager.Instance.dirPath;
@@ -261,19 +264,23 @@ public class PoseVisuallizer3D : MonoBehaviour
         if (!Directory.Exists(dirPath))
         {
             Directory.CreateDirectory(dirPath);
-        } else if (!MainManager.Instance.newUpload)
+
+        }
+        //If there are two videos recorded within a minute
+        //No handling for more than two videos because that is extremely unlikely
+        else if (!MainManager.Instance.newUpload) 
         {
             dirPath += "-2";
             Directory.CreateDirectory(dirPath);
         }
         filePath = dirPath + "/data.json";
         writer = new StreamWriter(filePath, true);
-        writer.AutoFlush = true;
+        writer.AutoFlush = true; //Make sure all data is dumped from streamWriter before changing scenes
     }
 
     public void ToggleLines()
     {
-        showLines= !showLines;
+        showLines = !showLines;
     }
 
 }

@@ -8,8 +8,10 @@ using static UnityEngine.ParticleSystem;
 
 public class MediaControls : MonoBehaviour
 {
+    //Thumbnail of video
     public VideoPlayer videoPlayer;
 
+    //Playback contols
     private GameObject playButton;
     private UnityEngine.UI.Slider speedController = null;
     private GameObject timeline = null;
@@ -17,17 +19,15 @@ public class MediaControls : MonoBehaviour
     private float lastSpeed = 1f;
     private GameObject timelineBar;
     private GameObject playhead;
-
     private float pauseTime;
     private bool resumeTrailCoroutineRunning = false;
-
     private float normalizedTime; 
     private float vidSpeed = 1f;
     private bool isRewind = false;
     private bool doLoop = true;
     private bool isPlaying = true;
 
-    // Audio controls involved when controlling the animation
+    // Audio controls
     private bool isMuted = false;
     private UnityEngine.UI.Slider volumeController = null;
     private UnityEngine.UI.Text volumeLabel = null;
@@ -302,7 +302,6 @@ public class MediaControls : MonoBehaviour
     {
         for (int index = 0; index < eventSystemRaycastResults.Count; index++)
         {
-            print("testing for hover");
             RaycastResult curRaycastResult = eventSystemRaycastResults[index];
             if (curRaycastResult.gameObject.name == "Bar")
                 return true;

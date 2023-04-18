@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Class to hold data needed for analytics in json format
 [System.Serializable]
 public class HandMovementData
 {
