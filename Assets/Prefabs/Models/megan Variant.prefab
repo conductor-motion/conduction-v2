@@ -403,34 +403,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9130266117543245978, guid: e43eb6b4cfe19478c828ab23b3e54f31, type: 3}
   m_PrefabInstance: {fileID: 6428594857182520241}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2890501901617276070 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8154845593239897879, guid: e43eb6b4cfe19478c828ab23b3e54f31, type: 3}
-  m_PrefabInstance: {fileID: 6428594857182520241}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1277052550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2890501901617276070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522197604370344bdb831b90b8f3490b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  webCamInput: {fileID: 0}
-  inputImageUI: {fileID: 0}
-  shader: {fileID: 0}
-  humanExistThreshold: 0.5
-  showLines: 1
-  videoPlayer: {fileID: 0}
-  leftBicep: {fileID: 0}
-  rightBicep: {fileID: 0}
-  leftForearm: {fileID: 0}
-  rightForearm: {fileID: 0}
 --- !u!4 &3034924912540856131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -925264500964242190, guid: e43eb6b4cfe19478c828ab23b3e54f31, type: 3}
@@ -553,8 +525,6 @@ MonoBehaviour:
   inputImageUI: {fileID: 0}
   shader: {fileID: 4800000, guid: b643afb13b83a4048a9772002eaeb573, type: 3}
   humanExistThreshold: 0.5
-  showLines: 1
-  videoPlayer: {fileID: 0}
   leftBicep: {fileID: 180708328999450389}
   rightBicep: {fileID: 3061531141569379188}
   leftForearm: {fileID: 1494556655586052813}

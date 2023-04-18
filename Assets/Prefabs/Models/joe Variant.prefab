@@ -515,8 +515,6 @@ MonoBehaviour:
   inputImageUI: {fileID: 0}
   shader: {fileID: 4800000, guid: b643afb13b83a4048a9772002eaeb573, type: 3}
   humanExistThreshold: 0.5
-  showLines: 1
-  videoPlayer: {fileID: 0}
   leftBicep: {fileID: 550742870138965700}
   rightBicep: {fileID: 3827036192092607948}
   leftForearm: {fileID: 4480903046753711484}
@@ -605,31 +603,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2253759866023315375, guid: 36b3ab612b40e4db79e9036c1468a188, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.01943449
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2253759866023315375, guid: 36b3ab612b40e4db79e9036c1468a188, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.20796242
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2253759866023315375, guid: 36b3ab612b40e4db79e9036c1468a188, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0035169823
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2253759866023315375, guid: 36b3ab612b40e4db79e9036c1468a188, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9977156
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2253759866023315375, guid: 36b3ab612b40e4db79e9036c1468a188, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0061699194
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2253759866023315375, guid: 36b3ab612b40e4db79e9036c1468a188, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.048206747
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2253759866023315375, guid: 36b3ab612b40e4db79e9036c1468a188, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.04692137
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2253759866023315375, guid: 36b3ab612b40e4db79e9036c1468a188, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
