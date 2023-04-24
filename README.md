@@ -27,7 +27,6 @@ Conduction was originally developed for the Spring and Summer 2022 semesters for
 * `/Assets` : All of the assets (objects, prefabs, scripts, etc.) used in the creation of Conduction
 * `/Assets/Audio` : Sounds for the metronome
 * `/Assets/Evereal` : The Evereal Video Capture library, used for video recording evaluations
-* `/Assets/K2Examples` : The Kinect v2 Examples package, which contain many demos for showing how to control and use the Kinect V2.
 * `/Assets/Prefabs` : Unity prefabs
 * `/Assets/Resources` : Icons used for UI elements
 * `/Assets/Scenes` : Unity scenes
@@ -38,10 +37,10 @@ Conduction was originally developed for the Spring and Summer 2022 semesters for
 * `/Assets/Trails` : TrailRenderer configuration for hand trails
 
 ### Specific Scripts
-#### `Analytics/scriptnamehere.cs`
+#### `Analytics/scriptnamehere`
 description
 
-#### `Avatars/scriptnamehere.cs`
+#### `Avatars/scriptnamehere`
 description
 
 #### `CameraController`
@@ -50,8 +49,8 @@ This script controls the camera on the viewing page, allowing for rotation of th
 #### `ErrorAnalytics`
 This script handles calculating and displaying hand distance analytics during playback.
 
-#### `MainMenu/scriptnamehere.cs`
-description
+#### `MainMenu/FileManager`
+This script controls the File Browser on the landing page.
 
 #### `MainMenu/FullScreenController`
 This script handles the capability of enabling and disabling fullscreen mode at runtime while ensuring that no UI scaling occurs at the same time.
@@ -59,23 +58,29 @@ This script handles the capability of enabling and disabling fullscreen mode at 
 #### `MainMenu/ListController`
 This script handles the list of recordings currently loaded into memory, and initailizes the list at program launch with recordings stored in the `StreamingAssets` folder.
 
+#### `MainMenu/ListEntryController`
+This script conrtols webcam entries listed in webcam select menu
+
 #### `MainMenu/Recording`
 This script contains a data structure for storing recordings and displaying them with the `ListController`.
 
+#### `MainMenu/WebCamData`
+This script is a class to hold data needed for webcam select menu
 
-#### `MultiScene/scriptnamehere.cs`
-description'
+#### `MainMenu/WebcamSelectController`
+This script controls the webcam select menu as a whole
 
 #### `MultiScene/FPSCap`
 This script ensures that at vital parts of the application when recording the FPS of the application matches an expected FPS, such that the recording comes out as expected and not faster or slower.
+
+#### `MultiScene/MainManager`
+This script holds all data that needs to be referenced across the app
 
 #### `MultiScene/SceneLoader`
 An extension of the SceneManager built into Unity that allows for a prompt to be shown on the screen if configured to do so.
 
 #### `Multiscene/TrailController`
 This script controls the length of the hand trails based on slider information.
-
-
 
 #### `Playback/BezierManager`
 This script handles converting points given by the MarkupManager into a set of points representing a bezier curve. It gives these points back to the MarkupManager which draws them, as bezier curves are able to better represent smooth lines than ones own mouse movement may.
@@ -95,9 +100,11 @@ This script handles all media control actions on the viewing page, such as volum
 #### `Playback/MicrophoneRecorder`
 A simple microphone recorder used for evaluation purposes during video recording.
 
+#### `Playback/ReplayController`
+This script controls the Playback scene, including loading in the video from the directory listed in the MainManager
+
 #### `Playback/SizeSelectorController`
 Part of markup. This script controls the size of the markup lines based on a slider present on the viewing page.
-
 
 #### `Recording/AxisController`
 This script handles the visibility and movability of the axis lines present on the recording and viewing pages. It ensures that the configuration is consistent in the same session so the lines do not have to be repeatedly moved.
@@ -114,12 +121,26 @@ This script handles the metronome on the recording page. It allows the user to p
 #### `Recording/MetronomeStorage`
 Part of the metronome. This script contains a data structure for the metronome to more easily store configurations.
 
+#### `Recording/RecordingController`
+This script controls the Recording scene, including using Evereal to record the webcam video and starting and stopping recording. 
+
 #### `Recording/TempoSlider`
 Part of the metronome. This controls the tempo used by the metronome and is highly configurable.
 
-#### `VisualizerData/scriptnamehere.cs`
-description
+#### `VisualizerData/FrameData`
+This script is a class to hold data fo each frame.
 
+#### `VisualizerData/Frames`
+This script is a class to hold data for all frames recorded.
+
+#### `VisualizerData/HandMovementData`
+This script is a class to hold hand data needed for analytics in json format.
+
+#### `VisualizerData/PoseVisualizer3D`
+This script was based off of the BlazePose package we utilized. It transforms the video input to data points and saves it to the associated data.json file
+
+#### `VisualizerData/WebCamInput`
+This script was based off of the BlazePose package we utilized. It puts the either the webcam feed or an uploaded video into a thumbnail on the screen.
 
 
 ## Functionality Based on Specs Given by Sponsor
@@ -135,21 +156,25 @@ description
     * These are extremely basic and are just used to measure deviation. For instance, in some types of conducting if the hands are not equidistant, this could be improper form.
 - [x] Rotate playback in 360 degrees
 - [x] Background audio recording so the user has context in recordings
-- [ ] Cross platform compatibility
-    * Mac and Linux compatibility are not built in, as they require manual installation of drivers not packaged with Conduction
+- [x] Cross platform compatibility
 - [ ] Track baton conducting
-    * There exists a challenge in using the Kinect to recognize something that is not a part of a human being
-- [ ] Applicability in live environments
-    * The program at its core is designed as a tool for a waterfall approach to improving recording. A redesign would be necessary to enable this.
+- [x] Applicability in live environments
+- [x] Upload pre-recorded videos
+- [x] Use any webcam, built-in or external
 
 ## Known Bugs
-* Sometimes the video recorder will record a blank screen. The temporary fix has been to restart the application. This occurs with a low occurrence rate.
-* Modern Windows laptops that use Microphone Arrays are incompatible with audio recording, as Unity still does not support Microphone Arrays.
-    * A fix is to somehow get that device to have a non-"Microphone Array" mic available for the program to select
-* Some builds do not have a metronome present on the Recording page. This appears to be a Unity bug and is fixed by rebuilding the application.
+*
 
 ## V1 Members
 Vijay Stroup, Connor Cabrera, Jordan McMillan, Michael Sedlack, Damian Portela
 
-### V2 Ideas
-https://github.com/conductor-motion/conduction/wiki/V2-Ideas
+## V2 Members
+Alexandra Brown, Allison Emokpae, Gabriel De David, Jonathan Haldas, Noah Frank, Rafael Sanchez
+
+### V3 Ideas
+Integrated grading feature
+- Different users for different students
+- Instructor can track student progress over time
+- Student view with performance history
+- Website so data and feedback can be viewed from anywhere
+
