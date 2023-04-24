@@ -40,8 +40,14 @@ Conduction was originally developed for the Spring and Summer 2022 semesters for
 #### `Analytics/scriptnamehere`
 description
 
-#### `Avatars/scriptnamehere`
-description
+#### `Avatars/CharacterSelection`
+This script holds the avatar models and keeps track of which avatar the user is currently hovered over in the CharacterSelection Scene.
+
+#### `LoadAvatar1`
+This script instantiates a prefab with the user selected avatar on scene startup.
+
+#### `PoseVisualizer3D`
+This script uses camera input to estimate landmarks of a user. Landmark indices can be seen here: https://github.com/google/mediapipe/blob/master/docs/solutions/pose.md.  These landmarks are then used to angle the limbs on the attached character to mirror the user's input.
 
 #### `CameraController`
 This script controls the camera on the viewing page, allowing for rotation of the camera as well as zooming in and out so focus can be given to the hands.
