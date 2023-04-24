@@ -37,8 +37,26 @@ Conduction was originally developed for the Spring and Summer 2022 semesters for
 * `/Assets/Trails` : TrailRenderer configuration for hand trails
 
 ### Specific Scripts
-#### `Analytics/scriptnamehere`
-description
+#### Analytics/AnalyticsDashBackgroundImage
+This script ensures that the analytics dashboard scene is rendered properly on all platform screens.
+
+#### Analytics/TempoTrackerPanelOpener
+This script is used to toggle a panel to display an error message on the tempo tracker scene if the recording is too short.
+
+#### Analytics/TempoTrackerVideoManager
+This script is used to display the playback video on the tempo tracker scene along with video controls such as play, pause, and forward.
+
+#### Analytics/TempoTrackerVideoPanelOpener
+This script is used to toggle the panel to display the playback video on the tempo tracker scene.
+
+#### Analytics/TooltipScript
+This script is used to display or hide tooltips used in the tempo tracker scene.
+
+#### Analytics/TooltipUI
+This script is for the tooltip feature used in the tempo tracker scene.
+
+#### Analytics/WindowGraph
+This script creates the tempo tracker.
 
 #### `Avatars/CharacterSelection`
 This script holds the avatar models and keeps track of which avatar the user is currently hovered over in the CharacterSelection Scene.
