@@ -4,7 +4,7 @@ Conduction is an application that gives some objective measurements to conductor
 It was developed using Unity.
 
 ## Development
-Conduction was originally developed for the Spring and Summer 2022 semesters for UCF's CS Senior Design course. The project sponsor was Dr. Scott Lubaroff, Director of Bands at UCF.
+Conduction was originally developed for the Spring and Summer 2022 semesters for UCF's CS Senior Design course, and continued with another group for the Fall 2022 and Spring 2023 semesters. The project sponsor was Dr. Scott Lubaroff, Director of Bands at UCF.
 
 ## Usage
 1. Download a release or compile a build appropriate for your platform using the Unity Editor.
@@ -21,7 +21,8 @@ Conduction was originally developed for the Spring and Summer 2022 semesters for
 
 ### Repository Structure
 * `/` : The root of the Unity project. Contains configuration files and DLLs used for interacting with the System and Kinect V2. 
-* `/NuiDatabase`, `/OpenNI2`, `/vgbtechs` : Configurations and libraries for interfacing with the Kinect and processing data from it.
+* `/Data` : Recorded videos and associated data separated into folders by date and time
+* `/Captures` : Screen-recorded videos of feedback given in the Playback Screen
 * `/ProjectSettings` : Unity project settings, which cover everything from editor settings to build settings
 * `/Assets` : All of the assets (objects, prefabs, scripts, etc.) used in the creation of Conduction
 * `/Assets/Audio` : Sounds for the metronome
@@ -37,90 +38,89 @@ Conduction was originally developed for the Spring and Summer 2022 semesters for
 * `/Assets/Trails` : TrailRenderer configuration for hand trails
 
 ### Specific Scripts
-#### `AnimationLoader`
-This script handles loading an animation into memory from the file system by reading the file specified and deserializing it into its Unity object (AnimationClip). The current method of serialization is the BinaryFormatter, which is unideal for space and efficiency purposes. Protobuf would be a good alternative, but requires a great deal of set up in serializing an object.
+#### `Analytics/scriptnamehere.cs`
+description
 
-#### `AxisController`
-This script handles the visibility and movability of the axis lines present on the recording and viewing pages. It ensures that the configuration is consistent in the same session so the lines do not have to be repeatedly moved.
-
-#### `BeatChecker`
-Part of the metronome. It does the counts based on time to ensure that beats play at the correct time, even for irregular time signatures.
-
-#### `BezierManager`
-This script handles converting points given by the MarkupManager into a set of points representing a bezier curve. It gives these points back to the MarkupManager which draws them, as bezier curves are able to better represent smooth lines than ones own mouse movement may.
+#### `Avatars/scriptnamehere.cs`
+description
 
 #### `CameraController`
 This script controls the camera on the viewing page, allowing for rotation of the camera as well as zooming in and out so focus can be given to the hands.
 
-#### `CaptureController`
-This script handles the set of buttons on the viewing page that give the user control over video capture for evaluation. It calls functions that begin, stop, and cancel recordings in Evereal's video capture.
-
-#### `ColorSelectorController`
-This script handles rendering and giving functionality to the color selection wheel used for markup. When the circle is clicked on, the current pixel color is sampled and used to set the color used by the MarkupManager.
-
-#### `DragModulePerspective`
-Part of the axis lines. This script allows for generic moving of non-UI objects to the mouse cursor. It is configured only for moving the axis lines.
-
 #### `ErrorAnalytics`
 This script handles calculating and displaying hand distance analytics during playback.
 
-#### `FPSCap`
-This script ensures that at vital parts of the application when recording the FPS of the application matches an expected FPS, such that the recording comes out as expected and not faster or slower.
+#### `MainMenu/scriptnamehere.cs`
+description
 
-#### `FullScreenController`
+#### `MainMenu/FullScreenController`
 This script handles the capability of enabling and disabling fullscreen mode at runtime while ensuring that no UI scaling occurs at the same time.
 
-#### `ListController`
+#### `MainMenu/ListController`
 This script handles the list of recordings currently loaded into memory, and initailizes the list at program launch with recordings stored in the `StreamingAssets` folder.
 
-#### `MarkupManager`
-This script handles all markup functionality, enabling the ability of the user to draw on a canvas drawn over the avatar on the viewing page.
-
-#### `MediaControls`
-This script handles all media control actions on the viewing page, such as volume, playback speed, direction of playback, play/pause, and the usage of the timeline for scrubbing.
-
-#### `Metronome`
-This script handles the metronome on the recording page. It allows the user to play a sound at specified intervals to aid them in keeping time.
-
-#### `MetronomeStorage`
-Part of the metronome. This script contains a data structure for the metronome to more easily store configurations.
-
-#### `MicrophoneRecorder`
-A simple microphone recorder used for evaluation purposes during video recording.
-
-#### `MocapPlayerOurs`
-This script handles beginning playback of a selected AnimationClip once the viewing screen has been loaded. Additionally, it also handles the saving of the audio and animation data if the user desires.
-Suffixed with "ours" as it is a complete rewrite of a script based on a demo in K2Examples for legacy animations.
-
-#### `MocapRecorderOurs`
-This script handles converting motion information into a legacy AnimationClip based on an avatar provided. This does not interact with the Kinect, it simply reads the motion of the avatar that is mapped to the Kinect by another script.
-
-#### `Recording`
+#### `MainMenu/Recording`
 This script contains a data structure for storing recordings and displaying them with the `ListController`.
 
-#### `SceneLoader`
+
+#### `MultiScene/scriptnamehere.cs`
+description'
+
+#### `MultiScene/FPSCap`
+This script ensures that at vital parts of the application when recording the FPS of the application matches an expected FPS, such that the recording comes out as expected and not faster or slower.
+
+#### `MultiScene/SceneLoader`
 An extension of the SceneManager built into Unity that allows for a prompt to be shown on the screen if configured to do so.
 
-#### `SizeSelectorController`
-Part of markup. This script controls the size of the markup lines based on a slider present on the viewing page.
-
-#### `TempoSlider`
-Part of the metronome. This controls the tempo used by the metronome and is highly configurable.
-
-#### `TrailController`
+#### `Multiscene/TrailController`
 This script controls the length of the hand trails based on slider information.
 
-### Relevant Library Scripts
 
-#### `AvatarController`
-`/Assets/K2Examples/KinectScripts/AvatarController.cs`
 
-Provides an avatar controller to the `KinectManager`, allowing for motion to be mapped to the avatar this script is attached to. The object it is attached to must support a humanoid rig type. This is where most configuration of what you want the motion capture to actual capture is found in.
+#### `Playback/BezierManager`
+This script handles converting points given by the MarkupManager into a set of points representing a bezier curve. It gives these points back to the MarkupManager which draws them, as bezier curves are able to better represent smooth lines than ones own mouse movement may.
 
-#### `KinectManager`
-`/Assets/K2Examples/KinectScripts/KinectManager.cs`
+#### `Playback/CaptureController`
+This script handles the set of buttons on the viewing page that give the user control over video capture for evaluation. It calls functions that begin, stop, and cancel recordings in Evereal's video capture.
 
-Using any provided avatar controllers, maps motion from the kinect to the avatar. This can be configured to support tracking multiple people and other actions. This is where most configuration regarding the Kinect is located.
+#### `Playback/ColorSelectorController`
+This script handles rendering and giving functionality to the color selection wheel used for markup. When the circle is clicked on, the current pixel color is sampled and used to set the color used by the MarkupManager.
+
+#### `Playback/MarkupManager`
+This script handles all markup functionality, enabling the ability of the user to draw on a canvas drawn over the avatar on the viewing page.
+
+#### `Playback/MediaControls`
+This script handles all media control actions on the viewing page, such as volume, playback speed, direction of playback, play/pause, and the usage of the timeline for scrubbing.
+
+#### `Playback/MicrophoneRecorder`
+A simple microphone recorder used for evaluation purposes during video recording.
+
+#### `Playback/SizeSelectorController`
+Part of markup. This script controls the size of the markup lines based on a slider present on the viewing page.
+
+
+#### `Recording/AxisController`
+This script handles the visibility and movability of the axis lines present on the recording and viewing pages. It ensures that the configuration is consistent in the same session so the lines do not have to be repeatedly moved.
+
+#### `Recording/BeatChecker`
+Part of the metronome. It does the counts based on time to ensure that beats play at the correct time, even for irregular time signatures.
+
+#### `Recording/DragModulePerspective`
+Part of the axis lines. This script allows for generic moving of non-UI objects to the mouse cursor. It is configured only for moving the axis lines.
+
+#### `Recording/Metronome`
+This script handles the metronome on the recording page. It allows the user to play a sound at specified intervals to aid them in keeping time.
+
+#### `Recording/MetronomeStorage`
+Part of the metronome. This script contains a data structure for the metronome to more easily store configurations.
+
+#### `Recording/TempoSlider`
+Part of the metronome. This controls the tempo used by the metronome and is highly configurable.
+
+#### `VisualizerData/scriptnamehere.cs`
+description
+
+
 
 ## Functionality Based on Specs Given by Sponsor
 - [x] Record a conductor
