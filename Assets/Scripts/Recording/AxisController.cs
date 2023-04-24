@@ -24,6 +24,15 @@ public class AxisController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        if (SceneManager.GetActiveScene().name == "CharacterSelection")
+        {
+            foreach (GameObject obj in objs)
+            {
+                Destroy(obj);
+            }
+        }
+
         DontDestroyOnLoad(this.gameObject);
     }
 
