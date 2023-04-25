@@ -157,6 +157,15 @@ This script controls the Recording scene, including using Evereal to record the 
 #### `Recording/TempoSlider`
 Part of the metronome. This controls the tempo used by the metronome and is highly configurable.
 
+#### Recording/VideoCapture
+Used to record the video that'll be used for tracking purposes.
+
+#### Recording/ToggleHotkey
+Used to bind mappable hotkeys to toggles.
+
+#### Recording/HidableHud
+Used to Hide the parts of the hud not needed during recording.
+
 #### `VisualizerData/FrameData`
 This script is a class to hold data fo each frame.
 
