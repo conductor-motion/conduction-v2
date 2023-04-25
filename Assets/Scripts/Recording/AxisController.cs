@@ -25,14 +25,6 @@ public class AxisController : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if (SceneManager.GetActiveScene().name == "CharacterSelection")
-        {
-            foreach (GameObject obj in objs)
-            {
-                Destroy(obj);
-            }
-        }
-
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -44,20 +36,18 @@ public class AxisController : MonoBehaviour
     }
 
     // Update is called once per frame
-    /*void Update()
+    void Update()
     {
-        // Axis Movement Lock
-        if (Input.GetKeyDown(KeyCode.L))
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Axis");
+        if (SceneManager.GetActiveScene().name == "CharacterSelection")
         {
-            GetComponent<DragModulePerspective>().enabled = !GetComponent<DragModulePerspective>().enabled;
+            Debug.Log("This is happening");
+            foreach (GameObject obj in objs)
+            {
+                Destroy(obj);
+            }
         }
-
-        // Hide/Show Axis
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            rendition.enabled = !rendition.enabled;
-        }
-    }*/
+    }
 
     public void AxisLock(InputAction.CallbackContext context)
     {

@@ -12,7 +12,7 @@ public class CurrentlySelected : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(charSelect.selectedCharacter +" =? " + PlayerPrefs.GetInt("selectedCharacter"));
+        //Debug.Log(charSelect.selectedCharacter +" =? " + PlayerPrefs.GetInt("selectedCharacter"));
         if (charSelect.selectedCharacter == PlayerPrefs.GetInt("selectedCharacter"))
         {
             text.SetActive(true);
