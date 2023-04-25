@@ -58,6 +58,12 @@ This script is for the tooltip feature used in the tempo tracker scene.
 #### `Analytics/WindowGraph`
 This script creates the tempo tracker.
 
+#### `Analytics/ Use of Space`
+This script is to open and parse through the json file to then calculate the use of space from the x and y coordinates and the amount of frames. Then assigns the percentage of time into the Use of Space template.
+
+#### `Analytics/ Template`
+This script contains all the regions that are within each template.
+
 #### `Avatars/CharacterSelection`
 This script holds the avatar models and keeps track of which avatar the user is currently hovered over in the CharacterSelection Scene.
 
